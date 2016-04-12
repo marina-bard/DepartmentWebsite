@@ -1,0 +1,7 @@
+department_site_news:
+    resource: "@DepartmentSiteNewsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
