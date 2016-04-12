@@ -1,0 +1,41 @@
+<?php
+
+namespace DepartmentSite\NewsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="News")
+ * @ORM\HasLifecycleCallbacks
+ */
+
+class News
+{
+		/**
+	     * @ORM\Column(type="integer")
+	     * @ORM\Id
+	     * @ORM\GeneratedValue(strategy="AUTO")
+	     */
+		protected $id;
+
+		/**
+	    * @ORM\Column(type="string", length=256)
+	    */
+		protected $descritpion;
+
+		/**
+	    * @ORM\Column(type="string", length=256)
+	    */
+		protected $title;
+
+		/**
+	     * @ORM\Column(type="text")
+	     */
+		protected $content;
+
+		/**
+	     * @ORM\Column(type="datetime")
+	     */
+		protected $createdAt;
+}
