@@ -1,3 +1,7 @@
 department_site_news_homepage:
     path:     /
     defaults: { _controller: DepartmentSiteNewsBundle:Default:index }
+
+department_site_news_news:
+        resource: "@DepartmentSiteNewsBundle/Resources/config/routing/news.yml"
+        prefix:   /news

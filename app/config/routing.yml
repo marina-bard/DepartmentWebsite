@@ -1,3 +1,4 @@
+
 department_site_news:
     resource: "@DepartmentSiteNewsBundle/Resources/config/routing.yml"
     prefix:   /
@@ -6,6 +7,11 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-admin_area:
-    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
     prefix: /admin
