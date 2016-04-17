@@ -16,7 +16,6 @@ class NewsAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', 'text', array('label' => 'Content'))
-            ->add('created_at', 'date')
         ;
     }
 
@@ -33,6 +32,7 @@ class NewsAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
+            ->add('createdAt')
         ;
     }
 }
