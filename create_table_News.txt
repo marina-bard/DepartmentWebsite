@@ -1,0 +1,8 @@
+CREATE TABLE `News` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descritpion` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
