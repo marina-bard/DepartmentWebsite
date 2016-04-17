@@ -22,7 +22,7 @@ class News
 		/**
 	    * @ORM\Column(type="string", length=256)
 	    */
-		protected $descritpion;
+		protected $description;
 
 		/**
 	    * @ORM\Column(type="string", length=256)
@@ -52,13 +52,13 @@ class News
     /**
      * Set descritpion
      *
-     * @param string $descritpion
+     * @param string $description
      *
      * @return News
      */
-    public function setDescritpion($descritpion)
+    public function setDescription($description)
     {
-        $this->descritpion = $descritpion;
+        $this->description = $description;
 
         return $this;
     }
@@ -68,9 +68,9 @@ class News
      *
      * @return string
      */
-    public function getDescritpion()
+    public function getDescription()
     {
-        return $this->descritpion;
+        return $this->description;
     }
 
     /**
@@ -127,10 +127,11 @@ class News
      * @param \DateTime $createdAt
      *
      * @return News
+		 * @ORM\PrePersist
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new \DateTime('now');
 
         return $this;
     }

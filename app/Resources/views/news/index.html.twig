@@ -7,7 +7,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Descritpion</th>
+                <th>Description</th>
                 <th>Title</th>
                 <th>Content</th>
                 <th>Createdat</th>
@@ -18,7 +18,7 @@
         {% for news in news %}
             <tr>
                 <td><a href="{{ path('news_show', { 'id': news.id }) }}">{{ news.id }}</a></td>
-                <td>{{ news.descritpion }}</td>
+                <td>{{ news.description }}</td>
                 <td>{{ news.title }}</td>
                 <td>{{ news.content }}</td>
                 <td>{% if news.createdAt %}{{ news.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>

@@ -15,13 +15,13 @@ class NewsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('descritpion')
+            ->add('description')
             ->add('title')
             ->add('content')
-            ->add('createdAt', 'datetime')
+            //->add('createdAt', 'datetime')
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

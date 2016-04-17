@@ -22,7 +22,7 @@ class News
 		/**
 	    * @ORM\Column(type="string", length=256)
 	    */
-		protected $descritpion;
+		protected $description;
 
 		/**
 	    * @ORM\Column(type="string", length=256)
