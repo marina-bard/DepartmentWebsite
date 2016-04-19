@@ -15,7 +15,7 @@ class NewsAdmin extends Admin
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            ->add('content', 'text', array('label' => 'Content'))
+            ->add('content', 'textarea', array('label' => 'Content'))
         ;
     }
 
