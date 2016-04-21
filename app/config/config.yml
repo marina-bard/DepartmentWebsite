@@ -4,6 +4,7 @@ imports:
     - { resource: services.yml }
     - { resource: "@DepartmentSiteNewsBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSiteNewsBundle/Resources/config/admin.yml" }
+    - { resource: "@DepartmentSiteUserBundle/Resources/config/services.yml" }
 
 
 
@@ -76,3 +77,8 @@ sonata_block:
     blocks:
         sonata.admin.block.admin_list:
             contexts:   [admin]
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: DepartmentSite\UserBundle\Entity\User
