@@ -3,8 +3,11 @@
 namespace DepartmentSite\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Sluggable\Sluggable;
 use Iphp\FileStoreBundle\Mapping\Annotation as Filestore;
 use Symfony\Component\Validator\Constraints as Assert;
+//use Gedmo\Mapping\Annotation as Gedmo;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * News
@@ -15,6 +18,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class News
 {
+    use ORMBehaviors\Sluggable\Sluggable;
+    use ORMBehaviors\Timestampable\Timestampable;
     /**
      * @var int
      *
@@ -196,6 +201,11 @@ class News
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    public function getSluggableFields()
+    {
+        return [ 'title' ];
     }
 }
 
