@@ -1,3 +1,6 @@
+department_site_news_news:
+    resource: "@DepartmentSiteNewsBundle/Controller/NewsController.php"
+    type:     annotation
 
 department_site_news:
     resource: "@DepartmentSiteNewsBundle/Resources/config/routing.yml"
@@ -15,3 +18,4 @@ _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
+

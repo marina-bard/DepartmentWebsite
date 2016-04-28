@@ -3,74 +3,84 @@
 namespace DepartmentSite\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Sluggable\Sluggable;
+use Iphp\FileStoreBundle\Mapping\Annotation as Filestore;
+use Symfony\Component\Validator\Constraints as Assert;
+//use Gedmo\Mapping\Annotation as Gedmo;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
- * @ORM\Entity
+ * News
+ *
  * @ORM\Table(name="News")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="DepartmentSite\NewsBundle\Repository\NewsRepository")
+ * @FileStore\Uploadable
  */
-
 class News
 {
-		/**
-	     * @ORM\Column(type="integer")
-	     * @ORM\Id
-	     * @ORM\GeneratedValue(strategy="AUTO")
-	     */
-		protected $id;
+    use ORMBehaviors\Sluggable\Sluggable;
+    use ORMBehaviors\Timestampable\Timestampable;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
-		/**
-	    * @ORM\Column(type="string", length=256)
-	    */
-		protected $description;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
 
-		/**
-	    * @ORM\Column(type="string", length=256)
-	    */
-		protected $title;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
 
-		/**
-	     * @ORM\Column(type="text")
-	     */
-		protected $content;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text")
+     */
+    private $content;
 
-		/**
-	     * @ORM\Column(type="datetime")
-	     */
-		protected $createdAt;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="photo", type="array")
+     * @Assert\Image( maxSize="20M",
+     *     mimeTypes={
+     *      "image/png",
+     *      "image/jpeg",
+     *      "image/jpg",
+     *     })
+     * @FileStore\UploadableField(mapping="photo")
+     *
+     */
+    private $photo;
+
 
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set descritpion
-     *
-     * @param string $description
-     *
-     * @return News
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get descritpion
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**
@@ -98,6 +108,30 @@ class News
     }
 
     /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return News
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Set content
      *
      * @param string $content
@@ -122,27 +156,56 @@ class News
     }
 
     /**
-     * Set createdAt
+     * Set date
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime $date
      *
      * @return News
-		 * @ORM\PrePersist
      */
-    public function setCreatedAt()
+    public function setDate($date)
     {
-        $this->createdAt = new \DateTime('now');
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get date
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getDate()
     {
-        return $this->createdAt;
+        return $this->date;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param array $photo
+     *
+     * @return News
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return array
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function getSluggableFields()
+    {
+        return [ 'title' ];
     }
 }
+

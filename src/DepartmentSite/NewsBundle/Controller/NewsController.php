@@ -4,19 +4,23 @@ namespace DepartmentSite\NewsBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use DepartmentSite\NewsBundle\Entity\News;
 use DepartmentSite\NewsBundle\Form\NewsType;
 
 /**
  * News controller.
  *
+ * @Route("/news")
  */
 class NewsController extends Controller
 {
     /**
      * Lists all News entities.
      *
+     * @Route("/", name="news_index")
+     * @Method("GET")
      */
     public function indexAction()
     {
@@ -32,6 +36,8 @@ class NewsController extends Controller
     /**
      * Creates a new News entity.
      *
+     * @Route("/new", name="news_new")
+     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -56,6 +62,8 @@ class NewsController extends Controller
     /**
      * Finds and displays a News entity.
      *
+     * @Route("/{id}", name="news_show")
+     * @Method("GET")
      */
     public function showAction(News $news)
     {
@@ -70,6 +78,8 @@ class NewsController extends Controller
     /**
      * Displays a form to edit an existing News entity.
      *
+     * @Route("/{id}/edit", name="news_edit")
+     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, News $news)
     {
@@ -95,6 +105,8 @@ class NewsController extends Controller
     /**
      * Deletes a News entity.
      *
+     * @Route("/{id}", name="news_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, News $news)
     {

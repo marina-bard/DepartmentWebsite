@@ -7,10 +7,11 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Description</th>
                 <th>Title</th>
+                <th>Description</th>
                 <th>Content</th>
-                <th>Createdat</th>
+                <th>Date</th>
+                <th>Photo</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,10 +19,11 @@
         {% for news in news %}
             <tr>
                 <td><a href="{{ path('news_show', { 'id': news.id }) }}">{{ news.id }}</a></td>
-                <td>{{ news.description }}</td>
                 <td>{{ news.title }}</td>
+                <td>{{ news.description }}</td>
                 <td>{{ news.content }}</td>
-                <td>{% if news.createdAt %}{{ news.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if news.date %}{{ news.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if news.photo %}{{ news.photo|join(', ') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
