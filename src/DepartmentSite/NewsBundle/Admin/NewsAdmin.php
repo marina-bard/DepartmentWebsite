@@ -13,9 +13,9 @@ class NewsAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', 'text', array('label' => 'Title'))
-            ->add('description', 'text', array('label' => 'Description'))
-            ->add('content', 'textarea', array('label' => 'Content'))
+            ->add('title', 'ckeditor', array('label' => 'Title'))
+            ->add('description', 'ckeditor', array('label' => 'Description'))
+            ->add('content', 'ckeditor', array('label' => 'Content'))
             ->add('date')
             ->add('photo', 'iphp_file')
         ;
