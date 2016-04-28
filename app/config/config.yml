@@ -5,8 +5,6 @@ imports:
     - { resource: "@DepartmentSiteNewsBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSiteNewsBundle/Resources/config/admin.yml" }
 
-
-
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
@@ -71,8 +69,20 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+iphp_file_store:
+    mappings:
+       photo:
+           upload_dir:  "%kernel.root_dir%/../web/photo"
+           upload_path: /photo
+           directory_namer:
+               date:
+                  params: { field : date, depth : month }
+           namer: ~
+
 sonata_block:
     default_contexts: [cms]
     blocks:
+
+        # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]

@@ -10,20 +10,24 @@
                 <td>{{ news.id }}</td>
             </tr>
             <tr>
-                <th>Description</th>
-                <td>{{ news.description }}</td>
-            </tr>
-            <tr>
                 <th>Title</th>
                 <td>{{ news.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ news.description }}</td>
             </tr>
             <tr>
                 <th>Content</th>
                 <td>{{ news.content }}</td>
             </tr>
             <tr>
-                <th>Createdat</th>
-                <td>{% if news.createdAt %}{{ news.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Date</th>
+                <td>{% if news.date %}{{ news.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{% if news.photo %}{{ news.photo|join(', ') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

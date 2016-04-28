@@ -16,6 +16,8 @@ class NewsAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', 'textarea', array('label' => 'Content'))
+            ->add('date')
+            ->add('photo', 'iphp_file')
         ;
     }
 
@@ -32,7 +34,7 @@ class NewsAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
-            ->add('createdAt')
+            ->add('date')
         ;
     }
 }
