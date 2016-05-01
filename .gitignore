@@ -13,3 +13,7 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/web/photo/
+/app/config/parameters.yml
+/.idea/
+
