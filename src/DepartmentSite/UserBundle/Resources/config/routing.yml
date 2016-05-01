@@ -1,3 +1,0 @@
-department_site_user_homepage:
-    path:     /
-    defaults: { _controller: DepartmentSiteUserBundle:Default:index }
