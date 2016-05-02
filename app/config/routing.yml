@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-department_site_news_news:
-    resource: "@DepartmentSiteNewsBundle/Controller/NewsController.php"
-    type:     annotation
-
-=======
->>>>>>> d3452df6cdbf57e8ba9d59dd985fb1838af86616
 department_site_news:
     resource: "@DepartmentSiteNewsBundle/Resources/config/routing.yml"
     prefix:   /
