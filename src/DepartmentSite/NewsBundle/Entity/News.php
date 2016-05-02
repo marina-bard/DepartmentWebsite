@@ -51,13 +51,6 @@ class News
     private $content;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime")
-     */
-    private $date;
-
-    /**
      * @var array
      *
      * @ORM\Column(name="photo", type="array")
@@ -156,30 +149,6 @@ class News
     }
 
     /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return News
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
      * Set photo
      *
      * @param array $photo
@@ -208,4 +177,3 @@ class News
         return [ 'title' ];
     }
 }
-

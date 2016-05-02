@@ -22,10 +22,6 @@
                 <td>{{ news.content }}</td>
             </tr>
             <tr>
-                <th>Date</th>
-                <td>{% if news.date %}{{ news.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
                 <th>Photo</th>
                 <td>{% if news.photo %}{{ news.photo|join(', ') }}{% endif %}</td>
             </tr>

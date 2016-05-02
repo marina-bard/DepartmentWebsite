@@ -85,7 +85,7 @@ iphp_file_store:
            upload_path: /photo
            directory_namer:
                date:
-                  params: { field : date, depth : month }
+                  params: { field : createdAt, depth : month }
            namer: ~
 
 sonata_block:

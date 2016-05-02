@@ -22,7 +22,6 @@
                 <td>{{ news.title }}</td>
                 <td>{{ news.description }}</td>
                 <td>{{ news.content }}</td>
-                <td>{% if news.date %}{{ news.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if news.photo %}{{ news.photo|join(', ') }}{% endif %}</td>
                 <td>
                     <ul>
