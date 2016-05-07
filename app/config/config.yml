@@ -99,11 +99,24 @@ sonata_block:
       sonata.block.service.text: # used to if you plan to use Sonata user routes
 
 sonata_user:
-    #security_acl: true # Uncomment for ACL support
-    security_acl: false
+    security_acl: true # Uncomment for ACL support
+    #security_acl: false
     manager_type: orm # can be orm or mongodb
 
 sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.acl
+        # acl security information
+        information:
+            GUEST:    [VIEW, LIST]
+            STAFF:    [EDIT, LIST, CREATE]
+            EDITOR:   [OPERATOR, EXPORT]
+            ADMIN:    [MASTER]
+        # permissions not related to an object instance and also to be available when objects do not exist
+        # the DELETE admin permission means the user is allowed to batch delete objects
+        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
+        # permission related to the objects
+        object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
     title:      Department Site
     title_logo: /bundles/sonataadmin/logo_title.png
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d1c4cd13e7792b63f084333743f2a2f6",
-    "content-hash": "8eee39a3433aa17ed014f81ce66b7a1c",
+    "hash": "f73aa4fc18552dd4a290dcdb88ba644d",
+    "content-hash": "4e02b3850848cb7055703647d4d2ea85",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1511,7 +1511,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -3292,16 +3292,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.4",
+            "version": "v2.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "9e14f9f4869c19188a376eab61d9a1c1f1fee347"
+                "reference": "39ddd2383f4113cf67f8b28cde2c9d3fa340c3c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/9e14f9f4869c19188a376eab61d9a1c1f1fee347",
-                "reference": "9e14f9f4869c19188a376eab61d9a1c1f1fee347",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/39ddd2383f4113cf67f8b28cde2c9d3fa340c3c2",
+                "reference": "39ddd2383f4113cf67f8b28cde2c9d3fa340c3c2",
                 "shasum": ""
             },
             "require": {
@@ -3316,7 +3316,7 @@
                 "symfony/polyfill-php56": "~1.0",
                 "symfony/polyfill-php70": "~1.0",
                 "symfony/polyfill-util": "~1.0",
-                "symfony/security-acl": "~2.7",
+                "symfony/security-acl": "~2.7|~3.0.0",
                 "twig/twig": "~1.23|~2.0"
             },
             "conflict": {
@@ -3388,7 +3388,11 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Bridge\\": "src/Symfony/Bridge/",
+                    "Symfony\\Bridge\\Doctrine\\": "src/Symfony/Bridge/Doctrine/",
+                    "Symfony\\Bridge\\Monolog\\": "src/Symfony/Bridge/Monolog/",
+                    "Symfony\\Bridge\\ProxyManager\\": "src/Symfony/Bridge/ProxyManager/",
+                    "Symfony\\Bridge\\Swiftmailer\\": "src/Symfony/Bridge/Swiftmailer/",
+                    "Symfony\\Bridge\\Twig\\": "src/Symfony/Bridge/Twig/",
                     "Symfony\\Bundle\\": "src/Symfony/Bundle/",
                     "Symfony\\Component\\": "src/Symfony/Component/"
                 },
@@ -3418,7 +3422,57 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-03-27 12:57:53"
+            "time": "2016-04-29 15:34:08"
+        },
+        {
+            "name": "tilleuls/acl-sonata-admin-extension-bundle",
+            "version": "1.1.0",
+            "target-dir": "CoopTilleuls/Bundle/AclSonataAdminExtensionBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coopTilleuls/CoopTilleulsAclSonataAdminExtensionBundle.git",
+                "reference": "ba691f25891cf13d31540ec94606705044709fa9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coopTilleuls/CoopTilleulsAclSonataAdminExtensionBundle/zipball/ba691f25891cf13d31540ec94606705044709fa9",
+                "reference": "ba691f25891cf13d31540ec94606705044709fa9",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "~2.2",
+                "sonata-project/admin-bundle": "~2.2,>=2.2.2"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "CoopTilleuls\\Bundle\\AclSonataAdminExtensionBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kévin Dunglas",
+                    "email": "kevin@les-tilleuls.coop",
+                    "homepage": "http://dunglas.fr"
+                }
+            ],
+            "description": "ACL list filtering for SonataAdmin",
+            "homepage": "http://les-tilleuls.coop",
+            "keywords": [
+                "acl",
+                "admin",
+                "sonata"
+            ],
+            "time": "2014-12-11 17:54:23"
         },
         {
             "name": "twig/extensions",
@@ -3537,16 +3591,16 @@
     "packages-dev": [
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.0.4",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "b097218e4ab7724e7ec0c420e96dfd70518c2354"
+                "reference": "3231629ff97abccd60f93ff900accfb5b39c8200"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/b097218e4ab7724e7ec0c420e96dfd70518c2354",
-                "reference": "b097218e4ab7724e7ec0c420e96dfd70518c2354",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/3231629ff97abccd60f93ff900accfb5b39c8200",
+                "reference": "3231629ff97abccd60f93ff900accfb5b39c8200",
                 "shasum": ""
             },
             "require": {
@@ -3588,7 +3642,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-03-23 13:46:08"
+            "time": "2016-04-12 18:09:53"
         }
     ],
     "aliases": [],
