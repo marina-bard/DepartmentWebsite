@@ -1,20 +1,20 @@
 news_index:
-    path:     /
+    path:     /.{_format}
     defaults: { _controller: "DepartmentSiteNewsBundle:News:index" }
     methods:  GET
 
 news_show:
-    path:     /{id}/show
+    path:     /{id}/show.{_format}
     defaults: { _controller: "DepartmentSiteNewsBundle:News:show" }
     methods:  GET
 
 news_new:
-    path:     /new
+    path:     /new.{_format}
     defaults: { _controller: "DepartmentSiteNewsBundle:News:new" }
     methods:  [GET, POST]
 
 news_edit:
-    path:     /{id}/edit
+    path:     /{id}/edit.{_format}
     defaults: { _controller: "DepartmentSiteNewsBundle:News:edit" }
     methods:  [GET, POST]
 
