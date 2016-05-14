@@ -19,6 +19,6 @@ news_edit:
     methods:  [GET, POST]
 
 news_delete:
-    path:     /{id}/delete.{_format}
+    path:     /{id}/delete
     defaults: { _controller: "DepartmentSiteNewsBundle:News:delete" }
     methods:  DELETE

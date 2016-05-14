@@ -72,13 +72,13 @@ class NewsController extends Controller
                 return new Response($serialized);
             }
 
-            return $this->redirectToRoute('news_show', array(
-                'id' => $news->getId(),
-                'format' => $format,
-                ));
+//            return $this->redirectToRoute('news_show', array(
+//                'id' => $news->getId(),
+//                'format' => $format,
+//                ));
         }
 
-        return $this->render('news/new.'.$format.'.twig', array(
+        return $this->render('news/new.html.twig', array(
             'news' => $news,
             'form' => $form->createView(),
             'format' => $format,
@@ -98,7 +98,7 @@ class NewsController extends Controller
     {
         $format = $request->getRequestFormat();
 
-     //   $deleteForm = $this->createDeleteForm($news);
+        $deleteForm = $this->createDeleteForm($news);
 
         if($format == 'json') {
             $serialized = $this->container->get('serializer')->serialize($news, $format);
@@ -123,7 +123,7 @@ class NewsController extends Controller
      */
     public function editAction(Request $request, News $news)
     {
-      //  $deleteForm = $this->createDeleteForm($news);
+        $deleteForm = $this->createDeleteForm($news);
         $editForm = $this->createForm('DepartmentSite\NewsBundle\Form\NewsType', $news);
         $editForm->handleRequest($request);
 
@@ -194,5 +194,21 @@ class NewsController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function getAll() {
+        $em = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+
+        $serialized = $this->container->get('serializer')->serialize($news);
+        return new Response($serialized);
+
+    }
+
+    public function getOne(Request $request, News $news) {
+       // $deleteForm = $this->createDeleteForm($news);
+
+        $serialized = $this->container->get('serializer')->serialize($news);
+        return new Response($serialized);
     }
 }
