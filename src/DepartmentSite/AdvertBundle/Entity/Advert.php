@@ -1,20 +1,16 @@
 <?php
 
-namespace DepartmentSite\NewsBundle\Entity;
+namespace DepartmentSite\AdvertBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Iphp\FileStoreBundle\Mapping\Annotation as Filestore;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
- * News
- *
- * @ORM\Table(name="News")
- * @ORM\Entity(repositoryClass="DepartmentSite\NewsBundle\Repository\NewsRepository")
- * @FileStore\Uploadable
+ * @ORM\Entity
+ * @ORM\Table(name="Advert")
  */
-class News
+class Advert
 {
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
@@ -49,25 +45,19 @@ class News
     private $content;
 
     /**
-     * @var array
+     * Returns an array of the fields used to generate the slug.
      *
-     * @ORM\Column(name="photo", type="array")
-     * @Assert\Image( maxSize="20M",
-     *     mimeTypes={
-     *      "image/png",
-     *      "image/jpeg",
-     *      "image/jpg",
-     *     })
-     * @FileStore\UploadableField(mapping="photo")
-     *
+     * @return array
      */
-    private $photo;
-
+    public function getSluggableFields()
+    {
+        return [ 'title' ];
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -79,7 +69,7 @@ class News
      *
      * @param string $title
      *
-     * @return News
+     * @return Advert
      */
     public function setTitle($title)
     {
@@ -103,7 +93,7 @@ class News
      *
      * @param string $description
      *
-     * @return News
+     * @return Advert
      */
     public function setDescription($description)
     {
@@ -127,7 +117,7 @@ class News
      *
      * @param string $content
      *
-     * @return News
+     * @return Advert
      */
     public function setContent($content)
     {
@@ -144,34 +134,5 @@ class News
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set photo
-     *
-     * @param array $photo
-     *
-     * @return News
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return array
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    public function getSluggableFields()
-    {
-        return [ 'title' ];
     }
 }

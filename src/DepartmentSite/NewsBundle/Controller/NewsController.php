@@ -4,10 +4,7 @@ namespace DepartmentSite\NewsBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use DepartmentSite\NewsBundle\Entity\News;
-use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

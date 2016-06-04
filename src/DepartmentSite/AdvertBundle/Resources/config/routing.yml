@@ -1,0 +1,7 @@
+department_site_advert_advert:
+    resource: "@DepartmentSiteAdvertBundle/Resources/config/routing/advert.yml"
+    prefix:   /advert
+
+department_site_advert_homepage:
+    path:     /
+    defaults: { _controller: DepartmentSiteAdvertBundle:Default:index }
