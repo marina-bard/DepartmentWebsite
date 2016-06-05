@@ -3,7 +3,6 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@DepartmentSiteNewsBundle/Resources/config/services.yml" }
-    - { resource: "@DepartmentSiteNewsBundle/Resources/config/admin.yml" }
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
     - { resource: "@DepartmentSiteAdvertBundle/Resources/config/services.yml" }
 
@@ -105,11 +104,6 @@ sonata_user:
     #security_acl: true # Uncomment for ACL support
     security_acl: false
     manager_type: orm # can be orm or mongodb
-
-sonata_admin:
-    title:      Department Site
-    title_logo: /bundles/sonataadmin/logo_title.png
-
 
 fos_user:
     db_driver:  orm # can be orm or odm
