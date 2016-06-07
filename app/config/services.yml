@@ -7,3 +7,18 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+  admin.advert:
+        class: DepartmentSite\AdvertBundle\Admin\AdvertAdmin
+        arguments: [~, DepartmentSite\AdvertBundle\Entity\Advert, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Advert", label: Advert }
+        calls:
+              - [ setTranslationDomain, [DepartmentSiteAdvertBundle]]
+
+  admin.news:
+        class: DepartmentSite\NewsBundle\Admin\NewsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "News", label: "News" }
+        arguments: [~, DepartmentSite\NewsBundle\Entity\News, ~]
+        calls:
+             - [ setTranslationDomain, [DepartmentSiteNewsBundle]]
