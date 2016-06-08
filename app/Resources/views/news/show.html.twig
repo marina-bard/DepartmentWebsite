@@ -30,10 +30,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('news_index', {'_format': format}) }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('news_edit', { 'id': news.id, '_format': format }) }}">Edit</a>
+            <a href="{{ path('news_index') }}">Back to the list</a>
         </li>
         <li>
               {{ form_start(delete_form) }}
