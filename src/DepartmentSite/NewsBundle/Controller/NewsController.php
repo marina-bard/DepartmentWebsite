@@ -20,36 +20,25 @@ class NewsController extends Controller
     /**
      * Lists all News entities.
      *
-     * @Route("/.{_format}",
-     *     defaults = {"_format"="html|json"},
+     * @Route("/",
      *     name = "news_index"
      * )
      * @Method("GET")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
-        $format = $request->getRequestFormat();
-
-        if ($format == 'json') {
-            $serialized = $this->container->get('serializer')->serialize($news, $format);
-            return new Response($serialized);
-        }
-
-        return $this->render('news/index.'.$format.'.twig', array(
+        return $this->render('news/index.html.twig', array(
             'news' => $news,
-            'format' => $format,
         ));
     }
 
     /**
      * Creates a new News entity.
      *
-     * @Route("/new.{_format}",
-     *     defaults = {"_format"="html|json"},
+     * @Route("/new",
      *     name = "news_new"
      * )
      * @Method({"GET", "POST"})
@@ -60,17 +49,10 @@ class NewsController extends Controller
         $form = $this->createForm('DepartmentSite\NewsBundle\Form\NewsType', $news);
         $form->handleRequest($request);
 
-        $format = $request->getRequestFormat();
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($news);
             $em->flush();
-
-            if($format == 'json') {
-                $serialized = $this->container->get('serializer')->serialize($news, $format);
-                return new Response($serialized);
-            }
 
 //            return $this->redirectToRoute('news_show', array(
 //                'id' => $news->getId(),
@@ -81,14 +63,13 @@ class NewsController extends Controller
         return $this->render('news/new.html.twig', array(
             'news' => $news,
             'form' => $form->createView(),
-            'format' => $format,
         ));
     }
 
     /**
      * Finds and displays a News entity.
      *
-     * @Route("/{id}.{_format}",
+     * @Route("/{id}/show",
      *     defaults = {"_format"="html|json"},
      *     name = "news_show"
      * )
@@ -96,29 +77,17 @@ class NewsController extends Controller
      */
     public function showAction(Request $request, News $news)
     {
-        $format = $request->getRequestFormat();
-
         $deleteForm = $this->createDeleteForm($news);
 
-        if($format == 'json') {
-            $serialized = $this->container->get('serializer')->serialize($news, $format);
-            return new Response($serialized);
-        }
-
-        return $this->render('news/show.'.$format.'.twig', array(
+        return $this->render('news/show.html.twig', array(
             'news' => $news,
             'delete_form' => $deleteForm->createView(),
-            'format' => $format,
         ));
     }
 
     /**
      * Displays a form to edit an existing News entity.
      *
-     * @Route("/{id}/edit.{_format}",
-     *     defaults = {"_format"="html|json"},
-     *     name="news_edit"
-     * )
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, News $news)
@@ -127,37 +96,27 @@ class NewsController extends Controller
         $editForm = $this->createForm('DepartmentSite\NewsBundle\Form\NewsType', $news);
         $editForm->handleRequest($request);
 
-        $format = $request->getRequestFormat();
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($news);
             $em->flush();
 
-            if($format == 'json') {
-                $serialized = $this->container->get('serializer')->serialize($news, $format);
-                return new Response($serialized);
-            }
-
             return $this->redirectToRoute('news_edit', array(
                 'id' => $news->getId(),
-                'format' => $format,
             ));
         }
 
-        return $this->render('news/edit.'.$format.'.twig', array(
+        return $this->render('news/edit.html.twig', array(
             'news' => $news,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'format' => $format,
         ));
     }
 
     /**
      * Deletes a News entity.
      *
-     * @Route("/{id}.{_format}",
-     *     defaults = {"_format"="html|json"},
+     * @Route("/{id}/delete",
      *     name="news_delete"
      * )
      * @Method("DELETE")
@@ -173,9 +132,7 @@ class NewsController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('news_index', array(
-            'format' => $request->getRequestFormat(),
-        ));
+        return $this->redirectToRoute('news_index');
     }
 
     /**
@@ -200,15 +157,13 @@ class NewsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
-        $serialized = $this->container->get('serializer')->serialize($news);
+        $serialized = $this->container->get('serializer')->serialize($news, 'json');
         return new Response($serialized);
 
     }
 
-    public function getOne(Request $request, News $news) {
-       // $deleteForm = $this->createDeleteForm($news);
-
-        $serialized = $this->container->get('serializer')->serialize($news);
+    public function getOne(News $news) {
+        $serialized = $this->container->get('serializer')->serialize($news, 'json');
         return new Response($serialized);
     }
 }
