@@ -15,8 +15,8 @@ class NewsAdmin extends Admin
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            ->add('content', 'ckeditor', array('label' => 'Content'))
-            ->add('photo', 'iphp_file')
+            ->add('content', 'textarea', array('label' => 'Content'))
+            ->add('photo', 'sonata_type_model_list', array('required' => false))
         ;
     }
 
