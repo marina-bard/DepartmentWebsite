@@ -2,9 +2,9 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="" >
         <body>
-            <trans-unit id="breadcrumb.link_news_list">
-                <source>breadcrumb.link_news_list</source>
-                <target>Новости</target>
+            <trans-unit id="adverts">
+                    <source>adverts</source>
+                    <target>Объявления</target>
             </trans-unit>
         </body>
     </file>

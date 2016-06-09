@@ -15,8 +15,8 @@ parameters:
 framework:
     #esi:             ~
     translator:
-        paths:
-                - "%kernel.root_dir%/Resources/translations"
+            paths:
+                    - "%kernel.root_dir%/Resources/translations"
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"

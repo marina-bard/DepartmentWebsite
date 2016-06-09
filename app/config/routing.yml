@@ -12,6 +12,8 @@ admin:
     requirements:
         _locale: en|ru
 
+
+
 _sonata_admin:
     resource: .
     type: sonata_admin
