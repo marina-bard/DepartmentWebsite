@@ -8,7 +8,9 @@ department_site_news:
 
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix: /admin
+    prefix: /admin/{_locale}
+    requirements:
+        _locale: en|ru
 
 _sonata_admin:
     resource: .
