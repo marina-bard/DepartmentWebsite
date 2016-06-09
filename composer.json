@@ -38,7 +38,8 @@
         "sonata-project/core-bundle": "^3.0",
         "sonata-project/easy-extends-bundle": "^2.1",
         "sonata-project/datagrid-bundle": "^2.2",
-        "jms/serializer-bundle": "~0.13"
+        "jms/serializer-bundle": "~0.13",
+        "helios-ag/fm-elfinder-bundle": "^6.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -65,7 +66,8 @@
     "config": {
         "platform": {
             "php": "5.5.9"
-        }
+        },
+        "component-dir": "web/assets"
     },
     "extra": {
         "symfony-app-dir": "app",
