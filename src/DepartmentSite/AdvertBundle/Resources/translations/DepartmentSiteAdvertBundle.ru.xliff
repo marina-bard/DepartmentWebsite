@@ -6,10 +6,35 @@
                     <source>Advert</source>
                     <target>Объявления</target>
             </trans-unit>
-            <trans-unit id="Title">
-                      <source>Title</source>
-                      <target>Заголовок</target>
+            <trans-unit id="Description">
+                      <source>Description</source>
+                      <target>Описание</target>
             </trans-unit>
+             <trans-unit id="Title">
+                       <source>Title</source>
+                       <target>Заголовок</target>
+             </trans-unit>
+             <trans-unit id="Content">
+                        <source>Content</source>
+                        <target>Контент</target>
+             </trans-unit>
+             <trans-unit id="Advert List">
+                        <source>Advert List</source>
+                        <target>Список объявлений</target>
+             </trans-unit>
+             <trans-unit id="Advert Create">
+                        <source>Advert Create</source>
+                        <target>Создать объявление</target>
+             </trans-unit>
+             <trans-unit id="Created At">
+                        <source>Created At</source>
+                        <target>Дата создания</target>
+             </trans-unit>
+
+
+
+
+
         </body>
     </file>
 </xliff>

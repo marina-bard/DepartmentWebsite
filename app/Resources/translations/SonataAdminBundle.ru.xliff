@@ -10,6 +10,11 @@
                       <source>News</source>
                       <target>Новости</target>
             </trans-unit>
+            <trans-unit id="Dashboard">
+                      <source>Dashboard</source>
+                      <target>Приборная панель</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
