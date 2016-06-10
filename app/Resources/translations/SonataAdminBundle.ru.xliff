@@ -6,9 +6,9 @@
                     <source>Advert</source>
                     <target>Объявления</target>
             </trans-unit>
-            <trans-unit id="Title">
-                      <source>Title</source>
-                      <target>Заголовок</target>
+            <trans-unit id="News">
+                      <source>News</source>
+                      <target>Новости</target>
             </trans-unit>
         </body>
     </file>
