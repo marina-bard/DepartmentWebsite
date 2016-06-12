@@ -40,6 +40,10 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+#    form:
+#      resources:
+#              - 'SonataMediaBundle:Form:media_widgets.html.twig'
+
 
 # Doctrine Configuration
 doctrine:

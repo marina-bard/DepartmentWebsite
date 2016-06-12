@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "83f7694ac15790dc33c5900a24f27424",
-    "content-hash": "11e69970130092442a1d208e29ddb2af",
+    "hash": "f2a0a6518773cc4bd85b437aa1a0ccbf",
+    "content-hash": "a163d06ed9b7ad80dfcaabdf650cf9ce",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1503,7 +1503,7 @@
             ],
             "authors": [
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 }
             ],
@@ -1655,7 +1655,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -1714,7 +1714,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2978,16 +2978,16 @@
         },
         {
             "name": "sonata-project/media-bundle",
-            "version": "3.0.0",
+            "version": "3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataMediaBundle.git",
-                "reference": "a7deaa3b36d3951a80b151b264d9fb65359798e3"
+                "reference": "cc019758df4d37b4302d77b152b2f95f820b6434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/a7deaa3b36d3951a80b151b264d9fb65359798e3",
-                "reference": "a7deaa3b36d3951a80b151b264d9fb65359798e3",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/cc019758df4d37b4302d77b152b2f95f820b6434",
+                "reference": "cc019758df4d37b4302d77b152b2f95f820b6434",
                 "shasum": ""
             },
             "require": {
@@ -3029,7 +3029,7 @@
                 "jackalope/jackalope-doctrine-dbal": "^1.1",
                 "nelmio/api-doc-bundle": "^2.11",
                 "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-                "sonata-project/admin-bundle": "^3.0",
+                "sonata-project/admin-bundle": "^3.1",
                 "sonata-project/datagrid-bundle": "^2.2",
                 "sonata-project/doctrine-orm-admin-bundle": "^3.0",
                 "sonata-project/formatter-bundle": "^3.0",
@@ -3041,7 +3041,7 @@
                 "rackspace/php-opencloud": "^1.6",
                 "sonata-project/doctrine-orm-admin-bundle": "^3.0",
                 "sonata-project/seo-bundle": "^2.0",
-                "tilleuls/ckeditor-sonata-mediabundle": "^1.0"
+                "tilleuls/ckeditor-sonata-media-bundle": "^1.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -3081,7 +3081,7 @@
                 "vimeo",
                 "youtube"
             ],
-            "time": "2016-05-26 20:45:57"
+            "time": "2016-06-10 15:00:26"
         },
         {
             "name": "sonata-project/notification-bundle",
@@ -4106,7 +4106,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "sonata-project/media-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

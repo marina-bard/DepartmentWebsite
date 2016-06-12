@@ -16,7 +16,9 @@ class NewsAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', 'textarea', array('label' => 'Content'))
-            ->add('photo', 'sonata_type_model_list', array('required' => false))
+            ->add('photo', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.file'
+            ))
         ;
     }
 
