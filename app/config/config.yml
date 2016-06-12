@@ -129,13 +129,14 @@ sonata_media:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
 
-        sonata_category:
-                    providers:
-                      - sonata.media.provider.image
+        news:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.youtube
 
-                    formats:
-                        preview: { width: 100, quality: 100}
-                        wide:    { width: 820, quality: 100}
+            formats:
+                preview: { width: 100, quality: 100}
+                wide:    { width: 820, quality: 100}
 
     cdn:
         server:
