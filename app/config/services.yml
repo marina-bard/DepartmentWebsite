@@ -11,7 +11,7 @@ services:
         class: DepartmentSite\AdvertBundle\Admin\AdvertAdmin
         arguments: [~, DepartmentSite\AdvertBundle\Entity\Advert, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Advert", label: Advert }
+            - { name: sonata.admin, manager_type: orm, group: "Advert", label: Advert}
         calls:
               - [ setTranslationDomain, [DepartmentSiteAdvertBundle]]
 

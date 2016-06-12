@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="News">
+                    <source>News</source>
+                    <target>Новости</target>
+            </trans-unit>
+            <trans-unit id="Title">
+                     <source>Title</source>
+                     <target>Заголовок</target>
+            </trans-unit>
+            <trans-unit id="Description">
+                      <source>Description</source>
+                      <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="Content">
+                       <source>Content</source>
+                       <target>Контент</target>
+            </trans-unit>
+            <trans-unit id="Photo">
+                        <source>Photo</source>
+                        <target>Фото</target>
+            </trans-unit>
+            <trans-unit id="News List">
+                        <source>News List</source>
+                        <target>Список новостей</target>
+            </trans-unit>
+            <trans-unit id="News Create">
+                        <source>News Create</source>
+                        <target>Создать новость</target>
+            </trans-unit>
+            <trans-unit id="Created At">
+                        <source>Created At</source>
+                        <target>Дата создания</target>
+            </trans-unit>
+
+
+        </body>
+    </file>
+</xliff>

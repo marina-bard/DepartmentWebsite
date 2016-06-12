@@ -38,6 +38,7 @@
         "jms/serializer-bundle": "~1.1",
         "sonata-project/media-bundle": "3.x-dev",
         "sonata-project/classification-bundle": "^3.0"
+        "helios-ag/fm-elfinder-bundle": "^6.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -64,7 +65,8 @@
     "config": {
         "platform": {
             "php": "5.5.9"
-        }
+        },
+        "component-dir": "web/assets"
     },
     "extra": {
         "symfony-app-dir": "app",
