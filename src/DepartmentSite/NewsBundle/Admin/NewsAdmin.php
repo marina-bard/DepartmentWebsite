@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class NewsAdmin extends Admin
 {
@@ -15,7 +16,7 @@ class NewsAdmin extends Admin
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            ->add('content', 'textarea', array('label' => 'Content'))
+            ->add('content', CKEditorType::class, array('label' => 'Content'))
             ->add('photo', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.file'
             ))
