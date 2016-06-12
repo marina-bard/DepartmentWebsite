@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="Advert">
+                    <source>Advert</source>
+                    <target>Объявления</target>
+            </trans-unit>
+            <trans-unit id="News">
+                      <source>News</source>
+                      <target>Новости</target>
+            </trans-unit>
+            <trans-unit id="Dashboard">
+                      <source>Dashboard</source>
+                      <target>Приборная панель</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
