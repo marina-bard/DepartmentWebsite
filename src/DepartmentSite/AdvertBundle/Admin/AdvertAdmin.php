@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class AdvertAdmin extends Admin
 {
@@ -15,7 +16,7 @@ class AdvertAdmin extends Admin
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            ->add('content', 'ckeditor', array('label' => 'Content'))
+            ->add('content', CKEditorType::class, array('label' => 'Content'))
         ;
     }
 

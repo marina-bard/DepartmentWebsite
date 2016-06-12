@@ -3,16 +3,16 @@
 namespace DepartmentSite\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Iphp\FileStoreBundle\Mapping\Annotation as Filestore;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Sonata\MediaBundle\Model\MediaInterface;
 
 /**
  * News
  *
  * @ORM\Table(name="News")
- * @ORM\Entity(repositoryClass="DepartmentSite\NewsBundle\Repository\NewsRepository")
- * @FileStore\Uploadable
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class News
 {
@@ -49,19 +49,18 @@ class News
     private $content;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="photo", type="array")
-     * @Assert\Image( maxSize="20M",
-     *     mimeTypes={
-     *      "image/png",
-     *      "image/jpeg",
-     *      "image/jpg",
-     *     })
-     * @FileStore\UploadableField(mapping="photo")
-     *
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      */
     private $photo;
+
+
+    /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getTitle() ? : '-';
+    }
 
 
     /**
