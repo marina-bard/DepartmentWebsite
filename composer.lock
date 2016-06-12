@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f2a0a6518773cc4bd85b437aa1a0ccbf",
-    "content-hash": "a163d06ed9b7ad80dfcaabdf650cf9ce",
+    "hash": "d84e583d588856f122ac607d8d41a7de",
+    "content-hash": "3530ed78b54836cba916877a88adc4b9",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1252,10 +1252,6 @@
             "time": "2016-02-18 15:33:43"
         },
         {
-<<<<<<< HEAD
-            "name": "imagine/imagine",
-            "version": "v0.6.3",
-=======
             "name": "helios-ag/fm-elfinder-bundle",
             "version": "6.1.2",
             "source": {
@@ -1378,9 +1374,8 @@
             "time": "2016-04-26 02:19:13"
         },
         {
-            "name": "incenteev/composer-parameter-handler",
-            "version": "v2.1.2",
->>>>>>> master
+            "name": "imagine/imagine",
+            "version": "v0.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/avalanche123/Imagine.git",
@@ -1814,7 +1809,7 @@
             ],
             "authors": [
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 }
             ],
@@ -1966,7 +1961,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2025,7 +2020,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2040,10 +2035,6 @@
             "time": "2015-12-15 12:06:23"
         },
         {
-<<<<<<< HEAD
-            "name": "kriswallsmith/buzz",
-            "version": "v0.15",
-=======
             "name": "kriswallsmith/assetic",
             "version": "v1.3.2",
             "source": {
@@ -2121,9 +2112,8 @@
             "time": "2015-11-12 13:51:40"
         },
         {
-            "name": "michelf/php-markdown",
-            "version": "1.6.0",
->>>>>>> master
+            "name": "kriswallsmith/buzz",
+            "version": "v0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/Buzz.git",

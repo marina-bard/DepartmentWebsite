@@ -1,3 +1,4 @@
+/app/config/parameters.yml
 /build/
 /phpunit.xml
 /var/*
@@ -15,6 +16,4 @@
 /web/bundles/
 /web/photo/
 /web/uploads/
-/app/config/parameters.yml
 /.idea/
-.idea/workspace.xml
