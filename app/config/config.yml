@@ -174,9 +174,9 @@ fm_elfinder:
                     uploads:
                         #show_hidden: true|false # defaults to false, hides dotfiles
                         driver: LocalFileSystem
-                        path: /
-                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        path: uploads
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4']
                         upload_deny: ['all']
-                        upload_max_size: 2M # also file upload sizes restricted in php.ini
+                        upload_max_size: 100M # also file upload sizes restricted in php.ini
                         #attributes: example of setting attributes permission
                         #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
