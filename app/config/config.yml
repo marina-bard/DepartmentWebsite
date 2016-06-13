@@ -147,7 +147,7 @@ sonata_media:
     filesystem:
         local:
             directory:  "%kernel.root_dir%/../web/uploads/media"
-            create:     false
+            create:     true
 
 ivory_ck_editor:
     default_config: default
