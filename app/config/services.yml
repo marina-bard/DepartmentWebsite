@@ -22,3 +22,11 @@ services:
         arguments: [~, DepartmentSite\NewsBundle\Entity\News, ~]
         calls:
              - [ setTranslationDomain, [DepartmentSiteNewsBundle]]
+
+  admin.page:
+          class: DepartmentSite\PageBundle\Admin\PageAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Page", label: "Page" }
+          arguments: [~, DepartmentSite\PageBundle\Entity\Page, ~]
+          calls:
+               - [ setTranslationDomain, [DepartmentSitePageBundle]]
