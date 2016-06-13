@@ -1,3 +1,7 @@
+department_site_page:
+    resource: "@DepartmentSitePageBundle/Resources/config/routing.yml"
+    prefix:   /
+
 department_site_advert:
     resource: "@DepartmentSiteAdvertBundle/Resources/config/routing.yml"
     prefix:   /
