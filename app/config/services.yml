@@ -4,9 +4,6 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
   admin.advert:
         class: DepartmentSite\AdvertBundle\Admin\AdvertAdmin
         arguments: [~, DepartmentSite\AdvertBundle\Entity\Advert, ~]

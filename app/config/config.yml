@@ -66,14 +66,6 @@ doctrine:
             default:
                 auto_mapping: true
 
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-
-
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -82,6 +74,8 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+sonata_admin:
+    title: 'Department Site'
 
 
 sonata_block:
@@ -90,15 +84,7 @@ sonata_block:
       # Enable the SonataAdminBundle block
       sonata.admin.block.admin_list:
         contexts:  [admin]
-#      sonata.user.block.menu:  # used to display the menu in profile pages
-#      sonata.user.block.account: # used to display menu option (login option)
-#      sonata.block.service.text: # used to if you plan to use Sonata user routes
 
-#sonata_user:
-#    #security_acl: true # Uncomment for ACL support
-#    security_acl: false
-#    manager_type: orm # can be orm or mongodb
-#
 #fos_user:
 #    db_driver:  orm # can be orm or odm
 #    firewall_name:  main
@@ -112,15 +98,10 @@ sonata_block:
 #      user_manager: sonata.user.orm.user_manager
 
 sonata_media:
-    # if you don't use default namespace configuration
-    #class:
-    #    media: MyVendor\MediaBundle\Entity\Media
-    #    gallery: MyVendor\MediaBundle\Entity\Gallery
-    #    gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
-    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
-    default_context: default # you need to set a context
+    db_driver: doctrine_orm
+    default_context: default
     contexts:
-        default:  # the default context is mandatory
+        default:
             providers:
                 - sonata.media.provider.dailymotion
                 - sonata.media.provider.youtube
@@ -143,7 +124,7 @@ sonata_media:
 
     cdn:
         server:
-            path: /uploads/media # http://media.sonata-project.org/
+            path: /uploads/media
 
     filesystem:
         local:
