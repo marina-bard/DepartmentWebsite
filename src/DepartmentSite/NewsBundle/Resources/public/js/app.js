@@ -9,10 +9,10 @@
     }).when('/news', {
       templateUrl: 'DepartmentSiteNewsBundle:News:index',
       controller: 'NewsCtrl'
-    }).when('/news/page', {
+    }).when('/news/:id/show', {
       templateUrl: 'DepartmentSiteNewsBundle:News:show',
-      controller: 'NewsCtrl'
-      //controller: 'OneNewsCtrl'
+      //controller: 'NewsCtrl'
+      controller: 'OneNewsCtrl'
     }).when('/projects', {
       templateUrl: 'views/projects/project-list.html',
       controller: 'ProjectsCtrl'

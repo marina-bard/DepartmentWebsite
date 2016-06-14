@@ -4,9 +4,7 @@ var news_index = 0;
 (function() {
   'use strict';
   angular.module('bsuir-ecm').controller('OneNewsCtrl', function($scope, $http) {
-    $scope.news = data;
-    $scope.newsIndex = news_index;
-
+    $scope.news = JSON.parse(data);
   });
 
   angular.module('bsuir-ecm').filter('toHTML', ['$sce', function($sce){

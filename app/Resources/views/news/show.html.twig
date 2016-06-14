@@ -7,10 +7,7 @@
 
     <div ng-controller="OneNewsCtrl">
         <script type="text/javascript">
-            data = '{{ render(controller('DepartmentSiteNewsBundle:News:getOne')) }}';
-            //data = JSON.parse(JSON.stringify(data));
-            console.log(data);
-            news_index = getNewsIndex({{news.id}});
+            data = '{{ render(controller('DepartmentSiteNewsBundle:News:getOne', {'id' : news.id})) }}';
         </script>
 
         <div class="container">
@@ -29,10 +26,10 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <i class="news-time">{{'{{ news[newsIndex].created_at | date }}'}}</i>
-                    <div class="post-title-inside-post">{{'{{ news[newsIndex].title }}'}}</div>
+                    <i class="news-time">{{'{{ news.created_at | date }}'}}</i>
+                    <div class="post-title-inside-post">{{'{{ news.title }}'}}</div>
                     {#<br /><img alt="Cinque Terre" class="full-post-img" ng-src="{{news.photo.path}}" />#}
-                    <div class="post-content-inside post-content" ng-bind-html="news[newsIndex].content | toHTML"></div>
+                    <div class="post-content-inside post-content" ng-bind-html="news.content | toHTML"></div>
                     <div class="share-block">
                         <div class="share">
                             <div class="sprite share-icon"></div>

@@ -164,7 +164,9 @@ class NewsController extends Controller
 
     }
 
-    public function getOneAction(News $news) {
+    public function getOneAction($id) {
+      $em = $this->getDoctrine()->getManager();
+      $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
         $serialized = $this->container->get('serializer')->serialize($news, 'json');
         return new Response($serialized);
     }
