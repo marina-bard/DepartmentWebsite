@@ -1,0 +1,113 @@
+@font-face {
+  font-family: CirceRegular;
+  src: url("../fonts/circe/CRC55.otf");
+}
+@font-face {
+  font-family: CirceBold;
+  src: url("../fonts/circe/Circe-Bold.otf");
+}
+@font-face {
+  font-family: CirceExtraBold;
+  src: url("../fonts/circe/Circe-ExtraBold.otf");
+}
+/* line 12, ../../app/styles/news.scss */
+.post-title-inside-post {
+  font-size: 23px;
+  font-weight: bold;
+  color: #000;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+/* line 20, ../../app/styles/news.scss */
+.full-post-img {
+  width: 100%;
+}
+
+/* line 24, ../../app/styles/news.scss */
+.post-content-inside {
+  margin-top: 30px;
+  color: #595959;
+}
+
+/* line 29, ../../app/styles/news.scss */
+.share-block {
+  padding-top: 34px;
+  padding-bottom: 94px;
+}
+
+/* line 33, ../../app/styles/news.scss */
+.share {
+  display: inline;
+}
+/* line 36, ../../app/styles/news.scss */
+.share i {
+  font-style: normal;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+/* line 44, ../../app/styles/news.scss */
+.share .sprite {
+  background: url("../images/social_icons.png") no-repeat top left;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  margin-left: 30px;
+  vertical-align: middle;
+}
+/* line 51, ../../app/styles/news.scss */
+.share .sprite:hover {
+  cursor: pointer;
+}
+/* line 56, ../../app/styles/news.scss */
+.share .sprite.facebook {
+  background-position: 0 0;
+}
+/* line 58, ../../app/styles/news.scss */
+.share .sprite.facebook:hover {
+  background-position: -25px 0;
+}
+/* line 63, ../../app/styles/news.scss */
+.share .sprite.instagram {
+  background-position: -50px 0;
+}
+/* line 65, ../../app/styles/news.scss */
+.share .sprite.instagram:hover {
+  background-position: -75px 0;
+}
+/* line 69, ../../app/styles/news.scss */
+.share .sprite.share-icon {
+  background-position: -100px 0;
+  width: 13px;
+  height: 10px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+/* line 75, ../../app/styles/news.scss */
+.share .sprite.share-icon:hover {
+  cursor: default;
+}
+/* line 79, ../../app/styles/news.scss */
+.share .sprite.twitter {
+  background-position: -123px 0;
+}
+/* line 81, ../../app/styles/news.scss */
+.share .sprite.twitter:hover {
+  background-position: -148px 0;
+}
+/* line 85, ../../app/styles/news.scss */
+.share .sprite.vk {
+  background-position: -173px 0;
+  height: 17px;
+  width: 17px;
+}
+/* line 89, ../../app/styles/news.scss */
+.share .sprite.vk:hover {
+  background-position: -200px 0;
+  width: 17px;
+  height: 17px;
+}
+
+/*# sourceMappingURL=news.css.map */

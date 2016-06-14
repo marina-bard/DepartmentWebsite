@@ -1,0 +1,403 @@
+@font-face {
+  font-family: CirceRegular;
+  src: url("../fonts/circe/CRC55.otf");
+}
+@font-face {
+  font-family: CirceBold;
+  src: url("../fonts/circe/Circe-Bold.otf");
+}
+@font-face {
+  font-family: CirceExtraBold;
+  src: url("../fonts/circe/Circe-ExtraBold.otf");
+}
+@font-face {
+  font-family: CirceRegular;
+  src: url("../fonts/circe/CRC55.otf");
+}
+@font-face {
+  font-family: CirceBold;
+  src: url("../fonts/circe/Circe-Bold.otf");
+}
+@font-face {
+  font-family: CirceExtraBold;
+  src: url("../fonts/circe/Circe-ExtraBold.otf");
+}
+/* line 13, ../../app/styles/main/sidebar.scss */
+.sidebar .sidebar-item {
+  background-size: cover;
+  display: block;
+  height: 240px;
+  position: relative;
+}
+/* line 19, ../../app/styles/main/sidebar.scss */
+.sidebar .sidebar-item .sidebar-item-text {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  color: white;
+  font-family: CirceExtraBold, sans-serif;
+  font-size: 16px;
+  height: 100%;
+  line-height: 24px;
+  padding: 40px 20px;
+  text-transform: uppercase;
+}
+
+@font-face {
+  font-family: CirceRegular;
+  src: url("../fonts/circe/CRC55.otf");
+}
+@font-face {
+  font-family: CirceBold;
+  src: url("../fonts/circe/Circe-Bold.otf");
+}
+@font-face {
+  font-family: CirceExtraBold;
+  src: url("../fonts/circe/Circe-ExtraBold.otf");
+}
+/* line 16, ../../app/styles/main/announce_card.scss */
+.cards-column .announce-card {
+  padding-bottom: 30px;
+}
+/* line 19, ../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content {
+  background-color: #fff;
+  padding: 10px 30px 30px 30px;
+  border-bottom: 2px solid #2ab4c0;
+}
+/* line 24, ../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .full-card-content {
+  padding-top: 25px;
+}
+/* line 28, ../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-date {
+  color: #373737;
+  border-bottom: 2px solid #2ab4c0;
+  padding-bottom: 4px;
+  font-style: normal;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 19px;
+}
+/* line 40, ../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-title {
+  color: #373737;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+}
+/* line 45, ../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-title:hover {
+  color: #fdd400;
+  cursor: pointer;
+}
+/* line 51, ../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-lead {
+  padding: 10px 0;
+}
+
+@media (min-width: 992px) {
+  /* line 15, ../../app/styles/main/announcements.scss */
+  .announcements {
+    height: 960px;
+  }
+  /* line 18, ../../app/styles/main/announcements.scss */
+  .announcements .announce-cards {
+    width: 73.4%;
+  }
+  /* line 21, ../../app/styles/main/announcements.scss */
+  .announcements .announce-cards .cards-column {
+    padding-left: 0;
+    padding-right: 30px;
+  }
+  /* line 27, ../../app/styles/main/announcements.scss */
+  .announcements .sidebar {
+    width: 26.6%;
+  }
+}
+/* line 33, ../../app/styles/main/announcements.scss */
+.announcements {
+  background-color: #eef1f5;
+}
+
+/* line 37, ../../app/styles/main/announcements.scss */
+.announcements-background {
+  background-color: #eef1f5;
+}
+
+/* line 47, ../../app/styles/main/announcements.scss */
+.news-time {
+  color: #373737;
+  border-bottom: 2px solid #2ab4c0;
+  padding-bottom: 3px;
+  font-style: normal;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 19px;
+}
+
+/* line 59, ../../app/styles/main/announcements.scss */
+.my_announcement-comments-count-circle {
+  width: 21px;
+  height: 21px;
+  border: 1px solid #b9c1d0;
+  border-radius: 50%;
+  font-size: 11px;
+  color: #b9c1d0;
+  text-align: center;
+  padding-top: 3px;
+}
+
+/* line 70, ../../app/styles/main/announcements.scss */
+.my_announcement-table {
+  color: #000;
+  margin-top: 20px;
+}
+/* line 74, ../../app/styles/main/announcements.scss */
+.my_announcement-table table > thead > tr > th {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-bottom: 0;
+  background-color: #eef1f5;
+}
+/* line 85, ../../app/styles/main/announcements.scss */
+.my_announcement-table table > tbody > tr > td {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-left: 35px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border: 0;
+}
+
+/* line 96, ../../app/styles/main/announcements.scss */
+.inside-ann {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+/* line 10, ../../app/styles/main/presentations.scss */
+.presentations {
+  background-color: #eef1f5;
+}
+/* line 13, ../../app/styles/main/presentations.scss */
+.presentations .presentations-content {
+  color: white;
+}
+/* line 16, ../../app/styles/main/presentations.scss */
+.presentations .presentations-content .presentations-row:first-child {
+  height: 350px;
+}
+/* line 20, ../../app/styles/main/presentations.scss */
+.presentations .presentations-content .presentations-row:last-child {
+  background: url(../../images/banner.jpg);
+  background-size: cover;
+  height: 300px;
+}
+/* line 26, ../../app/styles/main/presentations.scss */
+.presentations .presentations-content .presentations-col {
+  height: 100%;
+}
+/* line 30, ../../app/styles/main/presentations.scss */
+.presentations .presentations-content .video-preview {
+  background: url(../../images/banner.jpg);
+  background-size: cover;
+  height: 50%;
+}
+/* line 36, ../../app/styles/main/presentations.scss */
+.presentations .presentations-content .article-preview {
+  background: url(../../images/banner.jpg);
+  height: 100%;
+  padding: 80px 50px 80px 50px;
+}
+/* line 41, ../../app/styles/main/presentations.scss */
+.presentations .presentations-content .article-preview .article-title {
+  font-size: 23px;
+  font-weight: bold;
+  padding: 0 0 20px 0;
+}
+
+/* line 8, ../../app/styles/main/news.scss */
+.news {
+  background-color: #eef1f5;
+}
+/* line 11, ../../app/styles/main/news.scss */
+.news .news-column {
+  padding-right: 30px;
+  padding-bottom: 40px;
+}
+/* line 16, ../../app/styles/main/news.scss */
+.news .news-column2 {
+  padding-left: 30px;
+  padding-bottom: 40px;
+}
+/* line 21, ../../app/styles/main/news.scss */
+.news .news-item-card {
+  padding: 15px 0 15px 0;
+}
+/* line 24, ../../app/styles/main/news.scss */
+.news .news-item-card:first-child {
+  padding-top: 0;
+}
+/* line 28, ../../app/styles/main/news.scss */
+.news .news-item-card:last-child {
+  padding-bottom: 0;
+}
+/* line 33, ../../app/styles/main/news.scss */
+.news .news-item-image {
+  background-size: cover;
+  height: 250px;
+  width: 100%;
+}
+/* line 37, ../../app/styles/main/news.scss */
+.news .news-item-image:hover {
+  -webkit-filter: brightness(50%);
+          filter: brightness(50%);
+  cursor: pointer;
+}
+/* line 43, ../../app/styles/main/news.scss */
+.news .news-item-date {
+  padding-bottom: 2px;
+  padding-top: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 12px;
+  border-bottom: 2px solid #2ab4c0;
+  display: inline-block;
+}
+/* line 53, ../../app/styles/main/news.scss */
+.news .news-item-title {
+  color: #373737;
+  padding: 15px 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+/* line 58, ../../app/styles/main/news.scss */
+.news .news-item-title:hover {
+  cursor: pointer;
+  color: #fdd400;
+}
+/* line 64, ../../app/styles/main/news.scss */
+.news .news-item-lead {
+  padding: 15px 0;
+}
+
+@media (max-width: 991px) {
+  /* line 71, ../../app/styles/main/news.scss */
+  .news .news-column {
+    padding-right: 0px;
+  }
+  /* line 75, ../../app/styles/main/news.scss */
+  .news .news-column2 {
+    padding-left: 0px;
+  }
+}
+/* line 10, ../../app/styles/main/tasks.scss */
+.tasks-heading .col, .task-body .col {
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  width: 20%;
+}
+/* line 16, ../../app/styles/main/tasks.scss */
+.tasks-heading .col:first-child, .task-body .col:first-child {
+  padding-left: 40px;
+}
+/* line 20, ../../app/styles/main/tasks.scss */
+.tasks-heading .col span, .task-body .col span {
+  vertical-align: middle;
+  line-height: normal;
+}
+
+/* line 27, ../../app/styles/main/tasks.scss */
+.tasks-heading {
+  background-color: #eef1f5;
+  font-weight: bold;
+}
+
+/* line 9, ../../app/styles/main/projects.scss */
+.projects .project-info {
+  padding-bottom: 50px;
+}
+/* line 12, ../../app/styles/main/projects.scss */
+.projects .project-info .project-title {
+  font-family: CirceBold, sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+}
+/* line 18, ../../app/styles/main/projects.scss */
+.projects .project-info .project-author {
+  padding: 12px 0 12px 0;
+}
+
+/* line 15, ../../app/styles/main.scss */
+body {
+  font-family: "../fonts/circe/CRC55.otf", "CirceRegular";
+}
+
+/* line 20, ../../app/styles/main.scss */
+a:hover {
+  color: #fdd400;
+}
+
+/* line 25, ../../app/styles/main.scss */
+p {
+  text-align: justify;
+}
+
+/* line 29, ../../app/styles/main.scss */
+.section-title {
+  text-transform: uppercase;
+  margin-top: 64px;
+  margin-bottom: 47px;
+}
+/* line 35, ../../app/styles/main.scss */
+.section-title span {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: CirceExtraBold, sans-serif;
+  font-size: 23px;
+}
+/* line 42, ../../app/styles/main.scss */
+.section-title .v-separator {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  background-color: #373737;
+  height: 16px;
+  padding: 0;
+  margin: 0 10px;
+  transform: translateY(20%);
+}
+/* line 53, ../../app/styles/main.scss */
+.section-title a {
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 56, ../../app/styles/main.scss */
+.section-title a:hover {
+  cursor: pointer;
+}
+
+/* line 62, ../../app/styles/main.scss */
+.main-block {
+  padding-bottom: 70px;
+}
+
+@media (max-width: 768px) {
+  /* line 74, ../../app/styles/main.scss */
+  .container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
