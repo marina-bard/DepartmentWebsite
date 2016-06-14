@@ -28,7 +28,7 @@ class NewsController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy();
 
         return $this->render('news/index.html.twig', array(
             'news' => $news,
