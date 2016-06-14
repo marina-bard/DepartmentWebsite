@@ -13,6 +13,12 @@
       templateUrl: 'DepartmentSiteNewsBundle:News:show',
       //controller: 'NewsCtrl'
       controller: 'OneNewsCtrl'
+    }).when('/advert', {
+      templateUrl: 'DepartmentSiteAdvertBundle:Advert:index',
+      controller: 'AnnouncementsCtrl'
+    }).when('/advert/:id/show', {
+      templateUrl: 'DepartmentSiteAdvertBundle:Advert:show',
+      controller: 'OneAdvertCtrl'
     }).when('/projects', {
       templateUrl: 'views/projects/project-list.html',
       controller: 'ProjectsCtrl'
