@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
-//            new FOS\UserBundle\FOSUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
 //            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
+            new DepartmentSite\UserBundle\DepartmentSiteUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

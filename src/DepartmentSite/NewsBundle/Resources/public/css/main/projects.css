@@ -1,0 +1,16 @@
+/* line 9, ../../../app/styles/main/projects.scss */
+.projects .project-info {
+  padding-bottom: 50px;
+}
+/* line 12, ../../../app/styles/main/projects.scss */
+.projects .project-info .project-title {
+  font-family: CirceBold, sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+}
+/* line 18, ../../../app/styles/main/projects.scss */
+.projects .project-info .project-author {
+  padding: 12px 0 12px 0;
+}
+
+/*# sourceMappingURL=projects.css.map */

@@ -6,6 +6,7 @@ imports:
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
     - { resource: "@DepartmentSiteAdvertBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSiteDefaultBundle/Resources/config/services.yml" }
+    - { resource: "@DepartmentSiteUserBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -99,10 +100,10 @@ sonata_block:
 #    security_acl: false
 #    manager_type: orm # can be orm or mongodb
 #
-#fos_user:
-#    db_driver:  orm # can be orm or odm
-#    firewall_name:  main
-#    user_class:   Application\Sonata\UserBundle\Entity\User
+fos_user:
+    db_driver:  orm # can be orm or odm
+    firewall_name:  main
+    user_class:   DepartmentSite\UserBundle\Entity\User
 #
 #    group:
 #      group_class:  Application\Sonata\UserBundle\Entity\Group
