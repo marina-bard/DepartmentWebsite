@@ -4,14 +4,13 @@
   //$route = Routing.generate('news_index');
   angular.module('bsuir-ecm', ['ngAnimate', 'ngAria', 'ngCookies', 'ngMessages', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch']).config(function($routeProvider) {
     return $routeProvider.when('/', {
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
+      templateUrl: 'DepartmentSiteDefaultBundle:Default:index',
+      controller: 'MainPageCtrl'
     }).when('/news', {
       templateUrl: 'DepartmentSiteNewsBundle:News:index',
       controller: 'NewsCtrl'
     }).when('/news/:id/show', {
       templateUrl: 'DepartmentSiteNewsBundle:News:show',
-      //controller: 'NewsCtrl'
       controller: 'OneNewsCtrl'
     }).when('/advert', {
       templateUrl: 'DepartmentSiteAdvertBundle:Advert:index',
