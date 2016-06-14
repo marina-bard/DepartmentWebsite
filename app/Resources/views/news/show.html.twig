@@ -1,10 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {# <h1>News</h1> <table> <tbody> <tr> <th>Id</th> <td>{{ news.id }}</td> </tr> <tr> <th>Title</th> <td>{{ news.title }}</td> </tr> <tr> <th>Description</th> <td>{{ news.description }}</td> </tr> <tr> <th>Content</th> <td>{{ news.content }}</td> </tr>
-    <tr> <th>Photo</th> <td>{% if news.photo %}{{ news.photo|join(', ') }}{% endif %}</td> </tr> </tbody> </table> <ul> <li> <a href="{{ path('news_index') }}">Back to the list</a> </li> <li> {{ form_start(delete_form) }} <input type="submit"
-    value="Delete"> {{ form_end(delete_form) }} </li> </ul> #}
-
     <div ng-controller="OneNewsCtrl">
         <script type="text/javascript">
             data = '{{ render(controller('DepartmentSiteNewsBundle:News:getOne', {'id' : news.id})) }}';
