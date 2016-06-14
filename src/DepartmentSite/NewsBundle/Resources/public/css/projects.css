@@ -1,0 +1,197 @@
+/* line 14, ../../app/styles/projects.scss */
+.head-text {
+  font-family: CirceExtraBold, sans-serif;
+  font-size: 23px;
+  color: #373737;
+  margin-top: 60px;
+  margin-bottom: 54px;
+}
+
+/* line 23, ../../app/styles/projects.scss */
+.search-form {
+  margin-bottom: 50px;
+}
+/* line 24, ../../app/styles/projects.scss */
+.search-form input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #b9c1d0;
+  padding-left: 30px;
+}
+/* line 33, ../../app/styles/projects.scss */
+.search-form input::-webkit-input-placeholder {
+  font-family: CirceRegular, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  color: #b9c1d0;
+}
+/* line 36, ../../app/styles/projects.scss */
+.search-form input::-moz-placeholder {
+  font-family: CirceRegular, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  color: #b9c1d0;
+}
+/* line 39, ../../app/styles/projects.scss */
+.search-form input:-moz-placeholder {
+  font-family: CirceRegular, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  color: #b9c1d0;
+}
+/* line 42, ../../app/styles/projects.scss */
+.search-form input:-ms-input-placeholder {
+  font-family: CirceRegular, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  color: #b9c1d0;
+}
+
+/* line 47, ../../app/styles/projects.scss */
+.post-list {
+  margin-bottom: 116px;
+}
+
+/* line 52, ../../app/styles/projects.scss */
+.post-block {
+  margin-bottom: 50px;
+}
+
+/* line 56, ../../app/styles/projects.scss */
+.post-header {
+  font-family: CirceBold, sans-serif;
+  font-size: 23px;
+  color: #373737;
+  box-sizing: inherit;
+  margin-bottom: 10px;
+}
+
+/* line 65, ../../app/styles/projects.scss */
+.post-author {
+  font-family: CirceRegular, sans-serif;
+  font-size: 14px;
+  color: #373737;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+/* line 74, ../../app/styles/projects.scss */
+.post-links {
+  font-family: CirceRegular, sans-serif;
+  font-size: 14px;
+  color: #5c9bd1;
+  line-height: 10px;
+  margin-top: 14px;
+}
+
+/* line 83, ../../app/styles/projects.scss */
+.line {
+  border-left: 1px solid #373737;
+  display: inline;
+  margin: 8px;
+}
+
+/* line 99, ../../app/styles/projects.scss */
+.reviews-cards-title {
+  color: #373737;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  padding-bottom: 27px;
+}
+
+/* line 107, ../../app/styles/projects.scss */
+.review-card {
+  padding-bottom: 30px;
+}
+/* line 110, ../../app/styles/projects.scss */
+.review-card .review-card-content {
+  background-color: #eef1f6;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* line 115, ../../app/styles/projects.scss */
+.review-card .review-card-content .review-card-date {
+  color: #b9c1d0;
+  font-style: normal;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  padding-bottom: 27px;
+}
+/* line 125, ../../app/styles/projects.scss */
+.review-card .review-card-content .review-card-title {
+  color: #373737;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  padding-top: 30px;
+  padding-bottom: 27px;
+}
+/* line 134, ../../app/styles/projects.scss */
+.review-card .review-card-content .review-card-lead {
+  padding-bottom: 30px;
+  text-align: justify;
+}
+
+/* line 141, ../../app/styles/projects.scss */
+.comments-cards-title {
+  color: #373737;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 60px;
+  margin-top: 30px;
+}
+
+/* line 150, ../../app/styles/projects.scss */
+.comment-card {
+  padding-bottom: 30px;
+}
+/* line 152, ../../app/styles/projects.scss */
+.comment-card .comment-card-avatar {
+  width: 60px;
+  height: 60px;
+}
+/* line 156, ../../app/styles/projects.scss */
+.comment-card .comment-card-content {
+  background-color: #fff;
+}
+/* line 159, ../../app/styles/projects.scss */
+.comment-card .comment-card-content .comment-card-date {
+  color: #b9c1d0;
+  font-style: normal;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  padding-bottom: 55px;
+  padding-left: 10px;
+}
+/* line 170, ../../app/styles/projects.scss */
+.comment-card .comment-card-content .comment-card-title {
+  color: #595959;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+/* line 180, ../../app/styles/projects.scss */
+.comment-card .comment-card-content .comment-card-lead {
+  padding-bottom: 15px;
+  text-align: justify;
+  padding-left: 10px;
+}
+
+/* line 188, ../../app/styles/projects.scss */
+.login-message {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  margin-bottom: 120px;
+  color: #595959;
+}
+
+/*# sourceMappingURL=projects.css.map */

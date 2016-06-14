@@ -1,0 +1,19 @@
+<div class="row pagination-box">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="pagination" ng-show="$parent.listLength &gt; $parent.pageSize">
+            <div class="pagination-control">
+                <div class="page-controls-back" ng-click="$parent.curPage = $parent.curPage - 1" ng-disabled="$parent.curPage == 0">
+                    <div class="page-controls-arrow"></div>
+                    <div class="page-controls-text">назад</div>
+                </div>
+                <div class="pagination-num" ng-click="$parent.curPage = $index + 1" ng-repeat="num in range(numberOfPages()) track by $index">{{ $index + 1 }}</div>
+                <div class="page-controls-forward" ng-click="$parent.curPage = $parent.curPage + 1" ng-disabled="$parent.curPage &gt;= $parent.listLength/$parent.pageSize - 1">
+                    <div class="page-controls-text">вперед</div>
+                    <div class="page-controls-arrow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>

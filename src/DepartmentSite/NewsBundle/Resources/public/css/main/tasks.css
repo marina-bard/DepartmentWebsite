@@ -1,0 +1,24 @@
+/* line 10, ../../../app/styles/main/tasks.scss */
+.tasks-heading .col, .task-body .col {
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  width: 20%;
+}
+/* line 16, ../../../app/styles/main/tasks.scss */
+.tasks-heading .col:first-child, .task-body .col:first-child {
+  padding-left: 40px;
+}
+/* line 20, ../../../app/styles/main/tasks.scss */
+.tasks-heading .col span, .task-body .col span {
+  vertical-align: middle;
+  line-height: normal;
+}
+
+/* line 27, ../../../app/styles/main/tasks.scss */
+.tasks-heading {
+  background-color: #eef1f5;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=tasks.css.map */
