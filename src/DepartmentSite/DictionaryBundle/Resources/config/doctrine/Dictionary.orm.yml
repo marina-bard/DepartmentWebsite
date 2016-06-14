@@ -1,0 +1,14 @@
+DepartmentSite\DictionaryBundle\Entity\Dictionary:
+    type: entity
+    table: null
+    repositoryClass: DepartmentSite\DictionaryBundle\Repository\DictionaryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dictionary:
+            type: array
+    lifecycleCallbacks: {  }
