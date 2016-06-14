@@ -25,8 +25,6 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-//            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-//            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
             new Sonata\ClassificationBundle\SonataClassificationBundle(),
@@ -36,6 +34,7 @@ class AppKernel extends Kernel
             new FM\ElfinderBundle\FMElfinderBundle(),
             new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
             new DepartmentSite\UserBundle\DepartmentSiteUserBundle(),
+            new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
