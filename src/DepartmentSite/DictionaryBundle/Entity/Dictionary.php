@@ -2,34 +2,32 @@
 
 namespace DepartmentSite\DictionaryBundle\Entity;
 
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Dictionary
- *
- * @ORM\Entity(repositoryClass="DepartmentSite/DictionaryBundle/Repository/DictionaryRepository.php")
- * @ORM\Table(name="Dictionary")
  */
 class Dictionary
 {
     /**
      * @var int
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var array
+     * @var string
      */
-    private $code = 'VK_LINK';
+    private $code;
 
-    private $title = 'Ссылка Vkontakte';
+    /**
+     * @var string
+     */
+    private $title;
 
-    private $value = 'Значение';
-    
+    /**
+     * @var string
+     */
+    private $value;
+
+
     /**
      * Get id
      *
@@ -41,30 +39,75 @@ class Dictionary
     }
 
     /**
-     * Set dictionary
+     * Set code
      *
-     * @param array $dictionary
+     * @param string $code
      *
      * @return Dictionary
      */
-    public function setDictionary($dictionary)
+    public function setCode($code)
     {
-        $this->dictionary = $dictionary;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get dictionary
+     * Get code
      *
-     * @return array
+     * @return string
      */
-    public function getDictionary()
+    public function getCode()
     {
-        return $this->dictionary;
+        return $this->code;
     }
-    //use ORMBehaviors\Sluggable\Sluggable;
-    //use ORMBehaviors\Timestampable\Timestampable;
 
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Dictionary
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     *
+     * @return Dictionary
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
 }
 

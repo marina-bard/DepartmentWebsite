@@ -9,6 +9,7 @@
 namespace DepartmentSite\DictionaryBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
@@ -18,12 +19,17 @@ class DictionaryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('dictionary', 'text')
-            ->add('facebookLink', 'text')
-            ->add('twiterLink', 'text')
-            ->add('instagramLink', 'text')
-            ->add('phone', 'text')
-            ->add('address', 'text')
+            ->add('code', 'text', array('label' => 'Code'))
+            ->add('title', 'text', array('label' => 'Ttile'))
+            ->add('value', 'text', array('label' => 'Value'))
+        ;
+    }
+
+    // Fields to be shown on filter forms
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('code')
         ;
     }
 
@@ -31,9 +37,9 @@ class DictionaryAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('vkLink')
-            ->add('facebookLink')
-            ->add('address')
+            ->addIdentifier('code')
+            ->add('title')
+            ->add('value')
         ;
     }
 }

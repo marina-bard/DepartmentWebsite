@@ -9,6 +9,16 @@ DepartmentSite\DictionaryBundle\Entity\Dictionary:
             generator:
                 strategy: AUTO
     fields:
-        dictionary:
-            type: array
+        code:
+            type: string
+            length: 255
+            unique: true
+        title:
+            type: string
+            length: 255
+            unique: true
+        value:
+            type: string
+            length: 255
+            unique: true
     lifecycleCallbacks: {  }
