@@ -5,6 +5,7 @@ imports:
     - { resource: "@DepartmentSiteNewsBundle/Resources/config/services.yml" }
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
     - { resource: "@DepartmentSiteAdvertBundle/Resources/config/services.yml" }
+    - { resource: "@DepartmentSiteDefaultBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSiteUserBundle/Resources/config/services.yml" }
 
 

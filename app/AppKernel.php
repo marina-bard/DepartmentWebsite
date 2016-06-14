@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
+            new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
             new DepartmentSite\UserBundle\DepartmentSiteUserBundle(),
         ];
 
