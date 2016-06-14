@@ -28,13 +28,9 @@ class NewsController extends Controller
      */
     public function indexAction()
     {
-<<<<<<< HEAD
-        $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy();
-=======
         // $em = $this->getDoctrine()->getManager();
         // $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
->>>>>>> e5f80352692f62218f78c253c3009ba164153c07
+
 
         return $this->render('news/news.html.twig');
     }
@@ -81,7 +77,6 @@ class NewsController extends Controller
      */
     public function showAction(Request $request, News $news)
     {
-      echo "I'm in symfony controller";
         $deleteForm = $this->createDeleteForm($news);
 
         return $this->render('news/show.html.twig', array(
