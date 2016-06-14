@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use DepartmentSite\NewsBundle\Entity\News;
 use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * News controller.
@@ -27,12 +28,11 @@ class NewsController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+        // $em = $this->getDoctrine()->getManager();
+        // $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
-        return $this->render('news/index.html.twig', array(
-            'news' => $news,
-        ));
+
+        return $this->render('news/news.html.twig');
     }
 
     /**
@@ -153,16 +153,20 @@ class NewsController extends Controller
         ;
     }
 
-    public function getAll() {
+    public function getAllAction() {
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
-        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-        return new Response($serialized);
+         $serialized = $this->container->get('serializer')->serialize($news, 'json');
+         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
+         return new Response($serialized);
+      //  return new JsonResponse($news);
 
     }
 
-    public function getOne(News $news) {
+    public function getOneAction($id) {
+      $em = $this->getDoctrine()->getManager();
+      $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
         $serialized = $this->container->get('serializer')->serialize($news, 'json');
         return new Response($serialized);
     }

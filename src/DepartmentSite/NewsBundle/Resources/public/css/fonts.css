@@ -1,0 +1,14 @@
+@font-face {
+  font-family: CirceRegular;
+  src: url("../fonts/circe/CRC55.otf");
+}
+@font-face {
+  font-family: CirceBold;
+  src: url("../fonts/circe/Circe-Bold.otf");
+}
+@font-face {
+  font-family: CirceExtraBold;
+  src: url("../fonts/circe/Circe-ExtraBold.otf");
+}
+
+/*# sourceMappingURL=fonts.css.map */

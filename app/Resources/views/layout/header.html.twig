@@ -1,0 +1,55 @@
+<div class="header">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="focus">
+                        <a href="#/">RUS | ENG</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a ng-href="#/news">О кафедре</a>
+                    </li>
+                    <li>
+                        <a ng-href="#/announcements">Структура кафедры</a>
+                    </li>
+                    <li>
+                        <a ng-href="#/projects">Образование</a>
+                    </li>
+                    <li>
+                        <a ng-href="#/">Обратная связь</a>
+                    </li>
+                    <li>
+                        <a data-target="#myModal" data-toggle="modal" ng-href="#/">Регистрация | Войти</a>
+                    </li>
+                    <li>
+                        <a ng-href="#/">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" type="button">
+                    &times;</button>
+                <h4 class="modal-title">Войти на сайт</h4><input class="form-control login-input" id="email" name="email" placeholder="Логин" type="email"/><input class="form-control login-input" id="key" name="key" placeholder="Пароль" type="password"/>
+                <a class="forgot-passw" ng-href="#/">Забыли пароль?</a>
+                <button class="btn login-btn" data-dismiss="modal" type="button">Войти</button>
+            </div>
+        </div>
+    </div>
+</div>

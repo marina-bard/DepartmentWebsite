@@ -1,0 +1,175 @@
+@font-face {
+  font-family: CirceRegular;
+  src: url("../fonts/circe/CRC55.otf");
+}
+@font-face {
+  font-family: CirceBold;
+  src: url("../fonts/circe/Circe-Bold.otf");
+}
+@font-face {
+  font-family: CirceExtraBold;
+  src: url("../fonts/circe/Circe-ExtraBold.otf");
+}
+/* line 13, ../../../app/styles/main/sidebar.scss */
+.sidebar .sidebar-item {
+  background-size: cover;
+  display: block;
+  height: 240px;
+  position: relative;
+}
+/* line 19, ../../../app/styles/main/sidebar.scss */
+.sidebar .sidebar-item .sidebar-item-text {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  color: white;
+  font-family: CirceExtraBold, sans-serif;
+  font-size: 16px;
+  height: 100%;
+  line-height: 24px;
+  padding: 40px 20px;
+  text-transform: uppercase;
+}
+
+@font-face {
+  font-family: CirceRegular;
+  src: url("../fonts/circe/CRC55.otf");
+}
+@font-face {
+  font-family: CirceBold;
+  src: url("../fonts/circe/Circe-Bold.otf");
+}
+@font-face {
+  font-family: CirceExtraBold;
+  src: url("../fonts/circe/Circe-ExtraBold.otf");
+}
+/* line 16, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card {
+  padding-bottom: 30px;
+}
+/* line 19, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content {
+  background-color: #fff;
+  padding: 10px 30px 30px 30px;
+  border-bottom: 2px solid #2ab4c0;
+}
+/* line 24, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .full-card-content {
+  padding-top: 25px;
+}
+/* line 28, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-date {
+  color: #373737;
+  border-bottom: 2px solid #2ab4c0;
+  padding-bottom: 4px;
+  font-style: normal;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 19px;
+}
+/* line 40, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-title {
+  color: #373737;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+}
+/* line 45, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-title:hover {
+  color: #fdd400;
+  cursor: pointer;
+}
+/* line 51, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-lead {
+  padding: 10px 0;
+}
+
+@media (min-width: 992px) {
+  /* line 15, ../../../app/styles/main/announcements.scss */
+  .announcements {
+    height: 960px;
+  }
+  /* line 18, ../../../app/styles/main/announcements.scss */
+  .announcements .announce-cards {
+    width: 73.4%;
+  }
+  /* line 21, ../../../app/styles/main/announcements.scss */
+  .announcements .announce-cards .cards-column {
+    padding-left: 0;
+    padding-right: 30px;
+  }
+  /* line 27, ../../../app/styles/main/announcements.scss */
+  .announcements .sidebar {
+    width: 26.6%;
+  }
+}
+/* line 33, ../../../app/styles/main/announcements.scss */
+.announcements {
+  background-color: #eef1f5;
+}
+
+/* line 37, ../../../app/styles/main/announcements.scss */
+.announcements-background {
+  background-color: #eef1f5;
+}
+
+/* line 47, ../../../app/styles/main/announcements.scss */
+.news-time {
+  color: #373737;
+  border-bottom: 2px solid #2ab4c0;
+  padding-bottom: 3px;
+  font-style: normal;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 19px;
+}
+
+/* line 59, ../../../app/styles/main/announcements.scss */
+.my_announcement-comments-count-circle {
+  width: 21px;
+  height: 21px;
+  border: 1px solid #b9c1d0;
+  border-radius: 50%;
+  font-size: 11px;
+  color: #b9c1d0;
+  text-align: center;
+  padding-top: 3px;
+}
+
+/* line 70, ../../../app/styles/main/announcements.scss */
+.my_announcement-table {
+  color: #000;
+  margin-top: 20px;
+}
+/* line 74, ../../../app/styles/main/announcements.scss */
+.my_announcement-table table > thead > tr > th {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-bottom: 0;
+  background-color: #eef1f5;
+}
+/* line 85, ../../../app/styles/main/announcements.scss */
+.my_announcement-table table > tbody > tr > td {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-left: 35px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border: 0;
+}
+
+/* line 96, ../../../app/styles/main/announcements.scss */
+.inside-ann {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+/*# sourceMappingURL=announcements.css.map */
