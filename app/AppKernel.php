@@ -33,8 +33,8 @@ class AppKernel extends Kernel
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
-            new DepartmentSite\UserBundle\DepartmentSiteUserBundle(),
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
+            new Application\FOS\UserBundle\ApplicationFOSUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
