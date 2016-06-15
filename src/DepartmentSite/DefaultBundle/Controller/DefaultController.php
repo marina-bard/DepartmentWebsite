@@ -25,7 +25,7 @@ class DefaultController extends Controller
     public function getAdvertsForMainPageAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findBy(array(), array('id'=>'desc'), 5);
+        $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findBy(array(), array('id'=>'desc'), 6);
 
         $serialized = $this->container->get('serializer')->serialize($adverts, 'json');
         return new Response($serialized);
