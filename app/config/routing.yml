@@ -1,10 +1,3 @@
-department_site_default:
-    resource: "@DepartmentSiteDefaultBundle/Resources/config/routing.yml"
-
-department_site_user:
-    resource: "@DepartmentSiteUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 department_site_advert:
     resource: "@DepartmentSiteAdvertBundle/Resources/config/routing.yml"
     prefix:   /
@@ -21,9 +14,6 @@ _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
-
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 #sonata_user_security:
 #    resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
