@@ -79,6 +79,7 @@ sonata_admin:
     title: 'EVM'
     templates:
           layout: 'ApplicationSonataAdminBundle::standard_layout_override.html.twig'
+    
 
 sonata_block:
     default_contexts: [cms]
