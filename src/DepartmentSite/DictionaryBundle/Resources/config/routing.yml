@@ -1,3 +1,5 @@
-department_site_dictionary_homepage:
-    path:     /
-    defaults: { _controller: DepartmentSiteDictionaryBundle:Default:index }
+department_site_dictionary_dictionary:
+    resource: "@DepartmentSiteDictionaryBundle/Resources/config/routing/dictionary.yml"
+    prefix:   /dictionary
+
+
