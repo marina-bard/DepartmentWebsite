@@ -38,8 +38,7 @@
         "jms/serializer-bundle": "~1.1",
         "sonata-project/media-bundle": "3.x-dev",
         "sonata-project/classification-bundle": "^3.0",
-        "helios-ag/fm-elfinder-bundle": "^6.1",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "helios-ag/fm-elfinder-bundle": "^6.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
