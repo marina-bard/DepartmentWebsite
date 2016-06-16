@@ -1,0 +1,4 @@
+services:
+#    department_site_user.example:
+#        class: DepartmentSite\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
