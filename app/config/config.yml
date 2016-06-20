@@ -34,6 +34,9 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
+        form:
+            resources:
+                 - 'SonataMediaBundle:Form:media_widgets.html.twig'
     default_locale:  ru
     trusted_hosts:   ~
     trusted_proxies: ~
