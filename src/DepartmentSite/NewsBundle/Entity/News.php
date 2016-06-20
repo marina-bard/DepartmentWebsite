@@ -15,7 +15,7 @@ use Sonata\MediaBundle\Model\MediaInterface;
  * @ORM\HasLifecycleCallbacks()
  */
 class News
-{
+{   
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
     /**
