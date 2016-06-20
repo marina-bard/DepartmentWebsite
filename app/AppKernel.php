@@ -36,17 +36,14 @@ class AppKernel extends Kernel
 
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
-
-            new FM\ElfinderBundle\FMElfinderBundle(),     
-            new DepartmentSite\DictionaryBundle\DepartmentSiteDictionaryBundle(),
-            new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
-
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
             new Application\FOS\UserBundle\ApplicationFOSUserBundle(),
 
+            new DepartmentSite\DictionaryBundle\DepartmentSiteDictionaryBundle(),
+            new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
             new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
             new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
-            new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
+
 
         ];
 
