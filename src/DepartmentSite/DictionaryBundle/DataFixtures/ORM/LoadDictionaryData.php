@@ -19,9 +19,8 @@ class LoadDictionaryData implements FixtureInterface
         $dictionary1 = new Dictionary();
         $dictionary1->setCode('VK_Link');
         $dictionary1->setTitle('Link to "VK" social network');
-        $dictionary1->setValue('vk.com/lysenkov96');
+        $dictionary1->setValue('https://new.vk.com/lysenkov96');
         $manager->persist($dictionary1);
-        $manager->flush();
         
         $dictionary2 = new Dictionary();
         $dictionary2->setCode('facebook_Link');

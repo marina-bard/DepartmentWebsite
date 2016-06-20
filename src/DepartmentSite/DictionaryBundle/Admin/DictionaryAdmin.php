@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class DictionaryAdmin extends Admin
 {
@@ -19,8 +20,6 @@ class DictionaryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('code', 'text', array('label' => 'Code'))
-            ->add('title', 'text', array('label' => 'Ttile'))
             ->add('value', 'text', array('label' => 'Value'))
         ;
     }
@@ -33,11 +32,20 @@ class DictionaryAdmin extends Admin
         ;
     }
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection
+            ->remove('create')
+            ->remove('delete')
+        ;
+
+    }
+
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('code')
+               ->addIdentifier('code')
             ->add('title')
             ->add('value')
         ;

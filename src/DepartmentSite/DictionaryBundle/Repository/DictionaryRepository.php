@@ -10,4 +10,5 @@ namespace DepartmentSite\DictionaryBundle\Repository;
  */
 class DictionaryRepository extends \Doctrine\ORM\EntityRepository
 {
+    
 }

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use DepartmentSite\DictionaryBundle\Entity\Dictionary;
 use DepartmentSite\DictionaryBundle\Form\DictionaryType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Dictionary controller.
