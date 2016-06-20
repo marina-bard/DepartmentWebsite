@@ -22,3 +22,12 @@ services:
         arguments: [~, DepartmentSite\NewsBundle\Entity\News, ~]
         calls:
              - [ setTranslationDomain, [DepartmentSiteNewsBundle]]
+
+  admin.dictionary:
+        class: DepartmentSite\DictionaryBundle\Admin\DictionaryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Dictionary", label: "Dictionary" }
+        arguments: [~, DepartmentSite\DictionaryBundle\Entity\Dictionary, ~]
+        calls:
+             - [ setTranslationDomain, [DepartmentSiteNewsBundle]]
+
