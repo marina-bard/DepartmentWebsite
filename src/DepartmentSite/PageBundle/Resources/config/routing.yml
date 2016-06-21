@@ -1,0 +1,7 @@
+department_site_page_page:
+    resource: "@DepartmentSitePageBundle/Resources/config/routing/page.yml"
+    prefix:   /page
+
+department_site_page_homepage:
+    path:     /
+    defaults: { _controller: DepartmentSitePageBundle:Default:index }

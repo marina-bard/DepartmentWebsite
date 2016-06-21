@@ -10,10 +10,9 @@ imports:
     - { resource: "@DepartmentSiteNewsBundle/Resources/config/services.yml" }
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
     - { resource: "@DepartmentSiteAdvertBundle/Resources/config/services.yml" }
+    - { resource: "@DepartmentSitePageBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSiteDictionaryBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSiteDefaultBundle/Resources/config/services.yml" }
-
-
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -76,10 +75,23 @@ doctrine:
             default:
                 auto_mapping: true
 
-        # Swiftmailer Configuration
+  # Swiftmailer Configuration
+
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+sonata_admin:
+    title: 'Department Site'
+
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+      # Enable the SonataAdminBundle block
+      sonata.admin.block.admin_list:
+        contexts:  [admin]
+

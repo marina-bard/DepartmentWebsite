@@ -4,9 +4,6 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
   admin.advert:
         class: DepartmentSite\AdvertBundle\Admin\AdvertAdmin
         arguments: [~, DepartmentSite\AdvertBundle\Entity\Advert, ~]
@@ -23,6 +20,14 @@ services:
         calls:
              - [ setTranslationDomain, [DepartmentSiteNewsBundle]]
 
+  admin.page:
+          class: DepartmentSite\PageBundle\Admin\PageAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Page", label: "Page" }
+          arguments: [~, DepartmentSite\PageBundle\Entity\Page, ~]
+          calls:
+               - [ setTranslationDomain, [DepartmentSitePageBundle]]
+
   admin.dictionary:
         class: DepartmentSite\DictionaryBundle\Admin\DictionaryAdmin
         tags:
@@ -30,4 +35,3 @@ services:
         arguments: [~, DepartmentSite\DictionaryBundle\Entity\Dictionary, ~]
         calls:
              - [ setTranslationDomain, [DepartmentSiteNewsBundle]]
-
