@@ -1,0 +1,24 @@
+dictionary_index:
+    path:     /
+    defaults: { _controller: "DepartmentSiteDictionaryBundle:Dictionary:index" }
+    methods:  GET
+
+dictionary_show:
+    path:     /{id}/show
+    defaults: { _controller: "DepartmentSiteDictionaryBundle:Dictionary:show" }
+    methods:  GET
+
+dictionary_new:
+    path:     /new
+    defaults: { _controller: "DepartmentSiteDictionaryBundle:Dictionary:new" }
+    methods:  [GET, POST]
+
+dictionary_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DepartmentSiteDictionaryBundle:Dictionary:edit" }
+    methods:  [GET, POST]
+
+dictionary_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DepartmentSiteDictionaryBundle:Dictionary:delete" }
+    methods:  DELETE
