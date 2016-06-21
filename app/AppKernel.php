@@ -15,26 +15,39 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
+
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
-            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
-//            new FOS\UserBundle\FOSUserBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-//            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-//            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle(),
-            new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
             new Sonata\ClassificationBundle\SonataClassificationBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+
+            new FM\ElfinderBundle\FMElfinderBundle(),
+
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
+
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
+
             new FM\ElfinderBundle\FMElfinderBundle(),
+
+            new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
+            new Application\FOS\UserBundle\ApplicationFOSUserBundle(),
+
+            new DepartmentSite\DictionaryBundle\DepartmentSiteDictionaryBundle(),
+            new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
+            new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
+            new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
             new DepartmentSite\PageBundle\DepartmentSitePageBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -42,8 +55,12 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-
         }
+        
+        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+        }
+
 
         return $bundles;
     }

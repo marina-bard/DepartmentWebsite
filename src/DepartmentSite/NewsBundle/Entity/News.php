@@ -15,7 +15,7 @@ use Sonata\MediaBundle\Model\MediaInterface;
  * @ORM\HasLifecycleCallbacks()
  */
 class News
-{
+{   
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
     /**
@@ -142,7 +142,7 @@ class News
      */
     public function getContent()
     {
-        return $this->content;
+        return htmlspecialchars($this->content);
     }
 
     /**

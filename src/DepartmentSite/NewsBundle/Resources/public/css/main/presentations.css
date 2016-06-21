@@ -1,0 +1,42 @@
+/* line 10, ../../../app/styles/main/presentations.scss */
+.presentations {
+  background-color: #eef1f5;
+}
+/* line 13, ../../../app/styles/main/presentations.scss */
+.presentations .presentations-content {
+  color: white;
+}
+/* line 16, ../../../app/styles/main/presentations.scss */
+.presentations .presentations-content .presentations-row:first-child {
+  height: 350px;
+}
+/* line 20, ../../../app/styles/main/presentations.scss */
+.presentations .presentations-content .presentations-row:last-child {
+  background: url(../../images/banner.jpg);
+  background-size: cover;
+  height: 300px;
+}
+/* line 26, ../../../app/styles/main/presentations.scss */
+.presentations .presentations-content .presentations-col {
+  height: 100%;
+}
+/* line 30, ../../../app/styles/main/presentations.scss */
+.presentations .presentations-content .video-preview {
+  background: url(../../images/banner.jpg);
+  background-size: cover;
+  height: 50%;
+}
+/* line 36, ../../../app/styles/main/presentations.scss */
+.presentations .presentations-content .article-preview {
+  background: url(../../images/banner.jpg);
+  height: 100%;
+  padding: 80px 50px 80px 50px;
+}
+/* line 41, ../../../app/styles/main/presentations.scss */
+.presentations .presentations-content .article-preview .article-title {
+  font-size: 23px;
+  font-weight: bold;
+  padding: 0 0 20px 0;
+}
+
+/*# sourceMappingURL=presentations.css.map */

@@ -1,0 +1,56 @@
+@font-face {
+  font-family: CirceRegular;
+  src: url("../fonts/circe/CRC55.otf");
+}
+@font-face {
+  font-family: CirceBold;
+  src: url("../fonts/circe/Circe-Bold.otf");
+}
+@font-face {
+  font-family: CirceExtraBold;
+  src: url("../fonts/circe/Circe-ExtraBold.otf");
+}
+/* line 16, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card {
+  padding-bottom: 30px;
+}
+/* line 19, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content {
+  background-color: #fff;
+  padding: 10px 30px 30px 30px;
+  border-bottom: 2px solid #2ab4c0;
+}
+/* line 24, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .full-card-content {
+  padding-top: 25px;
+}
+/* line 28, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-date {
+  color: #373737;
+  border-bottom: 2px solid #2ab4c0;
+  padding-bottom: 4px;
+  font-style: normal;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 19px;
+}
+/* line 40, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-title {
+  color: #373737;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+}
+/* line 45, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-title:hover {
+  color: #fdd400;
+  cursor: pointer;
+}
+/* line 51, ../../../app/styles/main/announce_card.scss */
+.cards-column .announce-card .announce-card-content .announce-card-lead {
+  padding: 10px 0;
+}
+
+/*# sourceMappingURL=announce_card.css.map */
