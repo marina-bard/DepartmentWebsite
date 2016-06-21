@@ -125,4 +125,11 @@ class PageController extends Controller
             ->getForm()
         ;
     }
+
+    public function getOneAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $page = $em->getRepository('DepartmentSitePageBundle:Page')->findOneById($id);
+        $serialized = $this->container->get('serializer')->serialize($page, 'json');
+        return new Response($serialized);
+    }
 }
