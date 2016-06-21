@@ -9,7 +9,7 @@
     }).when('/news', {
       templateUrl: 'DepartmentSiteNewsBundle:News:index',
       controller: 'NewsCtrl'
-    }).when('/news/:id/show', {
+    }).when('/news/:slug/show', {
       templateUrl: 'DepartmentSiteNewsBundle:News:show',
       controller: 'OneNewsCtrl'
     }).when('/advert', {
