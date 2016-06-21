@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use ITM\FilePreviewBundle\Form\Type\FilePreviewType;
 
 class NewsAdmin extends Admin
 {
@@ -17,12 +18,7 @@ class NewsAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
-            ->add('photo', 'sonata_media_type', array(
-                'provider' => 'sonata.media.provider.image',
-                'context' => 'news'
-            ))
-//            ->add('photo', 'sonata_type_model_list', array(), array(
-//                'link_parameters' => array('context' => 'news')))
+            ->add('photo', FilePreviewType::class, array('label' => 'Photo'))
         ;
     }
 

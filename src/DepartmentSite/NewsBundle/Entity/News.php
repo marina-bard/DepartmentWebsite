@@ -49,8 +49,9 @@ class News
     private $content;
 
     /**
-     * @var \Application\Sonata\MediaBundle\Entity\Media
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string")
      */
     private $photo;
 
@@ -148,7 +149,7 @@ class News
     /**
      * Set photo
      *
-     * @param array $photo
+     * @param string $photo
      *
      * @return News
      */
@@ -162,7 +163,7 @@ class News
     /**
      * Get photo
      *
-     * @return array
+     * @return string
      */
     public function getPhoto()
     {
