@@ -8,6 +8,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use ITM\FilePreviewBundle\Form\Type\FilePreviewType;
+use ITM\ImagePreviewBundle\Form\Type\ImagePreviewType;
+use Symfony\Component\HttpFoundation\File\File;
 
 class NewsAdmin extends Admin
 {
@@ -18,7 +20,9 @@ class NewsAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
-            ->add('photo', FilePreviewType::class, array('label' => 'Photo'))
+            // ->add('photo', ImagePreviewType::class, array('data_class' => 'DepartmentSite\NewsBundle\Entity\News')
+            ->add('photo', ImagePreviewType::class, array('data_class' => null))
+            // ->add('photo', null, ['template' => 'DepartmentSiteNewsBundle:Preview:photo.preview.show.html.twig'])
         ;
     }
 
@@ -38,4 +42,14 @@ class NewsAdmin extends Admin
             ->add('createdAt')
         ;
     }
+
+//    protected function configureShowFields(ShowMapper $showMapper)
+//    {
+//        $showMapper
+//            ->add('title')
+//            ->add('description')
+//            ->add('content')
+//            ->add('photo', 'null', (array('template' => 'DepartmentSiteNewsBundle:Preview:photo.preview.show.html.twig')))
+//        ;
+//    }
 }

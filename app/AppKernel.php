@@ -34,7 +34,10 @@ class AppKernel extends Kernel
 
             new JMS\SerializerBundle\JMSSerializerBundle(),
 
+            new Liip\ImagineBundle\LiipImagineBundle(),
+
             new ITM\FilePreviewBundle\ITMFilePreviewBundle(),
+            new ITM\ImagePreviewBundle\ITMImagePreviewBundle(),
 
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
