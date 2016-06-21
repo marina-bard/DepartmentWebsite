@@ -1,0 +1,8 @@
+services:
+    menu.twig_extension:
+        class: DepartmentSite\MenuBundle\Twig\MenuExtension
+        calls:
+            - [setContainer, ["@service_container"]]
+        public: false
+        tags:
+            - { name: twig.extension }

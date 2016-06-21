@@ -1,10 +1,10 @@
 <div class="banner">
     <div class="container">
         <ul class="links-list pull-right">
-            <li><a ng-href="#/news">Студентам</a></li>
-            <li><a ng-href="#/announcements">Абитуриентам</a></li>
-            <li><a ng-href="#/projects">Дипломникам</a></li>
-            <li><a ng-href="#/">Родителям</a></li>
+            <li><a ng-href={{ "Студентам" | MENU }}>Студентам</a></li>
+            <li><a ng-href={{ "Абитуриентам" | MENU }}>Абитуриентам</a></li>
+            <li><a ng-href={{ "Дипломникам" | MENU }}>Дипломникам</a></li>
+            <li><a ng-href={{ "Родителям" | MENU }}>Родителям</a></li>
         </ul>
         <a ng-href="{{ path('department_site_default_homepage') }}">
             <div class="evm-logo"></div>
