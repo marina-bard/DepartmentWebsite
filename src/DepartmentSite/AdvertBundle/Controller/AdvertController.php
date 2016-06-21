@@ -38,7 +38,7 @@ class AdvertController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($advert);
             $em->flush();
-            return $this->redirectToRoute('advert_show', array('id' => $advert->getId()));
+            return $this->redirectToRoute('advert_show', array('slug' => $advert->getSlug()));
         }
         return $this->render('advert/new.html.twig', array(
             'advert' => $advert,
@@ -70,7 +70,7 @@ class AdvertController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($advert);
             $em->flush();
-            return $this->redirectToRoute('advert_edit', array('id' => $advert->getId()));
+            return $this->redirectToRoute('advert_edit', array('slug' => $advert->getSlug()));
         }
         return $this->render('advert/edit.html.twig', array(
             'advert' => $advert,
@@ -103,7 +103,7 @@ class AdvertController extends Controller
     private function createDeleteForm(Advert $advert)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('advert_delete', array('id' => $advert->getId())))
+            ->setAction($this->generateUrl('advert_delete', array('slug' => $advert->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
             ;

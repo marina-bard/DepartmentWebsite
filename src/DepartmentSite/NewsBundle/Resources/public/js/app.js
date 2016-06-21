@@ -15,7 +15,7 @@
     }).when('/advert', {
       templateUrl: 'DepartmentSiteAdvertBundle:Advert:index',
       controller: 'AnnouncementsCtrl'
-    }).when('/advert/:id/show', {
+    }).when('/advert/:slug/show', {
       templateUrl: 'DepartmentSiteAdvertBundle:Advert:show',
       controller: 'OneAdvertCtrl'
     }).when('/projects', {
