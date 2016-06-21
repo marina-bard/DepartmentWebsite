@@ -16,11 +16,11 @@ class NewsAdmin extends Admin
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            ->add('content', CKEditorType::class, array('label' => 'Content')
-//            ->add('photo', 'sonata_media_type', array(
-//                'provider' => 'sonata.media.provider.image',
-//                'context' => 'default'
-            )
+            ->add('content', CKEditorType::class, array('label' => 'Content'))
+            ->add('photo', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'news'
+            ))
 //            ->add('photo', 'sonata_type_model_list', array(), array(
 //                'link_parameters' => array('context' => 'news')))
         ;

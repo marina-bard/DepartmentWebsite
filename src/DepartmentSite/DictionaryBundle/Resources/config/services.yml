@@ -1,0 +1,8 @@
+services:
+    dictionary.twig_extension:
+        class: DepartmentSite\DictionaryBundle\Twig\DictionaryExtension
+        calls:
+            - [setContainer, ["@service_container"]]
+        public: false
+        tags:
+            - { name: twig.extension }

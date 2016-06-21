@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dictionary</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dictionary.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ dictionary.code }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ dictionary.title }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ dictionary.value }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dictionary_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('dictionary_edit', { 'id': dictionary.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

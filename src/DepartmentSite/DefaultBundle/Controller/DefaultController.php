@@ -34,7 +34,7 @@ class DefaultController extends Controller
     public function getNewsForMainPageAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy(array(), array('id'=>'desc'), 6);
+        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy(array(), array('id'=>'desc'), 4);
 
         $serialized = $this->container->get('serializer')->serialize($news, 'json');
         return new Response($serialized);

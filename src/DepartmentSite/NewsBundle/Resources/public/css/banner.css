@@ -72,12 +72,22 @@
     padding: 10px 0;
     line-height: 18px;
   }
+
+  .banner .links-list > li {
+    display: block;
+    margin-bottom: 20px;
+  }
+
 }
-@media (max-width: 360px) {
+@media (max-width: 368px) {
   /* line 98, ../../../app/styles/layout/banner.scss */
   .banner .banner-title {
     font-size: 26px;
     line-height: 32px;
+  }
+
+  .banner .links-list {
+    margin-top: 170px;
   }
 }
 @media (max-width: 300px) {
