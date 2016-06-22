@@ -89,4 +89,28 @@ class Image
     {
         return $this->image;
     }
+
+    /**
+     * Set gallery
+     *
+     * @param \DepartmentSite\GalleryBundle\Entity\Gallery $gallery
+     *
+     * @return Image
+     */
+    public function setGallery(\DepartmentSite\GalleryBundle\Entity\Gallery $gallery = null)
+    {
+        $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    /**
+     * Get gallery
+     *
+     * @return \DepartmentSite\GalleryBundle\Entity\Gallery
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
 }

@@ -1,6 +1,5 @@
 department_site_gallery:
-    resource: "@DepartmentSiteGalleryBundle/Controller/"
-    type:     annotation
+    resource: "@DepartmentSiteGalleryBundle/Resources/config/routing.yml"
     prefix:   /
 
 department_site_page:
