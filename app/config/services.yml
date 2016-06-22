@@ -35,3 +35,11 @@ services:
         arguments: [~, DepartmentSite\DictionaryBundle\Entity\Dictionary, ~]
         calls:
              - [ setTranslationDomain, [DepartmentSiteNewsBundle]]
+
+  admin.gallery:
+          class: DepartmentSite\GalleryBundle\Admin\GalleryAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Gallery", label: "Gallery" }
+          arguments: [~, DepartmentSite\GalleryBundle\Entity\Gallery, ~]
+          calls:
+               - [ setTranslationDomain, [DepartmentSiteGalleryBundle]]
