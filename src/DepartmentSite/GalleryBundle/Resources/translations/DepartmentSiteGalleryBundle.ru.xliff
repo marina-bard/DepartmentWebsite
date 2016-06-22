@@ -30,6 +30,19 @@
                         <source>Created At</source>
                         <target>Дата создания</target>
              </trans-unit>
+             <trans-unit id="Image">
+                        <source>Image</source>
+                        <target>Фото</target>
+             </trans-unit>
+             <trans-unit id="Image Create">
+                        <source>Image Create</source>
+                        <target>Загрузить фото</target>
+             </trans-unit>
+             <trans-unit id="Image List">
+                        <source>Image List</source>
+                        <target>Список фото</target>
+             </trans-unit>
+
         </body>
     </file>
 </xliff>

@@ -18,6 +18,11 @@
                       <source>Dashboard</source>
                       <target>Приборная панель</target>
             </trans-unit>
+            <trans-unit id="Gallery">
+                       <source>Gallery</source>
+                       <target>Галерея</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
