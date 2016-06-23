@@ -153,21 +153,52 @@ class NewsController extends Controller
         ;
     }
 
-    public function getAllAction() {
+    /**
+     * Lists all News entities.
+     *
+     * @Route("/ser",
+     * )
+     * @Method("GET")
+     */
+    public function getSerAction() {
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+        return new Response($this->escapeChars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        //        $em = $this->getDoctrine()->getManager();
+//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+//      //  var_dump(serialize($news));
+//         $serialized = $this->container->get('serializer')->serialize($news, 'json');
+//         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
+//         return new Response($serialized);
+//      //  return new JsonResponse($news);
 
-         $serialized = $this->container->get('serializer')->serialize($news, 'json');
-         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-         return new Response($serialized);
+    }
+
+    public function escapeChars($value)
+    {
+        $escaper = array("\"");
+        $replacements = array("\\\\");
+        $result = str_replace($escaper, $replacements, $value);
+        return $result;
+    }
+
+    public function getAllAction() {
+//        $em = $this->getDoctrine()->getManager();
+//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+//      //  var_dump(serialize($news));
+//         $serialized = $this->container->get('serializer')->serialize($news, 'json');
+//         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
+//         return new Response($serialized);
       //  return new JsonResponse($news);
+        $em = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+        return new Response($this->escapeChars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
 
     }
 
     public function getOneAction($id) {
-      $em = $this->getDoctrine()->getManager();
-      $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
-        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-        return new Response($serialized);
+        $em = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
+        return new Response($this->escapeChars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 }

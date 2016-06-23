@@ -13,7 +13,11 @@ var data = [];
       return new Array(n);
     };
     //console.log(data);
+    data = data.replace(/\"/g, "\'");
+    data = data.replace(/\\/g, "\"");
+    console.log(data);
     data = JSON.parse(data);
+
 
     $scope.news = data;
   });
