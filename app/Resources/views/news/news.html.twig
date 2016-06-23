@@ -17,9 +17,12 @@
                   <div class="section-title"><span>Новости кафедры</span></div>
               </div>
           </div>
-          <div class="row" ng-if="$index % 2 == 0" ng-repeat="oneNews in news | orderBy: &#39;-id&#39;">
+          <div class="row" ng-if="$index % 2 == 0" ng-repeat="oneNews in news">
               <div class="col-md-6 news-column">
-                  <a ng-href="/news/{{'{{news[$index].id}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index].photo.path}}'}}" /></a>
+                  {#{% set myNews = '{{ oneNews }}' %}#}
+                  <a ng-href="/news/{{'{{news[$index].id}}'}}/show"><img alt="alt" class="news-item-image"  ng-src="{{'{{news[$index].photo.path}}'}}" /></a>
+                  {#{% set myNews = '{{' ~oneNews~ '}}' %}#}
+                  {#<a ng-href="/news/{{'{{news[$index].id}}'}}/show"><img alt="alt" class="news-item-image"  ng-src='{{ news | itm_ipw_url('photo') }}'  /></a>#}
                   <div class="news-item-date">{{'{{news[$index].created_at | date}}'}}</div>
                   <br /><a class="news-item-title" ng-href="/news/{{'{{news[$index].id}}'}}/show">{{'{{ news[$index].title }}'}}</a>
                   <div class="news-item-lead">{{'{{ news[$index].description}}'}}</div>

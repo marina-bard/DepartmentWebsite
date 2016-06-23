@@ -25,9 +25,8 @@
                 <div class="col-xs-12">
                     <i class="news-time">{{'{{ news.created_at | date }}'}}</i>
                     <div class="post-title-inside-post">{{'{{ news.title }}'}}</div>
-                            <!-- <img src={{ itm_ipw_url('{{ news.title }}')}} /> -->
-                             <!-- <img src={{ itm_ipw_url('news.title')}} -->
-                    <!-- <br /><img alt="Cinque Terre" class="full-post-img" ng-src="{{news.photo.path}}" /> -->
+                    <div class='phimagebuilder_label_border'>
+                     <br /><img alt="Cinque Terre" class="full-post-img" ng-src='{{ news | itm_ipw_url('photo') }}' />
                     <div class="post-content-inside post-content" ng-bind-html="news.content | toHTML"></div>
                     <div class="share-block">
                         <div class="share">

@@ -115,8 +115,8 @@ class AdvertController extends Controller
 
         $serialized = $this->container->get('serializer')->serialize($adverts, 'json');
         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-        return new Response($serialized);
-        //  return new JsonResponse($news);
+//        return new Response($serialized);
+          return new JsonResponse($serialized, 200, [], true);
 
     }
 

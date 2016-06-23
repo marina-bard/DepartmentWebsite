@@ -3,13 +3,13 @@ itm_image_preview:
     upload_url:  /uploads
     entities:
         DepartmentSiteNewsBundle:
-                            News:
-                              photo: {formats: [preview]}
+            News:
+              photo: {formats: [preview]}
 
 itm_file_preview:
     upload_path: uploads
     upload_url:  /uploads
     entities:
         DepartmentSiteNewsBundle:
-                            News:
-                              photo: ~
+            News:
+              photo: ~

@@ -28,11 +28,13 @@ class NewsController extends Controller
      */
     public function indexAction()
     {
-        // $em = $this->getDoctrine()->getManager();
-        // $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+         $em = $this->getDoctrine()->getManager();
+         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
 
-        return $this->render('news/news.html.twig');
+        return $this->render('news/news.html.twig', array(
+            'news' => $news,
+        ));
     }
 
     /**

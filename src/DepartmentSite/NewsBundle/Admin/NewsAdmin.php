@@ -20,9 +20,7 @@ class NewsAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
-            // ->add('photo', ImagePreviewType::class, array('data_class' => 'DepartmentSite\NewsBundle\Entity\News')
-            ->add('photo', ImagePreviewType::class, array('data_class' => null))
-            // ->add('photo', null, ['template' => 'DepartmentSiteNewsBundle:Preview:photo.preview.show.html.twig'])
+             ->add('photo', ImagePreviewType::class, ['data_class' => null])
         ;
     }
 
@@ -40,16 +38,8 @@ class NewsAdmin extends Admin
         $listMapper
             ->addIdentifier('title')
             ->add('createdAt')
+            ->add('photo', 'string', ['template' => 'DepartmentSiteNewsBundle:Admin:list__photo.html.twig'] )
         ;
     }
 
-//    protected function configureShowFields(ShowMapper $showMapper)
-//    {
-//        $showMapper
-//            ->add('title')
-//            ->add('description')
-//            ->add('content')
-//            ->add('photo', 'null', (array('template' => 'DepartmentSiteNewsBundle:Preview:photo.preview.show.html.twig')))
-//        ;
-//    }
 }
