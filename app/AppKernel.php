@@ -45,7 +45,7 @@ class AppKernel extends Kernel
             new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
             new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
             new DepartmentSite\PageBundle\DepartmentSitePageBundle(),
-
+            new DepartmentSite\MenuBundle\DepartmentSiteMenuBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
