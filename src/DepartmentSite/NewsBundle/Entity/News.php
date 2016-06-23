@@ -50,7 +50,9 @@ class News
 
     /**
      * @var string
-    */
+     *
+     * @ORM\Column(name="photo", type="string", nullable=true)
+     */
     private $photo;
 
 
@@ -141,7 +143,7 @@ class News
      */
     public function getContent()
     {
-        return htmlspecialchars($this->content);
+        return $this->content;
     }
 
     /**
