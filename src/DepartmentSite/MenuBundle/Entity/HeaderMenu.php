@@ -5,12 +5,12 @@ namespace DepartmentSite\MenuBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Menu
+ * HeaderMenu
  *
- * @ORM\Table(name="Menu")
- * @ORM\Entity(repositoryClass="DepartmentSite\MenuBundle\Repository\MenuRepository")
+ * @ORM\Table(name="Header_Menu")
+ * @ORM\Entity(repositoryClass="DepartmentSite\MenuBundle\Repository\HeaderMenuRepository")
  */
-class Menu
+class HeaderMenu
 {
     /**
      * @var int
@@ -28,13 +28,6 @@ class Menu
      */
     private $title;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255, unique=true)
-     */
-    private $url;
-
 
     /**
      * Get id
@@ -51,7 +44,7 @@ class Menu
      *
      * @param string $title
      *
-     * @return Menu
+     * @return HeaderMenu
      */
     public function setTitle($title)
     {
@@ -68,30 +61,6 @@ class Menu
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return Menu
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 }
 

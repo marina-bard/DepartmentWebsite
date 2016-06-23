@@ -31,11 +31,19 @@ services:
         calls:
              - [ setTranslationDomain, [DepartmentSiteDictionaryBundle]]
 
-  admin.menu:
-          class: DepartmentSite\MenuBundle\Admin\MenuAdmin
+  admin.banner.menu:
+          class: DepartmentSite\MenuBundle\Admin\BannerMenuAdmin
           tags:
-              - { name: sonata.admin, manager_type: orm, group: "Menu", label: "Menu" }
-          arguments: [~, DepartmentSite\MenuBundle\Entity\Menu, ~]
+              - { name: sonata.admin, manager_type: orm, group: "Banner Menu", label: "Banner Menu" }
+          arguments: [~, DepartmentSite\MenuBundle\Entity\BannerMenu, ~]
+          calls:
+               - [ setTranslationDomain, [DepartmentSiteMenuBundle]]
+
+  admin.header.menu:
+          class: DepartmentSite\MenuBundle\Admin\HeaderMenuAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Header Menu", label: "Header Menu" }
+          arguments: [~, DepartmentSite\MenuBundle\Entity\HeaderMenu, ~]
           calls:
                - [ setTranslationDomain, [DepartmentSiteMenuBundle]]
 

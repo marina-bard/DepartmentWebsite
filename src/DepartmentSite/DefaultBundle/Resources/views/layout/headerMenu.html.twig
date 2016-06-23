@@ -1,0 +1,6 @@
+<ul class="nav navbar-nav navbar-right">
+    {% for menuItem in menu %}
+        <li><a ng-href=" ">{{ menuItem.getTitle() }}</a></li>
+    {% endfor %}
+    {#{{ menu[3].getTitle() }}#}
+</ul>

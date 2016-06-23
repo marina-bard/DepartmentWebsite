@@ -1,11 +1,6 @@
 <div class="banner">
     <div class="container">
-        <ul class="links-list pull-right">
-            <li><a ng-href={{ "Студентам" | MENU }}>Студентам</a></li>
-            <li><a ng-href={{ "Абитуриентам" | MENU }}>Абитуриентам</a></li>
-            <li><a ng-href={{ "Дипломникам" | MENU }}>Дипломникам</a></li>
-            <li><a ng-href={{ "Родителям" | MENU }}>Родителям</a></li>
-        </ul>
+        {{ render(controller('DepartmentSiteDefaultBundle:Default:getBannerMenu')) }}
         <a ng-href="{{ path('department_site_default_homepage') }}">
             <div class="evm-logo"></div>
         </a>
