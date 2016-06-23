@@ -4,7 +4,7 @@ page_index:
     methods:  GET
 
 page_show:
-    path:     /{id}/show
+    path:     /{slug}/show
     defaults: { _controller: "DepartmentSitePageBundle:Page:show" }
     methods:  GET
 
@@ -14,11 +14,11 @@ page_new:
     methods:  [GET, POST]
 
 page_edit:
-    path:     /{id}/edit
+    path:     /{slug}/edit
     defaults: { _controller: "DepartmentSitePageBundle:Page:edit" }
     methods:  [GET, POST]
 
 page_delete:
-    path:     /{id}/delete
+    path:     /{slug}/delete
     defaults: { _controller: "DepartmentSitePageBundle:Page:delete" }
     methods:  DELETE
