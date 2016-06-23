@@ -8747,6 +8747,11 @@ button.close {
   color: #595959;
 }
 
+.page-content-inside {
+  margin-bottom: 70px;
+  color: #595959;
+}
+
 /* line 29, ../../../assets/vendor/app/styles/news.scss */
 .share-block {
   padding-top: 34px;
