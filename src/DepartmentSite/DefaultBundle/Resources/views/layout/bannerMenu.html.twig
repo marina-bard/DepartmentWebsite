@@ -1,5 +1,5 @@
 <ul class="links-list pull-right">
-    {% for menuItem in menu %}
-        <li><a ng-href=" ">{{ menuItem.getTitle() }}</a></li>
+    {% for menuItem in menu | sort%}
+        <li><a ng-href='/page/{{ menuItem.getSlug() }}/show'>{{ menuItem.getTitle() }}</a></li>
     {% endfor %}
 </ul>

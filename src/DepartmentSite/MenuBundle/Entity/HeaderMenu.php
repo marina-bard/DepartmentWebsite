@@ -3,6 +3,7 @@
 namespace DepartmentSite\MenuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * HeaderMenu
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class HeaderMenu
 {
+    use ORMBehaviors\Sluggable\Sluggable;
+
     /**
      * @var int
      *
@@ -61,6 +64,11 @@ class HeaderMenu
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function getSluggableFields()
+    {
+        return [ 'title' ];
     }
 }
 
