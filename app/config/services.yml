@@ -35,3 +35,20 @@ services:
         arguments: [~, DepartmentSite\DictionaryBundle\Entity\Dictionary, ~]
         calls:
              - [ setTranslationDomain, [DepartmentSiteDictionaryBundle]]
+
+  admin.banner.menu:
+          class: DepartmentSite\MenuBundle\Admin\BannerMenuAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Banner Menu", label: "Banner Menu" }
+          arguments: [~, DepartmentSite\MenuBundle\Entity\BannerMenu, ~]
+          calls:
+               - [ setTranslationDomain, [DepartmentSiteMenuBundle]]
+
+  admin.header.menu:
+          class: DepartmentSite\MenuBundle\Admin\HeaderMenuAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Header Menu", label: "Header Menu" }
+          arguments: [~, DepartmentSite\MenuBundle\Entity\HeaderMenu, ~]
+          calls:
+               - [ setTranslationDomain, [DepartmentSiteMenuBundle]]
+

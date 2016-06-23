@@ -24,6 +24,9 @@
     }).when('/projects/:projectId', {
       templateUrl: 'views/projects/project.slim',
       controller: 'ProjectsController'
+    }).when('/page/:slug/show', {
+      templateUrl: 'DepartmentSitePageBundle:Page:show',
+      controller: 'PageCtrl'
     }).otherwise({
       redirectTo: '/'
     });

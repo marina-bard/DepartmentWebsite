@@ -1,5 +1,8 @@
 department_site_page:
     resource: "@DepartmentSitePageBundle/Resources/config/routing.yml"
+
+department_site_menu:
+    resource: "@DepartmentSiteMenuBundle/Resources/config/routing.yml"
     prefix:   /
 
 department_site_dictionary:

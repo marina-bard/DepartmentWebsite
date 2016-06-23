@@ -15,16 +15,16 @@
         <tbody>
         {% for page in pages %}
             <tr>
-                <td><a href="{{ path('page_show', { 'id': page.id }) }}">{{ page.id }}</a></td>
+                <td><a href="{{ path('page_show', { 'slug': page.slug }) }}">{{ page.id }}</a></td>
                 <td>{{ page.title }}</td>
                 <td>{{ page.content }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('page_show', { 'id': page.id }) }}">show</a>
+                            <a href="{{ path('page_show', { 'slug': page.slug }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('page_edit', { 'id': page.id }) }}">edit</a>
+                            <a href="{{ path('page_edit', { 'slug': page.slug }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
