@@ -2,33 +2,24 @@
 /**
  * Created by PhpStorm.
  * User: pavel
- * Date: 14.6.16
- * Time: 15.50
+ * Date: 22.6.16
+ * Time: 15.22
  */
 
-namespace DepartmentSite\DictionaryBundle\Admin;
+namespace DepartmentSite\MenuBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class DictionaryAdmin extends Admin
+class BannerMenuAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('value', 'text', array('label' => 'Value'))
-        ;
-    }
-
-    // Fields to be shown on filter forms
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('code')
+            ->add('title', 'text', array('label' => 'Title'))
         ;
     }
 
@@ -45,9 +36,7 @@ class DictionaryAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('code')
-            ->add('title')
-            ->add('value')
+            ->addIdentifier('title')
         ;
     }
 }
