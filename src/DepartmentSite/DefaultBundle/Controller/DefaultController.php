@@ -39,4 +39,19 @@ class DefaultController extends Controller
         $serialized = $this->container->get('serializer')->serialize($news, 'json');
         return new Response($serialized);
     }
+
+    public function getHeaderMenuAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $headerMenu = $em->getRepository('DepartmentSiteMenuBundle:HeaderMenu')->findall();
+        return $this->render('@DepartmentSiteDefault/layout/headerMenu.html.twig', array('menu' => $headerMenu));
+    }
+
+    public function getBannerMenuAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bannerMenu = $em->getRepository('DepartmentSiteMenuBundle:BannerMenu')->findall();
+        return $this->render('@DepartmentSiteDefault/layout/bannerMenu.html.twig', array('menu' => $bannerMenu));
+    }
+
 }
