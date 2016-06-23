@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="Page">
+                    <source>Page</source>
+                    <target>Страницы</target>
+            </trans-unit>
+            <trans-unit id="Title">
+                     <source>Title</source>
+                     <target>Заголовок</target>
+            </trans-unit>
+            <trans-unit id="Content">
+                       <source>Content</source>
+                       <target>Контент</target>
+            </trans-unit>
+            <trans-unit id="Photo">
+                        <source>Photo</source>
+                        <target>Фото</target>
+            </trans-unit>
+            <trans-unit id="Page List">
+                        <source>Page List</source>
+                        <target>Список страниц</target>
+            </trans-unit>
+            <trans-unit id="Page Create">
+                        <source>Page Create</source>
+                        <target>Создать страницу</target>
+            </trans-unit>
+            <trans-unit id="Created At">
+                        <source>Created At</source>
+                        <target>Дата создания</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

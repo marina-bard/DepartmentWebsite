@@ -9,13 +9,13 @@
     }).when('/news', {
       templateUrl: 'DepartmentSiteNewsBundle:News:index',
       controller: 'NewsCtrl'
-    }).when('/news/:id/show', {
+    }).when('/news/:slug/show', {
       templateUrl: 'DepartmentSiteNewsBundle:News:show',
       controller: 'OneNewsCtrl'
     }).when('/advert', {
       templateUrl: 'DepartmentSiteAdvertBundle:Advert:index',
       controller: 'AnnouncementsCtrl'
-    }).when('/advert/:id/show', {
+    }).when('/advert/:slug/show', {
       templateUrl: 'DepartmentSiteAdvertBundle:Advert:show',
       controller: 'OneAdvertCtrl'
     }).when('/projects', {
@@ -24,6 +24,9 @@
     }).when('/projects/:projectId', {
       templateUrl: 'views/projects/project.slim',
       controller: 'ProjectsController'
+    }).when('/page/:slug/show', {
+      templateUrl: 'DepartmentSitePageBundle:Page:show',
+      controller: 'PageCtrl'
     }).otherwise({
       redirectTo: '/'
     });

@@ -4,7 +4,7 @@ advert_index:
     methods:  GET
 
 advert_show:
-    path:     /{id}/show
+    path:     /{slug}/show
     defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:show" }
     methods:  GET
 
@@ -14,11 +14,11 @@ advert_new:
     methods:  [GET, POST]
 
 advert_edit:
-    path:     /{id}/edit
+    path:     /{slug}/edit
     defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:edit" }
     methods:  [GET, POST]
 
 advert_delete:
-    path:     /{id}/delete
+    path:     /{slug}/delete
     defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:delete" }
     methods:  DELETE

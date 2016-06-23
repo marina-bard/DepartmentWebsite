@@ -69,7 +69,7 @@ class NewsController extends Controller
     /**
      * Finds and displays a News entity.
      *
-     * @Route("/{id}/show",
+     * @Route("/{slug}/show",
      *     defaults = {"_format"="html|json"},
      *     name = "news_show"
      * )
@@ -102,7 +102,7 @@ class NewsController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('news_edit', array(
-                'id' => $news->getId(),
+                'slug' => $news->getSlug(),
             ));
         }
 
@@ -116,7 +116,7 @@ class NewsController extends Controller
     /**
      * Deletes a News entity.
      *
-     * @Route("/{id}/delete",
+     * @Route("/{slug}/delete",
      *     name="news_delete"
      * )
      * @Method("DELETE")
@@ -146,7 +146,7 @@ class NewsController extends Controller
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('news_delete', array(
-                'id' => $news->getId(),
+                'slug' => $news->getSlug(),
                 )))
             ->setMethod('DELETE')
             ->getForm()

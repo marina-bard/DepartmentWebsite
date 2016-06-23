@@ -2,83 +2,6 @@
 
 {% block body %}
 
-   {# <h1>News list</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Content</th>
-            <th>Date</th>
-            <th>Photo</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for news in news %}
-            <tr>
-                <td><a href="{{ path('news_show', { 'id': news.id }) }}">{{ news.id }}</a></td>
-                <td>{{ news.title }}</td>
-                <td>{{ news.description }}</td>
-                <td>{{ news.content }}</td>
-                <td>{% if news.photo %}{{ news.photo|join(', ') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('news_show', { 'id': news.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('news_new') }}">Create a new entry</a>
-        </li>
-    </ul>
-    <h1>Advert list</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Content</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for advert in adverts %}
-            <tr>
-                <td><a href="{{ path('advert_show', { 'id': advert.id }) }}">{{ advert.id }}</a></td>
-                <td>{{ advert.title }}</td>
-                <td>{{ advert.description }}</td>
-                <td>{{ advert.content }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('advert_show', { 'id': advert.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('advert_edit', { 'id': advert.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('advert_new') }}">Create a new entry</a>
-        </li>
-    </ul>#}
-
     <script type="text/javascript">
         adverts_list = '{{ render(controller('DepartmentSiteDefaultBundle:Default:getAdvertsForMainPage')) }}';
         news_list = '{{ render(controller('DepartmentSiteDefaultBundle:Default:getNewsForMainPage')) }}';
@@ -101,7 +24,7 @@
                                     <div class="announce-card">
                                         <div class="announce-card-content">
                                             <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{ '{{adverts[$index].created_at | date}}' }}</i>
-                                            <br /><a class="announce-card-title" ng-href="/advert/{{'{{adverts[$index].id}}'}}/show">{{ '{{ adverts[$index].title }}' }}</a>
+                                            <br /><a class="announce-card-title" ng-href="/advert/{{'{{adverts[$index].slug}}'}}/show">{{ '{{ adverts[$index].title }}' }}</a>
                                             <div class="announce-card-lead">{{ '{{ adverts[$index].content | limitTo: 100 }}' }}</div>
                                         </div>
                                     </div>
@@ -110,7 +33,7 @@
                                     <div class="announce-card">
                                         <div class="announce-card-content">
                                             <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{ '{{ adverts[$index + 1].created_at | date}}' }}</i>
-                                            <br /><a class="announce-card-title" ng-href="/advert/{{'{{adverts[$index+1].id}}'}}/show">{{ '{{ adverts[$index + 1].title }}' }}</a>
+                                            <br /><a class="announce-card-title" ng-href="/advert/{{'{{adverts[$index+1].slug}}'}}/show">{{ '{{ adverts[$index + 1].title }}' }}</a>
                                             <div class="announce-card-lead"> {{ '{{ adverts[$index + 1].content | limitTo: 100 }}' }}</div>
                                         </div>
                                     </div>
@@ -129,15 +52,15 @@
                     </div>
                     <div class="row" ng-if="$index % 2 == 0" ng-repeat="oneNews in news | orderBy: &#39;id&#39;">
                         <div class="col-md-6 news-column">
-                            <a ng-href="/news/{{'{{news[$index].id}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{ '{{news[$index].photo.path}}' }}" /></a>
+                            <a ng-href="/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{ '{{news[$index].photo.path}}' }}" /></a>
                             <div class="news-item-date">{{'{{ news[$index].created_at | date }}'}}</div>
-                            <br /><a class="news-item-title" ng-href="/news/{{'{{news[$index].id}}'}}/show">{{'{{ news[$index].title }}'}}</a>
+                            <br /><a class="news-item-title" ng-href="/news/{{'{{news[$index].slug}}'}}/show">{{'{{ news[$index].title }}'}}</a>
                             <div class="news-item-lead">{{'{{ news[$index].description}}'}}</div>
                         </div>
                         <div class="col-md-6 news-column2">
-                            <a ng-href="/news/{{'{{news[$index+1].id}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{ '{{news[$index+1].photo.path}}' }}" /></a>
+                            <a ng-href="/news/{{'{{news[$index+1].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{ '{{news[$index+1].photo.path}}' }}" /></a>
                             <div class="news-item-date">{{'{{ news[$index+1].created_at | date }}'}}</div>
-                            <br /><a class="news-item-title" ng-href="/news/{{'{{news[$index+1].id}}'}}/show">{{'{{ news[$index+1].title }}'}}</a>
+                            <br /><a class="news-item-title" ng-href="/news/{{'{{news[$index+1].slug}}'}}/show">{{'{{ news[$index+1].title }}'}}</a>
                             <div class="news-item-lead">{{'{{ news[$index+1].description}}'}}</div>
                         </div>
                     </div>

@@ -10,9 +10,17 @@
                       <source>News</source>
                       <target>Новости</target>
             </trans-unit>
+            <trans-unit id="Page">
+                       <source>Page</source>
+                       <target>Страницы</target>
+            </trans-unit>
             <trans-unit id="Dashboard">
                       <source>Dashboard</source>
                       <target>Приборная панель</target>
+            </trans-unit>
+            <trans-unit id="Dictionary">
+                       <source>Dictionary</source>
+                       <target>Словарь</target>
             </trans-unit>
 
         </body>
