@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="Code">
+                    <source>Code</source>
+                    <target>Код</target>
+            </trans-unit>
+            <trans-unit id="Value">
+                      <source>Value</source>
+                      <target>Значение</target>
+            </trans-unit>
+            <trans-unit id="Dictionary List">
+                       <source>Dictionary List</source>
+                       <target>Список</target>
+            </trans-unit>
+            <trans-unit id="Dictionary">
+                       <source>Dictionary</source>
+                       <target>Словарь</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -123,6 +123,7 @@ class AdvertController extends Controller
     public function getOneAction($id) {
         $em = $this->getDoctrine()->getManager();
         $advert = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findOneById($id);
+
         $serialized = $this->container->get('serializer')->serialize($advert, 'json');
         return new Response($serialized);
     }

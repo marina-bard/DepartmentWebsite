@@ -60,7 +60,6 @@ class PageController extends Controller
     public function showAction(Page $page)
     {
         $deleteForm = $this->createDeleteForm($page);
-
         return $this->render('page/show.html.twig', array(
             'page' => $page,
             'delete_form' => $deleteForm->createView(),
