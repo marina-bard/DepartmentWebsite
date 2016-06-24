@@ -14,7 +14,7 @@ class ImageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('gallery', 'text', array('label' => 'Gallery'))
+            ->add('gallery', 'integer', array('label' => 'Gallery'))
            // ->add('image', 'string', array('label' => 'Description'))
         ;
     }

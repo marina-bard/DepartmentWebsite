@@ -116,9 +116,22 @@ class Gallery
     public function addImage(\DepartmentSite\GalleryBundle\Entity\Image $image)
     {
         $this->images[] = $image;
+//        $image->setGallery($this);
+//        $this->images->add($image);
 
         return $this;
     }
+
+//    public function setImages($images)
+//    {
+//        if (count($images) > 0) {
+//            foreach ($images as $i) {
+//                $this->addImage($i);
+//            }
+//        }
+//
+//        return $this;
+//    }
 
     /**
      * Remove image
