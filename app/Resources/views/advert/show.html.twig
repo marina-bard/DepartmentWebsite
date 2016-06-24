@@ -21,7 +21,7 @@
                     <div class="v-separator"></div>
                     <a ng-href="#/announcements/page">К предыдущему</a>
                 </div>
-                <i class="news-time">{{'{{ advert.created_at | date}}'}}</i>
+                <i class="news-time">{{'{{ advert.created_at.date | date}}'}}</i>
                 <div class="post-title-inside-post">{{'{{ advert.title }}'}}</div>
                 {#<div class="post-content-inside post-content >#}
                     <div ng-bind-html="advert.content | toHTML"></div>

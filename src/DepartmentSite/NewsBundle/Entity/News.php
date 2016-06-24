@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Sonata\MediaBundle\Model\MediaInterface;
+
 
 /**
  * News
@@ -50,8 +50,9 @@ class News implements JsonSerializable
     private $content;
 
     /**
-     * @var \Application\Sonata\MediaBundle\Entity\Media
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", nullable=true)
      */
     private $photo;
 
@@ -143,13 +144,13 @@ class News implements JsonSerializable
      */
     public function getContent()
     {
-        return htmlspecialchars($this->content);
+        return $this->content;
     }
 
     /**
      * Set photo
      *
-     * @param array $photo
+     * @param string $photo
      *
      * @return News
      */
@@ -163,7 +164,7 @@ class News implements JsonSerializable
     /**
      * Get photo
      *
-     * @return array
+     * @return string
      */
     public function getPhoto()
     {

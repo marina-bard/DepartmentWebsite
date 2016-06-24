@@ -15,26 +15,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a ng-href="#/news">О кафедре</a>
-                    </li>
-                    <li>
-                        <a ng-href="#/announcements">Структура кафедры</a>
-                    </li>
-                    <li>
-                        <a ng-href="#/projects">Образование</a>
-                    </li>
-                    <li>
-                        <a ng-href="#/">Обратная связь</a>
-                    </li>
-                    <li>
-                        <a data-target="#myModal" data-toggle="modal" ng-href="#/">Регистрация | Войти</a>
-                    </li>
-                    <li>
-                        <a ng-href="#/">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </a>
-                    </li>
+                    {{ render(controller('DepartmentSiteDefaultBundle:Default:getHeaderMenu')) }}
                 </ul>
             </div>
         </div>

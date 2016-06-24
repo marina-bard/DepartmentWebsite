@@ -3,19 +3,19 @@
 namespace DepartmentSite\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Iphp\FileStoreBundle\Mapping\Annotation as Filestore;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+
 
 /**
  * News
  *
  * @ORM\Table(name="News")
- * @ORM\Entity(repositoryClass="DepartmentSite\NewsBundle\Repository\NewsRepository")
- * @FileStore\Uploadable
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class News
-{
+{   
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
     /**
@@ -49,19 +49,17 @@ class News
     private $content;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="photo", type="array")
-     * @Assert\Image( maxSize="20M",
-     *     mimeTypes={
-     *      "image/png",
-     *      "image/jpeg",
-     *      "image/jpg",
-     *     })
-     * @FileStore\UploadableField(mapping="photo")
-     *
-     */
+     * @var string
+    */
     private $photo;
+
+
+    /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getTitle() ? : '-';
+    }
 
 
     /**
@@ -143,7 +141,7 @@ class News
      */
     public function getContent()
     {
-        return $this->content;
+        return htmlspecialchars($this->content);
     }
 
     /**

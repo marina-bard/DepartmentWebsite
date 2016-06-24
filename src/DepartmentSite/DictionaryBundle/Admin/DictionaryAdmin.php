@@ -45,7 +45,7 @@ class DictionaryAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-               ->addIdentifier('code')
+            ->addIdentifier('code')
             ->add('title')
             ->add('value')
         ;

@@ -20,7 +20,7 @@
                   <div class="announce-card">
                       <div class="announce-card-content">
                           <div class="full-card-content">
-                              <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{'{{announcement.created_at | date}}'}}</i>
+                              <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{'{{announcement.created_at.date | date}}'}}</i>
                               <br /><a class="announce-card-title" ng-href="/advert/{{'{{announcement.slug}}'}}/show">{{'{{ announcement.title }}'}}</a>
                               <div class="announce-card-lead">{{'{{ announcement.content }}'}}</div>
                           </div>

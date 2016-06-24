@@ -3,11 +3,6 @@ news_index:
     defaults: { _controller: "DepartmentSiteNewsBundle:News:index" }
     methods:  GET
 
-news_ser:
-      path:     /ser
-      defaults: { _controller: "DepartmentSiteNewsBundle:News:getSer" }
-      methods:  GET
-
 news_show:
     path:     /{slug}/show
     defaults: { _controller: "DepartmentSiteNewsBundle:News:show" }
