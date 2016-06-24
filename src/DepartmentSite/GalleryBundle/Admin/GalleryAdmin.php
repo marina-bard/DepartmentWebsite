@@ -44,13 +44,13 @@ class GalleryAdmin extends Admin
     }
 
 
-//    public function prePersist($gallery)
-//    {
-//        $this->preUpdate($gallery);
-//    }
-//
-//    public function preUpdate($gallery)
-//    {
-//        $gallery->setImages($gallery->getImages());
-//    }
+    public function prePersist($gallery)
+    {
+        $this->preUpdate($gallery);
+    }
+
+    public function preUpdate($gallery)
+    {
+        $gallery->setImages($gallery->getImages());
+    }
 }

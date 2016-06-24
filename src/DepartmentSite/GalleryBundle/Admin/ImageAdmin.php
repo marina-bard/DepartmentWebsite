@@ -14,7 +14,8 @@ class ImageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('gallery', 'integer', array('label' => 'Gallery'))
+            ->add('gallery', 'sonata_type_model', array())
+            ->add('image', 'text')
            // ->add('image', 'string', array('label' => 'Description'))
         ;
     }
@@ -23,7 +24,7 @@ class ImageAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('gallery')
+            ->add('image')
         ;
     }
 
@@ -31,7 +32,7 @@ class ImageAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('gallery')
+            ->addIdentifier('image')
         ;
     }
 }

@@ -122,16 +122,7 @@ class Gallery
         return $this;
     }
 
-//    public function setImages($images)
-//    {
-//        if (count($images) > 0) {
-//            foreach ($images as $i) {
-//                $this->addImage($i);
-//            }
-//        }
-//
-//        return $this;
-//    }
+
 
     /**
      * Remove image
@@ -176,4 +167,6 @@ class Gallery
     {
         return $this->description;
     }
+
+
 }
