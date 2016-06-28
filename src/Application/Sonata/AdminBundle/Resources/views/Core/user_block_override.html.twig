@@ -1,1 +1,6 @@
-{% block user_block %}<a href="/logout">Logout</a>{# Customize this value #}{% endblock %}
+{% block user_block %}
+    <form action="/logout">
+        <input class="btn btn-block btn-danger" style="margin-top: 11%" type="submit" id="_submit" name="_submit"
+               value="Logout"/>
+    </form>
+{% endblock %}
