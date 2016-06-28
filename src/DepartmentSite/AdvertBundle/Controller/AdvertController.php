@@ -109,27 +109,23 @@ class AdvertController extends Controller
             ;
     }
 
-    public function escapeChars($value)
-    {
-        $escaper = array("\"");
-        $replacements = array("\\\\");
-        $result = str_replace($escaper, $replacements, $value);
-        return $result;
-    }
+//    public function escapeChars($value)
+//    {
+//        $escaper = array("\"");
+//        $replacements = array("\\\\");
+//        $result = str_replace($escaper, $replacements, $value);
+//        return $result;
+//    }
 
     public function getAllAction() {
-//        $em = $this->getDoctrine()->getManager();
-//        $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findAll();
-//        $serialized = $this->container->get('serializer')->serialize($adverts, 'json');
-//        return new Response($serialized);
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findAll();
-        return new Response($this->escapeChars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        return new Response(htmlspecialchars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
-    public function getOneAction($id) {
-        $em = $this->getDoctrine()->getManager();
-        $advert = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findOneById($id);
-        return new Response($this->escapeChars(json_encode($advert, JSON_HEX_QUOT | JSON_HEX_TAG)));
-    }
+//    public function getOneAction($id) {
+//        $em = $this->getDoctrine()->getManager();
+//        $advert = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findOneById($id);
+//        return new Response($this->escapeChars(json_encode($advert, JSON_HEX_QUOT | JSON_HEX_TAG)));
+//    }
 }

@@ -149,7 +149,6 @@ class Advert implements JsonSerializable
         return [
             'title' => $this->title,
             'description' => $this->description,
-            'content' => $this->content,
             'slug' => $this->slug,
             'created_at' => $this->createdAt
         ];

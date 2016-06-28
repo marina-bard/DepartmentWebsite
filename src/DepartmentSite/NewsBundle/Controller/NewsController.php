@@ -153,27 +153,6 @@ class NewsController extends Controller
         ;
     }
 
-    /**
-     * Lists all News entities.
-     *
-     * @Route("/ser",
-     * )
-     * @Method("GET")
-     */
-    public function getSerAction() {
-        $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-        return new Response($this->escapeChars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
-        //        $em = $this->getDoctrine()->getManager();
-//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-//      //  var_dump(serialize($news));
-//         $serialized = $this->container->get('serializer')->serialize($news, 'json');
-//         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-//         return new Response($serialized);
-//      //  return new JsonResponse($news);
-
-    }
-
 //    public function escapeChars($value)
 //    {
 //        $escaper = array("\"");
@@ -183,10 +162,6 @@ class NewsController extends Controller
 //    }
 
     public function getAllAction() {
-//        $em = $this->getDoctrine()->getManager();
-//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-//         $serialized = $this->container->get('serializer')->serialize($news, 'json');
-//         return new Response($serialized);
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
         return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));

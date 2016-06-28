@@ -9,10 +9,8 @@
     $scope.range = function(n) {
       return new Array(n);
     };
-    data = data.replace(/\"/g, "\'");
-    data = data.replace(/\\/g, "\"");
-    console.log(data);
-    $scope.announcements = JSON.parse(data);
+
+    $scope.announcements = JSON.parse(data.replace(/&quot;/g, '"'));
 
   });
 

@@ -13,7 +13,7 @@ var data = [];
       return new Array(n);
     };
 
-    $scope.news = JSON.parse(data.replace(/&quot;/g, '"'));;
+    $scope.news = JSON.parse(data.replace(/&quot;/g, '"'));
   });
 
   angular.module('bsuir-ecm').filter('pagination', function() {
