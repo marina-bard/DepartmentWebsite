@@ -174,13 +174,13 @@ class NewsController extends Controller
 
     }
 
-    public function escapeChars($value)
-    {
-        $escaper = array("\"");
-        $replacements = array("\\\\");
-        $result = str_replace($escaper, $replacements, $value);
-        return $result;
-    }
+//    public function escapeChars($value)
+//    {
+//        $escaper = array("\"");
+//        $replacements = array("\\\\");
+//        $result = str_replace($escaper, $replacements, $value);
+//        return $result;
+//    }
 
     public function getAllAction() {
 //        $em = $this->getDoctrine()->getManager();
@@ -189,13 +189,13 @@ class NewsController extends Controller
 //         return new Response($serialized);
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-        return new Response($this->escapeChars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
 
     }
 
-    public function getOneAction($id) {
-        $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
-        return new Response($this->escapeChars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
-    }
+//    public function getOneAction($id) {
+//        $em = $this->getDoctrine()->getManager();
+//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
+//        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
+//    }
 }

@@ -189,7 +189,6 @@ class News implements JsonSerializable
         return [
             'title' => $this->title,
             'description' => $this->description,
-            'content' => $this->content,
             'photo' => $this->photo,
             'created_at' => $this->createdAt,
             'slug' => $this->slug
