@@ -18,9 +18,6 @@ class NewsAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
-           
-//            ->add('photo', 'sonata_type_model_list', array(), array(
-//                'link_parameters' => array('context' => 'news')))
         ;
     }
 

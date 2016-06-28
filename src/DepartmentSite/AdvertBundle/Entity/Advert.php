@@ -5,12 +5,13 @@ namespace DepartmentSite\AdvertBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass="DepartmentSite\AdvertBundle\Repository\AdvertRepository")
  * @ORM\Table(name="Advert")
  */
-class Advert
+class Advert implements JsonSerializable
 {
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
@@ -134,5 +135,22 @@ class Advert
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
+    {
+        return [
+            'title' => $this->title,
+            'description' => $this->description,
+            'slug' => $this->slug,
+            'created_at' => $this->createdAt
+        ];
     }
 }

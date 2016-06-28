@@ -9,7 +9,9 @@
     $scope.range = function(n) {
       return new Array(n);
     };
-    return $scope.announcements = JSON.parse(data);
+
+    $scope.announcements = JSON.parse(data.replace(/&quot;/g, '"'));
+
   });
 
   angular.module('bsuir-ecm').filter('pagination', function() {
