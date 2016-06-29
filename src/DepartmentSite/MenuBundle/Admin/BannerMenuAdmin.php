@@ -8,6 +8,7 @@
 
 namespace DepartmentSite\MenuBundle\Admin;
 
+use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -20,6 +21,7 @@ class BannerMenuAdmin extends Admin
     {
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
+            ->add('translations', TranslationsType::class )
         ;
     }
 
@@ -36,7 +38,7 @@ class BannerMenuAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('title')
+            ->addIdentifier('title');
         ;
     }
 }

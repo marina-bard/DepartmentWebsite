@@ -8,6 +8,8 @@
 
 namespace DepartmentSite\MenuBundle\Admin;
 
+use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
+use Gedmo\Translator\Document\Translation;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -20,6 +22,7 @@ class HeaderMenuAdmin extends Admin
     {
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
+            ->add('translations', TranslationsType::class)
         ;
     }
 

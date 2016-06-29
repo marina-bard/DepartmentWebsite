@@ -14,6 +14,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 class HeaderMenu
 {
     use ORMBehaviors\Sluggable\Sluggable;
+    use ORMBehaviors\Translatable\Translatable;
 
     /**
      * @var int

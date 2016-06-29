@@ -34,6 +34,8 @@ class AppKernel extends Kernel
 
             new JMS\SerializerBundle\JMSSerializerBundle(),
 
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
+
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
 

@@ -14,6 +14,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 class BannerMenu
 {
     use ORMBehaviors\Sluggable\Sluggable;
+    use ORMBehaviors\Translatable\Translatable;
 
     /**
      * @var int
@@ -65,6 +66,7 @@ class BannerMenu
     {
         return $this->title;
     }
+
     public function getSluggableFields()
     {
         return [ 'title' ];
