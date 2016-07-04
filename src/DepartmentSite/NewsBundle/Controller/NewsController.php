@@ -71,7 +71,7 @@ class NewsController extends Controller
     /**
      * Finds and displays a News entity.
      *
-     * @Route("/{id}/show",
+     * @Route("/{slug}/show",
      *     defaults = {"_format"="html|json"},
      *     name = "news_show"
      * )
@@ -104,7 +104,7 @@ class NewsController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('news_edit', array(
-                'id' => $news->getId(),
+                'slug' => $news->getSlug(),
             ));
         }
 
@@ -118,7 +118,7 @@ class NewsController extends Controller
     /**
      * Deletes a News entity.
      *
-     * @Route("/{id}/delete",
+     * @Route("/{slug}/delete",
      *     name="news_delete"
      * )
      * @Method("DELETE")
@@ -148,28 +148,31 @@ class NewsController extends Controller
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('news_delete', array(
-                'id' => $news->getId(),
+                'slug' => $news->getSlug(),
                 )))
             ->setMethod('DELETE')
             ->getForm()
         ;
     }
 
+//    public function escapeChars($value)
+//    {
+//        $escaper = array("\"");
+//        $replacements = array("\\\\");
+//        $result = str_replace($escaper, $replacements, $value);
+//        return $result;
+//    }
+
     public function getAllAction() {
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-
-         $serialized = $this->container->get('serializer')->serialize($news, 'json');
-         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-         return new Response($serialized);
-      //  return new JsonResponse($news);
+        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
 
     }
 
-    public function getOneAction($id) {
-      $em = $this->getDoctrine()->getManager();
-      $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
-        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-        return new Response($serialized);
-    }
+//    public function getOneAction($id) {
+//        $em = $this->getDoctrine()->getManager();
+//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
+//        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
+//    }
 }

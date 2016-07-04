@@ -38,7 +38,7 @@ class AdvertController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($advert);
             $em->flush();
-            return $this->redirectToRoute('advert_show', array('id' => $advert->getId()));
+            return $this->redirectToRoute('advert_show', array('slug' => $advert->getSlug()));
         }
         return $this->render('advert/new.html.twig', array(
             'advert' => $advert,
@@ -70,7 +70,7 @@ class AdvertController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($advert);
             $em->flush();
-            return $this->redirectToRoute('advert_edit', array('id' => $advert->getId()));
+            return $this->redirectToRoute('advert_edit', array('slug' => $advert->getSlug()));
         }
         return $this->render('advert/edit.html.twig', array(
             'advert' => $advert,
@@ -103,27 +103,29 @@ class AdvertController extends Controller
     private function createDeleteForm(Advert $advert)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('advert_delete', array('id' => $advert->getId())))
+            ->setAction($this->generateUrl('advert_delete', array('slug' => $advert->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
             ;
     }
 
+//    public function escapeChars($value)
+//    {
+//        $escaper = array("\"");
+//        $replacements = array("\\\\");
+//        $result = str_replace($escaper, $replacements, $value);
+//        return $result;
+//    }
+
     public function getAllAction() {
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findAll();
-
-        $serialized = $this->container->get('serializer')->serialize($adverts, 'json');
-        //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-//        return new Response($serialized);
-          return new JsonResponse($serialized, 200, [], true);
-
+        return new Response(htmlspecialchars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
-    public function getOneAction($id) {
-        $em = $this->getDoctrine()->getManager();
-        $advert = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findOneById($id);
-        $serialized = $this->container->get('serializer')->serialize($advert, 'json');
-        return new Response($serialized);
-    }
+//    public function getOneAction($id) {
+//        $em = $this->getDoctrine()->getManager();
+//        $advert = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findOneById($id);
+//        return new Response($this->escapeChars(json_encode($advert, JSON_HEX_QUOT | JSON_HEX_TAG)));
+//    }
 }

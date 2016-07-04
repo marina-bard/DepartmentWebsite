@@ -2,45 +2,7 @@
 
 
   {% block body %}
-  {#  <h1>Advert list</h1>
 
-      <table>
-          <thead>
-              <tr>
-                  <th>Id</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Content</th>
-                  <th>Actions</th>
-              </tr>
-          </thead>
-          <tbody>
-          {% for advert in adverts %}
-              <tr>
-                  <td><a href="{{ path('advert_show', { 'id': advert.id }) }}">{{ advert.id }}</a></td>
-                  <td>{{ advert.title }}</td>
-                  <td>{{ advert.description }}</td>
-                  <td>{{ advert.content }}</td>
-                  <td>
-                      <ul>
-                          <li>
-                              <a href="{{ path('advert_show', { 'id': advert.id }) }}">show</a>
-                          </li>
-                          <li>
-                              <a href="{{ path('advert_edit', { 'id': advert.id }) }}">edit</a>
-                          </li>
-                      </ul>
-                  </td>
-              </tr>
-          {% endfor %}
-          </tbody>
-      </table>
-
-      <ul>
-          <li>
-              <a href="{{ path('advert_new') }}">Create a new entry</a>
-          </li>
-      </ul>#}
 <div ng-controller="AnnouncementsCtrl">
       <script type="text/javascript">
            data = '{{ render(controller('DepartmentSiteAdvertBundle:Advert:getAll')) }}';
@@ -58,9 +20,9 @@
                   <div class="announce-card">
                       <div class="announce-card-content">
                           <div class="full-card-content">
-                              <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{'{{announcement.created_at | date}}'}}</i>
-                              <br /><a class="announce-card-title" ng-href="/advert/{{'{{announcement.id}}'}}/show">{{'{{ announcement.title }}'}}</a>
-                              <div class="announce-card-lead">{{'{{ announcement.content }}'}}</div>
+                              <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{'{{announcement.created_at.date | date}}'}}</i>
+                              <br /><a class="announce-card-title" ng-href="/advert/{{'{{announcement.slug}}'}}/show">{{'{{ announcement.title }}'}}</a>
+                              <div class="announce-card-lead">{{'{{ announcement.description }}'}}</div>
                           </div>
                       </div>
                   </div>

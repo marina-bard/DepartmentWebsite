@@ -44,7 +44,7 @@ class PageController extends Controller
             $em->persist($page);
             $em->flush();
 
-            return $this->redirectToRoute('page_show', array('id' => $page->getId()));
+            return $this->redirectToRoute('page_show', array('slug' => $page->getSlug()));
         }
 
         return $this->render('page/new.html.twig', array(
@@ -60,7 +60,6 @@ class PageController extends Controller
     public function showAction(Page $page)
     {
         $deleteForm = $this->createDeleteForm($page);
-
         return $this->render('page/show.html.twig', array(
             'page' => $page,
             'delete_form' => $deleteForm->createView(),
@@ -82,10 +81,10 @@ class PageController extends Controller
             $em->persist($page);
             $em->flush();
 
-            return $this->redirectToRoute('page_edit', array('id' => $page->getId()));
+            return $this->redirectToRoute('page_edit', array('slug' => $page->getSlug()));
         }
 
-        return $this->render('page/edit.html.twig', array(
+        return $this>render('page/edit.html.twig', array(
             'page' => $page,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -120,9 +119,17 @@ class PageController extends Controller
     private function createDeleteForm(Page $page)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('page_delete', array('id' => $page->getId())))
+            ->setAction($this->generateUrl('page_delete', array('slug' => $page->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function getPageBySlugAction($slug) {
+        $em = $this->getDoctrine()->getManager();
+        $page = $em->getRepository('DepartmentSitePageBundle:Page')->findBy(array('slug'=>$slug));
+       // var_dump($page);
+        $serialized = $this->container->get('serializer')->serialize($page, 'json');
+        return new Response($serialized);
     }
 }

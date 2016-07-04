@@ -21,8 +21,7 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            new Sonata\ClassificationBundle\SonataClassificationBundle(),
-            new Sonata\MediaBundle\SonataMediaBundle(),
+            new Sonata\NotificationBundle\SonataNotificationBundle(),
             new FOS\UserBundle\FOSUserBundle(),
 
             new FM\ElfinderBundle\FMElfinderBundle(),
@@ -39,9 +38,6 @@ class AppKernel extends Kernel
             new ITM\FilePreviewBundle\ITMFilePreviewBundle(),
             new ITM\ImagePreviewBundle\ITMImagePreviewBundle(),
 
-            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
-            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
-
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
             new Application\FOS\UserBundle\ApplicationFOSUserBundle(),
 
@@ -50,7 +46,7 @@ class AppKernel extends Kernel
             new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
             new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
             new DepartmentSite\PageBundle\DepartmentSitePageBundle(),
-
+            new DepartmentSite\MenuBundle\DepartmentSiteMenuBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

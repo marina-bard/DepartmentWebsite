@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Sonata\MediaBundle\Model\MediaInterface;
 
+
 /**
  * News
  *
@@ -50,9 +51,13 @@ class News
 
     /**
      * @var string
+<<<<<<< HEAD
      *
      * @ORM\Column(name="photo", type="string")
      */
+=======
+    */
+>>>>>>> develop
     private $photo;
 
 

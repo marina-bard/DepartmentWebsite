@@ -18,7 +18,7 @@
         <tbody>
         {% for news in news %}
             <tr>
-                <td><a href="{{ path('news_show', { 'id': news.id }) }}">{{ news.id }}</a></td>
+                <td><a href="{{ path('news_show', { 'slug': news.slug }) }}">{{ news.id }}</a></td>
                 <td>{{ news.title }}</td>
                 <td>{{ news.description }}</td>
                 <td>{{ news.content }}</td>
@@ -26,7 +26,7 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('news_show', { 'id': news.id }) }}">show</a>
+                            <a href="{{ path('news_show', { 'slug': news.slug }) }}">show</a>
                         </li>
                     </ul>
                 </td>

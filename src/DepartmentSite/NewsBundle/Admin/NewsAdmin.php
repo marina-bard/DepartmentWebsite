@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use ITM\FilePreviewBundle\Form\Type\FilePreviewType;
 use ITM\ImagePreviewBundle\Form\Type\ImagePreviewType;
@@ -39,6 +40,24 @@ class NewsAdmin extends Admin
             ->addIdentifier('title')
             ->add('createdAt')
             ->add('photo', 'string', ['template' => 'DepartmentSiteNewsBundle:Admin:list__photo.html.twig'] )
+            ->add('_action', null, array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
+        ;
+    }
+
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('title')
+            ->add('createdAt')
+            ->add('description')
+            ->add('content')
+            ->add('photo')
         ;
     }
 
