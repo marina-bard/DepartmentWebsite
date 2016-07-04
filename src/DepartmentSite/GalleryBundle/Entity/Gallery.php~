@@ -54,6 +54,7 @@ class Gallery
      * @return string - object's string representation
      */
     public function __toString() {
+        var_dump($this->getTitle());
         return $this->getTitle() ? : '-';
     }
 
@@ -115,8 +116,20 @@ class Gallery
      */
     public function addImage(\DepartmentSite\GalleryBundle\Entity\Image $image)
     {
-        $this->images[] = $image;
+       // $this->images[] = $image;
+        $image->setGallery($this);
+        $this->images->add($image);
 
+        return $this;
+    }
+
+    public function setImages($images)
+    {
+        if(count($images) > 0){
+            foreach($images as $i){
+                $this->addImages($i);
+            }
+        }
         return $this;
     }
 
@@ -163,4 +176,6 @@ class Gallery
     {
         return $this->description;
     }
+
+
 }

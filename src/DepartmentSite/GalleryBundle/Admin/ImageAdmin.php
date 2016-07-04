@@ -14,9 +14,9 @@ class ImageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('gallery', 'sonata_type_model', array())
+            ->add('gallery', 'entity', array(
+                'class'    => 'DepartmentSite\GalleryBundle\Entity\Gallery'))
             ->add('image', 'text')
-           // ->add('image', 'string', array('label' => 'Description'))
         ;
     }
 
@@ -28,11 +28,18 @@ class ImageAdmin extends Admin
         ;
     }
 
+    
+
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('image')
         ;
+    }
+
+    public function prePersist($image)
+    {
+        var_dump($image->getId());
     }
 }

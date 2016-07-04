@@ -99,8 +99,8 @@ class Image
      */
     public function setGallery(\DepartmentSite\GalleryBundle\Entity\Gallery $gallery = null)
     {
-        $this->gallery = $gallery;
 
+        $this->gallery = $gallery;
         return $this;
     }
 

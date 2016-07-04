@@ -5,7 +5,7 @@ namespace DepartmentSite\GalleryBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Sonata\MediaBundle\Model\MediaInterface;
+
 
 /**
  * Gallery
@@ -115,14 +115,22 @@ class Gallery
      */
     public function addImage(\DepartmentSite\GalleryBundle\Entity\Image $image)
     {
-        $this->images[] = $image;
-//        $image->setGallery($this);
-//        $this->images->add($image);
+       // $this->images[] = $image;
+        $image->setGallery($this);
+        $this->images->add($image);
 
         return $this;
     }
 
-
+    public function setImages($images)
+    {
+        if(count($images) > 0){
+            foreach($images as $i){
+                $this->addImages($i);
+            }
+        }
+        return $this;
+    }
 
     /**
      * Remove image

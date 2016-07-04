@@ -16,11 +16,10 @@ class GalleryAdmin extends Admin
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            ->add('images', 'sonata_type_collection', array(
+            ->add('images', 'sonata_type_collection', array('required' => false,
                 'by_reference' => false
             ), array(
                 'edit' => 'inline',
-                'inline' => 'table',
                 'sortable' => 'id',
             ))
         ;
@@ -46,7 +45,13 @@ class GalleryAdmin extends Admin
 
     public function prePersist($gallery)
     {
+        var_dump($gallery->getId());
         $this->preUpdate($gallery);
+
+//        foreach ($gallery->getImages() as $images) {
+//            $images->setGallery($gallery);
+//
+//        }
     }
 
     public function preUpdate($gallery)
