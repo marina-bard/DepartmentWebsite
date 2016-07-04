@@ -6,6 +6,8 @@ imports:
     - { resource: sonata/fos_config.yml }
     - { resource: ivory/ivory_config.yml }
     - { resource: elfinder/elfinder_config.yml }
+    - { resource: liip/liip_config.yml }
+    - { resource: itm/itm_config.yml }
     - { resource: "@DepartmentSiteNewsBundle/Resources/config/services.yml" }
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
     - { resource: "@DepartmentSiteAdvertBundle/Resources/config/services.yml" }
@@ -34,7 +36,10 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
-
+        form:
+          resources:
+            - 'ITMFilePreviewBundle:Form:fields.html.twig'
+            - 'ITMImagePreviewBundle:Form:fields.html.twig'
     default_locale:  ru
     trusted_hosts:   ~
     trusted_proxies: ~

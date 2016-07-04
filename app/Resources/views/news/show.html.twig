@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
     {#<div ng-controller="OneNewsCtrl">#}
         {#<script type="text/javascript">#}
@@ -26,6 +27,8 @@
                     <div class="post-title-inside-post">{{news.title}}</div>
                     {#<br /><img alt="Cinque Terre" class="full-post-img" ng-src="{{news.photo.path}}" />#}
                     {#<div class="post-content-inside" ng-bind-html="news.content | toHTML"></div>#}
+                    <div class='phimagebuilder_label_border'>
+                        <br /><img alt="Cinque Terre" class="full-post-img" ng-src='{{ news | itm_ipw_url('photo') }}' />
                     <div class="post-content-inside">{{ news.content | raw }}</div>
                     <div class="share-block">
                         <div class="share">
