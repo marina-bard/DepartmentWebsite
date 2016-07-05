@@ -10,6 +10,9 @@ use DepartmentSite\NewsBundle\Entity\News;
 use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use ITM\ImagePreviewBundle\Resolver\PathResolver;
+
 
 /**
  * News controller.
@@ -81,7 +84,11 @@ class NewsController extends Controller
     {
         $deleteForm = $this->createDeleteForm($news);
 
+//        $resolver = new PathResolver(null);
+//        $url = $resolver->getUrl($news, $news->getPhoto());
+
         return $this->render('news/show.html.twig', array(
+//            'url' => $url,
             'news' => $news,
             'delete_form' => $deleteForm->createView(),
         ));

@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use ITM\ImagePreviewBundle\Resolver\PathResolver;
 
 
 /**
@@ -55,6 +57,13 @@ class News implements JsonSerializable
      * @ORM\Column(name="photo", type="string", nullable=true)
      */
     private $photo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photoUrl", type="string", nullable=true)
+     */
+    private $photoUrl;
 
 
     /**
@@ -133,7 +142,6 @@ class News implements JsonSerializable
     public function setContent($content)
     {
         $this->content = $content;
-
         return $this;
     }
 
@@ -189,9 +197,33 @@ class News implements JsonSerializable
         return [
             'title' => $this->title,
             'description' => $this->description,
-            'photo' => $this->photo,
+            'photoUrl' => $this->photoUrl,
             'created_at' => $this->createdAt,
             'slug' => $this->slug
         ];
+    }
+
+    /**
+     * Set photoUrl
+     *
+     * @param string $photoUrl
+     *
+     * @return News
+     */
+    public function setPhotoUrl($photoUrl)
+    {
+        $this->photoUrl = $photoUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get photoUrl
+     *
+     * @return string
+     */
+    public function getPhotoUrl()
+    {
+        return $this->photoUrl;
     }
 }
