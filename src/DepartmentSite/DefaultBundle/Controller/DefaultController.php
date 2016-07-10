@@ -14,12 +14,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction($_locale)
     {
 //        $em = $this->getDoctrine()->getManager();
 //        $news_list = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy(array(), array('id'=>'desc'), 5);
 //        $adver_list = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findBy(array(), array('id'=>'desc'), 5);
-        return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig');
+        return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig', array('_locale' => $_locale));
     }
     
     public function getAdvertsForMainPageAction()
@@ -40,18 +40,20 @@ class DefaultController extends Controller
         return new Response($serialized);
     }
 
-    public function getHeaderMenuAction()
+    public function getHeaderMenuAction($_locale)
     {
         $em = $this->getDoctrine()->getManager();
         $headerMenu = $em->getRepository('DepartmentSiteMenuBundle:HeaderMenu')->findall();
-        return $this->render('@DepartmentSiteDefault/layout/headerMenu.html.twig', array('menu' => $headerMenu));
+        return $this->render('@DepartmentSiteDefault/layout/headerMenu.html.twig', array('menu' => $headerMenu,
+            '_locale' => $_locale));
     }
 
-    public function getBannerMenuAction()
+    public function getBannerMenuAction($_locale)
     {
         $em = $this->getDoctrine()->getManager();
         $bannerMenu = $em->getRepository('DepartmentSiteMenuBundle:BannerMenu')->findall();
-        return $this->render('@DepartmentSiteDefault/layout/bannerMenu.html.twig', array('menu' => $bannerMenu));
+        return $this->render('@DepartmentSiteDefault/layout/bannerMenu.html.twig', array('menu' => $bannerMenu,
+            '_locale' => $_locale));
     }
 
 }

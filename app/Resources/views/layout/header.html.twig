@@ -11,11 +11,15 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="focus">
-                        <a href="#/">RUS | ENG</a>
+                        {% if _locale == 'en' %}
+                            <a href="#/">RUS</a>
+                        {% else %}
+                            <a href="#/">ENG</a>
+                        {% endif %}
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    {{ render(controller('DepartmentSiteDefaultBundle:Default:getHeaderMenu')) }}
+                    {{ render(controller('DepartmentSiteDefaultBundle:Default:getHeaderMenu', {'_locale' : _locale} )) }}
                 </ul>
             </div>
         </div>

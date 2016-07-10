@@ -32,14 +32,14 @@ class LoadBannerMenu implements FixtureInterface
 
 
         $bannerMenu3 = new BannerMenu();
-        $bannerMenu3->translate('en')->setTitle('To graduate');
+        $bannerMenu3->translate('en')->setTitle('For graduate');
         $bannerMenu3->translate('ru')->setTitle('Дипломникам');
         $bannerMenu3->setTitle($bannerMenu3->translate('en')->getTitle());
         $manager->persist($bannerMenu3);
         $bannerMenu3->mergeNewTranslations();
 
         $bannerMenu4 = new BannerMenu();
-        $bannerMenu4->translate('en')->setTitle('To parents');
+        $bannerMenu4->translate('en')->setTitle('For parents');
         $bannerMenu4->translate('ru')->setTitle('Родителям');
         $bannerMenu4->setTitle($bannerMenu4->translate('en')->getTitle());
         $manager->persist($bannerMenu4);

@@ -1,5 +1,5 @@
 <ul class="nav navbar-nav navbar-right">
     {% for menuItem in menu %}
-        <li><a ng-href='/page/{{ menuItem.getSlug() }}/show'>{{ menuItem.translate('en').getTitle }}</a></li>
+        <li><a ng-href='{{ _locale }}/{{ menuItem.getSlug() }}/show'>{{ menuItem.translate(_locale).getTitle() }}</a></li>
     {% endfor %}
 </ul>

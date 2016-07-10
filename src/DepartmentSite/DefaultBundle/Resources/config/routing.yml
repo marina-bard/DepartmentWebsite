@@ -1,3 +1,5 @@
 department_site_default_homepage:
-    path:     /
-    defaults: { _controller: DepartmentSiteDefaultBundle:Default:index }
+    path:     /{_locale}
+    defaults: { _controller: DepartmentSiteDefaultBundle:Default:index , _locale: ru}
+    requirements:
+        _locale: ru|en
