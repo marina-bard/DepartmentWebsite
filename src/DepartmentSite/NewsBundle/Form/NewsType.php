@@ -20,7 +20,7 @@ class NewsType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('content')
-            ->add('photo', ImagePreviewType::class, ['template' => 'DepartmentSiteNewsBundle:Preview:photo.preview.show.html.twig'])
+            ->add('photo', ImagePreviewType::class, ['data_class' => null])
         ;
     }
 
@@ -30,8 +30,7 @@ class NewsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'DepartmentSite\NewsBundle\Entity\News',
-            'template' => 'DepartmentSiteNewsBundle:Preview:photo.preview.show.html.twig'
+            'data_class' => 'DepartmentSite\NewsBundle\Entity\News'
         ));
     }
 }
