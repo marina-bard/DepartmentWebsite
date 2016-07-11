@@ -8,6 +8,9 @@ itm_image_preview:
         DepartmentSiteSlideShowBundle:
             SlideShow:
               image: {formats: [preview]}
+        DepartmentSiteGalleryBundle:
+                    Image:
+                      image: {formats: [preview]}
 
 itm_file_preview:
     upload_path: uploads
@@ -19,3 +22,6 @@ itm_file_preview:
         DepartmentSiteSlideShowBundle:
             SlideShow:
               image: {formats: [preview]}
+        DepartmentSiteGalleryBundle:
+                    Image:
+                      image: {formats: [preview]}
