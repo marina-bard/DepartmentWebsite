@@ -19,11 +19,11 @@ class AdvertController extends Controller
      * Lists all Advert entities.
      *
      */
-    public function indexAction()
+    public function indexAction($page)
     {
 //        $em = $this->getDoctrine()->getManager();
 //        $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findAll();
-        return $this->render('advert/index.html.twig');
+        return $this->render('advert/index.html.twig', array('page' => $page));
     }
     /**
      * Creates a new Advert entity.
@@ -109,6 +109,41 @@ class AdvertController extends Controller
             ;
     }
 
+    public function getAdvertsLengthAction() {
+        $sql_request = "SELECT COUNT(*) FROM Advert;";
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($sql_request);
+        $statement->execute();
+        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+
+        return new Response($temp);
+    }
+
+    public function  getAdvertsPaginationAction($page) {
+        $sql_request = "SELECT COUNT(*) FROM Advert;";
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($sql_request);
+        $statement->execute();
+        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+
+        return $this->render('layout/pagination.html.twig', array('listLength' => $temp, 'page' => $page));
+    }
+
+    public function getAdvertsAction($page) {
+        $adv_per_page = 10;
+        $sql_request = "SELECT * FROM Advert ORDER BY createdAt DESC LIMIT " . (($page-1)*$adv_per_page) . ", " . $adv_per_page;
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($sql_request);
+        $statement->execute();
+        $adverts = $statement->fetchAll();
+
+        $serialized = $this->container->get('serializer')->serialize($adverts, 'json');
+        return new Response($serialized);
+    }
+    
     public function getAllAction() {
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findAll();

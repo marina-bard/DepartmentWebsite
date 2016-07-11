@@ -70,7 +70,7 @@ var news_length;
     };
 
     function GetPager(totalItems, currentPage, pageSize) {
-        
+
       currentPage = currentPage || 1;
       pageSize = pageSize || itemsPerPage;
 

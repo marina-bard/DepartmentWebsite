@@ -1,5 +1,5 @@
 advert_index:
-    path:     /
+    path:     /{page}
     defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:index" }
     methods:  GET
 

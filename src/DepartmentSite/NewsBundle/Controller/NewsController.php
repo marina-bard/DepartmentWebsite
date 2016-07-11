@@ -186,7 +186,7 @@ class NewsController extends Controller
     
     public function getNewsAction($page) {
         $news_per_page = 10;
-        $sql_request = "SELECT * FROM News LIMIT " . (($page-1)*$news_per_page) . ", " . $news_per_page;
+        $sql_request = "SELECT * FROM News ORDER BY createdAt DESC LIMIT " . (($page-1)*$news_per_page) . ", " . $news_per_page;
         $em = $this->getDoctrine()->getEntityManager();
         $connection = $em->getConnection();
         $statement = $connection->prepare($sql_request);
