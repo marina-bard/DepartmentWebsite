@@ -51,7 +51,7 @@ services:
               arguments: [~, DepartmentSite\GalleryBundle\Entity\Image, ~]
               calls:
                    - [ setTranslationDomain, [DepartmentSiteGalleryBundle]]
-             - [ setTranslationDomain, [DepartmentSiteDictionaryBundle]]
+            
 
   admin.banner.menu:
           class: DepartmentSite\MenuBundle\Admin\BannerMenuAdmin
