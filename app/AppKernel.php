@@ -46,6 +46,8 @@ class AppKernel extends Kernel
             new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
             new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
             new DepartmentSite\PageBundle\DepartmentSitePageBundle(),
+
+            new DepartmentSite\GalleryBundle\DepartmentSiteGalleryBundle(),
             new DepartmentSite\MenuBundle\DepartmentSiteMenuBundle(),
             new DepartmentSite\SlideShowBundle\DepartmentSiteSlideShowBundle(),
         ];
