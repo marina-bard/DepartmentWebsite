@@ -1,0 +1,24 @@
+slideshow_index:
+    path:     /
+    defaults: { _controller: "DepartmentSiteSlideShowBundle:SlideShow:index" }
+    methods:  GET
+
+slideshow_show:
+    path:     /{id}/show
+    defaults: { _controller: "DepartmentSiteSlideShowBundle:SlideShow:show" }
+    methods:  GET
+
+slideshow_new:
+    path:     /new
+    defaults: { _controller: "DepartmentSiteSlideShowBundle:SlideShow:new" }
+    methods:  [GET, POST]
+
+slideshow_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DepartmentSiteSlideShowBundle:SlideShow:edit" }
+    methods:  [GET, POST]
+
+slideshow_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DepartmentSiteSlideShowBundle:SlideShow:delete" }
+    methods:  DELETE

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="Banner Menu">
+                    <source>Banner Menu</source>
+                    <target>Баннер меню</target>
+            </trans-unit>
+            <trans-unit id="Header Menu">
+                        <source>Header Menu</source>
+                        <target>Главное меню</target>
+            </trans-unit>
+            <trans-unit id="Title">
+                     <source>Title</source>
+                     <target>Заголовок</target>
+            </trans-unit>
+            <trans-unit id="Banner Menu List">
+                        <source>Banner Menu List</source>
+                        <target>Список элементов меню</target>
+            </trans-unit>
+            <trans-unit id="Header Menu List">
+                        <source>Header Menu List</source>
+                        <target>Список элементов меню</target>
+            </trans-unit>
+            <trans-unit id="Created At">
+                        <source>Created At</source>
+                        <target>Дата создания</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -16,7 +16,7 @@ var news_length;
     $scope.numberOfPages = function() {
       return Math.ceil(news_length / $scope.pageSize);
     };
-
+    
     function setPage(page) {
       if (page < 1 || page > $scope.numberOfPages()) {
         return;

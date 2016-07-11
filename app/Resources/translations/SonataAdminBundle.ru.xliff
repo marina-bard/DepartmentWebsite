@@ -18,9 +18,25 @@
                       <source>Dashboard</source>
                       <target>Приборная панель</target>
             </trans-unit>
+            <trans-unit id="Gallery">
+                       <source>Gallery</source>
+                       <target>Галерея</target>
+            </trans-unit>
             <trans-unit id="Dictionary">
                        <source>Dictionary</source>
                        <target>Словарь</target>
+            </trans-unit>
+            <trans-unit id="Slide Show">
+                       <source>Slide Show</source>
+                       <target>Слайд-шоу</target>
+            </trans-unit>
+            <trans-unit id="Banner Menu">
+                       <source>Banner Menu</source>
+                       <target>Баннер меню</target>
+            </trans-unit>
+            <trans-unit id="Header Menu">
+                       <source>Header Menu</source>
+                       <target>Главное меню</target>
             </trans-unit>
 
         </body>

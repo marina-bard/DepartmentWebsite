@@ -2,9 +2,9 @@
 
 {% block body %}
 <div ng-controller="OneAdvertCtrl">
-    <script type="text/javascript">
-        data = '{{ render(controller('DepartmentSiteAdvertBundle:Advert:getOne', {'id' : advert.id})) }}';
-    </script>
+    {#<script type="text/javascript">#}
+        {#data = '{{ render(controller('DepartmentSiteAdvertBundle:Advert:getOne', {'id' : advert.id})) }}';#}
+    {#</script>#}
 
     <div class="container">
         <div class="row">
@@ -18,11 +18,11 @@
                     <div class="v-separator"></div>
                     <a ng-href="#/announcements/page">К предыдущему</a>
                 </div>
-                <i class="news-time">{{'{{ advert.created_at | date}}'}}</i>
-                <div class="post-title-inside-post">{{'{{ advert.title }}'}}</div>
-                {#<div class="post-content-inside post-content >#}
-                    <div ng-bind-html="advert.content | toHTML"></div>
-                {#</div>#}
+                <i class="news-time">{{ advert.createdAt.date | date('d.m.Y')}}</i>
+                <div class="post-title-inside-post">{{ advert.title }}</div>
+                <div class="post-content-inside post-content >
+                    {{ advert.content | raw }}
+                </div>
             </div>
         </div>
     </div>

@@ -12,6 +12,7 @@ var adverts_length;
       return Math.ceil(adverts_length / $scope.pageSize);
     };
 
+
     function setPage(page) {
       if (page < 1 || page > $scope.numberOfPages()) {
         return;

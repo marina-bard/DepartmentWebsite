@@ -10,6 +10,9 @@ use DepartmentSite\NewsBundle\Entity\News;
 use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use ITM\ImagePreviewBundle\Resolver\PathResolver;
+
 
 
 /**
@@ -29,11 +32,12 @@ class NewsController extends Controller
      */
     public function indexAction($page)
     {
-        // $em = $this->getDoctrine()->getManager();
-        // $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+        //$em = $this->getDoctrine()->getManager();
+        //$news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
 
         return $this->render('news/news.html.twig', array('page' => $page));
+
     }
 
     /**
@@ -80,7 +84,11 @@ class NewsController extends Controller
     {
         $deleteForm = $this->createDeleteForm($news);
 
+//        $resolver = new PathResolver(null);
+//        $url = $resolver->getUrl($news, $news->getPhoto());
+
         return $this->render('news/show.html.twig', array(
+//            'url' => $url,
             'news' => $news,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -154,6 +162,14 @@ class NewsController extends Controller
         ;
     }
 
+//    public function escapeChars($value)
+//    {
+//        $escaper = array("\"");
+//        $replacements = array("\\\\");
+//        $result = str_replace($escaper, $replacements, $value);
+//        return $result;
+//    }
+
     public function getAllAction() {
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
@@ -172,6 +188,7 @@ class NewsController extends Controller
         
         return new Response($temp);
     }
+
 
     public function  getNewsPaginationAction($page) {
         $sql_request = "SELECT COUNT(*) FROM News;";
@@ -203,4 +220,5 @@ class NewsController extends Controller
         $serialized = $this->container->get('serializer')->serialize($news, 'json');
         return new Response($serialized);
     }
+
 }

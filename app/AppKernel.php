@@ -33,6 +33,11 @@ class AppKernel extends Kernel
 
             new JMS\SerializerBundle\JMSSerializerBundle(),
 
+            new Liip\ImagineBundle\LiipImagineBundle(),
+
+            new ITM\FilePreviewBundle\ITMFilePreviewBundle(),
+            new ITM\ImagePreviewBundle\ITMImagePreviewBundle(),
+
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
             new Application\FOS\UserBundle\ApplicationFOSUserBundle(),
 
@@ -41,7 +46,10 @@ class AppKernel extends Kernel
             new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
             new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
             new DepartmentSite\PageBundle\DepartmentSitePageBundle(),
+
+            new DepartmentSite\GalleryBundle\DepartmentSiteGalleryBundle(),
             new DepartmentSite\MenuBundle\DepartmentSiteMenuBundle(),
+            new DepartmentSite\SlideShowBundle\DepartmentSiteSlideShowBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

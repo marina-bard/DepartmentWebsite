@@ -21,14 +21,21 @@ class DefaultController extends Controller
 //        $adver_list = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findBy(array(), array('id'=>'desc'), 5);
         return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig');
     }
+
+    public function escapeChars($value)
+    {
+        $escaper = array("\"");
+        $replacements = array("\\\\");
+        $result = str_replace($escaper, $replacements, $value);
+        return $result;
+    }
     
     public function getAdvertsForMainPageAction()
     {
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findBy(array(), array('id'=>'desc'), 6);
 
-        $serialized = $this->container->get('serializer')->serialize($adverts, 'json');
-        return new Response($serialized);
+        return new Response($this->escapeChars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     public function getNewsForMainPageAction()
@@ -36,8 +43,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy(array(), array('id'=>'desc'), 4);
 
-        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-        return new Response($serialized);
+        return new Response($this->escapeChars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     public function getHeaderMenuAction()

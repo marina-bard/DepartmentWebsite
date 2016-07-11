@@ -6,13 +6,18 @@ imports:
     - { resource: sonata/fos_config.yml }
     - { resource: ivory/ivory_config.yml }
     - { resource: elfinder/elfinder_config.yml }
+    - { resource: liip/liip_config.yml }
+    - { resource: itm/itm_config.yml }
     - { resource: "@DepartmentSiteNewsBundle/Resources/config/services.yml" }
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
     - { resource: "@DepartmentSiteAdvertBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSitePageBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSiteDictionaryBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSiteDefaultBundle/Resources/config/services.yml" }
+    - { resource: "@DepartmentSiteGalleryBundle/Resources/config/services.yml" }
     - { resource: "@DepartmentSiteMenuBundle/Resources/config/services.yml" }
+    - { resource: "@DepartmentSiteSlideShowBundle/Resources/config/services.yml" }
+
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -34,7 +39,10 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
-
+        form:
+          resources:
+            - 'ITMFilePreviewBundle:Form:fields.html.twig'
+            - 'ITMImagePreviewBundle:Form:fields.html.twig'
     default_locale:  ru
     trusted_hosts:   ~
     trusted_proxies: ~
