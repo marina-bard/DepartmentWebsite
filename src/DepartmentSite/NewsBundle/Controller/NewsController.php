@@ -31,10 +31,13 @@ class NewsController extends Controller
      */
     public function indexAction()
     {
-         $em = $this->getDoctrine()->getManager();
-         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
-
+        foreach($news as $oneNews) {
+            $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
+            $oneNews->setPhotoUrl($url);
+        }
         return $this->render('news/news.html.twig', array(
             'news' => $news,
         ));
