@@ -41,12 +41,7 @@ class Image
     private $image;
 
 
-    /**
-     * @return string - object's string representation
-     */
-    public function __toString() {
-        return  $this->getImage() ? : '-';
-    }
+
 
 
 
@@ -69,7 +64,7 @@ class Image
     /**
      * Set image
      *
-     * @param \DepartmentSite\GalleryBundle\Entity\Gallery $image
+     * @param string $image
      *
      * @return Image
      */
@@ -82,7 +77,7 @@ class Image
     /**
      * Get image
      *
-     * @return \DepartmentSite\GalleryBundle\Entity\Gallery
+     * @return string
      */
     public function getImage()
     {

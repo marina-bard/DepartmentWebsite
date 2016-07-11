@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use ITM\ImagePreviewBundle\Form\Type\ImagePreviewType;
 
 class ImageAdmin extends Admin
 {
@@ -14,10 +15,9 @@ class ImageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-//            ->add('gallery', 'entity', array(
-//                'class'    => 'DepartmentSite\GalleryBundle\Entity\Gallery'))
             ->add('gallery', 'sonata_type_model_list', array())
-            ->add('image', 'text')
+            ->add('image', ImagePreviewType::class, ['data_class' => null])
+
         ;
     }
 
@@ -25,7 +25,7 @@ class ImageAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('image')
+            ->add('image' )
         ;
     }
 
@@ -35,7 +35,13 @@ class ImageAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('image')
+            ->add('image', 'string', ['template' => 'DepartmentSiteGalleryBundle:Admin:list__image.html.twig'] )
+            ->add('_action', null, array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )))
         ;
     }
 
