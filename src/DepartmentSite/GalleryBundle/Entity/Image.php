@@ -45,7 +45,7 @@ class Image
      * @return string - object's string representation
      */
     public function __toString() {
-        return $this->getTitle() ? : '-';
+        return  $this->getImage() ? : '-';
     }
 
 
@@ -53,7 +53,7 @@ class Image
 
     public function getSluggableFields()
     {
-        return [ 'title' ];
+        return [ 'image' ];
     }
 
     /**
@@ -73,10 +73,9 @@ class Image
      *
      * @return Image
      */
-    public function setImage(\DepartmentSite\GalleryBundle\Entity\Gallery $image = null)
+    public function setImage( $image = null)
     {
         $this->image = $image;
-
         return $this;
     }
 
