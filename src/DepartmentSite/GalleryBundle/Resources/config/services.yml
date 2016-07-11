@@ -1,0 +1,4 @@
+services:
+#    department_site_gallery.example:
+#        class: DepartmentSite\GalleryBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
