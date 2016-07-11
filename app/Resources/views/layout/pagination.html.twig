@@ -1,19 +1,25 @@
-<div class="row pagination-box">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6">
-        <div class="pagination" ng-show="$parent.listLength &gt; $parent.pageSize">
-            <div class="pagination-control">
-                <div class="page-controls-back" ng-click="$parent.curPage = $parent.curPage - 1" ng-disabled="$parent.curPage == 0">
-                    <div class="page-controls-arrow"></div>
-                    <div class="page-controls-text">назад</div>
-                </div>
-                <div class="pagination-num" ng-click="$parent.curPage = $index + 1" ng-repeat="num in range(numberOfPages()) track by $index">{{ $index + 1 }}</div>
-                <div class="page-controls-forward" ng-click="$parent.curPage = $parent.curPage + 1" ng-disabled="$parent.curPage &gt;= $parent.listLength/$parent.pageSize - 1">
-                    <div class="page-controls-text">вперед</div>
-                    <div class="page-controls-arrow"></div>
+<div ng-init="curPage='{{ page }}';">
+    <i ng-show="false">{{  '{{ setPage( curPage ); }}'  }}</i>
+    <div class="container">
+        <div class="row pagination-box">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="pagination" ng-show="'{{ listLength }}' > pageSize">
+                    <div class="pagination-control">
+                        <a class="page-controls-back" ng-href="{{ '{{ pager.currentPage - 1 }}' }}" ng-show="hasPrevious()">
+                            <div class="page-controls-arrow"></div>
+                            <div class="page-controls-text">назад</div>
+                        </a>
+                        <div ng-repeat="page in pager.pages">
+                            <a ng-href="{{ '{{ page }}' }}" ng-click="setPage(page)" class="pagination-num " ng-class="(pager.currentPage === page || curPage == page) ? 'pagination-active' : ''">{{ '{{ page }}' }}</a>
+                        </div>
+                        <a class="page-controls-forward" ng-href="{{ '{{ +pager.currentPage + 1 }}' }}" ng-show="hasNext()">
+                            <div class="page-controls-text">вперед</div>
+                            <div class="page-controls-arrow"></div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3"></div>
 </div>

@@ -1,7 +1,9 @@
 news_index:
-    path:     /
+    path:     /{page}
     defaults: { _controller: "DepartmentSiteNewsBundle:News:index" }
     methods:  GET
+    requirements:
+            page:  \d
 
 news_show:
     path:     /{slug}/show

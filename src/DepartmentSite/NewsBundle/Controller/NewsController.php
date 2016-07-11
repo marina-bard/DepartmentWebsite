@@ -11,6 +11,7 @@ use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+
 /**
  * News controller.
  *
@@ -26,13 +27,13 @@ class NewsController extends Controller
      * )
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($page)
     {
         // $em = $this->getDoctrine()->getManager();
         // $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
 
-        return $this->render('news/news.html.twig');
+        return $this->render('news/news.html.twig', array('page' => $page));
     }
 
     /**
@@ -157,13 +158,45 @@ class NewsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
-         $serialized = $this->container->get('serializer')->serialize($news, 'json');
-         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-         return new Response($serialized);
-      //  return new JsonResponse($news);
-
+        $serialized = $this->container->get('serializer')->serialize($news, 'json');
+        return new Response($serialized);
+    }
+    
+    public function getNewsLengthAction() {
+        $sql_request = "SELECT COUNT(*) FROM News;";
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($sql_request);
+        $statement->execute();
+        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+        
+        return new Response($temp);
     }
 
+    public function  getNewsPaginationAction($page) {
+        $sql_request = "SELECT COUNT(*) FROM News;";
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($sql_request);
+        $statement->execute();
+        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+
+        return $this->render('layout/pagination.html.twig', array('listLength' => $temp, 'page' => $page));
+    }
+    
+    public function getNewsAction($page) {
+        $news_per_page = 10;
+        $sql_request = "SELECT * FROM News LIMIT " . (($page-1)*$news_per_page) . ", " . $news_per_page;
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($sql_request);
+        $statement->execute();
+        $news = $statement->fetchAll();
+
+        $serialized = $this->container->get('serializer')->serialize($news, 'json');
+        return new Response($serialized);
+    }
+    
     public function getOneAction($id) {
       $em = $this->getDoctrine()->getManager();
       $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
