@@ -22,6 +22,10 @@
                        <source>Dictionary</source>
                        <target>Словарь</target>
             </trans-unit>
+            <trans-unit id="Slide Show">
+                       <source>Slide Show</source>
+                       <target>Слайд-шоу</target>
+            </trans-unit>
 
         </body>
     </file>
