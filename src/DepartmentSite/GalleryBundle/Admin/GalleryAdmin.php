@@ -15,14 +15,7 @@ class GalleryAdmin extends Admin
     {
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
-            ->add('description', 'text', array('label' => 'Description'))
-//            ->add('images', 'sonata_type_collection', array('required' => false,
-//                'by_reference' => false
-//            ), array(
-//                'edit' => 'inline',
-//                'sortable' => 'id',
-//            ))
-        ;
+            ->add('description', 'text', array('label' => 'Description'));
         ;
     }
 
