@@ -1,3 +1,7 @@
+department_site_slide_show:
+    resource: "@DepartmentSiteSlideShowBundle/Resources/config/routing.yml"
+    prefix:   /
+
 department_site_page:
     resource: "@DepartmentSitePageBundle/Resources/config/routing.yml"
 
