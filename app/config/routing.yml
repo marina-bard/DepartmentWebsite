@@ -1,3 +1,11 @@
+
+department_site_gallery:
+    resource: "@DepartmentSiteGalleryBundle/Resources/config/routing.yml"
+
+department_site_slide_show:
+    resource: "@DepartmentSiteSlideShowBundle/Resources/config/routing.yml"
+    prefix:   /
+
 department_site_page:
     resource: "@DepartmentSitePageBundle/Resources/config/routing.yml"
 
@@ -32,13 +40,8 @@ _sonata_admin:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
-gallery:
-    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
-    prefix: /media/gallery
-
-media:
-    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
-    prefix: /media
-
 elfinder:
      resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

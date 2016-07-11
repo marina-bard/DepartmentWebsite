@@ -16,7 +16,9 @@
 /web/bundles/
 /web/photo/
 /web/uploads/
+/web/media/
 /.idea/
 /src/DepartmentSite/NewsBundle/Resources/public/fonts
 /app/config/parameters.yml~
 /composer.lock
+/

@@ -10,6 +10,9 @@ use DepartmentSite\NewsBundle\Entity\News;
 use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use ITM\ImagePreviewBundle\Resolver\PathResolver;
+
 
 /**
  * News controller.
@@ -28,11 +31,16 @@ class NewsController extends Controller
      */
     public function indexAction()
     {
-        // $em = $this->getDoctrine()->getManager();
-        // $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
-
-        return $this->render('news/news.html.twig');
+        foreach($news as $oneNews) {
+            $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
+            $oneNews->setPhotoUrl($url);
+        }
+        return $this->render('news/news.html.twig', array(
+            'news' => $news,
+        ));
     }
 
     /**
@@ -79,7 +87,11 @@ class NewsController extends Controller
     {
         $deleteForm = $this->createDeleteForm($news);
 
+//        $resolver = new PathResolver(null);
+//        $url = $resolver->getUrl($news, $news->getPhoto());
+
         return $this->render('news/show.html.twig', array(
+//            'url' => $url,
             'news' => $news,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -153,21 +165,24 @@ class NewsController extends Controller
         ;
     }
 
+//    public function escapeChars($value)
+//    {
+//        $escaper = array("\"");
+//        $replacements = array("\\\\");
+//        $result = str_replace($escaper, $replacements, $value);
+//        return $result;
+//    }
+
     public function getAllAction() {
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-
-         $serialized = $this->container->get('serializer')->serialize($news, 'json');
-         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-         return new Response($serialized);
-      //  return new JsonResponse($news);
+        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
 
     }
 
-    public function getOneAction($id) {
-      $em = $this->getDoctrine()->getManager();
-      $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
-        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-        return new Response($serialized);
-    }
+//    public function getOneAction($id) {
+//        $em = $this->getDoctrine()->getManager();
+//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
+//        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
+//    }
 }
