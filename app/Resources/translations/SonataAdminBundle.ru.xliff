@@ -26,6 +26,14 @@
                        <source>Slide Show</source>
                        <target>Слайд-шоу</target>
             </trans-unit>
+            <trans-unit id="Banner Menu">
+                       <source>Banner Menu</source>
+                       <target>Баннер меню</target>
+            </trans-unit>
+            <trans-unit id="Header Menu">
+                       <source>Header Menu</source>
+                       <target>Главное меню</target>
+            </trans-unit>
 
         </body>
     </file>
