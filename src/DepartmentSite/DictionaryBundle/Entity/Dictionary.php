@@ -2,30 +2,40 @@
 
 namespace DepartmentSite\DictionaryBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+
 /**
  * Dictionary
+ *
+ * @ORM\Table(name="Dictionary")
+ * @ORM\Entity(repositoryClass="DepartmentSite\DictionaryBundle\Repository\DictionaryRepository")
  */
 class Dictionary
 {
+    use ORMBehaviors\Translatable\Translatable;
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=255, unique=true)
      */
     private $code;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true, unique=true)
      */
     private $title;
-
-    /**
-     * @var string
-     */
-    private $value;
 
 
     /**
@@ -84,30 +94,6 @@ class Dictionary
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set value
-     *
-     * @param string $value
-     *
-     * @return Dictionary
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * Get value
-     *
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->value;
     }
 }
 

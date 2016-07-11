@@ -20,7 +20,6 @@ class BannerMenuAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', 'text', array('label' => 'Title'))
             ->add('translations', TranslationsType::class )
         ;
     }

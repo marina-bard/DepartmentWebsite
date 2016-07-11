@@ -15,8 +15,9 @@
                     <div class="row">
                         <div class="col-md-8 announce-cards">
                             <div class="row">
-                                <div class="section-title"><span>Объявления</span>
-                                    <div class="v-separator"></div><a ng-href="{{ path('advert_index') }}">Все объявления</a>
+                                <div class="section-title"><span>{{ 'advert' | DICTIONARY(_locale) }}</span>
+                                    <div class="v-separator"></div><a ng-href="{{ path('advert_index') }}">
+                                        {{ 'all_advert' | DICTIONARY(_locale) }}</a>
                                 </div>
                             </div>
                             <div  ng-if="$index % 2 == 0" ng-repeat="advert in adverts | orderBy: &#39;id&#39;">
@@ -47,8 +48,9 @@
             <div class="news">
                 <div class="container">
                     <div class="row">
-                        <div class="section-title"><span>Новости кафедры</span>
-                            <div class="v-separator"></div><a ng-href="{{ path('news_index') }}">Все новости</a></div>
+                        <div class="section-title"><span>{{ 'news' | DICTIONARY(_locale) }}</span>
+                            <div class="v-separator"></div><a ng-href="{{ path('news_index') }}">
+                                {{ 'all_news' | DICTIONARY(_locale) }}</a></div>
                     </div>
                     <div class="row" ng-if="$index % 2 == 0" ng-repeat="oneNews in news | orderBy: &#39;id&#39;">
                         <div class="col-md-6 news-column">

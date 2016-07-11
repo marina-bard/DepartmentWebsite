@@ -8,13 +8,12 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 /**
  * DictionaryTranslation
  *
- * @ORM\Table(name="dictionary_translation")
+ * @ORM\Table(name="Dictionary_translation")
  * @ORM\Entity(repositoryClass="DepartmentSite\DictionaryBundle\Repository\DictionaryTranslationRepository")
  */
 class DictionaryTranslation
 {
     use ORMBehaviors\Translatable\Translation;
-
     /**
      * @var string
      *

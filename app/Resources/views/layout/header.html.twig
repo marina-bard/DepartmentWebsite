@@ -12,9 +12,9 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li class="focus">
                         {% if _locale == 'en' %}
-                            <a href="#/">RUS</a>
+                            <a href="{{ path('department_site_default_homepage', {'_locale': 'ru'}) }}">RUS</a>
                         {% else %}
-                            <a href="#/">ENG</a>
+                            <a href="{{ path('department_site_default_homepage', {'_locale': 'en'}) }}">ENG</a>
                         {% endif %}
                     </li>
                 </ul>

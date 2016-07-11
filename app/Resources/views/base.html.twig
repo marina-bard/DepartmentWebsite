@@ -58,6 +58,6 @@
 
 	</body>
 	  {% block footer %}
-	      {% include ':layout:footer.html.twig' %}
+	      {% include ':layout:footer.html.twig' with {'_locale': _locale} %}
 	  {% endblock %}
 </html>
