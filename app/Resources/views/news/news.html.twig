@@ -8,7 +8,10 @@
 <div ng-controller="NewsCtrl">
     <script type="text/javascript">
          data = '{{ render(controller('DepartmentSiteNewsBundle:News:getAll')) }}';
+        console.log(data);
     </script>
+
+
 
   <div class="news" style="background-color: #fff;">
       <div class="container">
@@ -17,16 +20,18 @@
                   <div class="section-title"><span>Новости кафедры</span></div>
               </div>
           </div>
-          <div class="row" ng-if="$index % 2 == 0" ng-repeat="oneNews in news | orderBy: &#39;-id&#39;">
+          <div class="row" ng-if="$index % 2 == 0" ng-repeat="oneNews in news">
               <div class="col-md-6 news-column">
-                  <a ng-href="/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index].photo.path}}'}}" /></a>
-                  <div class="news-item-date">{{'{{news[$index].created_at | date}}'}}</div>
+                  <a ng-href="/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index].photoUrl}}'}}" /></a>
+                  {#<a ng-href="/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index].photoUrl}}' | imagine_filter('preview')}}" /></a>#}
+                  <div class="news-item-date">{{'{{news[$index].created_at.date | date}}'}}</div>
                   <br /><a class="news-item-title" ng-href="/news/{{'{{news[$index].slug}}'}}/show">{{'{{ news[$index].title }}'}}</a>
                   <div class="news-item-lead">{{'{{ news[$index].description}}'}}</div>
               </div>
               <div class="col-md-6 news-column2" ng-if="news[$index + 1]">
-                  <a ng-href="/news/{{'{{news[$index+1].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index + 1].photo.path}}'}}" /></a>
-                  <div class="news-item-date">{{'{{news[$index + 1].created_at | date}}'}}</div>
+                  <a ng-href="/news/{{'{{news[$index+1].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index + 1].photoUrl}}'}}" /></a>
+                  {#<a ng-href="/news/{{'{{news[$index+1].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index + 1].photoUrl}}' | imagine_filter('preview')}}" /></a>#}
+                  <div class="news-item-date">{{'{{news[$index + 1].created_at.date | date}}'}}</div>
                   <br /><a class="news-item-title" ng-href="/news/{{'{{news[$index+1].slug}}'}}/show">{{'{{ news[$index + 1].title }}'}}</a>
                   <div class="news-item-lead">{{'{{ news[$index + 1].description}}'}}</div>
               </div>

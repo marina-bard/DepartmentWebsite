@@ -6,7 +6,11 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use ITM\FilePreviewBundle\Form\Type\FilePreviewType;
+use ITM\ImagePreviewBundle\Form\Type\ImagePreviewType;
+use Symfony\Component\HttpFoundation\File\File;
 
 class NewsAdmin extends Admin
 {
@@ -17,12 +21,7 @@ class NewsAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
-            ->add('photo', 'sonata_media_type', array(
-                'provider' => 'sonata.media.provider.image',
-                'context' => 'news'
-            ))
-//            ->add('photo', 'sonata_type_model_list', array(), array(
-//                'link_parameters' => array('context' => 'news')))
+             ->add('photo', ImagePreviewType::class, ['data_class' => null])
         ;
     }
 
@@ -40,6 +39,26 @@ class NewsAdmin extends Admin
         $listMapper
             ->addIdentifier('title')
             ->add('createdAt')
+            ->add('photo', 'string', ['template' => 'DepartmentSiteNewsBundle:Admin:list__photo.html.twig'] )
+            ->add('_action', null, array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
+
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('title')
+            ->add('createdAt')
+            ->add('description')
+            ->add('content')
+            ->add('photo')
+        ;
+    }
+
 }
