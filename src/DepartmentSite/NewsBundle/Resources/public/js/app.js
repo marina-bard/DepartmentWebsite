@@ -1,7 +1,6 @@
 //alert("app.js");
 (function() {
   'use strict';
-  //$route = Routing.generate('news_index');
   angular.module('bsuir-ecm', ['ngAnimate', 'ngAria', 'ngCookies', 'ngMessages', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch']).config(function($routeProvider) {
     return $routeProvider.when('/', {
       templateUrl: 'DepartmentSiteDefaultBundle:Default:index',
@@ -31,6 +30,8 @@
       redirectTo: '/'
     });
   });
+  
+  
 }).call(this);
 
 //# sourceMappingURL=app.js.map

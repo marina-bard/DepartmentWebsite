@@ -1,14 +1,10 @@
 {% extends 'base.html.twig' %}
-{#{% block body %}#}
-{#<div ng-controller="NewsCtrl">#}
-{#<div class="container">#}
-
 
 {% block body %}
 <div ng-controller="NewsCtrl">
     <script type="text/javascript">
-         data = '{{ render(controller('DepartmentSiteNewsBundle:News:getAll')) }}';
-        console.log(data);
+         data = '{{ render(controller('DepartmentSiteNewsBundle:News:getNews', { 'page': page })) }}';
+         news_length = '{{ render(controller('DepartmentSiteNewsBundle:News:getNewsLength')) }}';
     </script>
 
 
@@ -20,25 +16,21 @@
                   <div class="section-title"><span>Новости кафедры</span></div>
               </div>
           </div>
-          <div class="row" ng-if="$index % 2 == 0" ng-repeat="oneNews in news">
-              <div class="col-md-6 news-column">
-                  <a ng-href="/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index].photoUrl}}'}}" /></a>
-                  {#<a ng-href="/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index].photoUrl}}' | imagine_filter('preview')}}" /></a>#}
-                  <div class="news-item-date">{{'{{news[$index].created_at.date | date}}'}}</div>
-                  <br /><a class="news-item-title" ng-href="/news/{{'{{news[$index].slug}}'}}/show">{{'{{ news[$index].title }}'}}</a>
-                  <div class="news-item-lead">{{'{{ news[$index].description}}'}}</div>
-              </div>
-              <div class="col-md-6 news-column2" ng-if="news[$index + 1]">
-                  <a ng-href="/news/{{'{{news[$index+1].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index + 1].photoUrl}}'}}" /></a>
-                  {#<a ng-href="/news/{{'{{news[$index+1].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{news[$index + 1].photoUrl}}' | imagine_filter('preview')}}" /></a>#}
-                  <div class="news-item-date">{{'{{news[$index + 1].created_at.date | date}}'}}</div>
-                  <br /><a class="news-item-title" ng-href="/news/{{'{{news[$index+1].slug}}'}}/show">{{'{{ news[$index + 1].title }}'}}</a>
-                  <div class="news-item-lead">{{'{{ news[$index + 1].description}}'}}</div>
+
+
+          <div ng-repeat="oneNews in news">
+              <div ng-class="($index % 2 !== 0) ? 'row' : ''">
+                  <div ng-class="($index % 2 === 0) ? 'col-md-6 news-column' : 'col-md-6 news-column2'">
+                      <a ng-href="/news/{{'{{oneNews.slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{oneNews.photo.path}}'}}" /></a>
+                      <div class="news-item-date">{{'{{oneNews.created_at | date}}'}}</div>
+                      <br /><a class="news-item-title" ng-href="/news/{{'{{oneNews.slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
+                      <div class="news-item-lead">{{'{{ oneNews.description }}'}}</div>
+                  </div>
               </div>
           </div>
       </div>
   </div>
-    </div>
-    {#<div ng-include="&#39;layout/pagination.html&#39;"></div>#}
-    {#{% include ':layout:pagination.html.twig' %}#}
+    {{ render(controller('DepartmentSiteNewsBundle:News:getNewsPagination', {'page': page})) }}
+    {#{% include ':layout:pagination.html.twig' with {'listLength':  listLength} %}#}
+</div>
 {% endblock %}

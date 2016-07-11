@@ -9083,17 +9083,26 @@ button.close {
   color: #fdd400;
   border-top: 3px solid #fdd400;
 }
+.pagination-active {
+  color: #fdd400;
+  border-top: 3px solid #fdd400;
+}
+
 /* line 49, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control {
   display: -moz-inline-box;
+  display: -webkit-inline-box;
   width: 50%;
 }
 /* line 53, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control .page-controls-forward {
-  display: inherit;
+  display: -webkit-box;
+  display: -moz-box;
   outline: 0;
   margin-left: 20px;
   margin-right: 20px;
+  position: absolute;
+  right: 0;
 }
 /* line 59, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control .page-controls-forward:hover .page-controls-arrow {
@@ -9110,10 +9119,13 @@ button.close {
 }
 /* line 74, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control .page-controls-back {
-  display: inherit;
+  display: -moz-box;
+  display: -webkit-box;
   outline: 0;
   margin-left: 20px;
   margin-right: 20px;
+  position: absolute;
+  left: 0;
 }
 /* line 80, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control .page-controls-back:hover .page-controls-arrow {
