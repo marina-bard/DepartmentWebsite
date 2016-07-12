@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class GalleryAdmin extends Admin
@@ -32,7 +33,27 @@ class GalleryAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
+            ->add('images' )
+            ->add('_action', null, array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )))
         ;
+        ;
+    }
+
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+
+        $showMapper
+
+            ->add('title', 'text', array('label' => 'Title'))
+            ->add('description', 'text', array('label' => 'Description'))
+            ->add('images',  null)
+        ;
+
     }
 
 }

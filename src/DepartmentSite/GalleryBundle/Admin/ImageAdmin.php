@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+
 use ITM\ImagePreviewBundle\Form\Type\ImagePreviewType;
 
 class ImageAdmin extends Admin
@@ -17,6 +18,7 @@ class ImageAdmin extends Admin
         $formMapper
             ->add('gallery', 'sonata_type_model_list', array())
             ->add('image', ImagePreviewType::class, ['data_class' => null])
+
 
         ;
     }
@@ -44,6 +46,8 @@ class ImageAdmin extends Admin
                 )))
         ;
     }
+
+
 
 
 }

@@ -5,7 +5,7 @@ namespace DepartmentSite\GalleryBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Sonata\MediaBundle\Model\MediaInterface;
+
 
 /**
  * Image
@@ -42,7 +42,12 @@ class Image
 
 
 
-
+    /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getImage() ? : '-';
+    }
 
 
 
