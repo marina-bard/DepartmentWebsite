@@ -96,6 +96,16 @@
     transform: rotate(0deg);
 }
 
+.margin-b-2 {
+    margin-bottom: 2em;
+}
+
+.thumbnail {
+    margin-bottom: 5px;
+    border: none;
+    padding: 10px;
+}
+
 @media (max-width: 768px) {
     /* line 103, ../../app/styles/gallery.scss */
     #gallery .item {

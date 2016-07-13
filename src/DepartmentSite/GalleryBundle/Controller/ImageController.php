@@ -127,7 +127,7 @@ class ImageController extends Controller
         ;
     }
 
-    public function getAllAction($galleryTitle = 'jhgfdsa')
+    public function getAllAction($galleryTitle = "gallery")
     {
         $em = $this->getDoctrine()->getManager();
         $gallery = $em->getRepository('DepartmentSiteGalleryBundle:Gallery')->findOneBy(['title' => $galleryTitle]);

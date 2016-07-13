@@ -4,10 +4,10 @@ var news_index = 0;
 (function() {
   'use strict';
   angular.module('bsuir-ecm').controller('OneAdvertCtrl', function($scope, $http) {
-      data = data.replace(/\"/g, "\'");
-      data = data.replace(/\\/g, "\"");
-      console.log(data);
-      $scope.advert = JSON.parse(data);
+      // data = data.replace(/\"/g, "\'");
+      // data = data.replace(/\\/g, "\"");
+      // console.log(data);
+      // $scope.advert = JSON.parse(data);
   });
 
   angular.module('bsuir-ecm').filter('toHTML', ['$sce', function($sce){
