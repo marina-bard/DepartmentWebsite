@@ -18,7 +18,8 @@ security:
                 login_path: /admin/login
                 csrf_token_generator: security.csrf.token_manager
             logout:
-                path: /admin/logout
+                path:   /admin/logout
+                target: /
             anonymous:    true
 
     access_control:
