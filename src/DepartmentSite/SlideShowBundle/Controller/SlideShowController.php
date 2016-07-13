@@ -24,7 +24,10 @@ class SlideShowController extends Controller
 
         $slideShows = $em->getRepository('DepartmentSiteSlideShowBundle:SlideShow')->findAll();
 
-        return $this->render('slideshow/index.html.twig', array(
+//        return $this->render('slideshow/index.html.twig', array(
+//            'slideShows' => $slideShows,
+//        ));
+        return $this->render(':layout:banner.html.twig', array(
             'slideShows' => $slideShows,
         ));
     }
