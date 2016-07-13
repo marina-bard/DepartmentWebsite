@@ -24,12 +24,8 @@ class NewsController extends Controller
     /**
      * Lists all News entities.
      *
-     * @Route("/",
-     *     name = "news_index"
-     * )
-     * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($_locale)
     {
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
@@ -40,16 +36,13 @@ class NewsController extends Controller
         }
         return $this->render('news/news.html.twig', array(
             'news' => $news,
+            '_locale' => $_locale
         ));
     }
 
     /**
      * Creates a new News entity.
      *
-     * @Route("/new",
-     *     name = "news_new"
-     * )
-     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -77,13 +70,9 @@ class NewsController extends Controller
     /**
      * Finds and displays a News entity.
      *
-     * @Route("/{slug}/show",
      *     defaults = {"_format"="html|json"},
-     *     name = "news_show"
-     * )
-     * @Method("GET")
      */
-    public function showAction(Request $request, News $news)
+    public function showAction(Request $request, News $news, $_locale)
     {
         $deleteForm = $this->createDeleteForm($news);
 
@@ -94,13 +83,13 @@ class NewsController extends Controller
 //            'url' => $url,
             'news' => $news,
             'delete_form' => $deleteForm->createView(),
+            '_locale' => $_locale
         ));
     }
 
     /**
      * Displays a form to edit an existing News entity.
      *
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, News $news)
     {
@@ -128,10 +117,6 @@ class NewsController extends Controller
     /**
      * Deletes a News entity.
      *
-     * @Route("/{slug}/delete",
-     *     name="news_delete"
-     * )
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, News $news)
     {
@@ -177,12 +162,6 @@ class NewsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
         return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
-
     }
 
-//    public function getOneAction($id) {
-//        $em = $this->getDoctrine()->getManager();
-//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
-//        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
-//    }
 }

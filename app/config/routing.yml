@@ -1,3 +1,6 @@
+department_site_project:
+    resource: "@DepartmentSiteProjectBundle/Resources/config/routing.yml"
+    prefix:   /
 
 department_site_gallery:
     resource: "@DepartmentSiteGalleryBundle/Resources/config/routing.yml"

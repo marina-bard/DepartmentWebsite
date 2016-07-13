@@ -1,12 +1,20 @@
 news_index:
     path:     /
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:index" }
+    defaults:
+        _controller: "DepartmentSiteNewsBundle:News:index"
+        _locale : ru
     methods:  GET
+    requirements:
+        _locale : ru|en
 
 news_show:
     path:     /{slug}/show
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:show" }
+    defaults:
+        _controller: "DepartmentSiteNewsBundle:News:show"
+        _locale: ru
     methods:  GET
+    requirements:
+        _locale : ru|en
 
 news_new:
     path:     /new
