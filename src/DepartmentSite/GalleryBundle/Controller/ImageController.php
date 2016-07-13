@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use DepartmentSite\GalleryBundle\Entity\Image;
 use DepartmentSite\GalleryBundle\Form\ImageType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Image controller.
@@ -124,5 +125,17 @@ class ImageController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function getAllAction($galleryTitle = 'jhgfdsa')
+    {
+        $em = $this->getDoctrine()->getManager();
+        $gallery = $em->getRepository('DepartmentSiteGalleryBundle:Gallery')->findOneBy(['title' => $galleryTitle]);
+        $images = $em->getRepository('DepartmentSiteGalleryBundle:Image')->findBy(['gallery' => $gallery]);
+
+        foreach ($images as &$image) {
+            $image->setImage($this->get('itm.file.preview.path.resolver')->getUrl($image, $image->getImage()));
+        }
+        return new Response(htmlspecialchars(json_encode($images, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 }
