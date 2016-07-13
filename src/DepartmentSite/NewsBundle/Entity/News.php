@@ -58,13 +58,6 @@ class News implements JsonSerializable
      */
     private $photo;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photoUrl", type="string", nullable=true)
-     */
-    private $photoUrl;
-
 
     /**
      * @return string - object's string representation
@@ -197,33 +190,9 @@ class News implements JsonSerializable
         return [
             'title' => $this->title,
             'description' => $this->description,
-            'photoUrl' => $this->photoUrl,
+            'photo' => $this->photo,
             'created_at' => $this->createdAt,
             'slug' => $this->slug
         ];
-    }
-
-    /**
-     * Set photoUrl
-     *
-     * @param string $photoUrl
-     *
-     * @return News
-     */
-    public function setPhotoUrl($photoUrl)
-    {
-        $this->photoUrl = $photoUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get photoUrl
-     *
-     * @return string
-     */
-    public function getPhotoUrl()
-    {
-        return $this->photoUrl;
     }
 }
