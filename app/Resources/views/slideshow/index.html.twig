@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{#{% block body %}
     <h1>SlideShow list</h1>
 
     <table>
@@ -34,4 +34,12 @@
             <a href="{{ path('slideshow_new') }}">Create a new entry</a>
         </li>
     </ul>
+{% endblock %}#}
+
+{% block body %}
+
+        {% for slideShow in slideShows %}
+            <img ng-src={{ slideShow.image }} alt="">
+        {% endfor %}
+
 {% endblock %}

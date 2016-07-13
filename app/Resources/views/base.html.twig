@@ -14,7 +14,8 @@
 		{% endblock %}
 
 	  {% include ':layout:header.html.twig' %}
-	  {% include ':layout:banner.html.twig' %}
+	  {#{% include ':layout:banner.html.twig' %}#}
+		{{ render(controller('DepartmentSiteSlideShowBundle:SlideShow:index')) }}
 		{#{% include '@DepartmentSiteDefault/layout/bannerMenu.html.twig' %}#}
 
 	</head>
