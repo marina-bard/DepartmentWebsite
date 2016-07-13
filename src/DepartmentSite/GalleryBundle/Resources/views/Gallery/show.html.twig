@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div ng-controller="OneGalleryCtrl">
+    <script type="text/javascript">
+        gallery = '{{ render(controller('DepartmentSiteGalleryBundle:Image:getAll', {'galleryTitle' : gallery.title})) }}';
+    </script>
+<
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"></div>
+            <div class="section-title"><span>Фотогалерея</span>
+                <div class="v-separator"></div><a ng-href="{{ path('gallery_index') }}">К списку галерей</a>
+                <div class="v-separator"></div><a ng-href="{{ path('gallery_index') }}">К следующей</a>
+                <div class="v-separator"></div><a ng-href="{{ path('gallery_index') }}">К предыдущей      </a></div>
+        </div>
+        <div class="row margin-b-2">
+            <div ng-repeat="photo in photos" class="col-sm-4 col-md-2">
+                <a data-lightbox="example-set"  ng-href="{{ '{{ photo.image }}' }}">
+                    <img alt="" class="thumbnail img-responsive example-image" ng-src="{{ '{{ photo.image }}' }}" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

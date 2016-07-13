@@ -10,24 +10,6 @@
   font-family: CirceExtraBold;
   src: url("../fonts/circe/Circe-ExtraBold.otf");
 }
-/* line 13, ../../../app/styles/main/sidebar.scss */
-.sidebar .sidebar-item {
-  background-size: cover;
-  display: block;
-  height: 240px;
-  position: relative;
-}
-/* line 19, ../../../app/styles/main/sidebar.scss */
-.sidebar .sidebar-item .sidebar-item-text {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-  color: white;
-  font-family: CirceExtraBold, sans-serif;
-  font-size: 16px;
-  height: 100%;
-  line-height: 24px;
-  padding: 40px 20px;
-  text-transform: uppercase;
-}
 
 @font-face {
   font-family: CirceRegular;
@@ -97,10 +79,6 @@
   .announcements .announce-cards .cards-column {
     padding-left: 0;
     padding-right: 30px;
-  }
-  /* line 27, ../../../app/styles/main/announcements.scss */
-  .announcements .sidebar {
-    width: 26.6%;
   }
 }
 /* line 33, ../../../app/styles/main/announcements.scss */

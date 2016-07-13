@@ -5,25 +5,19 @@ var news_list = [];
   'use strict';
   angular.module('bsuir-ecm').controller('MainPageCtrl', function($scope) {
 
-    adverts_list = adverts_list.replace(/\"/g, "\'");
-    adverts_list = adverts_list.replace(/\\/g, "\"");
-    console.log(adverts_list);
-    adverts_list = JSON.parse(adverts_list);
-    
-    $scope.adverts = adverts_list;
+    $scope.adverts = JSON.parse(adverts_list.replace(/&quot;/g, '"'));
+    $scope.news = JSON.parse(news_list.replace(/&quot;/g, '"'));
 
-    news_list = news_list.replace(/\"/g, "\'");
-    news_list = news_list.replace(/\\/g, "\"");
-    console.log(news_list);
-    news_list = JSON.parse(news_list);
-
-
-    $scope.news = news_list;
-
-    $scope.adverts = adverts_list;
-    $scope.news = news_list;
     return $scope.adverts;
 
+  }).filter('dateFilter', function() {
+    return function (dateTime) {
+      if(dateTime == undefined)
+          return;
+      var t = dateTime.split(/[- :]/);
+      return new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
+    }
   });
+
 
 }).call(this);

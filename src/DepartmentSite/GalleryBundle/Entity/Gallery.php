@@ -3,6 +3,7 @@
 namespace DepartmentSite\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
@@ -14,7 +15,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class Gallery
+class Gallery implements JsonSerializable
 {
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
@@ -46,8 +47,7 @@ class Gallery
      */
     private $description;
 
-    
-    
+    private $image;
 
 
     /**
@@ -56,9 +56,6 @@ class Gallery
     public function __toString() {
         return $this->getTitle() ? : '-';
     }
-
-
-   
 
     public function getSluggableFields()
     {
@@ -165,4 +162,30 @@ class Gallery
     }
 
 
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
+    {
+        return [
+            'title' => $this->title,
+            'description' => $this->description,
+            'image' => $this->image,
+            'id' => $this->id
+        ];
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getFirstImage()
+    {
+        return $this->images[0]->getImage();
+    }
 }
