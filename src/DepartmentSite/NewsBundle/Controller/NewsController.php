@@ -32,10 +32,7 @@ class NewsController extends Controller
      */
     public function indexAction($page)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-
-        return $this->render('news/news.html.twig', array('page' => $page));
+        return $this->render('DepartmentSiteNewsBundle:News:news.html.twig', array('page' => $page));
     }
 
     /**
@@ -49,7 +46,7 @@ class NewsController extends Controller
      */
     public function showAction(Request $request, News $news)
     {
-        return $this->render('news/show.html.twig', array(
+        return $this->render('DepartmentSiteNewsBundle:News:show.html.twig', array(
             'news' => $news,
         ));
     }
