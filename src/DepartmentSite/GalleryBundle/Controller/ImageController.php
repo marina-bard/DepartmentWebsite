@@ -25,7 +25,7 @@ class ImageController extends Controller
 
         $images = $em->getRepository('DepartmentSiteGalleryBundle:Image')->findAll();
 
-        return $this->render('image/index.html.twig', array(
+        return $this->render('DepartmentSiteGalleryBundle:Image:index.html.twig', array(
             'images' => $images,
         ));
     }
@@ -39,7 +39,7 @@ class ImageController extends Controller
     {
         $deleteForm = $this->createDeleteForm($image);
 
-        return $this->render('image/show.html.twig', array(
+        return $this->render('DepartmentSiteGalleryBundle:Image:show.html.twig', array(
             'image' => $image,
             'delete_form' => $deleteForm->createView(),
         ));
