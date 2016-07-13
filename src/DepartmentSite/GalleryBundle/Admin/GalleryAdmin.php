@@ -2,6 +2,7 @@
 
 namespace DepartmentSite\GalleryBundle\Admin;
 
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -9,15 +10,28 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
-class GalleryAdmin extends Admin
+use ITM\ImagePreviewBundle\Form\Type\ImagePreviewType;
+
+
+class GalleryAdmin extends AbstractAdmin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
-            ->add('description', 'text', array('label' => 'Description'));
+            ->add('description', 'text', array('label' => 'Description'))
+            
         ;
+        $subject = $this->getSubject();
+
+        if ($this->isCurrentRoute('edit')) {
+            $formMapper->add('images', 'sonata_type_collection', array(
+                 ), array(
+                'edit' => 'inline',
+                'inline' => 'table'));
+
+        }
     }
 
     // Fields to be shown on filter forms
@@ -33,7 +47,6 @@ class GalleryAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
-            ->add('images' )
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -51,7 +64,7 @@ class GalleryAdmin extends Admin
 
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            ->add('images',  null)
+            ->add('images',  'sonata_type_collection')
         ;
 
     }
