@@ -5,8 +5,7 @@ var news_length;
   'use strict';
   angular.module('bsuir-ecm').factory('PagerService', PagerService).controller('NewsCtrl', function($scope, PagerService){
 
-    data = JSON.parse(data);
-    $scope.news = data;
+    $scope.news = JSON.parse(data.replace(/&quot;/g, '"'));
 
     $scope.pageSize = 10;
 
@@ -42,6 +41,13 @@ var news_length;
       else {
         return false;
       }
+    }
+  }).filter('dateFilter', function() {
+    return function (dateTime) {
+      if(dateTime == undefined)
+        return;
+      var t = dateTime.split(/[- :]/);
+      return new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
     }
   });
 

@@ -8,17 +8,4 @@ news_show:
     defaults: { _controller: "DepartmentSiteNewsBundle:News:show" }
     methods:  GET
 
-news_new:
-    path:     /new
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:new" }
-    methods:  [GET, POST]
 
-news_edit:
-    path:     /{slug}/edit
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:edit" }
-    methods:  [GET, POST]
-
-news_delete:
-    path:     /{slug}/delete
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:delete" }
-    methods:  DELETE

@@ -1,5 +1,4 @@
 <header id="myCarousel" class="carousel slide banner">
-    <!-- Indicators -->
     {#<ol class="carousel-indicators">#}
         {#{% for slideShow in slideShows %}#}
             {#{% if loop.first %}#}
@@ -10,7 +9,6 @@
         {#{% endfor %}#}
     {#</ol>#}
 
-    <!-- Wrapper for Slides -->
     <div class="carousel-inner">
         <div class="container" >
             {{ render(controller('DepartmentSiteDefaultBundle:Default:getBannerMenu')) }}
@@ -24,7 +22,7 @@
             {% else %}
             <div class="item">
                 {% endif %}
-                <div class="fill" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('http://www.techandall.com/wp-content/uploads/2014/03/macbook-air-all-faded-and-stuff.jpg');"></div>
+                <div class="fill" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url({{ slideShow.image }});"></div>
                 <div class="container inner">
                     <div class="banner-title">{{ slideShow.title }}</div>
                     <div class="banner-lead">{{ slideShow.description }}</div>
@@ -34,7 +32,6 @@
     </div>
     </div>
 
-    <!-- Controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
         <span class="icon-prev"></span>
     </a>
@@ -43,3 +40,12 @@
     </a>
 
 </header>
+
+<script>
+    jQuery(function () {
+        $(document).ready(function() {
+            $('#myCarousel').carousel({ interval: 4000, cycle: true });
+        });
+    });
+</script>
+

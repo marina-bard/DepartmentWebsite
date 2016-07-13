@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div ng-controller="GalleryCtrl">
+        <script type="text/javascript">
+            data = '{{ render(controller('DepartmentSiteGalleryBundle:Gallery:getAll')) }}';
+        </script>
+
+        <section id="gallery">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12"></div>
+                    <div class="section-title"><span>Фотогалерея</span></div>
+                </div>
+                <div ng-repeat="gallery in galleries">
+                    <div ng-class="($index % 2 !== 0) ? 'row' : ''">
+                        <div class="col-md-6 item">
+                            <div class="stack twisted">
+
+                                <a ng-href="{{ '{{ gallery.id }}' }}/show"><img ng-src="{{ '{{ gallery.image }}' }}" /></a>
+                            </div><a class="gallery-item-title" ng-href="{{ '{{ gallery.id }}' }}/show">{{ '{{ gallery.title }}' }}</a>
+                            <div class="gallery-item-lead">{{ '{{ gallery.description }}' }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

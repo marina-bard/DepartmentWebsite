@@ -21,93 +21,21 @@ class AdvertController extends Controller
      */
     public function indexAction($page)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findAll();
-        return $this->render('advert/index.html.twig', array('page' => $page));
+        return $this->render('DepartmentSiteAdvertBundle:Advert:index.html.twig', array('page' => $page));
     }
-    /**
-     * Creates a new Advert entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
-        $advert = new Advert();
-        $form = $this->createForm('DepartmentSite\AdvertBundle\Form\AdvertType', $advert);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($advert);
-            $em->flush();
-            return $this->redirectToRoute('advert_show', array('slug' => $advert->getSlug()));
-        }
-        return $this->render('advert/new.html.twig', array(
-            'advert' => $advert,
-            'form' => $form->createView(),
-        ));
-    }
+   
     /**
      * Finds and displays a Advert entity.
      *
      */
     public function showAction(Advert $advert)
     {
-        $deleteForm = $this->createDeleteForm($advert);
-        return $this->render('advert/show.html.twig', array(
-            'advert' => $advert,
-            'delete_form' => $deleteForm->createView(),
+        return $this->render('DepartmentSiteAdvertBundle:Advert:show.html.twig', array(
+            'advert' => $advert
         ));
     }
-    /**
-     * Displays a form to edit an existing Advert entity.
-     *
-     */
-    public function editAction(Request $request, Advert $advert)
-    {
-        $deleteForm = $this->createDeleteForm($advert);
-        $editForm = $this->createForm('DepartmentSite\AdvertBundle\Form\AdvertType', $advert);
-        $editForm->handleRequest($request);
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($advert);
-            $em->flush();
-            return $this->redirectToRoute('advert_edit', array('slug' => $advert->getSlug()));
-        }
-        return $this->render('advert/edit.html.twig', array(
-            'advert' => $advert,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-    /**
-     * Deletes a Advert entity.
-     *
-     */
-    public function deleteAction(Request $request, Advert $advert)
-    {
-        $form = $this->createDeleteForm($advert);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($advert);
-            $em->flush();
-        }
-        return $this->redirectToRoute('advert_index');
-    }
-    /**
-     * Creates a form to delete a Advert entity.
-     *
-     * @param Advert $advert The Advert entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Advert $advert)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('advert_delete', array('slug' => $advert->getSlug())))
-            ->setMethod('DELETE')
-            ->getForm()
-            ;
-    }
+    
+
 
 
     public function getAdvertsLengthAction() {
@@ -152,9 +80,4 @@ class AdvertController extends Controller
         return new Response(htmlspecialchars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
-//    public function getOneAction($id) {
-//        $em = $this->getDoctrine()->getManager();
-//        $advert = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findOneById($id);
-//        return new Response($this->escapeChars(json_encode($advert, JSON_HEX_QUOT | JSON_HEX_TAG)));
-//    }
 }

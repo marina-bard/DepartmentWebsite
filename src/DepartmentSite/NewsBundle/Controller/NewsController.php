@@ -32,43 +32,7 @@ class NewsController extends Controller
      */
     public function indexAction($page)
     {
-        //$em = $this->getDoctrine()->getManager();
-        //$news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-
-
-        return $this->render('news/news.html.twig', array('page' => $page));
-
-    }
-
-    /**
-     * Creates a new News entity.
-     *
-     * @Route("/new",
-     *     name = "news_new"
-     * )
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $news = new News();
-        $form = $this->createForm('DepartmentSite\NewsBundle\Form\NewsType', $news);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($news);
-            $em->flush();
-
-//            return $this->redirectToRoute('news_show', array(
-//                'id' => $news->getId(),
-//                'format' => $format,
-//                ));
-        }
-
-        return $this->render('news/new.html.twig', array(
-            'news' => $news,
-            'form' => $form->createView(),
-        ));
+        return $this->render('DepartmentSiteNewsBundle:News:news.html.twig', array('page' => $page));
     }
 
     /**
@@ -82,84 +46,9 @@ class NewsController extends Controller
      */
     public function showAction(Request $request, News $news)
     {
-        $deleteForm = $this->createDeleteForm($news);
-
-//        $resolver = new PathResolver(null);
-//        $url = $resolver->getUrl($news, $news->getPhoto());
-
-        return $this->render('news/show.html.twig', array(
-//            'url' => $url,
+        return $this->render('DepartmentSiteNewsBundle:News:show.html.twig', array(
             'news' => $news,
-            'delete_form' => $deleteForm->createView(),
         ));
-    }
-
-    /**
-     * Displays a form to edit an existing News entity.
-     *
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, News $news)
-    {
-        $deleteForm = $this->createDeleteForm($news);
-        $editForm = $this->createForm('DepartmentSite\NewsBundle\Form\NewsType', $news);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($news);
-            $em->flush();
-
-            return $this->redirectToRoute('news_edit', array(
-                'slug' => $news->getSlug(),
-            ));
-        }
-
-        return $this->render('news/edit.html.twig', array(
-            'news' => $news,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Deletes a News entity.
-     *
-     * @Route("/{slug}/delete",
-     *     name="news_delete"
-     * )
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, News $news)
-    {
-        $form = $this->createDeleteForm($news);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($news);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('news_index');
-    }
-
-    /**
-     * Creates a form to delete a News entity.
-     *
-     * @param News $news The News entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(News $news)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('news_delete', array(
-                'slug' => $news->getSlug(),
-                )))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 
 //    public function escapeChars($value)
@@ -169,14 +58,6 @@ class NewsController extends Controller
 //        $result = str_replace($escaper, $replacements, $value);
 //        return $result;
 //    }
-
-    public function getAllAction() {
-        $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-
-        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-        return new Response($serialized);
-    }
     
     public function getNewsLengthAction() {
         $sql_request = "SELECT COUNT(*) FROM News;";
@@ -210,15 +91,21 @@ class NewsController extends Controller
         $statement->execute();
         $news = $statement->fetchAll();
 
-        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-        return new Response($serialized);
+        foreach($news as &$oneNews) {
+            $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
+        }
+
+        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
-    
-    public function getOneAction($id) {
-      $em = $this->getDoctrine()->getManager();
-      $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
-        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-        return new Response($serialized);
+
+    public function setNewsPhotoUrls($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $oneNews = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneBy(['id' => $id]);
+
+        $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
+
+        return $url;
     }
 
 }

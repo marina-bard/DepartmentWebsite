@@ -3,8 +3,10 @@
 namespace DepartmentSite\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+
 
 
 /**
@@ -14,7 +16,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class Image
+class Image implements JsonSerializable
 {
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
@@ -40,14 +42,6 @@ class Image
      */
     private $image;
 
-
-
-    /**
-     * @return string - object's string representation
-     */
-    public function __toString() {
-        return $this->getImage() ? : '-';
-    }
 
 
 
@@ -111,5 +105,20 @@ class Image
     public function getGallery()
     {
         return $this->gallery;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
+    {
+        return [
+            'image' => $this->image,
+            'gallery' => $this->gallery->getTitle()
+        ];
     }
 }
