@@ -1,5 +1,4 @@
 <header id="myCarousel" class="carousel slide banner">
-    <!-- Indicators -->
     {#<ol class="carousel-indicators">#}
         {#{% for slideShow in slideShows %}#}
             {#{% if loop.first %}#}
@@ -10,7 +9,6 @@
         {#{% endfor %}#}
     {#</ol>#}
 
-    <!-- Wrapper for Slides -->
     <div class="carousel-inner">
         <div class="container" >
             {{ render(controller('DepartmentSiteDefaultBundle:Default:getBannerMenu')) }}
@@ -34,11 +32,20 @@
     </div>
     </div>
 
-    <!-- Controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
         <span class="icon-prev"></span>
     </a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">
         <span class="icon-next"></span>
     </a>
+
 </header>
+
+<script>
+    jQuery(function () {
+        $(document).ready(function() {
+            $('#myCarousel').carousel({ interval: 4000, cycle: true });
+        });
+    });
+</script>
+
