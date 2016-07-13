@@ -1,36 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Gallery</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ gallery.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ gallery.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ gallery.description }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('gallery_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('gallery_edit', { 'id': gallery.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+<div ng-controller="OneGalleryCtrl">
+    <script type="text/javascript">
+        gallery = '{{ render(controller('DepartmentSiteGalleryBundle:Image:getAll', {'galleryTitle' : gallery.title})) }}';
+    </script>
+<
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"></div>
+            <div class="section-title"><span>Фотогалерея</span>
+                <div class="v-separator"></div><a ng-href="{{ path('gallery_index') }}">К списку галерей</a>
+                <div class="v-separator"></div><a ng-href="{{ path('gallery_index') }}">К следующей</a>
+                <div class="v-separator"></div><a ng-href="{{ path('gallery_index') }}">К предыдущей      </a></div>
+        </div>
+        <div class="row margin-b-2">
+            <div ng-repeat="photo in photos" class="col-sm-4 col-md-2">
+                <a data-lightbox="example-set"  ng-href="{{ '{{ photo.image }}' }}">
+                    <img alt="" class="thumbnail img-responsive example-image" ng-src="{{ '{{ photo.image }}' }}" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

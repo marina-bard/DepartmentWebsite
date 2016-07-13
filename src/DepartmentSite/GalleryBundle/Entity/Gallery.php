@@ -174,7 +174,8 @@ class Gallery implements JsonSerializable
         return [
             'title' => $this->title,
             'description' => $this->description,
-            'image' => $this->image
+            'image' => $this->image,
+            'id' => $this->id
         ];
     }
 

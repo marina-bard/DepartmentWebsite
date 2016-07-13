@@ -131,9 +131,10 @@ class GalleryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $galleries = $em->getRepository('DepartmentSiteGalleryBundle:Gallery')->findAll();
+        $images= $em->getRepository('DepartmentSiteGalleryBundle:Image')->findAll();
 
-        foreach ($galleries as &$gallery) {
-            $gallery->setImage($this->get('itm.file.preview.path.resolver')->getUrl($gallery, $gallery->getFirstImage()));
+        foreach ($galleries as &$gallery ) {
+            $gallery->setImage($this->get('itm.file.preview.path.resolver')->getUrl($images[0], $gallery->getFirstImage()));
         }
         return new Response(htmlspecialchars(json_encode($galleries, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
