@@ -2,5 +2,5 @@ department_site_gallery_image:
     resource: "@DepartmentSiteGalleryBundle/Resources/config/routing/image.yml"
     prefix:   /image
 department_site_gallery_gallery:
-        resource: "@DepartmentSiteGalleryBundle/Resources/config/routing/gallery.yml"
-        prefix:   /gallery
+    resource: "@DepartmentSiteGalleryBundle/Resources/config/routing/gallery.yml"
+    prefix:   /gallery

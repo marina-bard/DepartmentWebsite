@@ -40,6 +40,21 @@ _sonata_admin:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_security_login:
+    path:      /admin/login
+    defaults:  { _controller: FOSUserBundle:Security:login, _method: POST }
+
+fos_user_security_logout:
+    path:      /admin/logout
+    defaults:  { _controller: FOSUserBundle:Security:logout, _method: POST }
+
+
+
+
 elfinder:
      resource: "@FMElfinderBundle/Resources/config/routing.yml"
 

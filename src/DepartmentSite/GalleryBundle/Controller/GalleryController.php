@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use DepartmentSite\GalleryBundle\Entity\Gallery;
 use DepartmentSite\GalleryBundle\Form\GalleryType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Gallery controller.
@@ -124,5 +125,16 @@ class GalleryController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function getAllAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $galleries = $em->getRepository('DepartmentSiteGalleryBundle:Gallery')->findAll();
+
+        foreach ($galleries as &$gallery) {
+            $gallery->setImage($this->get('itm.file.preview.path.resolver')->getUrl($gallery, $gallery->getFirstImage()));
+        }
+        return new Response(htmlspecialchars(json_encode($galleries, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 }
