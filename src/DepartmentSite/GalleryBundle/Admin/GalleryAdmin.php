@@ -23,7 +23,6 @@ class GalleryAdmin extends AbstractAdmin
             ->add('description', 'text', array('label' => 'Description'))
             
         ;
-        $subject = $this->getSubject();
 
         if ($this->isCurrentRoute('edit')) {
             $formMapper->add('images', 'sonata_type_collection', array(

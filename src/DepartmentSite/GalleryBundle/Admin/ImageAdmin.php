@@ -15,12 +15,15 @@ class ImageAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
+        if ($this->isCurrentRoute('create')) {
+            $formMapper ->add('gallery', 'sonata_type_model_list', array());
+
+        }
         $formMapper
-            ->add('gallery', 'sonata_type_model_list', array())
-            ->add('image', ImagePreviewType::class, ['data_class' => null])
+            ->add('image', ImagePreviewType::class, ['data_class' => null]);
 
 
-        ;
+
     }
 
     // Fields to be shown on filter forms
