@@ -26,6 +26,9 @@
     }).when('/page/:slug/show', {
       templateUrl: 'DepartmentSitePageBundle:Page:show',
       controller: 'PageCtrl'
+    }).when('/gallery', {
+      templateUrl: 'DepartmentSiteGalleryBundle:Gallery:index',
+      controller: 'GalleryCtrl'
     }).otherwise({
       redirectTo: '/'
     });

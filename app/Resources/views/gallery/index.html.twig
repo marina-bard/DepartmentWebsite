@@ -1,41 +1,63 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Gallery list</h1>
+    <section id="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12"></div>
+                <div class="section-title"><span>Фотогалерея</span></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 item">
+                    <div class="stack twisted">
+                        <a ng-href="#/gallery/galleryPage"><img ng-src="http://media.stephenfriedman.com/images/1680/Installation_view_Kehinde_Wiley_The_World_Stage_Jamaica_Stephen_Friedman_Gallery_11_wiley-at-sfg-2013_11381840380.jpg" /></a>
+                    </div><a class="gallery-item-title" ng-href="#/gallery/galleryPage">Галерея 1</a>
+                    <div class="gallery-item-lead">Фото со Дня открытых дверей</div>
+                </div>
+                <div class="col-md-6 item">
+                    <div class="stack twisted">
+                        <a ng-href="#/gallery/galleryPage"><img ng-src="http://media.stephenfriedman.com/images/1680/Installation_view_Kehinde_Wiley_The_World_Stage_Jamaica_Stephen_Friedman_Gallery_11_wiley-at-sfg-2013_11381840380.jpg" /></a>
+                    </div><a class="gallery-item-title" ng-href="#/gallery/galleryPage">Галерея 1</a>
+                    <div class="gallery-item-lead">Фото со Дня открытых дверей</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {#<h1>Gallery list</h1>#}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for gallery in galleries %}
-            <tr>
-                <td><a href="{{ path('gallery_show', { 'id': gallery.id }) }}">{{ gallery.id }}</a></td>
-                <td>{{ gallery.title }}</td>
-                <td>{{ gallery.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('gallery_show', { 'id': gallery.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('gallery_edit', { 'id': gallery.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {#<table>#}
+        {#<thead>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<th>Title</th>#}
+                {#<th>Description</th>#}
+                {#<th>Actions</th>#}
+            {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for gallery in galleries %}#}
+            {#<tr>#}
+                {#<td><a href="{{ path('gallery_show', { 'id': gallery.id }) }}">{{ gallery.id }}</a></td>#}
+                {#<td>{{ gallery.title }}</td>#}
+                {#<td>{{ gallery.description }}</td>#}
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('gallery_show', { 'id': gallery.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('gallery_edit', { 'id': gallery.id }) }}">edit</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
 
-    <ul>
-        <li>
-            <a href="{{ path('gallery_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('gallery_new') }}">Create a new entry</a>#}
+        {#</li>#}
+    {#</ul>#}
 {% endblock %}
