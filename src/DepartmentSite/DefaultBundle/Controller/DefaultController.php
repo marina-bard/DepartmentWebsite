@@ -22,20 +22,12 @@ class DefaultController extends Controller
         return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig');
     }
 
-    public function escapeChars($value)
-    {
-        $escaper = array("\"");
-        $replacements = array("\\\\");
-        $result = str_replace($escaper, $replacements, $value);
-        return $result;
-    }
-    
     public function getAdvertsForMainPageAction()
     {
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findBy(array(), array('id'=>'desc'), 6);
 
-        return new Response($this->escapeChars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        return new Response(htmlspecialchars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     public function getNewsForMainPageAction()
@@ -43,7 +35,11 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy(array(), array('id'=>'desc'), 4);
 
-        return new Response($this->escapeChars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        foreach($news as $oneNews) {
+            $oneNews->setPhoto($this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto()));
+        }
+
+        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     public function getHeaderMenuAction()
