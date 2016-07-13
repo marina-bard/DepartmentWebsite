@@ -5,8 +5,7 @@ var news_length;
   'use strict';
   angular.module('bsuir-ecm').factory('PagerService', PagerService).controller('NewsCtrl', function($scope, PagerService){
 
-    data = JSON.parse(data);
-    $scope.news = data;
+    $scope.news = JSON.parse(data.replace(/&quot;/g, '"'));
 
     $scope.pageSize = 10;
 
