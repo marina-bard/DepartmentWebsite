@@ -11,10 +11,10 @@
 			<link href="{{ asset('bundles/departmentsitenews/css/banner.css') }}" type = "text/css" rel="stylesheet" />
 			<link href="{{ asset('bundles/departmentsitenews/css/header.css') }}" type = "text/css" rel = "stylesheet" />
 			<link href="{{ asset('bundles/departmentsitenews/css/footer.css') }}" type = "text/css" rel="stylesheet" />
+			<link href="{{ asset('bundles/departmentsitenews/css/sidebar.css') }}" type = "text/css" rel="stylesheet" />
 		{% endblock %}
 
-	  {% include ':layout:header.html.twig' %}
-	  {#{% include ':layout:banner.html.twig' %}#}
+	 	{% include ':layout:header.html.twig' %}
 		{{ render(controller('DepartmentSiteSlideShowBundle:SlideShow:index')) }}
 		{#{% include '@DepartmentSiteDefault/layout/bannerMenu.html.twig' %}#}
 
