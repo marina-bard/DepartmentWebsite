@@ -8,8 +8,4 @@ news_show:
     defaults: { _controller: "DepartmentSiteNewsBundle:News:show" }
     methods:  GET
 
-news_new:
-    path:     /new
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:new" }
-    methods:  [GET, POST]
 

@@ -21,30 +21,9 @@ class AdvertController extends Controller
      */
     public function indexAction($page)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findAll();
         return $this->render('DepartmentSiteAdvertBundle:Advert:index.html.twig', array('page' => $page));
     }
-    /**
-     * Creates a new Advert entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
-        $advert = new Advert();
-        $form = $this->createForm('DepartmentSite\AdvertBundle\Form\AdvertType', $advert);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($advert);
-            $em->flush();
-            return $this->redirectToRoute('advert_show', array('slug' => $advert->getSlug()));
-        }
-        return $this->render('DeparmentSiteAdvertBundle:Advert:new.html.twig', array(
-            'advert' => $advert,
-            'form' => $form->createView(),
-        ));
-    }
+   
     /**
      * Finds and displays a Advert entity.
      *
@@ -101,9 +80,4 @@ class AdvertController extends Controller
         return new Response(htmlspecialchars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
-//    public function getOneAction($id) {
-//        $em = $this->getDoctrine()->getManager();
-//        $advert = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findOneById($id);
-//        return new Response($this->escapeChars(json_encode($advert, JSON_HEX_QUOT | JSON_HEX_TAG)));
-//    }
 }

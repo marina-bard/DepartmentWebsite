@@ -8,9 +8,5 @@ advert_show:
     defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:show" }
     methods:  GET
 
-advert_new:
-    path:     /new
-    defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:new" }
-    methods:  [GET, POST]
 
 
