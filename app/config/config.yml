@@ -9,15 +9,7 @@ imports:
     - { resource: a2lix_translation_form/a2lix_translation_form_config.yml }
     - { resource: liip/liip_config.yml }
     - { resource: itm/itm_config.yml }
-    - { resource: "@DepartmentSiteNewsBundle/Resources/config/services.yml" }
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
-    - { resource: "@DepartmentSiteAdvertBundle/Resources/config/services.yml" }
-    - { resource: "@DepartmentSitePageBundle/Resources/config/services.yml" }
-    - { resource: "@DepartmentSiteDictionaryBundle/Resources/config/services.yml" }
-    - { resource: "@DepartmentSiteDefaultBundle/Resources/config/services.yml" }
-    - { resource: "@DepartmentSiteGalleryBundle/Resources/config/services.yml" }
-    - { resource: "@DepartmentSiteMenuBundle/Resources/config/services.yml" }
-    - { resource: "@DepartmentSiteSlideShowBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed

@@ -1,34 +1,37 @@
-department_site_project:
-    resource: "@DepartmentSiteProjectBundle/Resources/config/routing.yml"
-    prefix:   /
-
-department_site_gallery:
-    resource: "@DepartmentSiteGalleryBundle/Resources/config/routing.yml"
-
 department_site_slide_show:
     resource: "@DepartmentSiteSlideShowBundle/Resources/config/routing.yml"
     prefix:   /
 
 department_site_page:
     resource: "@DepartmentSitePageBundle/Resources/config/routing.yml"
+    prefix:   /
+
+department_site_news:
+    resource: "@DepartmentSiteNewsBundle/Resources/config/routing.yml"
+    prefix:   /
 
 department_site_menu:
     resource: "@DepartmentSiteMenuBundle/Resources/config/routing.yml"
+    prefix:   /
+
+department_site_gallery:
+    resource: "@DepartmentSiteGalleryBundle/Resources/config/routing.yml"
+    prefix:   /
+
+department_site_default:
+    resource: "@DepartmentSiteDefaultBundle/Resources/config/routing.yml"
+    prefix:   /
+
+department_site_advert:
+    resource: "@DepartmentSiteAdvertBundle/Resources/config/routing.yml"
     prefix:   /
 
 department_site_dictionary:
     resource: "@DepartmentSiteDictionaryBundle/Resources/config/routing.yml"
     prefix:   /
 
-department_site_default:
-    resource: "@DepartmentSiteDefaultBundle/Resources/config/routing.yml"
-
-department_site_advert:
-    resource: "@DepartmentSiteAdvertBundle/Resources/config/routing.yml"
-    prefix:   /
-
-department_site_news:
-    resource: "@DepartmentSiteNewsBundle/Resources/config/routing.yml"
+department_site_project:
+    resource: "@DepartmentSiteProjectBundle/Resources/config/routing.yml"
     prefix:   /
 
 admin:

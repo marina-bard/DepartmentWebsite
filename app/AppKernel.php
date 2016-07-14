@@ -43,16 +43,16 @@ class AppKernel extends Kernel
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
             new Application\FOS\UserBundle\ApplicationFOSUserBundle(),
 
+           
+            new DepartmentSite\ProjectBundle\DepartmentSiteProjectBundle(),
             new DepartmentSite\DictionaryBundle\DepartmentSiteDictionaryBundle(),
-            new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
             new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
-            new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
-            new DepartmentSite\PageBundle\DepartmentSitePageBundle(),
-
+            new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
             new DepartmentSite\GalleryBundle\DepartmentSiteGalleryBundle(),
             new DepartmentSite\MenuBundle\DepartmentSiteMenuBundle(),
+            new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
+            new DepartmentSite\PageBundle\DepartmentSitePageBundle(),
             new DepartmentSite\SlideShowBundle\DepartmentSiteSlideShowBundle(),
-            new DepartmentSite\ProjectBundle\DepartmentSiteProjectBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
