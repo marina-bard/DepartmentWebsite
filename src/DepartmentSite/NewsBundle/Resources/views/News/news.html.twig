@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div ng-controller="NewsCtrl">
+    <script type="text/javascript">
+         data = '{{ render(controller('DepartmentSiteNewsBundle:News:getNews', { 'page': page })) }}';
+         news_length = '{{ render(controller('DepartmentSiteNewsBundle:News:getNewsLength')) }}';
+    </script>
+
+  <div class="news" style="background-color: #fff;">
+      <div class="container">
+          <div class="row">
+              <div class="col-xs-12">
+                  <div class="section-title"><span>Новости кафедры</span></div>
+              </div>
+          </div>
+
+
+          <div ng-repeat="oneNews in news">
+              <div ng-class="($index % 2 !== 0) ? 'row' : ''">
+                  <div ng-class="($index % 2 === 0) ? 'col-md-6 news-column' : 'col-md-6 news-column2'">
+                      <a ng-href="/news/{{'{{oneNews.slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{oneNews.photo}}'}}" /></a>
+                      <div class="news-item-date">{{'{{ oneNews.createdAt  | dateFilter | date:"dd.MM.yyyy" }}'}}</div>
+                      <br /><a class="news-item-title" ng-href="/news/{{'{{oneNews.slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
+                      <div class="news-item-lead">{{'{{ oneNews.description }}'}}</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    {{ render(controller('DepartmentSiteNewsBundle:News:getNewsPagination', {'page': page})) }}
+</div>
+{% endblock %}

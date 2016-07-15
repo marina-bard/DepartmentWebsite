@@ -3,9 +3,12 @@
 namespace DepartmentSite\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Sonata\MediaBundle\Model\MediaInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use ITM\ImagePreviewBundle\Resolver\PathResolver;
+
 
 /**
  * News
@@ -14,7 +17,7 @@ use Sonata\MediaBundle\Model\MediaInterface;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class News
+class News implements JsonSerializable
 {   
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
@@ -49,8 +52,9 @@ class News
     private $content;
 
     /**
-     * @var \Application\Sonata\MediaBundle\Entity\Media
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", nullable=true)
      */
     private $photo;
 
@@ -131,7 +135,6 @@ class News
     public function setContent($content)
     {
         $this->content = $content;
-
         return $this;
     }
 
@@ -142,13 +145,13 @@ class News
      */
     public function getContent()
     {
-        return htmlspecialchars($this->content);
+        return $this->content;
     }
 
     /**
      * Set photo
      *
-     * @param array $photo
+     * @param string $photo
      *
      * @return News
      */
@@ -162,7 +165,7 @@ class News
     /**
      * Get photo
      *
-     * @return array
+     * @return string
      */
     public function getPhoto()
     {
@@ -172,5 +175,24 @@ class News
     public function getSluggableFields()
     {
         return [ 'title' ];
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+
+    function jsonSerialize()
+    {
+        return [
+            'title' => $this->title,
+            'description' => $this->description,
+            'photo' => $this->photo,
+            'created_at' => $this->createdAt,
+            'slug' => $this->slug
+        ];
     }
 }

@@ -10,6 +10,10 @@ use DepartmentSite\NewsBundle\Entity\News;
 use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use ITM\ImagePreviewBundle\Resolver\PathResolver;
+
+
 
 /**
  * News controller.
@@ -26,44 +30,9 @@ class NewsController extends Controller
      * )
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($page)
     {
-        // $em = $this->getDoctrine()->getManager();
-        // $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-
-
-        return $this->render('news/news.html.twig');
-    }
-
-    /**
-     * Creates a new News entity.
-     *
-     * @Route("/new",
-     *     name = "news_new"
-     * )
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $news = new News();
-        $form = $this->createForm('DepartmentSite\NewsBundle\Form\NewsType', $news);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($news);
-            $em->flush();
-
-//            return $this->redirectToRoute('news_show', array(
-//                'id' => $news->getId(),
-//                'format' => $format,
-//                ));
-        }
-
-        return $this->render('news/new.html.twig', array(
-            'news' => $news,
-            'form' => $form->createView(),
-        ));
+        return $this->render('DepartmentSiteNewsBundle:News:news.html.twig', array('page' => $page));
     }
 
     /**
@@ -77,97 +46,66 @@ class NewsController extends Controller
      */
     public function showAction(Request $request, News $news)
     {
-        $deleteForm = $this->createDeleteForm($news);
-
-        return $this->render('news/show.html.twig', array(
+        return $this->render('DepartmentSiteNewsBundle:News:show.html.twig', array(
             'news' => $news,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Displays a form to edit an existing News entity.
-     *
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, News $news)
-    {
-        $deleteForm = $this->createDeleteForm($news);
-        $editForm = $this->createForm('DepartmentSite\NewsBundle\Form\NewsType', $news);
-        $editForm->handleRequest($request);
+//    public function escapeChars($value)
+//    {
+//        $escaper = array("\"");
+//        $replacements = array("\\\\");
+//        $result = str_replace($escaper, $replacements, $value);
+//        return $result;
+//    }
+    
+    public function getNewsLengthAction() {
+        $sql_request = "SELECT COUNT(*) FROM News;";
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($sql_request);
+        $statement->execute();
+        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+        
+        return new Response($temp);
+    }
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($news);
-            $em->flush();
 
-            return $this->redirectToRoute('news_edit', array(
-                'slug' => $news->getSlug(),
-            ));
+    public function  getNewsPaginationAction($page) {
+        $sql_request = "SELECT COUNT(*) FROM News;";
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($sql_request);
+        $statement->execute();
+        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+
+        return $this->render('layout/pagination.html.twig', array('listLength' => $temp, 'page' => $page));
+    }
+    
+    public function getNewsAction($page) {
+        $news_per_page = 10;
+        $sql_request = "SELECT * FROM News ORDER BY createdAt DESC LIMIT " . (($page-1)*$news_per_page) . ", " . $news_per_page;
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($sql_request);
+        $statement->execute();
+        $news = $statement->fetchAll();
+
+        foreach($news as &$oneNews) {
+            $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
         }
 
-        return $this->render('news/edit.html.twig', array(
-            'news' => $news,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
-    /**
-     * Deletes a News entity.
-     *
-     * @Route("/{slug}/delete",
-     *     name="news_delete"
-     * )
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, News $news)
+    public function setNewsPhotoUrls($id)
     {
-        $form = $this->createDeleteForm($news);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($news);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('news_index');
-    }
-
-    /**
-     * Creates a form to delete a News entity.
-     *
-     * @param News $news The News entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(News $news)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('news_delete', array(
-                'slug' => $news->getSlug(),
-                )))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
-
-    public function getAllAction() {
         $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+        $oneNews = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneBy(['id' => $id]);
 
-         $serialized = $this->container->get('serializer')->serialize($news, 'json');
-         //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-         return new Response($serialized);
-      //  return new JsonResponse($news);
+        $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
 
+        return $url;
     }
 
-    public function getOneAction($id) {
-      $em = $this->getDoctrine()->getManager();
-      $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneById($id);
-        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-        return new Response($serialized);
-    }
 }

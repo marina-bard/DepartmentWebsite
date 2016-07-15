@@ -36,10 +36,12 @@
         "sonata-project/easy-extends-bundle": "^2.1",
         "sonata-project/datagrid-bundle": "^2.2",
         "jms/serializer-bundle": "~1.1",
-        "sonata-project/media-bundle": "3.x-dev",
-        "sonata-project/classification-bundle": "^3.0",
         "helios-ag/fm-elfinder-bundle": "^6.1",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "itm/file-preview-bundle": "1.1.*",
+        "itm/image-preview-bundle": "dev-master",
+        "liip/imagine-bundle": "dev-master",
+        "sonata-project/notification-bundle": "^3.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -80,5 +82,13 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         }
-    }
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/archer-developer/ITMFilePreviewBundle.git"
+    },
+        {
+            "type": "vcs",
+            "url": "https://github.com/archer-developer/ITMImagePreviewBundle.git"
+        }]
 }

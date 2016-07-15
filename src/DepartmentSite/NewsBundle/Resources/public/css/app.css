@@ -9083,17 +9083,26 @@ button.close {
   color: #fdd400;
   border-top: 3px solid #fdd400;
 }
+.pagination-active {
+  color: #fdd400;
+  border-top: 3px solid #fdd400;
+}
+
 /* line 49, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control {
   display: -moz-inline-box;
+  display: -webkit-inline-box;
   width: 50%;
 }
 /* line 53, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control .page-controls-forward {
-  display: inherit;
+  display: -webkit-box;
+  display: -moz-box;
   outline: 0;
   margin-left: 20px;
   margin-right: 20px;
+  position: absolute;
+  right: 0;
 }
 /* line 59, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control .page-controls-forward:hover .page-controls-arrow {
@@ -9110,10 +9119,13 @@ button.close {
 }
 /* line 74, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control .page-controls-back {
-  display: inherit;
+  display: -moz-box;
+  display: -webkit-box;
   outline: 0;
   margin-left: 20px;
   margin-right: 20px;
+  position: absolute;
+  left: 0;
 }
 /* line 80, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control .page-controls-back:hover .page-controls-arrow {
@@ -9190,65 +9202,7 @@ button.close {
     margin: 0 10px;
   }
 }
-/* line 14, ../../../assets/vendor/app/styles/layout/banner.scss */
-.banner {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../../assets/vendor/images/banner.jpg);
-  background-size: cover;
-  color: white;
-  height: 540px;
-  text-transform: uppercase;
-}
-/* line 21, ../../../assets/vendor/app/styles/layout/banner.scss */
-.banner .evm-logo {
-  background-image: url(../../../assets/vendor/images/evm-logo.png);
-  height: 105px;
-  margin: 30px 0;
-  width: 164px;
-}
-/* line 28, ../../../assets/vendor/app/styles/layout/banner.scss */
-.banner .banner-title {
-  font-family: CirceExtraBold, sans-serif;
-  font-size: 40px;
-  line-height: 60px;
-  padding: 24px 0;
-}
-/* line 35, ../../../assets/vendor/app/styles/layout/banner.scss */
-.banner .banner-lead {
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 27px;
-  padding: 10.8px 0;
-}
 
-@media (max-width: 768px) {
-  /* line 45, ../../../assets/vendor/app/styles/layout/banner.scss */
-  .banner .banner-title {
-    font-size: 32px;
-    padding: 20px 0;
-    line-height: 36px;
-  }
-  /* line 50, ../../../assets/vendor/app/styles/layout/banner.scss */
-  .banner .banner-lead {
-    font-size: 14px;
-    padding: 10px 0;
-    line-height: 18px;
-  }
-}
-@media (max-width: 360px) {
-  /* line 60, ../../../assets/vendor/app/styles/layout/banner.scss */
-  .banner .banner-title {
-    font-size: 26px;
-    line-height: 32px;
-  }
-}
-@media (max-width: 300px) {
-  /* line 69, ../../../assets/vendor/app/styles/layout/banner.scss */
-  .banner .banner-title {
-    font-size: 18px;
-    line-height: 24px;
-  }
-}
-/* line 21, ../../../assets/vendor/app/styles/layout/footer.scss */
 .footer {
   background-color: #2ab4c0;
   color: white;
@@ -9369,24 +9323,6 @@ button.close {
   font-family: CirceExtraBold;
   src: url("../fonts/circe/Circe-ExtraBold.otf");
 }
-/* line 13, ../../../assets/vendor/app/styles/main/sidebar.scss */
-.sidebar .sidebar-item {
-  background-size: cover;
-  display: block;
-  height: 240px;
-  position: relative;
-}
-/* line 19, ../../../assets/vendor/app/styles/main/sidebar.scss */
-.sidebar .sidebar-item .sidebar-item-text {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-  color: white;
-  font-family: CirceExtraBold, sans-serif;
-  font-size: 16px;
-  height: 100%;
-  line-height: 24px;
-  padding: 40px 20px;
-  text-transform: uppercase;
-}
 
 @font-face {
   font-family: CirceRegular;
@@ -9457,10 +9393,7 @@ button.close {
     padding-left: 0;
     padding-right: 30px;
   }
-  /* line 27, ../../../assets/vendor/app/styles/main/announcements.scss */
-  .announcements .sidebar {
-    width: 26.6%;
-  }
+
 }
 /* line 33, ../../../assets/vendor/app/styles/main/announcements.scss */
 .announcements {
@@ -9833,24 +9766,6 @@ p {
   font-family: CirceExtraBold;
   src: url("../fonts/circe/Circe-ExtraBold.otf");
 }
-/* line 13, ../../../assets/vendor/app/styles/main/sidebar.scss */
-.sidebar .sidebar-item {
-  background-size: cover;
-  display: block;
-  height: 240px;
-  position: relative;
-}
-/* line 19, ../../../assets/vendor/app/styles/main/sidebar.scss */
-.sidebar .sidebar-item .sidebar-item-text {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-  color: white;
-  font-family: CirceExtraBold, sans-serif;
-  font-size: 16px;
-  height: 100%;
-  line-height: 24px;
-  padding: 40px 20px;
-  text-transform: uppercase;
-}
 
 @font-face {
   font-family: CirceRegular;
@@ -9920,10 +9835,6 @@ p {
   .announcements .announce-cards .cards-column {
     padding-left: 0;
     padding-right: 30px;
-  }
-  /* line 27, ../../../assets/vendor/app/styles/main/announcements.scss */
-  .announcements .sidebar {
-    width: 26.6%;
   }
 }
 /* line 33, ../../../assets/vendor/app/styles/main/announcements.scss */
@@ -10095,5 +10006,7 @@ p {
     width: 193.8px;
   }
 }
+
+
 
 /*# sourceMappingURL=app.css.map */

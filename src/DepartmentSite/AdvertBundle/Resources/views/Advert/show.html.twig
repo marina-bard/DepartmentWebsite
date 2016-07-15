@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div ng-controller="OneAdvertCtrl">
+    {#<script type="text/javascript">#}
+        {#data = '{{ render(controller('DepartmentSiteAdvertBundle:Advert:getOne', {'id' : advert.id})) }}';#}
+    {#</script>#}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title">
+                    <span>Объявления</span>
+                    <div class="v-separator"></div>
+                    <a ng-href="{{ path('advert_index', {'page': 1}) }}">К списку объявлений</a>
+                    <div class="v-separator"></div>
+                    <a ng-href="#/announcements/page">К следующему</a>
+                    <div class="v-separator"></div>
+                    <a ng-href="#/announcements/page">К предыдущему</a>
+                </div>
+                <i class="news-time">{{ advert.createdAt.date | date('d.m.Y')}}</i>
+                <div class="post-title-inside-post">{{ advert.title }}</div>
+                <div class="post-content-inside post-content" >
+                    {{ advert.content | raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

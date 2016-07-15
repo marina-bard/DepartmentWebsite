@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="Slide Show">
+                    <source>Slide Show</source>
+                    <target>Слайд-шоу</target>
+            </trans-unit>
+            <trans-unit id="Title">
+                     <source>Title</source>
+                     <target>Заголовок</target>
+            </trans-unit>
+            <trans-unit id="Description">
+                      <source>Description</source>
+                      <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="Image">
+                        <source>Image</source>
+                        <target>Фото</target>
+            </trans-unit>
+            <trans-unit id="Slide Show List">
+                        <source>Slide Show List</source>
+                        <target>Слайд-шоу</target>
+            </trans-unit>
+            <trans-unit id="Slide Show Create">
+                        <source>Slide Show Create</source>
+                        <target>Создать слайд-шоу</target>
+            </trans-unit>
+            <trans-unit id="Created At">
+                        <source>Created At</source>
+                        <target>Дата создания</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

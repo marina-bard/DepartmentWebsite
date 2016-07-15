@@ -5,6 +5,8 @@ namespace DepartmentSite\NewsBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use ITM\FilePreviewBundle\Form\Type\FilePreviewType;
+use ITM\ImagePreviewBundle\Form\Type\ImagePreviewType;
 
 class NewsType extends AbstractType
 {
@@ -18,10 +20,10 @@ class NewsType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('content')
-            ->add('photo')
+            ->add('photo', ImagePreviewType::class, ['data_class' => null])
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
