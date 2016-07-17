@@ -5,7 +5,6 @@
     <script type="text/javascript">
         adverts_list = '{{ render(controller('DepartmentSiteDefaultBundle:Default:getAdvertsForMainPage')) }}';
         news_list = '{{ render(controller('DepartmentSiteDefaultBundle:Default:getNewsForMainPage')) }}';
-        console.log(adverts_list);
     </script>
 
     <div ng-controller="MainPageCtrl">
@@ -15,63 +14,47 @@
                     <div class="row">
                         <div class="col-md-8 announce-cards">
                             <div class="row">
+
                                 <div class="section-title"><span>{{ 'advert' | DICTIONARY(_locale) }}</span>
                                     <div class="v-separator"></div><a ng-href="{{ path('advert_index') }}">
                                         {{ 'all_advert' | DICTIONARY(_locale) }}</a>
                                 </div>
                             </div>
-                            <div  ng-if="$index % 2 == 0" ng-repeat="advert in adverts | orderBy: &#39;id&#39;">
-                                <div class="col-md-6 cards-column">
-                                    <div class="announce-card">
-                                        <div class="announce-card-content">
-                                            <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{ '{{adverts[$index].created_at.date | date}}' }}</i>
-                                            <br /><a class="announce-card-title" ng-href="/advert/{{'{{adverts[$index].slug}}'}}/show">{{ '{{ adverts[$index].title }}' }}</a>
-                                            <div class="announce-card-lead">{{ '{{ adverts[$index].description | limitTo: 100 }}' }}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 cards-column" ng-if="adverts[$index + 1]">
-                                    <div class="announce-card">
-                                        <div class="announce-card-content">
-                                            <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{ '{{ adverts[$index + 1].created_at.date | date}}' }}</i>
-                                            <br /><a class="announce-card-title" ng-href="/advert/{{'{{adverts[$index+1].slug}}'}}/show">{{ '{{ adverts[$index + 1].title }}' }}</a>
-                                            <div class="announce-card-lead"> {{ '{{ adverts[$index + 1].description | limitTo: 100 }}' }}</div>
+                            <div  ng-repeat="advert in adverts">
+                                <div ng-class="($index % 2 !== 0) ? 'row' : ''">
+                                    <div class="col-md-6 cards-column">
+                                        <div class="announce-card">
+                                            <div class="announce-card-content">
+                                                <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{ '{{advert.created_at.date | dateFilter | date:"dd.MM.yyyy"}}' }}</i>
+                                                <br /><a class="announce-card-title" ng-href="/advert/{{'{{advert.slug}}'}}/show">{{ '{{ advert.title }}' }}</a>
+                                                <div class="announce-card-lead">{{ '{{ advert.description }}' }}</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4 sidebar">
+                            {% include ':default:sidebar.html.twig'%}
+                        </div>
                     </div>
-                        {#<div class="col-md-4 sidebar" ng-include="&#39;views/main/announcements/sidebar.html&#39;"></div>#}
                 </div>
             </div>
             <div class="news">
                 <div class="container">
                     <div class="row">
+
                         <div class="section-title"><span>{{ 'news' | DICTIONARY(_locale) }}</span>
-                            <div class="v-separator"></div><a ng-href="{{ path('news_index', {'_locale' : _locale}) }}">
-                                {{ 'all_news' | DICTIONARY(_locale) }}</a></div>
+                            <div class="v-separator"></div><a ng-href="{{ path('news_index', {'_locale' : _locale }) }}">{{ 'all_news' | DICTIONARY(_locale) }}</a></div>
                     </div>
-                    <div class="row" ng-if="$index % 2 == 0" ng-repeat="oneNews in news | orderBy: &#39;id&#39;">
-                        <div class="col-md-6 news-column">
-                            <a ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show">
-                                <img alt="alt" class="news-item-image" ng-src="{{ '{{news[$index].photo.path}}' }}" />
-                            </a>
-                            <div class="news-item-date">{{'{{ news[$index].created_at.date | date }}'}}</div>
-                            <br/><a class="news-item-title" ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show">
-                                {{'{{ news[$index].title }}'}}
-                                </a>
-                            <div class="news-item-lead">{{'{{ news[$index].description}}'}}</div>
-                        </div>
-                        <div class="col-md-6 news-column2" ng-if="news[$index + 1]">
-                            <a ng-href="{{ _locale }}/news/{{'{{news[$index+1].slug}}'}}/show">
-                                <img alt="alt" class="news-item-image" ng-src="{{ '{{news[$index+1].photo.path}}' }}" />
-                            </a>
-                            <div class="news-item-date">{{'{{ news[$index+1].created_at.date | date }}'}}</div>
-                            <br /><a class="news-item-title" ng-href="{{ _locale }}/news/{{'{{news[$index+1].slug}}'}}/show">
-                                {{'{{ news[$index+1].title }}'}}
-                                </a>
-                            <div class="news-item-lead">{{'{{ news[$index+1].description}}'}}</div>
+                    <div ng-repeat="oneNews in news">
+                        <div ng-class="($index % 2 !== 0) ? 'row' : ''">
+                            <div ng-class="($index % 2 === 0) ? 'col-md-6 news-column' : 'col-md-6 news-column2'">
+                                <a ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{oneNews.photo}}'}}" /></a>
+                                <div class="news-item-date">{{'{{oneNews.created_at.date | dateFilter | date:"dd.MM.yyyy"}}'}}</div>
+                                <br /><a class="news-item-title" ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
+                                <div class="news-item-lead">{{'{{ oneNews.description}}'}}</div>
+                            </div>
                         </div>
                     </div>
                 </div>

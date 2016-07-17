@@ -16,17 +16,16 @@ var news_index = 0;
         return function(text) {
             return $sce.trustAsHtml(text);
         };
-    }]);
+    }]).filter('dateFilter', function() {
+      return function (dateTime) {
+          if(dateTime == undefined)
+              return;
+          var t = dateTime.split(/[- :]/);
+          return new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
+      }
+  });
 
 }).call(this);
 
 
-function getNewsIndex(id) {
-    for(var i = 0; i < data.length; i += 1) {
-         if(data[i].id == id) {
-             console.log(data[i].id);
-             return i;
-         }
-       }
-  };
 //# sourceMappingURL=one_news.js.map

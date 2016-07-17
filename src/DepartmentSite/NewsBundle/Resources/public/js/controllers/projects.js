@@ -59,12 +59,12 @@
     return setPagination($scope, $scope.posts);
   });
 
-  angular.module('bsuir-ecm').filter('pagination', function() {
-    return function(input, start) {
-      start = +start;
-      return input.slice(start);
-    };
-  });
+  // angular.module('bsuir-ecm').filter('pagination', function() {
+  //   return function(input, start) {
+  //     start = +start;
+  //     return input.slice(start);
+  //   };
+  // });
 
 }).call(this);
 

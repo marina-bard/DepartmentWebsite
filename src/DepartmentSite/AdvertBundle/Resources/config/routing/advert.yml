@@ -1,24 +1,17 @@
 advert_index:
-    path:     /
-    defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:index" }
-    methods:  GET
+    path:     /{page}/
+    defaults:
+        _controller: "DepartmentSiteAdvertBundle:Advert:index"
+        _locale : ru
+        page : 1
+        methods:  GET
+        requirements:
+            _locale : ru|en
 
 advert_show:
     path:     /{slug}/show
     defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:show" }
     methods:  GET
 
-advert_new:
-    path:     /new
-    defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:new" }
-    methods:  [GET, POST]
 
-advert_edit:
-    path:     /{slug}/edit
-    defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:edit" }
-    methods:  [GET, POST]
 
-advert_delete:
-    path:     /{slug}/delete
-    defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:delete" }
-    methods:  DELETE

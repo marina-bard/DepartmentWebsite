@@ -1,7 +1,6 @@
 //alert("app.js");
 (function() {
   'use strict';
-  //$route = Routing.generate('news_index');
   angular.module('bsuir-ecm', ['ngAnimate', 'ngAria', 'ngCookies', 'ngMessages', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch']).config(function($routeProvider) {
     return $routeProvider.when('/', {
       templateUrl: 'DepartmentSiteDefaultBundle:Default:index',
@@ -27,10 +26,18 @@
     }).when('/page/:slug/show', {
       templateUrl: 'DepartmentSitePageBundle:Page:show',
       controller: 'PageCtrl'
+    }).when('/gallery', {
+      templateUrl: 'DepartmentSiteGalleryBundle:Gallery:index',
+      controller: 'GalleryCtrl'
+    }).when('/gallery/:id/show', {
+      templateUrl: 'DepartmentSiteGalleryBundle:Gallery:show',
+      controller: 'OneGalleryCtrl'
     }).otherwise({
       redirectTo: '/'
     });
   });
+  
+  
 }).call(this);
 
 //# sourceMappingURL=app.js.map
