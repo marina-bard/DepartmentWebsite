@@ -14,6 +14,7 @@
                         <span>Новости</span>
                         <div class="v-separator"></div>
                         <a ng-href="{{ path('news_index', {'page' : '1'}) }}">К списку новостей</a>
+                        {#<a ng-href="{{ app.request.headers.get('referer') }}">К списку новостей</a>#}
                         <div class="v-separator"></div>
                         <a ng-href="#/news/page">К следующей</a>
                         <div class="v-separator"></div>
@@ -44,5 +45,5 @@
                 </div>
             </div>
         </div>
-    {#</div>#}
+    </div>
 {% endblock %}
