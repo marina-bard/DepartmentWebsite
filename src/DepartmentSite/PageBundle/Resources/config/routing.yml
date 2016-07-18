@@ -1,4 +1,4 @@
 department_site_page_page:
     resource: "@DepartmentSitePageBundle/Resources/config/routing/page.yml"
-    prefix:   /page
+    prefix:   /{locale}
 
