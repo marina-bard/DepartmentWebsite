@@ -43,6 +43,12 @@ class Image implements JsonSerializable
     private $image;
 
 
+    /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getImage();
+    }
 
 
     public function getSluggableFields()
@@ -121,4 +127,9 @@ class Image implements JsonSerializable
             'gallery' => $this->gallery->getTitle()
         ];
     }
+
+    
+    
+
+    
 }
