@@ -48,14 +48,18 @@
 /* line 57, ../../app/styles/login_form.scss */
 .forgot-passw {
   text-align: left;
-  margin-left: 107px;
+  margin-left: -40px;
   margin-top: 5px;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
   color: #373737;
   text-decoration: underline;
-  display: block;
+}
+
+.registration-btn {
+  float: right;
+  margin-right: 107px;
 }
 
 /* line 69, ../../app/styles/login_form.scss */

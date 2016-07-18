@@ -20,11 +20,13 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {{ render(controller('DepartmentSiteDefaultBundle:Default:getHeaderMenu', {'_locale' : _locale} )) }}
+                    <li><a ng-href='' data-target="#myModal" data-toggle="modal"  >Регистрация | Войти</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -33,6 +35,7 @@
                     &times;</button>
                 <h4 class="modal-title">Войти на сайт</h4><input class="form-control login-input" id="email" name="email" placeholder="Логин" type="email"/><input class="form-control login-input" id="key" name="key" placeholder="Пароль" type="password"/>
                 <a class="forgot-passw" ng-href="#/">Забыли пароль?</a>
+                <a class="registration-btn" ng-href="#/">Регистрация</a>
                 <button class="btn login-btn" data-dismiss="modal" type="button">Войти</button>
             </div>
         </div>
