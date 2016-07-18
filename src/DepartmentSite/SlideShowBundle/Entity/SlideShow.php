@@ -1,9 +1,6 @@
 <?php
-
 namespace DepartmentSite\SlideShowBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * SlideShow
  *
@@ -20,29 +17,24 @@ class SlideShow
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
      */
     private $image;
-
-
     /**
      * Get id
      *
@@ -52,7 +44,6 @@ class SlideShow
     {
         return $this->id;
     }
-
     /**
      * Set title
      *
@@ -63,10 +54,8 @@ class SlideShow
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
-
     /**
      * Get title
      *
@@ -76,7 +65,6 @@ class SlideShow
     {
         return $this->title;
     }
-
     /**
      * Set description
      *
@@ -87,10 +75,8 @@ class SlideShow
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
-
     /**
      * Get description
      *
@@ -100,7 +86,6 @@ class SlideShow
     {
         return $this->description;
     }
-
     /**
      * Set image
      *
@@ -111,10 +96,8 @@ class SlideShow
     public function setImage($image)
     {
         $this->image = $image;
-
         return $this;
     }
-
     /**
      * Get image
      *
@@ -125,4 +108,3 @@ class SlideShow
         return $this->image;
     }
 }
-

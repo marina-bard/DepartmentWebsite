@@ -18,39 +18,96 @@ class LoadDictionaryData implements FixtureInterface
     {
         $dictionary1 = new Dictionary();
         $dictionary1->setCode('VK_Link');
-        $dictionary1->setTitle('Link to "VK" social network');
-        $dictionary1->setValue('https://new.vk.com/lysenkov96');
+        $dictionary1->setTitle('Ссылка на "Вконтакте"');
+        $dictionary1->translate('ru')->setValue('https://new.vk.com/kozlova_oxana');
         $manager->persist($dictionary1);
+        $dictionary1->mergeNewTranslations();
         
         $dictionary2 = new Dictionary();
         $dictionary2->setCode('facebook_Link');
-        $dictionary2->setTitle('Link to "facebook" social network');
-        $dictionary2->setValue('https://www.facebook.com/groups/vmsis/?fref=nf');
+        $dictionary2->setTitle('Ссылка на "facebook"');
+        $dictionary2->translate('ru')->setValue('https://www.facebook.com/groups/vmsis/?fref=nf');
         $manager->persist($dictionary2);
+        $dictionary2->mergeNewTranslations();
         
         $dictionary3 = new Dictionary();
         $dictionary3->setCode('Instagram_Link');
-        $dictionary3->setTitle('Link to "Instagram" social network');
-        $dictionary3->setValue('https://www.instagram.com/jr_gimadova/');
+        $dictionary3->setTitle('Ссылка на "Instagram"');
+        $dictionary3->translate('ru')->setValue('https://www.instagram.com/marina.bard/');
         $manager->persist($dictionary3);
+        $dictionary3->mergeNewTranslations();
         
         $dictionary4 = new Dictionary();
         $dictionary4->setCode('twitter_Link');
-        $dictionary4->setTitle('Link to "twitter" social network');
-        $dictionary4->setValue('https://twitter.com/WENeed_ROCK');
+        $dictionary4->setTitle('Ссылка на "twitter"');
+        $dictionary4->translate('ru')->setValue('https://twitter.com/bsuirby');
         $manager->persist($dictionary4);
-        
+        $dictionary4->mergeNewTranslations();
+
         $dictionary5 = new Dictionary();
         $dictionary5->setCode('phone');
-        $dictionary5->setTitle('phone nubmer');
-        $dictionary5->setValue('(+375 17) 327-88-23');
+        $dictionary5->setTitle('номер телефона');
+        $dictionary5->translate('ru')->setValue('(+375 17) 327-88-23');
         $manager->persist($dictionary5);
-        
+        $dictionary5->mergeNewTranslations();
+
         $dictionary6 = new Dictionary();
         $dictionary6->setCode('address');
-        $dictionary6->setTitle('the department address');
-        $dictionary6->setValue('Str. Gikalo, 9, Minsk');
+        $dictionary6->setTitle('адрес кафедры');
+        $dictionary6->translate('ru')->setValue('Улица Гикало, 9, Минск');
+        $dictionary6->translate('en')->setValue('Str. Gikalo, 9, Minsk');
         $manager->persist($dictionary6);
+        $dictionary6->mergeNewTranslations();
+
+        $dictionary7 = new Dictionary();
+        $dictionary7->setCode('advert');
+        $dictionary7->translate('ru')->setValue('Объявления');
+        $dictionary7->translate('en')->setValue('Advertisements');
+        $manager->persist($dictionary7);
+        $dictionary7->mergeNewTranslations();
+
+        $dictionary8 = new Dictionary();
+        $dictionary8->setCode('all_advert');
+        $dictionary8->translate('ru')->setValue('Все объявления');
+        $dictionary8->translate('en')->setValue('All advertisements');
+        $manager->persist($dictionary8);
+        $dictionary8->mergeNewTranslations();
+
+        $dictionary9 = new Dictionary();
+        $dictionary9->setCode('news');
+        $dictionary9->translate('ru')->setValue('Новости кафедры');
+        $dictionary9->translate('en')->setValue('Department news');
+        $manager->persist($dictionary9);
+        $dictionary9->mergeNewTranslations();
+
+        $dictionary10 = new Dictionary();
+        $dictionary10->setCode('all_news');
+        $dictionary10->translate('ru')->setValue('Все новости');
+        $dictionary10->translate('en')->setValue('All news');
+        $manager->persist($dictionary10);
+        $dictionary10->mergeNewTranslations();
+
+        $dictionary11 = new Dictionary();
+        $dictionary11->setCode('authors_first_part');
+        $dictionary11->translate('ru')->setValue('Учебно-исследовательский проект');
+        $dictionary11->translate('en')->setValue('Educational and research project');
+        $manager->persist($dictionary11);
+        $dictionary11->mergeNewTranslations();
+
+        $dictionary12 = new Dictionary();
+        $dictionary12->setCode('authors_second_part');
+        $dictionary12->translate('ru')->setValue('совместной лаборатории БГУИР и IBA');
+        $dictionary12->translate('en')->setValue('co-lab BSUIR and IBA');
+        $manager->persist($dictionary12);
+        $dictionary12->mergeNewTranslations();
+
+        $dictionary13 = new Dictionary();
+        $dictionary13->setCode('map');
+        $dictionary13->translate('ru')->setValue('схема проезда');
+        $dictionary13->translate('en')->setValue('location map');
+        $manager->persist($dictionary13);
+        $dictionary13->mergeNewTranslations();
+
         $manager->flush();
     }
 }

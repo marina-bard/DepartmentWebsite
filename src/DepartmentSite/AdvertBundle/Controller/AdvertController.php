@@ -19,9 +19,9 @@ class AdvertController extends Controller
      * Lists all Advert entities.
      *
      */
-    public function indexAction($page)
+    public function indexAction($_locale, $page)
     {
-        return $this->render('DepartmentSiteAdvertBundle:Advert:index.html.twig', array('page' => $page));
+        return $this->render('DepartmentSiteAdvertBundle:Advert:index.html.twig', array('page' => $page, '_locale' => $_locale));
     }
    
     /**

@@ -8,6 +8,7 @@
 
 namespace DepartmentSite\DictionaryBundle\Admin;
 
+use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -20,7 +21,7 @@ class DictionaryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('value', 'text', array('label' => 'Value'))
+            ->add('translations', TranslationsType::class )
         ;
     }
 
@@ -47,7 +48,6 @@ class DictionaryAdmin extends Admin
         $listMapper
             ->addIdentifier('code')
             ->add('title')
-            ->add('value')
         ;
     }
 }

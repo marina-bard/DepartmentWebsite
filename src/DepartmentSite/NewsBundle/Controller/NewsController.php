@@ -25,29 +25,22 @@ class NewsController extends Controller
     /**
      * Lists all News entities.
      *
-     * @Route("/",
-     *     name = "news_index"
-     * )
-     * @Method("GET")
      */
-    public function indexAction($page)
+    public function indexAction($_locale, $page)
     {
-        return $this->render('DepartmentSiteNewsBundle:News:news.html.twig', array('page' => $page));
+        return $this->render('DepartmentSiteNewsBundle:News:news.html.twig', array('page' => $page, '_locale' => $_locale));
     }
 
     /**
      * Finds and displays a News entity.
      *
-     * @Route("/{slug}/show",
      *     defaults = {"_format"="html|json"},
-     *     name = "news_show"
-     * )
-     * @Method("GET")
      */
-    public function showAction(Request $request, News $news)
+    public function showAction(Request $request, News $news, $_locale)
     {
         return $this->render('DepartmentSiteNewsBundle:News:show.html.twig', array(
             'news' => $news,
+            '_locale' => $_locale
         ));
     }
 
