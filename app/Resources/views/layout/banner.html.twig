@@ -11,8 +11,8 @@
 
     <div class="carousel-inner">
         <div class="container" >
-            {{ render(controller('DepartmentSiteDefaultBundle:Default:getBannerMenu')) }}
-            <a ng-href="{{ path('department_site_default_homepage') }}">
+            {{ render(controller('DepartmentSiteDefaultBundle:Default:getBannerMenu', {'_locale' : _locale})) }}
+            <a ng-href="{{ path('department_site_default_homepage', {'_locale' : _locale}) }}">
                 <div class="evm-logo"></div>
             </a>
         </div>

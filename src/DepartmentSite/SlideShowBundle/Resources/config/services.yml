@@ -1,4 +1,8 @@
 services:
-#    department_site_slide_show.example:
-#        class: DepartmentSite\SlideShowBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+  admin.slide.show:
+          class: DepartmentSite\SlideShowBundle\Admin\SlideShowAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Slide Show", label: "Slide Show" }
+          arguments: [~, DepartmentSite\SlideShowBundle\Entity\SlideShow, ~]
+          calls:
+              - [ setTranslationDomain, [DepartmentSiteSlideShowBundle]]

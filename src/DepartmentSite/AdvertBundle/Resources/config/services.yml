@@ -1,4 +1,8 @@
 services:
-#    department_site_advert.example:
-#        class: DepartmentSite\AdvertBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    admin.advert:
+        class: DepartmentSite\AdvertBundle\Admin\AdvertAdmin
+        arguments: [~, DepartmentSite\AdvertBundle\Entity\Advert, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Advert", label: Advert}
+        calls:
+              - [ setTranslationDomain, [DepartmentSiteAdvertBundle]]

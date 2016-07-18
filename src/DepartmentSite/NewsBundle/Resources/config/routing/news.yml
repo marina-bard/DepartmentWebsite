@@ -1,24 +1,19 @@
 news_index:
-    path:     /{page}
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:index" }
+    path:     /{page}/
+    defaults:
+        _controller: "DepartmentSiteNewsBundle:News:index"
+        _locale : ru
+        page : 1
     methods:  GET
+    requirements:
+        _locale : ru|en
 
 news_show:
     path:     /{slug}/show
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:show" }
+    defaults:
+        _controller: "DepartmentSiteNewsBundle:News:show"
+        _locale: ru
     methods:  GET
+    requirements:
+        _locale : ru|en
 
-news_new:
-    path:     /new
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:new" }
-    methods:  [GET, POST]
-
-news_edit:
-    path:     /{slug}/edit
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:edit" }
-    methods:  [GET, POST]
-
-news_delete:
-    path:     /{slug}/delete
-    defaults: { _controller: "DepartmentSiteNewsBundle:News:delete" }
-    methods:  DELETE

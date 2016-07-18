@@ -33,6 +33,8 @@ class AppKernel extends Kernel
 
             new JMS\SerializerBundle\JMSSerializerBundle(),
 
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
+
             new Liip\ImagineBundle\LiipImagineBundle(),
 
             new ITM\FilePreviewBundle\ITMFilePreviewBundle(),
@@ -41,14 +43,15 @@ class AppKernel extends Kernel
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
             new Application\FOS\UserBundle\ApplicationFOSUserBundle(),
 
+           
+            new DepartmentSite\ProjectBundle\DepartmentSiteProjectBundle(),
             new DepartmentSite\DictionaryBundle\DepartmentSiteDictionaryBundle(),
-            new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
             new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
-            new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
-            new DepartmentSite\PageBundle\DepartmentSitePageBundle(),
-
+            new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
             new DepartmentSite\GalleryBundle\DepartmentSiteGalleryBundle(),
             new DepartmentSite\MenuBundle\DepartmentSiteMenuBundle(),
+            new DepartmentSite\NewsBundle\DepartmentSiteNewsBundle(),
+            new DepartmentSite\PageBundle\DepartmentSitePageBundle(),
             new DepartmentSite\SlideShowBundle\DepartmentSiteSlideShowBundle(),
         ];
 

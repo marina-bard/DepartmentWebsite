@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {#<div ng-controller="OneNewsCtrl">#}
+        {#<script type="text/javascript">#}
+            {#data = '{{ render(controller('DepartmentSiteNewsBundle:News:getOne', {'id' : news.id})) }}';#}
+        {#</script>#}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title">
+                        <span>Новости</span>
+                        <div class="v-separator"></div>
+                        <a ng-href="{{ path('news_index', {'page' : '1'}) }}">К списку новостей</a>
+                        <div class="v-separator"></div>
+                        <a ng-href="#/news/page">К следующей</a>
+                        <div class="v-separator"></div>
+                        <a ng-href="#/news/page">К предыдущей</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <i class="news-time">{{news.createdAt.date |date('d.m.Y')}}</i>
+                    {#{{ dump(url) }}#}
+                    <div class="post-title-inside-post">{{news.title}}</div>
+                    {#<br /><img alt="Cinque Terre" class="full-post-img" ng-src="{{news.photo.path}}" />#}
+                    {#<div class="post-content-inside" ng-bind-html="news.content | toHTML"></div>#}
+                    <div class='phimagebuilder_label_border'>
+                        <br /><img alt="Cinque Terre" class="full-post-img" ng-src='{{ news | itm_ipw_url('photo') }}' />
+                    <div class="post-content-inside">{{ news.content | raw }}</div>
+                    <div class="share-block">
+                        <div class="share">
+                            <div class="sprite share-icon"></div>
+                            <i>Поделиться новостью в соцсетях</i>
+                            <div class="sprite facebook"></div>
+                            <div class="sprite twitter"></div>
+                            <div class="sprite vk"></div>
+                            <div class="sprite instagram"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
