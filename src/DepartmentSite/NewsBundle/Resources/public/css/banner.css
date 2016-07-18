@@ -76,6 +76,11 @@
 .banner .links-list > li:hover, .banner .links-list > li:focus {
   border-bottom: 2px solid #fdd400;
 }
+
+.header .navbar-right > li:last-child > a {
+  cursor: pointer;
+}
+
 /* line 66, ../../../app/styles/layout/banner.scss */
 .banner .banner-title {
   font-family: CirceExtraBold, sans-serif;

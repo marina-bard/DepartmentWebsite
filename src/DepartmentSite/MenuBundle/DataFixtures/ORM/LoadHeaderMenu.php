@@ -44,12 +44,12 @@ class LoadHeaderMenu implements FixtureInterface
         $manager->persist($headerMenu4);
         $headerMenu4->mergeNewTranslations();
 
-        $headerMenu5 = new HeaderMenu();
-        $headerMenu5->translate('en')->setTitle('Registration | Log in');
-        $headerMenu5->translate('ru')->setTitle('Регистрация | Войти');
-        $headerMenu5->setTitle($headerMenu5->translate('en')->getTitle());
-        $manager->persist($headerMenu5);
-        $headerMenu5->mergeNewTranslations();
+//        $headerMenu5 = new HeaderMenu();
+//        $headerMenu5->translate('en')->setTitle('Registration | Log in');
+//        $headerMenu5->translate('ru')->setTitle('Регистрация | Войти');
+//        $headerMenu5->setTitle($headerMenu5->translate('en')->getTitle());
+//        $manager->persist($headerMenu5);
+//        $headerMenu5->mergeNewTranslations();
 
         $manager->flush();
     }

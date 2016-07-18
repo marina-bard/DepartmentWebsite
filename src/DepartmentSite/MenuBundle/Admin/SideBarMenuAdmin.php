@@ -21,6 +21,7 @@ class SideBarMenuAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('title')
             ->add('translations', TranslationsType::class)
             ->add('value', 'text', array('label' => 'Value'))
             ->add('photo', ImagePreviewType::class, ['data_class' => null])
@@ -29,7 +30,7 @@ class SideBarMenuAdmin extends AbstractAdmin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
-            ->remove('create')
+//            ->remove('create')
             ->remove('delete')
         ;
 

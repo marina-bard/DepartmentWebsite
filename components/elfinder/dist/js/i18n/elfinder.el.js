@@ -246,7 +246,7 @@ if (elFinder && elFinder.prototype && typeof(elFinder.prototype.i18) == 'object'
 			'webfm'           : 'εργαλείο διαχείρισης αρχείων από το web',
 			'ver'             : 'Έκδοση',
 			'protocolver'     : 'έκδοση πρωτοκόλλου',
-			'homepage'        : 'Σελίδα του project',
+			'homepage'        : 'Σελίδα του roject',
 			'docs'            : 'Τεκμηρίωση (documentation)',
 			'github'          : 'Κάντε μας fork στο Github',
 			'twitter'         : 'Ακολουθήστε μας στο twitter',
