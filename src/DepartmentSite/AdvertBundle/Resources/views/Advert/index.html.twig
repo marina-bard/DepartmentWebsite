@@ -23,7 +23,7 @@
                           <div class="full-card-content">
                               <div class="my_announcement-comments-count-circle pull-right">2</div>
                               <i class="announce-card-date">{{ '{{announcement.createdAt | dateFilter | date:"dd.MM.yyyy" }}' }}</i>
-                              <br /><a class="announce-card-title" ng-href="/advert/{{'{{announcement.slug}}'}}/show">{{'{{ announcement.title }}'}}</a>
+                              <br /><a class="announce-card-title" ng-href="/{{ _locale }}/advert/{{'{{announcement.slug}}'}}/show">{{'{{ announcement.title }}'}}</a>
                               <div class="announce-card-lead">{{'{{ announcement.description }}'}}</div>
                           </div>
                       </div>

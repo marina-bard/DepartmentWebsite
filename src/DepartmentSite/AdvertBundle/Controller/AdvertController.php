@@ -22,7 +22,6 @@ class AdvertController extends Controller
      */
     public function indexAction($_locale, $page)
     {
-        
         return $this->render('DepartmentSiteAdvertBundle:Advert:index.html.twig', array('page' => $page, '_locale' => $_locale));
     }
    
@@ -30,10 +29,11 @@ class AdvertController extends Controller
      * Finds and displays a Advert entity.
      *
      */
-    public function showAction(Advert $advert)
+    public function showAction(Advert $advert, $_locale)
     {
         return $this->render('DepartmentSiteAdvertBundle:Advert:show.html.twig', array(
-            'advert' => $advert
+            'advert' => $advert,
+            '_locale' => $_locale
         ));
     }
     
