@@ -2,6 +2,7 @@
 
 namespace DepartmentSite\PageBundle\Controller;
 
+use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -14,33 +15,39 @@ use DepartmentSite\PageBundle\Form\PageType;
  */
 class PageController extends Controller
 {
-    /**
-     * Lists all Page entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $pages = $em->getRepository('DepartmentSitePageBundle:Page')->findAll();
-
-        return $this->render('DepartmentSitePageBundle:Page:index.html.twig', array(
-            'pages' => $pages,
-        ));
-    }
+//    /**
+//     * Lists all Page entities.
+//     *
+//     */
+//    public function indexAction($locale)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $pages = $em->getRepository('DepartmentSitePageBundle:Page')->findAll();
+//
+//        return $this->render('DepartmentSitePageBundle:Page:index.html.twig', array(
+//            'pages' => $pages,
+//            'locale' => $locale
+//        ));
+//    }
 
     
     /**
      * Finds and displays a Page entity.
      *
      */
-    public function showAction(Page $page)
+    public function showAction(Page $page, $locale, $slug)
     {
-       
-        return $this->render('DepartmentSitePageBundle:Page:show.html.twig', array(
-            'page' => $page
+//        $em = $this->getDoctrine()->getManager();
+//        $page = $em->getRepository('DepartmentSitePageBundle:Page')->findBy(array('slug'=>$slug));
+          return $this->render('DepartmentSitePageBundle:Page:show.html.twig', array(
+            'page' => $page, '_locale' => $locale
         ));
+//
+//        return new Response(var_dump($page));
     }
+
+
     
     
 
