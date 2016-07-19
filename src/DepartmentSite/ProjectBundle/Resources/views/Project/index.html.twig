@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Project list</h1>
+   {# <h1>Project list</h1>
 
     <table>
         <thead>
@@ -56,4 +56,39 @@
             <a href="{{ path('project_new') }}">Create a new entry</a>
         </li>
     </ul>
+
+    #}
+<div ng-controller="ProjectsCtrl">
+
+    <script type="text/javascript">
+        data = '{{ render(controller('DepartmentSiteProjectBundle:Project:getAll')) }}';
+        console.log(data);
+    </script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title"><span>Информация по проектам студентов</span></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="search-form">
+                <input placeholder="Поиск по теме проекта" title="search" type="search" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="post-list">
+                <div class="post-block" ng-repeat="project in projects"><a class="post-header" ng-href="#/projects/page">{{ '{{ project.title }}' }}</a>
+                    <div class="post-author">{{ '{{ project.student }}' }} {{ '{{ project.course }}' }} курс {{ '{{ project.studentGroup }}' }} группа</div>
+
+                    {#<div class="post-links"><a ng-href="#/projects/page">Отзывы ( {{ post.reviews }} )</a>#}
+                    <div class="post-links"><a ng-href="#/projects/page">Отзывы ( 2 )</a>
+                        <div class="line"></div>
+                    {#<a class="comments-link" ng-href="#/projects/page">Комментарии студентов ( {{ post.comments }} )</a></div>#}
+                    <a class="comments-link" ng-href="#/projects/page">Комментарии студентов ( 2 )</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

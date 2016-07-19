@@ -2,11 +2,14 @@
 
 namespace DepartmentSite\ProjectBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use DepartmentSite\ProjectBundle\Entity\Project;
 use DepartmentSite\ProjectBundle\Form\ProjectType;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Project controller.
@@ -128,5 +131,27 @@ class ProjectController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+//    public function getAllAction() {
+//        $em = $this->getDoctrine()->getManager();
+//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+//        $serialized = $this->container->get('serializer')->serialize($news, 'json');
+//        //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
+//        return new Response($serialized);
+//        //  return new JsonResponse($news);
+//    }
+
+    public function getAllAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findAll();
+
+//        $serialized = $this->container->get('serializer')->serialize($projects, 'json');
+//        $serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
+////        return new Response($serialized);
+
+//        var_dump($projects);
+        return new Response(htmlspecialchars(json_encode($projects, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 }

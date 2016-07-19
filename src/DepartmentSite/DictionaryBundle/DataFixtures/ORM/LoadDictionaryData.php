@@ -159,6 +159,20 @@ class LoadDictionaryData implements FixtureInterface
         $manager->persist($dictionary20);
         $dictionary20->mergeNewTranslations();
 
+        $dictionary21 = new Dictionary();
+        $dictionary21->setCode('projects');
+        $dictionary21->translate('ru')->setValue('Информация по проектам студентов');
+        $dictionary21->translate('en')->setValue('Students projects information');
+        $manager->persist($dictionary21);
+        $dictionary21->mergeNewTranslations();
+
+        $dictionary22 = new Dictionary();
+        $dictionary22->setCode('all_projects');
+        $dictionary22->translate('ru')->setValue('Все проекты');
+        $dictionary22->translate('en')->setValue('All projects');
+        $manager->persist($dictionary22);
+        $dictionary22->mergeNewTranslations();
+
         $manager->flush();
     }
 }

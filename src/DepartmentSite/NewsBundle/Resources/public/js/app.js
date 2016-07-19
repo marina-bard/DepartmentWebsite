@@ -32,6 +32,9 @@
     }).when('/gallery/:id/show', {
       templateUrl: 'DepartmentSiteGalleryBundle:Gallery:show',
       controller: 'OneGalleryCtrl'
+    }).when('/project/', {
+      templateUrl: 'DepartmentSiteProjectBundle:Project:index',
+      controller: 'ProjectsCtrl'
     }).otherwise({
       redirectTo: '/'
     });
