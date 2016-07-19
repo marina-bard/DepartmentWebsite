@@ -88,9 +88,6 @@ class AdvertController extends Controller
             ->getQuery();
 
         var_dump($query->getArrayResult());
-
-        //return $query->getSingleScalarResult();
-
     }
 
 }

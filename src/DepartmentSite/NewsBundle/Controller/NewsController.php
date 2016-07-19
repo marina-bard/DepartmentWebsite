@@ -53,26 +53,17 @@ class NewsController extends Controller
 //    }
     
     public function getNewsLengthAction() {
-        $sql_request = "SELECT COUNT(*) FROM News;";
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare($sql_request);
-        $statement->execute();
-        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+
+        $count = $this->getCount();
         
-        return new Response($temp);
+        return new Response($count);
     }
 
 
     public function  getNewsPaginationAction($page) {
-        $sql_request = "SELECT COUNT(*) FROM News;";
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare($sql_request);
-        $statement->execute();
-        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+        $count = $this->getCount();
 
-        return $this->render('layout/pagination.html.twig', array('listLength' => $temp, 'page' => $page));
+        return $this->render('layout/pagination.html.twig', array('listLength' => $count, 'page' => $page));
     }
     
     public function getNewsAction($page) {
@@ -99,6 +90,30 @@ class NewsController extends Controller
         $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
 
         return $url;
+    }
+
+    public function getCount(){
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteNewsBundle:News');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select('COUNT(a)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+
+    public function getNextPage($offset, $limit){
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteNewsBundle:News');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select()
+            ->orderBy('a.createdAt', 'DESC')
+            ->setFirstResult( $offset )
+            ->setMaxResults( $limit )
+            ->getQuery();
+
+        var_dump($query->getArrayResult());
     }
 
 }
