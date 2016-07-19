@@ -2,29 +2,33 @@ project_index:
     path:     /
     defaults:
         _controller: "DepartmentSiteProjectBundle:Project:index"
-        locale: ru
+        _locale: ru
     methods:  GET
-    requirements: ru|en
+    requirements:
+        _locale: ru|en
 
 project_show:
-    path:     /{id}/show
+    path:     /{slug}/show
     defaults:
         _controller: "DepartmentSiteProjectBundle:Project:show"
-        locale: ru
+        _locale: ru
     methods:  GET
-    requirements: ru|en
+    requirements:
+        _locale: ru|en
 
 project_new:
     path:     /new
     defaults: { _controller: "DepartmentSiteProjectBundle:Project:new" }
     methods:  [GET, POST]
 
+
 project_edit:
-    path:     /{id}/edit
+    path:     /{slug}/edit
     defaults: { _controller: "DepartmentSiteProjectBundle:Project:edit" }
     methods:  [GET, POST]
 
+
 project_delete:
-    path:     /{id}/delete
+    path:     /{slug}/delete
     defaults: { _controller: "DepartmentSiteProjectBundle:Project:delete" }
     methods:  DELETE
