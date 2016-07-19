@@ -61,7 +61,7 @@
             <a href="{{ path('project_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('project_edit', { 'id': project.id }) }}">Edit</a>
+            <a href="{{ path('project_edit', { 'slug': project.slug }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
