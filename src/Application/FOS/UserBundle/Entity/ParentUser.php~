@@ -14,7 +14,7 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields = "email", targetClass = "Application\FOS\UserBundle\Entity\User", message="fos_user.email.already_used")
  *
  */
-class ParentUser extends BaseUser
+class ParentUser extends User
 {
     /**
      * @ORM\Id
@@ -36,7 +36,7 @@ class ParentUser extends BaseUser
     /**
      * @ORM\Column(type="string", length=100)
      */
-    protected $partonymic;
+    protected $patronymic;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -143,5 +143,29 @@ class ParentUser extends BaseUser
     public function getGroup()
     {
         return $this->group;
+    }
+
+    /**
+     * Set studentGroup
+     *
+     * @param string $studentGroup
+     *
+     * @return ParentUser
+     */
+    public function setStudentGroup($studentGroup)
+    {
+        $this->studentGroup = $studentGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get studentGroup
+     *
+     * @return string
+     */
+    public function getStudentGroup()
+    {
+        return $this->studentGroup;
     }
 }

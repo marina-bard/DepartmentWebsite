@@ -18,9 +18,9 @@ pugx_multi_user:
         parent_user:
             entity:
                 class: Application\FOS\UserBundle\Entity\ParentUser
-#            registration:
-#                form:
-#                    type: Application\FOS\UserBundle\Form\Type\RegistrationParentUserFormType
-#                    name: fos_user_registration_form
-#                    validation_groups:  [Registration, Default]
-#                template: ApplicationFOSUserBundle:Registration:parent_user.form.html.twig
+            registration:
+                form:
+                    type: Application\FOS\UserBundle\Form\Type\RegistrationParentUserFormType
+                    name: fos_user_registration_form
+                    validation_groups:  [Registration, Default]
+                template: ApplicationFOSUserBundle:Registration:parent_user.form.html.twig

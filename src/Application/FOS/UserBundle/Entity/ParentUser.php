@@ -36,7 +36,7 @@ class ParentUser extends User
     /**
      * @ORM\Column(type="string", length=100)
      */
-    protected $partonymic;
+    protected $patronymic;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -167,5 +167,29 @@ class ParentUser extends User
     public function getStudentGroup()
     {
         return $this->studentGroup;
+    }
+
+    /**
+     * Set patronymic
+     *
+     * @param string $patronymic
+     *
+     * @return ParentUser
+     */
+    public function setPatronymic($patronymic)
+    {
+        $this->patronymic = $patronymic;
+
+        return $this;
+    }
+
+    /**
+     * Get patronymic
+     *
+     * @return string
+     */
+    public function getPatronymic()
+    {
+        return $this->patronymic;
     }
 }
