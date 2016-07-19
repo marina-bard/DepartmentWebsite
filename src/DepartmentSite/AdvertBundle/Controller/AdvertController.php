@@ -39,25 +39,14 @@ class AdvertController extends Controller
 
 
     public function getAdvertsLengthAction() {
-        $sql_request = "SELECT COUNT(*) FROM Advert;";
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare($sql_request);
-        $statement->execute();
-        $temp = $statement->fetchAll()[0]["COUNT(*)"];
-
-        return new Response($temp);
+          $count = $this->getCount();
+        return new Response($count);
     }
 
     public function  getAdvertsPaginationAction($page) {
-        $sql_request = "SELECT COUNT(*) FROM Advert;";
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare($sql_request);
-        $statement->execute();
-        $temp = $statement->fetchAll()[0]["COUNT(*)"];
-
-        return $this->render('layout/pagination.html.twig', array('listLength' => $temp, 'page' => $page));
+        
+        $count = $this->getCount();
+        return $this->render('layout/pagination.html.twig', array('listLength' => $count, 'page' => $page));
     }
 
     public function getAdvertsAction($page) {
@@ -78,6 +67,16 @@ class AdvertController extends Controller
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findAll();
         return new Response(htmlspecialchars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
+    }
+
+    public function getCount(){
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteAdvertBundle:Advert');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select('COUNT(a)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
     }
 
 }
