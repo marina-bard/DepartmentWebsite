@@ -13,7 +13,7 @@ class RegistrationUserController extends Controller
             ->register('Application\FOS\UserBundle\Entity\StudentUser');
     }
 
-    public function registerSParentUserAction()
+    public function registerParentUserAction()
     {
         return $this->container
             ->get('pugx_multi_user.registration_manager')
