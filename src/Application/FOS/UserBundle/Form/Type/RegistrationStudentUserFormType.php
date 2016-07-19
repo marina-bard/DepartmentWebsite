@@ -23,6 +23,6 @@ class RegistrationStudentUserFormType extends AbstractType
 
     public function getBlockPrefix()
     {
-        return 'student_user_registration_form';
+        return 'fos_user_registration_form_student_user';
     }
 }

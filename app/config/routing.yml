@@ -68,8 +68,13 @@ _liip_imagine:
 
 student_user_registration:
     path:  /register/student_user
-    defaults: { _controller: ApplicationFOSUserBundle:RegistrationStudentUser:register }
+    defaults: { _controller: ApplicationFOSUserBundle:RegistrationUser:registerStudentUser }
 
 parent_user_registration:
     path:  /register/parent_user
-    defaults: { _controller: ApplicationFOSUserBundle:RegistrationParentUser:register }
+    defaults: { _controller: ApplicationFOSUserBundle:RegistrationUser:registerParentUser }
+
+teacher_user_registration:
+    path:  /register/teacher_user
+    defaults: { _controller: ApplicationFOSUserBundle:RegistrationUser:registerTeacherUser }
+

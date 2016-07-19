@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="fos_user")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"Student_user" = "StudentUser", "Parent_user" = "ParentUser"})
+ * @ORM\DiscriminatorMap({"Student_user" = "StudentUser", "Parent_user" = "ParentUser", "Teacher_user" = "TeacherUser"})
  *
  */
 abstract class User extends BaseUser

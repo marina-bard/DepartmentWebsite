@@ -7,7 +7,7 @@ pugx_multi_user:
             registration:
                 form:
                     type: Application\FOS\UserBundle\Form\Type\RegistrationStudentUserFormType
-                    name: fos_user_registration_form
+                    name: fos_user_registration_form_student_user
                     validation_groups:  [Registration, Default]
                 template: ApplicationFOSUserBundle:Registration:student_user.form.html.twig
 #        profile:
@@ -21,6 +21,15 @@ pugx_multi_user:
             registration:
                 form:
                     type: Application\FOS\UserBundle\Form\Type\RegistrationParentUserFormType
-                    name: fos_user_registration_form
+                    name: fos_user_registration_form_parent_user
                     validation_groups:  [Registration, Default]
                 template: ApplicationFOSUserBundle:Registration:parent_user.form.html.twig
+        teacher_user:
+            entity:
+                class: Application\FOS\UserBundle\Entity\TeacherUser
+            registration:
+                form:
+                    type: Application\FOS\UserBundle\Form\Type\RegistrationTeacherUserFormType
+                    name: fos_user_registration_form_teacher_user
+                    validation_groups:  [Registration, Default]
+                template: ApplicationFOSUserBundle:Registration:teacher_user.form.html.twig
