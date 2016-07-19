@@ -57,6 +57,10 @@
   text-decoration: underline;
 }
 
+.forgot-passw-en {
+  margin-left: -60px;
+}
+
 .registration-btn {
   float: right;
   margin-right: 107px;
@@ -92,7 +96,17 @@
 
   /* line 95, ../../app/styles/login_form.scss */
   .forgot-passw {
-    margin-left: 64.2px;
+    text-align: center;
+    margin-left: 5px;
+    display: block;
+  }
+
+  .registration-btn {
+    float: none;
+    margin-right: 0px;
+    text-align: center;
+    margin-top: 10px;
+    display: block;
   }
 
   /* line 99, ../../app/styles/login_form.scss */
@@ -102,5 +116,7 @@
     width: 193.8px;
   }
 }
+
+
 
 /*# sourceMappingURL=login_form.css.map */

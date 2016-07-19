@@ -108,6 +108,57 @@ class LoadDictionaryData implements FixtureInterface
         $manager->persist($dictionary13);
         $dictionary13->mergeNewTranslations();
 
+        $dictionary14 = new Dictionary();
+        $dictionary14->setCode('login_link');
+        $dictionary14->translate('ru')->setValue('Регистрация | Войти');
+        $dictionary14->translate('en')->setValue('Sign Up | Log In');
+        $manager->persist($dictionary14);
+        $dictionary14->mergeNewTranslations();
+
+        /////////////////////////////////////
+
+        $dictionary15 = new Dictionary();
+        $dictionary15->setCode('log_in');
+        $dictionary15->translate('ru')->setValue('Войти на сайт');
+        $dictionary15->translate('en')->setValue('Sign In');
+        $manager->persist($dictionary15);
+        $dictionary15->mergeNewTranslations();
+
+        $dictionary16 = new Dictionary();
+        $dictionary16->setCode('sign_up');
+        $dictionary16->translate('ru')->setValue('Регистрация');
+        $dictionary16->translate('en')->setValue('Sign Up');
+        $manager->persist($dictionary16);
+        $dictionary16->mergeNewTranslations();
+
+        $dictionary17 = new Dictionary();
+        $dictionary17->setCode('forgot_password');
+        $dictionary17->translate('ru')->setValue('Забыли пароль?');
+        $dictionary17->translate('en')->setValue('Forgot Password?');
+        $manager->persist($dictionary17);
+        $dictionary17->mergeNewTranslations();
+
+        $dictionary18 = new Dictionary();
+        $dictionary18->setCode('login_placeholder');
+        $dictionary18->translate('ru')->setValue('Логин');
+        $dictionary18->translate('en')->setValue('Login');
+        $manager->persist($dictionary18);
+        $dictionary18->mergeNewTranslations();
+
+        $dictionary19 = new Dictionary();
+        $dictionary19->setCode('password_placeholder');
+        $dictionary19->translate('ru')->setValue('Пароль');
+        $dictionary19->translate('en')->setValue('Password');
+        $manager->persist($dictionary19);
+        $dictionary19->mergeNewTranslations();
+
+        $dictionary20 = new Dictionary();
+        $dictionary20->setCode('login_button');
+        $dictionary20->translate('ru')->setValue('Войти');
+        $dictionary20->translate('en')->setValue('Log In');
+        $manager->persist($dictionary20);
+        $dictionary20->mergeNewTranslations();
+
         $manager->flush();
     }
 }
