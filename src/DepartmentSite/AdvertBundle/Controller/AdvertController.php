@@ -87,7 +87,7 @@ class AdvertController extends Controller
             ->setMaxResults( $limit )
             ->getQuery();
 
-        var_dump($query->getArrayResult());
+        return $query->getArrayResult();
     }
 
 }

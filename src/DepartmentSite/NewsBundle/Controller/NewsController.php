@@ -68,12 +68,7 @@ class NewsController extends Controller
     
     public function getNewsAction($page) {
         $news_per_page = 10;
-        $sql_request = "SELECT * FROM News ORDER BY createdAt DESC LIMIT " . (($page-1)*$news_per_page) . ", " . $news_per_page;
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare($sql_request);
-        $statement->execute();
-        $news = $statement->fetchAll();
+        $news = $this->getNextPage(($page-1)*$news_per_page,$news_per_page );
 
         foreach($news as &$oneNews) {
             $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
@@ -112,8 +107,7 @@ class NewsController extends Controller
             ->setFirstResult( $offset )
             ->setMaxResults( $limit )
             ->getQuery();
-
-        var_dump($query->getArrayResult());
+        return $query->getArrayResult();
     }
 
 }
