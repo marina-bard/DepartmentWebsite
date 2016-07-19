@@ -24,7 +24,7 @@
         <tbody>
         {% for project in projects %}
             <tr>
-                <td><a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.id }}</a></td>
+                <td><a href="{{ path('project_show', { 'slug': project.slug }) }}">{{ project.id }}</a></td>
                 <td>{{ project.title }}</td>
                 <td>{{ project.student }}</td>
                 <td>{{ project.teacher }}</td>
@@ -39,10 +39,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('project_show', { 'id': project.id }) }}">show</a>
+                            <a href="{{ path('project_show', { 'slug': project.slug }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('project_edit', { 'id': project.id }) }}">edit</a>
+                            <a href="{{ path('project_edit', { 'slug': project.slug }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

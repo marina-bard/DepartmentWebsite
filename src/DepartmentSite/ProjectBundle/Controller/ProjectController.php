@@ -45,7 +45,7 @@ class ProjectController extends Controller
             $em->persist($project);
             $em->flush();
 
-            return $this->redirectToRoute('project_show', array('id' => $project->getId()));
+            return $this->redirectToRoute('project_show', array('slug' => $project->getSlug()));
         }
 
         return $this->render('DepartmentSiteProjectBundle:Project:new.html.twig', array(
@@ -74,7 +74,7 @@ class ProjectController extends Controller
      * Displays a form to edit an existing Project entity.
      *
      */
-    public function editAction(Request $request, Project $project)
+    public function editAction(Request $request, Project $project, $_locale)
     {
         $deleteForm = $this->createDeleteForm($project);
         $editForm = $this->createForm('DepartmentSite\ProjectBundle\Form\ProjectType', $project);
@@ -85,13 +85,14 @@ class ProjectController extends Controller
             $em->persist($project);
             $em->flush();
 
-            return $this->redirectToRoute('project_edit', array('id' => $project->getId()));
+            return $this->redirectToRoute('project_edit', array('slug' => $project->getSlug()));
         }
 
         return $this->render('DepartmentSiteProjectBundle:Project:edit.html.twig', array(
             'project' => $project,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            '_locale' => $_locale
         ));
     }
 
@@ -123,7 +124,7 @@ class ProjectController extends Controller
     private function createDeleteForm(Project $project)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('project_delete', array('id' => $project->getId())))
+            ->setAction($this->generateUrl('project_delete', array('slug' => $project->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

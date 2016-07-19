@@ -8,7 +8,7 @@ project_index:
         _locale: ru|en
 
 project_show:
-    path:     /{id}/show
+    path:     /{slug}/show
     defaults:
         _controller: "DepartmentSiteProjectBundle:Project:show"
         _locale: ru
@@ -23,12 +23,12 @@ project_new:
 
 
 project_edit:
-    path:     /{id}/edit
+    path:     /{slug}/edit
     defaults: { _controller: "DepartmentSiteProjectBundle:Project:edit" }
     methods:  [GET, POST]
 
 
 project_delete:
-    path:     /{id}/delete
+    path:     /{slug}/delete
     defaults: { _controller: "DepartmentSiteProjectBundle:Project:delete" }
     methods:  DELETE
