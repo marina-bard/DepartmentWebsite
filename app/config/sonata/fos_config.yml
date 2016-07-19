@@ -2,3 +2,16 @@ fos_user:
     db_driver:  orm # can be orm or odm
     firewall_name:  main
     user_class:   Application\FOS\UserBundle\Entity\User
+    service:
+        user_manager: pugx_user_manager
+#    registration:
+#        form:
+#            type: Application\FOS\UserBundle\Form\Type\RegistrationStudentUserFormType
+#
+#fos_user:
+#    db_driver:  orm # can be orm or odm
+#    firewall:
+#        main:
+#            user_class: Application\FOS\UserBundle\Entity\User
+#        student:
+#            user_class: Application\FOS\UserBundle\Entity\Student
