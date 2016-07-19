@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Doctrine\ORM\Query;
 /**
  * Advert controller.
  *
@@ -21,6 +22,7 @@ class AdvertController extends Controller
      */
     public function indexAction($_locale, $page)
     {
+        
         return $this->render('DepartmentSiteAdvertBundle:Advert:index.html.twig', array('page' => $page, '_locale' => $_locale));
     }
    
@@ -44,21 +46,16 @@ class AdvertController extends Controller
     }
 
     public function  getAdvertsPaginationAction($page) {
-        
+
         $count = $this->getCount();
         return $this->render('layout/pagination.html.twig', array('listLength' => $count, 'page' => $page));
     }
 
     public function getAdvertsAction($page) {
         $adv_per_page = 10;
-        $sql_request = "SELECT * FROM Advert ORDER BY createdAt DESC LIMIT " . (($page-1)*$adv_per_page) . ", " . $adv_per_page;
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare($sql_request);
-        $statement->execute();
-        $adverts = $statement->fetchAll();
-
+        $adverts = $this->getNextPage(($page-1)*$adv_per_page, $adv_per_page);
         $serialized = $this->container->get('serializer')->serialize($adverts, 'json');
+       
         return new Response($serialized);
     }
     
@@ -77,6 +74,23 @@ class AdvertController extends Controller
             ->select('COUNT(a)')
             ->getQuery();
         return $query->getSingleScalarResult();
+    }
+
+    public function getNextPage($offset, $limit){
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteAdvertBundle:Advert');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select()
+            ->orderBy('a.createdAt', 'DESC')
+            ->setFirstResult( $offset )
+            ->setMaxResults( $limit )
+            ->getQuery();
+
+        var_dump($query->getArrayResult());
+
+        //return $query->getSingleScalarResult();
+
     }
 
 }
