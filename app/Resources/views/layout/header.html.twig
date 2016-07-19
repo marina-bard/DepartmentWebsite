@@ -9,13 +9,11 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="focus">
-                        {% if _locale == 'en' %}
-                            <a href="{{ path('department_site_default_homepage', {'_locale': 'ru'}) }}">RUS</a>
-                        {% else %}
-                            <a href="{{ path('department_site_default_homepage', {'_locale': 'en'}) }}">ENG</a>
-                        {% endif %}
+                <ul class="nav navbar-nav navbar-left localization">
+                    <li>
+                        <a ng-class="'{{ _locale }}' == 'ru' ? 'active' : ''" ng-href="{{ path('department_site_default_homepage', {'_locale': 'ru'}) }}">RUS</a>
+                        <div class="v-separator"></div>
+                        <a ng-class="'{{ _locale }}' == 'en' ? 'active' : ''" ng-href="{{ path('department_site_default_homepage', {'_locale': 'en'}) }}">ENG</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
