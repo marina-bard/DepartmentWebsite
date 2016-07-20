@@ -103,7 +103,7 @@ class Project
     private $isModerated;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="project", cascade={"all"}, orphanRemoval=true)
      *
      */
     private $comments;
@@ -392,6 +392,17 @@ class Project
         return ['title'];
     }
 
+    public function setComments($comments)
+    {
+        if (count($comments) > 0) {
+            foreach ($comments as $i) {
+                $this->addComment($i);
+            }
+        }
+
+        return $this;
+    }
+
     /**
      * Add comment
      *
@@ -401,7 +412,11 @@ class Project
      */
     public function addComment(\DepartmentSite\ProjectBundle\Entity\Comment $comment)
     {
-        $this->comments[] = $comment;
+        $comment->setProject($this);
+
+        $this->comments->add($comment);
+
+//        $this->comments[] = $comment;
 
         return $this;
     }
@@ -425,4 +440,15 @@ class Project
     {
         return $this->comments;
     }
+
+//    public function prePersist($project)
+//    {
+//        $this->preUpdate($project);
+//    }
+//
+//    public function preUpdate($project)
+//    {
+//        $project->setComments($project->getComments());
+//    }
+
 }

@@ -4,7 +4,6 @@ namespace DepartmentSite\ProjectBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use DepartmentSite\ProjectBundle\Entity\Project;
 use DepartmentSite\ProjectBundle\Form\ProjectType;
 
@@ -40,12 +39,12 @@ class ProjectController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);
             $em->flush();
 
-            return $this->redirectToRoute('project_show', array('slug' => $project->getSlug()));
+            return $this->redirectToRoute('project_show', array('slug' => $project->getSlug(), '_locale' => $_locale));
         }
 
         return $this->render('DepartmentSiteProjectBundle:Project:new.html.twig', array(
@@ -59,7 +58,7 @@ class ProjectController extends Controller
      * Finds and displays a Project entity.
      *
      */
-    public function showAction(Project $project, $_locale)
+    public function showAction(Project $project, $_locale, $slug)
     {
         $deleteForm = $this->createDeleteForm($project);
 
@@ -100,7 +99,7 @@ class ProjectController extends Controller
      * Deletes a Project entity.
      *
      */
-    public function deleteAction(Request $request, Project $project)
+    public function deleteAction(Request $request, Project $project, $_locale)
     {
         $form = $this->createDeleteForm($project);
         $form->handleRequest($request);
@@ -111,7 +110,9 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('project_index');
+        return $this->redirectToRoute('project_index', array(
+            '_locale' => $_locale
+        ));
     }
 
     /**
