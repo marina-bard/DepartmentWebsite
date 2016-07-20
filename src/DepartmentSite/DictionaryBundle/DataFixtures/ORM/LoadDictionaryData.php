@@ -221,7 +221,8 @@ class LoadDictionaryData implements FixtureInterface
         $this->createDictionary($manager, 'start_date', 'Дата начала проекта', 'Start date');
         $this->createDictionary($manager, 'end_date', 'Дата завершения проекта', 'End date');
         $this->createDictionary($manager, 'project_description', 'Описание проекта', 'Description');
-        $this->createDictionary($manager, 'teacher_and_reviewer_comments', 'Отзывы руководителя и рецендиста', 'Teacher and reviewer comments');
+        $this->createDictionary($manager, 'teacher_and_reviewer_comments', 'Отзывы руководителя и рецендиста', 'Teacher and 
+         comments');
         $this->createDictionary($manager, 'message_to_regitster', 'Только зарегистрированные пользователи могут оставлять комментарии.',
             'Only registered users can leave comments');
         $this->createDictionary($manager, 'please', 'пожалуйста', 'please');
