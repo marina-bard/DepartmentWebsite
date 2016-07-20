@@ -18,8 +18,8 @@ class LoadDictionaryData implements FixtureInterface
     {
         $dictionary = new Dictionary();
         $dictionary->setCode($code);
-            $dictionary->translate('ru')->setValue($ru_value);
-           $dictionary->translate('en')->setValue($en_value);
+        $dictionary->translate('ru')->setValue($ru_value);
+        $dictionary->translate('en')->setValue($en_value);
         $manager->persist($dictionary);
         $dictionary->mergeNewTranslations();
     }
