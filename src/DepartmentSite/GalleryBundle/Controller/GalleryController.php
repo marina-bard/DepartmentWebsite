@@ -19,7 +19,7 @@ class GalleryController extends Controller
      * Lists all Gallery entities.
      *
      */
-    public function indexAction()
+    public function indexAction($_locale)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -27,6 +27,7 @@ class GalleryController extends Controller
 
         return $this->render('DepartmentSiteGalleryBundle:Gallery:index.html.twig', array(
             'galleries' => $galleries,
+            '_locale' => $_locale
         ));
     }
 
@@ -35,10 +36,11 @@ class GalleryController extends Controller
      * Finds and displays a Gallery entity.
      *
      */
-    public function showAction(Gallery $gallery)
+    public function showAction(Gallery $gallery, $_locale)
     {
         return $this->render('DepartmentSiteGalleryBundle:Gallery:show.html.twig', array(
-            'gallery' => $gallery
+            'gallery' => $gallery,
+            '_locale' => $_locale
         ));
     }
 

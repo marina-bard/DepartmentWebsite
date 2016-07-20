@@ -1,0 +1,26 @@
+{% set gradient = 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))' %}
+
+{% for menuItem in menu | sort%}
+
+    {% if menuItem.getValue() == 'gallery' %}
+        <a class="sidebar-item"  ng-href="/{{ _locale }}/{{ menuItem.getValue() }}" style="background-image: {{ gradient }},  url({{ menuItem.getPhoto() }})">
+     {% else %}
+        <a class="sidebar-item"  ng-href="/{{ _locale }}/{{ menuItem.getValue() }}/show" style="background-image: {{ gradient }},  url({{ menuItem.getPhoto() }})">
+     {% endif %}
+            <span></span>
+        <div class="sidebar-item-text">{{ menuItem.translate(_locale).getTitle() }}</div>
+    </a>
+
+{% endfor %}
+
+<script>
+    jQuery(function ($) {
+        $(".sidebar-item").mouseenter(function() {
+            $(this).children("span").addClass("horizontal-line");
+            $(this).children(".sidebar-item-text").addClass("hovered");
+        }).mouseleave(function() {
+            $(this).children("span").removeClass("horizontal-line");
+            $(this).children(".sidebar-item-text").removeClass("hovered");
+        });
+    });
+</script>

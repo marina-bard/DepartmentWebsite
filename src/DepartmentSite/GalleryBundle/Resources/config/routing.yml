@@ -3,4 +3,4 @@ department_site_gallery_image:
     prefix:   /image
 department_site_gallery_gallery:
     resource: "@DepartmentSiteGalleryBundle/Resources/config/routing/gallery.yml"
-    prefix:   /gallery
+    prefix:   /{_locale}/gallery

@@ -2,3 +2,33 @@ fos_user:
     db_driver:  orm # can be orm or odm
     firewall_name:  main
     user_class:   Application\FOS\UserBundle\Entity\User
+    service:
+        user_manager: pugx_user_manager
+    registration:
+        confirmation:
+            from_email: # Use this node only if you don't want the global email address for the confirmation email
+                address:        "%mailer_user%"
+                sender_name:    Marina Bardiyan
+            enabled:    true # change to true for required email confirmation
+            template:   ApplicationFOSUserBundle:Registration:email.txt.twig
+#        form:
+#            type:               FOS\UserBundle\Form\Type\RegistrationFormType # or 'fos_user_registration' on Symfony < 2.8
+#            name:               fos_user_registration_form
+#            validation_groups:  [Registration, Default]
+    service:
+        mailer:               fos_user.mailer.default
+        email_canonicalizer:  fos_user.util.canonicalizer.default
+        token_generator:      fos_user.util.token_generator.default
+        username_canonicalizer:  fos_user.util.canonicalizer.default
+        user_manager:         fos_user.user_manager.default
+#    registration:
+#        form:
+#            type: Application\FOS\UserBundle\Form\Type\RegistrationStudentUserFormType
+#
+#fos_user:
+#    db_driver:  orm # can be orm or odm
+#    firewall:
+#        main:
+#            user_class: Application\FOS\UserBundle\Entity\User
+#        student:
+#            user_class: Application\FOS\UserBundle\Entity\Student
