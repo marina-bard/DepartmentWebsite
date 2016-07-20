@@ -87,6 +87,7 @@
   font-size: 40px;
   line-height: 60px;
   padding: 24px 0;
+  width: 60%;
 }
 /* line 73, ../../../app/styles/layout/banner.scss */
 .banner .banner-lead {
@@ -94,6 +95,7 @@
   font-weight: bold;
   line-height: 27px;
   padding: 10.8px 0;
+  width: 60%;
 }
 
 @media (max-width: 768px) {
