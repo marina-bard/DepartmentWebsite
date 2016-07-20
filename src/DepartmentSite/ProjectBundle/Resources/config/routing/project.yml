@@ -18,17 +18,27 @@ project_show:
 
 project_new:
     path:     /new
-    defaults: { _controller: "DepartmentSiteProjectBundle:Project:new" }
+    defaults:
+        _controller: "DepartmentSiteProjectBundle:Project:new"
+        _locale: ru
     methods:  [GET, POST]
-
+    requirements:
+        _locale: ru|en
 
 project_edit:
     path:     /{slug}/edit
-    defaults: { _controller: "DepartmentSiteProjectBundle:Project:edit" }
+    defaults:
+        _controller: "DepartmentSiteProjectBundle:Project:edit"
+        _locale: ru
     methods:  [GET, POST]
-
+    requirements:
+        _locale: ru|en
 
 project_delete:
     path:     /{slug}/delete
-    defaults: { _controller: "DepartmentSiteProjectBundle:Project:delete" }
+    defaults:
+        _controller: "DepartmentSiteProjectBundle:Project:delete"
+        _locale: ru
     methods:  DELETE
+    requirements:
+        _locale: ru|en
