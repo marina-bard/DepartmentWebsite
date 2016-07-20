@@ -1,0 +1,32 @@
+comment_index:
+    path:     /
+    defaults:
+        _controller: "DepartmentSiteProjectBundle:Comment:index"
+        _locale: ru
+    methods:  GET
+    requirements:
+         _locale: ru|en
+
+comment_show:
+    path:     /{slug}/show
+    defaults:
+        _controller: "DepartmentSiteProjectBundle:Comment:show"
+        _locale: ru
+    methods:  GET
+    requirements:
+        _locale: ru|en
+
+comment_new:
+    path:     /new
+    defaults: { _controller: "DepartmentSiteProjectBundle:Comment:new" }
+    methods:  [GET, POST]
+
+comment_edit:
+    path:     /{slug}/edit
+    defaults: { _controller: "DepartmentSiteProjectBundle:Comment:edit" }
+    methods:  [GET, POST]
+
+comment_delete:
+    path:     /{slug}/delete
+    defaults: { _controller: "DepartmentSiteProjectBundle:Comment:delete" }
+    methods:  DELETE
