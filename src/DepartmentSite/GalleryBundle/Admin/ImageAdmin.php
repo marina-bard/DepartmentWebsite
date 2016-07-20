@@ -16,7 +16,7 @@ class ImageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         if ($this->isCurrentRoute('create')) {
-            $formMapper ->add('gallery', 'sonata_type_model_list', array());
+            $formMapper ->add('gallery', 'sonata_type_model_list', array('btn_delete'=> false, 'btn_add'=> false));
 
         }
         $formMapper
@@ -40,7 +40,7 @@ class ImageAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('image', 'string', ['template' => 'DepartmentSiteGalleryBundle:Admin:list__image.html.twig'] )
+            ->add('image', 'sonata_type_model', ['template' => 'DepartmentSiteGalleryBundle:Admin:list__image.html.twig'] )
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),

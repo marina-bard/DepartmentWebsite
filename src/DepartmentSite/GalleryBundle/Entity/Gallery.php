@@ -180,10 +180,6 @@ class Gallery implements JsonSerializable
         ];
     }
 
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
 
     public function getFirstImage()
     {

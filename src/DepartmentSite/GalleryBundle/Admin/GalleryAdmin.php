@@ -25,12 +25,11 @@ class GalleryAdmin extends AbstractAdmin
         ;
 
         if ($this->isCurrentRoute('edit')) {
-            $formMapper->add('images', 'sonata_type_collection',
-                array('by_reference' => false, 'required'=>true),
-                array(//'edit' => 'inline',
-                   // 'inline' => 'table'
-
-            ))
+            $formMapper->add('images', 'sonata_type_model',
+                array( 'required' => true,
+                    'by_reference' => false,
+                    'multiple' => true,
+                    'expanded' => true))
             ;
 
         }
@@ -71,18 +70,6 @@ class GalleryAdmin extends AbstractAdmin
 
     }
 
-    public function prePersist($object)
-    {
-        foreach ($object->getImages() as $image) {
-            $image->setGallery($object);
-        }
-    }
 
-    public function preUpdate($object)
-    {
-        foreach ($object->getImages() as $image) {
-            $image->setGallery($object);
-        }
-    }
 
 }
