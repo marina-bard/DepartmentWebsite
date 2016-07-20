@@ -58,4 +58,16 @@ class DefaultController extends Controller
             '_locale' => $_locale));
     }
 
+    public function getSidebarMenuAction($_locale)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sidebarMenu = $em->getRepository('DepartmentSiteMenuBundle:SideBarMenu')->findall();
+
+        foreach($sidebarMenu as &$item) {
+            $item->setPhoto($this->get('itm.file.preview.path.resolver')->getUrl($item, $item->getPhoto()));
+        }
+
+        return $this->render('@DepartmentSiteDefault/layout/sidebarMenu.html.twig', array('menu' => $sidebarMenu,
+            '_locale' => $_locale));
+    }
 }

@@ -35,7 +35,8 @@
                             </div>
                         </div>
                         <div class="col-md-4 sidebar">
-                            {% include ':default:sidebar.html.twig'%}
+                            {#{% include ':default:sidebar.html.twig'%}#}
+                            {{ render(controller('DepartmentSiteDefaultBundle:Default:getSidebarMenu', {'_locale' : _locale})) }}
                         </div>
                     </div>
                 </div>

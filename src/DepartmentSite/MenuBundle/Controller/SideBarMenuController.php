@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SideBarMenuController extends Controller
 {
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -14,6 +15,7 @@ class SideBarMenuController extends Controller
 
         foreach($items as &$item) {
             $item->setPhoto($this->get('itm.file.preview.path.resolver')->getUrl($item, $item->getPhoto()));
+            var_dump($item->getPhoto());
         }
     }
 }
