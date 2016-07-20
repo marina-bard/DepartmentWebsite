@@ -146,11 +146,12 @@ class Advert implements JsonSerializable
      */
     function jsonSerialize()
     {
+      
         return [
             'title' => $this->title,
             'description' => $this->description,
             'slug' => $this->slug,
-            'created_at' => $this->createdAt
+            'created_at' => $this->createdAt->format('Y-m-d')
         ];
     }
 }
