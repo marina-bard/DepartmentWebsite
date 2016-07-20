@@ -22,8 +22,6 @@ class AdvertController extends Controller
      */
     public function indexAction($_locale, $page)
     {
-        $temp=$this->getNextPage(0,2);
-        var_dump($temp[0]['createdAt']->format( 'Y/m/d H:i:s'));
         return $this->render('DepartmentSiteAdvertBundle:Advert:index.html.twig', array('page' => $page, '_locale' => $_locale));
     }
    
