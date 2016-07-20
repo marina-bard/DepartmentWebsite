@@ -4,7 +4,7 @@ namespace DepartmentSite\ProjectBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ProjectControllerTest extends WebTestCase
+class CommentControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class ProjectControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/project/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /project/");
+        $crawler = $client->request('GET', '/comment/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /comment/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'departmentsite_projectbundle_project[field_name]'  => 'Test',
+            'departmentsite_projectbundle_comment[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class ProjectControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'departmentsite_projectbundle_project[field_name]'  => 'Foo',
+            'departmentsite_projectbundle_comment[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

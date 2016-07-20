@@ -1,4 +1,7 @@
-department_site_news_news:
+department_site_project_project:
     resource: "@DepartmentSiteProjectBundle/Resources/config/routing/project.yml"
     prefix:   /{_locale}/project
 
+department_site_project_comment:
+        resource: "@DepartmentSiteProjectBundle/Resources/config/routing/comment.yml"
+        prefix:   /{_locale}/comment

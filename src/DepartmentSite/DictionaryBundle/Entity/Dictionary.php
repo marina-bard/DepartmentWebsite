@@ -42,7 +42,7 @@ class Dictionary
      * Get id
      *
      * @return int
-     */
+         */
     public function getId()
     {
         return $this->id;
