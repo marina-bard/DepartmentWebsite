@@ -63,7 +63,7 @@
   font-size: 23px;
   color: #373737;
   box-sizing: inherit;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 /* line 65, ../../app/styles/projects.scss */
@@ -73,8 +73,12 @@
   color: #373737;
   margin-top: 10px;
   margin-bottom: 14px;
+  text-transform: lowercase;
 }
 
+.post-author span {
+  text-transform: capitalize;
+}
 /* line 74, ../../app/styles/projects.scss */
 .post-links {
   font-family: CirceRegular, sans-serif;
@@ -98,6 +102,7 @@
   font-weight: bold;
   display: inline-block;
   padding-bottom: 27px;
+  margin-top: 60px;
 }
 
 /* line 107, ../../app/styles/projects.scss */
@@ -193,5 +198,20 @@
   margin-bottom: 120px;
   color: #595959;
 }
+
+.login-message a:focus,
+.login-message a:hover {
+  cursor: pointer;
+}
+
+.project-info-table {
+  font-size: 14px;
+  line-height: 5vh;
+}
+
+.project-info-table td {
+  padding-left: 10vw;
+}
+
 
 /*# sourceMappingURL=projects.css.map */

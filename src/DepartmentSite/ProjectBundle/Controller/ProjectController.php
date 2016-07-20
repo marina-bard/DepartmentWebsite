@@ -2,10 +2,13 @@
 
 namespace DepartmentSite\ProjectBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use DepartmentSite\ProjectBundle\Entity\Project;
 use DepartmentSite\ProjectBundle\Form\ProjectType;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Project controller.
@@ -129,5 +132,21 @@ class ProjectController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function getAllAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findAll();
+
+        return new Response(htmlspecialchars(json_encode($projects, JSON_HEX_QUOT | JSON_HEX_TAG)));
+    }
+
+    public function getOneAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->findOneBy(array('slug' => $slug));
+
+        return new Response(htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 }

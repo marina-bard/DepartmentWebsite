@@ -1,9 +1,16 @@
-page_index:
-    path:     /
-    defaults: { _controller: "DepartmentSitePageBundle:Page:index" }
-    methods:  GET
+#page_index:
+#    path:     /
+#    defaults:
+#        _controller: "DepartmentSitePageBundle:Page:index"
+#        locale: ru
+#    methods:  GET
+#    requirements: ru|en
 
-page_show:
+show:
     path:     /{slug}/show
-    defaults: { _controller: "DepartmentSitePageBundle:Page:show" }
+    defaults:
+        _controller: "DepartmentSitePageBundle:Page:show"
+#        locale: ru
     methods:  GET
+    requirements:
+#        locale : ru|en

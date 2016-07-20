@@ -53,36 +53,22 @@ class NewsController extends Controller
 //    }
     
     public function getNewsLengthAction() {
-        $sql_request = "SELECT COUNT(*) FROM News;";
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare($sql_request);
-        $statement->execute();
-        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+
+        $count = $this->getCount();
         
-        return new Response($temp);
+        return new Response($count);
     }
 
 
     public function  getNewsPaginationAction($page) {
-        $sql_request = "SELECT COUNT(*) FROM News;";
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare($sql_request);
-        $statement->execute();
-        $temp = $statement->fetchAll()[0]["COUNT(*)"];
+        $count = $this->getCount();
 
-        return $this->render('layout/pagination.html.twig', array('listLength' => $temp, 'page' => $page));
+        return $this->render('layout/pagination.html.twig', array('listLength' => $count, 'page' => $page));
     }
     
     public function getNewsAction($page) {
         $news_per_page = 10;
-        $sql_request = "SELECT * FROM News ORDER BY createdAt DESC LIMIT " . (($page-1)*$news_per_page) . ", " . $news_per_page;
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare($sql_request);
-        $statement->execute();
-        $news = $statement->fetchAll();
+        $news = $this->getNextPage(($page-1)*$news_per_page,$news_per_page );
 
         foreach($news as &$oneNews) {
             $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
@@ -99,6 +85,29 @@ class NewsController extends Controller
         $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
 
         return $url;
+    }
+
+    public function getCount(){
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteNewsBundle:News');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select('COUNT(a)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+
+    public function getNextPage($offset, $limit){
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteNewsBundle:News');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select()
+            ->orderBy('a.createdAt', 'DESC')
+            ->setFirstResult( $offset )
+            ->setMaxResults( $limit )
+            ->getQuery();
+        return $query->getArrayResult();
     }
 
 }

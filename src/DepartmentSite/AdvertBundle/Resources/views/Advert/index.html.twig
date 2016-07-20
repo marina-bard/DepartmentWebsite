@@ -5,7 +5,9 @@
 
 <div ng-controller="AnnouncementsCtrl">
       <script type="text/javascript">
+
            data = '{{ render(controller('DepartmentSiteAdvertBundle:Advert:getAdverts', { 'page': page })) }}';
+           console.log(data);
            adverts_length = '{{ render(controller('DepartmentSiteAdvertBundle:Advert:getAdvertsLength')) }}';
       </script>
 
@@ -22,8 +24,8 @@
                       <div class="announce-card-content">
                           <div class="full-card-content">
                               <div class="my_announcement-comments-count-circle pull-right">2</div>
-                              <i class="announce-card-date">{{ '{{announcement.createdAt | dateFilter | date:"dd.MM.yyyy" }}' }}</i>
-                              <br /><a class="announce-card-title" ng-href="/advert/{{'{{announcement.slug}}'}}/show">{{'{{ announcement.title }}'}}</a>
+                              <i class="announce-card-date">{{ '{{announcement.createdAt  }}' }}</i>
+                              <br /><a class="announce-card-title" ng-href="/{{ _locale }}/advert/{{'{{announcement.slug}}'}}/show">{{'{{ announcement.title }}'}}</a>
                               <div class="announce-card-lead">{{'{{ announcement.description }}'}}</div>
                           </div>
                       </div>

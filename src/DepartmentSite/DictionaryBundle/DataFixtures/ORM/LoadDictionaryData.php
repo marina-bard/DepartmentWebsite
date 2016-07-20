@@ -14,6 +14,16 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadDictionaryData implements FixtureInterface
 {
+    private function createDictionary(ObjectManager &$manager, $code, $ru_value, $en_value)
+    {
+        $dictionary = new Dictionary();
+        $dictionary->setCode($code);
+        $dictionary->translate('ru')->setValue($ru_value);
+        $dictionary->translate('en')->setValue($en_value);
+        $manager->persist($dictionary);
+        $dictionary->mergeNewTranslations();
+    }
+
     public function load(ObjectManager $manager)
     {
         $dictionary1 = new Dictionary();
@@ -159,6 +169,64 @@ class LoadDictionaryData implements FixtureInterface
         $manager->persist($dictionary20);
         $dictionary20->mergeNewTranslations();
 
+        $dictionary21 = new Dictionary();
+        $dictionary21->setCode('projects');
+        $dictionary21->translate('ru')->setValue('Информация по проектам студентов');
+        $dictionary21->translate('en')->setValue('Students projects information');
+        $manager->persist($dictionary21);
+        $dictionary21->mergeNewTranslations();
+
+        $dictionary22 = new Dictionary();
+        $dictionary22->setCode('all_projects');
+        $dictionary22->translate('ru')->setValue('Все проекты');
+        $dictionary22->translate('en')->setValue('All projects');
+        $manager->persist($dictionary22);
+        $dictionary22->mergeNewTranslations();
+
+        $dictionary23 = new Dictionary();
+        $dictionary23->setCode('search_in_projects');
+        $dictionary23->translate('ru')->setValue('Поиск по теме проекта');
+        $dictionary23->translate('en')->setValue('Search by topic');
+        $manager->persist($dictionary23);
+        $dictionary23->mergeNewTranslations();
+
+        $dictionary24 = new Dictionary();
+        $dictionary24->setCode('reviews');
+        $dictionary24->translate('ru')->setValue('Отзывы');
+        $dictionary24->translate('en')->setValue('Reviews');
+        $manager->persist($dictionary24);
+        $dictionary24->mergeNewTranslations();
+
+        $dictionary25 = new Dictionary();
+        $dictionary25->setCode('comments');
+        $dictionary25->translate('ru')->setValue('Комментарии студентов');
+        $dictionary25->translate('en')->setValue('Students comments');
+        $manager->persist($dictionary25);
+        $dictionary25->mergeNewTranslations();
+
+        $dictionary26 = new Dictionary();
+        $dictionary26->setCode('course');
+        $dictionary26->translate('ru')->setValue('курс');
+        $dictionary26->translate('en')->setValue('course');
+        $manager->persist($dictionary26);
+        $dictionary26->mergeNewTranslations();
+
+        $this->createDictionary($manager, 'to_projects_list', 'К списку проектов', 'To projects list');
+        $this->createDictionary($manager, 'next_project', 'К следующему', 'Next project');
+        $this->createDictionary($manager, 'previous_project', 'К предыдущему', 'Previous project');
+        $this->createDictionary($manager, 'group', 'группа', 'group');
+        $this->createDictionary($manager, 'student', 'Студент', 'Student');
+        $this->createDictionary($manager, 'teacher', 'Руководитель', 'Teacher');
+        $this->createDictionary($manager, 'reviewer', 'Рецендист', 'Reviewer');
+        $this->createDictionary($manager, 'start_date', 'Дата начала проекта', 'Start date');
+        $this->createDictionary($manager, 'end_date', 'Дата завершения проекта', 'End date');
+        $this->createDictionary($manager, 'project_description', 'Описание проекта', 'Description');
+        $this->createDictionary($manager, 'teacher_and_reviewer_comments', 'Отзывы руководителя и рецендиста', 'Teacher and reviewer comments');
+        $this->createDictionary($manager, 'message_to_regitster', 'Только зарегистрированные пользователи могут оставлять комментарии.',
+            'Only registered users can leave comments');
+        $this->createDictionary($manager, 'please', 'пожалуйста', 'please');
+        $this->createDictionary($manager, 'login_to_comment', 'Войдите,', 'Log In,');
+        
         $manager->flush();
     }
 }

@@ -6,13 +6,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
+use JsonSerializable;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 /**
  * Project
  *
  * @ORM\Table(name="Project")
  * @ORM\Entity(repositoryClass="DepartmentSite\ProjectBundle\Repository\ProjectRepository")
  */
-class Project
+class Project implements JsonSerializable
 {
     use ORMBehaviors\Timestampable\Timestampable;
     use ORMBehaviors\Sluggable\Sluggable;
@@ -451,4 +455,23 @@ class Project
 //        $project->setComments($project->getComments());
 //    }
 
+    function jsonSerialize()
+    {
+        return [
+            'title' => $this->title,
+            'student' => $this->student,
+            'course' => $this->course,
+            'teacher' => $this->teacher,
+            'reviewer' => $this->reviewer,
+            'studentGroup' => $this->studentGroup,
+            'startDate' => $this->startDate,
+            'endDate' => $this->endDate,
+            'description' => $this->description,
+//            'content' => $this->content,
+            'isModerated' => $this->isModerated,
+            'createdAt' => $this->createdAt,
+            'updatedAt' => $this->updatedAt,
+            'slug' => $this->slug
+        ];
+    }
 }

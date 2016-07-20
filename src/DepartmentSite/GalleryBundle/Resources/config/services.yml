@@ -1,8 +1,16 @@
 services:
-    admin.gallery:
-        class: DepartmentSite\GalleryBundle\Admin\GalleryAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: "Gallery", label: "Gallery" }
-        arguments: [~, DepartmentSite\GalleryBundle\Entity\Gallery, ~]
-        calls:
-            - [ setTranslationDomain, [DepartmentSiteGalleryBundle]]
+  admin.gallery:
+          class: DepartmentSite\GalleryBundle\Admin\GalleryAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Gallery", label: "Gallery" }
+          arguments: [~, DepartmentSite\GalleryBundle\Entity\Gallery, ~]
+          calls:
+               - [ setTranslationDomain, [DepartmentSiteGalleryBundle]]
+
+  admin.image:
+          class: DepartmentSite\GalleryBundle\Admin\ImageAdmin
+          tags:
+               - { name: sonata.admin, manager_type: orm, group: "Gallery", label: "Image" }
+          arguments: [~, DepartmentSite\GalleryBundle\Entity\Image, ~]
+          calls:
+               - [ setTranslationDomain, [DepartmentSiteGalleryBundle]]
