@@ -26,3 +26,6 @@ itm_file_preview:
         DepartmentSiteGalleryBundle:
                     Image:
                       image: {formats: [preview]}
+        DepartmentSiteMenuBundle:
+                    SideBarMenu:
+                      photo: {formats: [preview]}

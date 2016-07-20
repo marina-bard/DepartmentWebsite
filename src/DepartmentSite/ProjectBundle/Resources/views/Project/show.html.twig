@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Project</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ project.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ project.title }}</td>
+            </tr>
+            <tr>
+                <th>Student</th>
+                <td>{{ project.student }}</td>
+            </tr>
+            <tr>
+                <th>Teacher</th>
+                <td>{{ project.teacher }}</td>
+            </tr>
+            <tr>
+                <th>Reviewer</th>
+                <td>{{ project.reviewer }}</td>
+            </tr>
+            <tr>
+                <th>Course</th>
+                <td>{{ project.course }}</td>
+            </tr>
+            <tr>
+                <th>Studentgroup</th>
+                <td>{{ project.studentGroup }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{% if project.startDate %}{{ project.startDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Enddate</th>
+                <td>{% if project.endDate %}{{ project.endDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ project.description }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ project.content }}</td>
+            </tr>
+            <tr>
+                <th>Ismoderated</th>
+                <td>{% if project.isModerated %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('project_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('project_edit', { 'slug': project.slug }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

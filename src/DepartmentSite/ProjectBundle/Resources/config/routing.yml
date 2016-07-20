@@ -1,0 +1,4 @@
+department_site_news_news:
+    resource: "@DepartmentSiteProjectBundle/Resources/config/routing/project.yml"
+    prefix:   /{_locale}/project
+

@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="footer-credits">&copy; 2010-2016 ФКСиС<br/>Учебно-исследовательский проект<br/>совместной
-                    лаборатории БГУИР и IBA
+                <div class="footer-credits">&copy; 2010-2016 ФКСиС<br/>{{ 'authors_first_part' |  DICTIONARY(_locale) }}
+                    <br/>{{ 'authors_second_part' |  DICTIONARY(_locale) }}
                 </div>
             </div>
             <div class="col-md-5">
@@ -15,7 +15,7 @@
             <div class="col-md-3">
                 <div class="footer-info">
                     <div class="footer-phone">{{ 'phone' | DICTIONARY }}</div>
-                    {{ 'address' | DICTIONARY }}<br/>Схема проезда
+                    {{ 'address' | DICTIONARY(_locale) }}<br/>{{ 'map' |  DICTIONARY(_locale) }}
                 </div>
             </div>
         </div>

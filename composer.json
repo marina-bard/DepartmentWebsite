@@ -38,6 +38,7 @@
         "jms/serializer-bundle": "~1.1",
         "helios-ag/fm-elfinder-bundle": "^6.1",
         "friendsofsymfony/user-bundle": "~2.0@dev",
+        "a2lix/translation-form-bundle": "^2.1",
         "itm/file-preview-bundle": "1.1.*",
         "itm/image-preview-bundle": "dev-master",
         "liip/imagine-bundle": "dev-master",

@@ -9,27 +9,34 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="focus">
-                        <a href="#/">RUS | ENG</a>
+                <ul class="nav navbar-nav navbar-left localization">
+                    <li>
+                        <a ng-class="'{{ _locale }}' == 'ru' ? 'active' : ''" ng-href="{{ path('department_site_default_homepage', {'_locale': 'ru'}) }}">RUS</a>
+                        <div class="v-separator"></div>
+                        <a ng-class="'{{ _locale }}' == 'en' ? 'active' : ''" ng-href="{{ path('department_site_default_homepage', {'_locale': 'en'}) }}">ENG</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    {{ render(controller('DepartmentSiteDefaultBundle:Default:getHeaderMenu')) }}
+                    {{ render(controller('DepartmentSiteDefaultBundle:Default:getHeaderMenu', {'_locale' : _locale} )) }}
+                    <li><a ng-href='' data-target="#myModal" data-toggle="modal"  >{{ 'login_link' |  DICTIONARY(_locale) }}</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" data-dismiss="modal" type="button">
                     &times;</button>
-                <h4 class="modal-title">Войти на сайт</h4><input class="form-control login-input" id="email" name="email" placeholder="Логин" type="email"/><input class="form-control login-input" id="key" name="key" placeholder="Пароль" type="password"/>
-                <a class="forgot-passw" ng-href="#/">Забыли пароль?</a>
-                <button class="btn login-btn" data-dismiss="modal" type="button">Войти</button>
+                <h4 class="modal-title">{{ 'log_in' |  DICTIONARY(_locale) }}</h4>
+                <input class="form-control login-input" id="email" name="email" placeholder="{{ 'login_placeholder' |  DICTIONARY(_locale) }}" type="email"/>
+                <input class="form-control login-input" id="key" name="key" placeholder="{{ 'password_placeholder' |  DICTIONARY(_locale) }}" type="password"/>
+                <a ng-class="'{{ _locale }}' == 'ru'? 'forgot-passw' : 'forgot-passw forgot-passw-en'" ng-href="#/">{{ 'forgot_password' |  DICTIONARY(_locale) }}</a>
+                <a class="registration-btn" ng-href="#/">{{ 'sign_up' |  DICTIONARY(_locale) }}</a>
+                <button class="btn login-btn" data-dismiss="modal" type="button">{{ 'login_button' |  DICTIONARY(_locale) }}</button>
             </div>
         </div>
     </div>

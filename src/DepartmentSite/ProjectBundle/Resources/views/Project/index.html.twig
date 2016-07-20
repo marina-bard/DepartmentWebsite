@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Project list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Student</th>
+                <th>Teacher</th>
+                <th>Reviewer</th>
+                <th>Course</th>
+                <th>Studentgroup</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Description</th>
+                <th>Content</th>
+                <th>Ismoderated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                <td><a href="{{ path('project_show', { 'slug': project.slug }) }}">{{ project.id }}</a></td>
+                <td>{{ project.title }}</td>
+                <td>{{ project.student }}</td>
+                <td>{{ project.teacher }}</td>
+                <td>{{ project.reviewer }}</td>
+                <td>{{ project.course }}</td>
+                <td>{{ project.studentGroup }}</td>
+                <td>{% if project.startDate %}{{ project.startDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if project.endDate %}{{ project.endDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ project.description }}</td>
+                <td>{{ project.content }}</td>
+                <td>{% if project.isModerated %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('project_show', { 'slug': project.slug }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('project_edit', { 'slug': project.slug }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('project_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

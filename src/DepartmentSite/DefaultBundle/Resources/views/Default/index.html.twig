@@ -14,8 +14,10 @@
                     <div class="row">
                         <div class="col-md-8 announce-cards">
                             <div class="row">
-                                <div class="section-title"><span>Объявления</span>
-                                    <div class="v-separator"></div><a ng-href="{{ path('advert_index', {'page': '1'}) }}">Все объявления</a>
+
+                                <div class="section-title"><span>{{ 'advert' | DICTIONARY(_locale) }}</span>
+                                    <div class="v-separator"></div><a ng-href="{{ path('advert_index') }}">
+                                        {{ 'all_advert' | DICTIONARY(_locale) }}</a>
                                 </div>
                             </div>
                             <div  ng-repeat="advert in adverts">
@@ -41,15 +43,16 @@
             <div class="news">
                 <div class="container">
                     <div class="row">
-                        <div class="section-title"><span>Новости кафедры</span>
-                            <div class="v-separator"></div><a ng-href="{{ path('news_index', {'page': '1'})}}">Все новости</a></div>
+
+                        <div class="section-title"><span>{{ 'news' | DICTIONARY(_locale) }}</span>
+                            <div class="v-separator"></div><a ng-href="{{ path('news_index', {'_locale' : _locale }) }}">{{ 'all_news' | DICTIONARY(_locale) }}</a></div>
                     </div>
                     <div ng-repeat="oneNews in news">
                         <div ng-class="($index % 2 !== 0) ? 'row' : ''">
                             <div ng-class="($index % 2 === 0) ? 'col-md-6 news-column' : 'col-md-6 news-column2'">
-                                <a ng-href="/news/{{'{{oneNews.slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{oneNews.photo}}'}}" /></a>
+                                <a ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{oneNews.photo}}'}}" /></a>
                                 <div class="news-item-date">{{'{{oneNews.created_at.date | dateFilter | date:"dd.MM.yyyy"}}'}}</div>
-                                <br /><a class="news-item-title" ng-href="/news/{{'{{oneNews.slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
+                                <br /><a class="news-item-title" ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
                                 <div class="news-item-lead">{{'{{ oneNews.description}}'}}</div>
                             </div>
                         </div>

@@ -1,12 +1,21 @@
 advert_index:
-    path:     /{page}
-    defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:index" }
-    methods:  GET
+    path:     /{page}/
+    defaults:
+        _controller: "DepartmentSiteAdvertBundle:Advert:index"
+        _locale : ru
+        page : 1
+        methods:  GET
+        requirements:
+            _locale : ru|en
 
 advert_show:
     path:     /{slug}/show
-    defaults: { _controller: "DepartmentSiteAdvertBundle:Advert:show" }
+    defaults:
+        _controller: "DepartmentSiteAdvertBundle:Advert:show"
+        _locale : ru
     methods:  GET
+    requirements:
+                _locale : ru|en
 
 
 

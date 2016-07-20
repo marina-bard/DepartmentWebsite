@@ -1,15 +1,11 @@
 <?php
-
 namespace DepartmentSite\NewsBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 use ITM\ImagePreviewBundle\Resolver\PathResolver;
-
-
 /**
  * News
  *
@@ -18,7 +14,7 @@ use ITM\ImagePreviewBundle\Resolver\PathResolver;
  * @ORM\HasLifecycleCallbacks()
  */
 class News implements JsonSerializable
-{   
+{
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
     /**
@@ -29,44 +25,36 @@ class News implements JsonSerializable
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-
     /**
      * @var string
      *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
-
     /**
      * @var string
      *
      * @ORM\Column(name="photo", type="string", nullable=true)
      */
     private $photo;
-
-
     /**
      * @return string - object's string representation
      */
     public function __toString() {
         return $this->getTitle() ? : '-';
     }
-
-
     /**
      * Get id
      *
@@ -76,7 +64,6 @@ class News implements JsonSerializable
     {
         return $this->id;
     }
-
     /**
      * Set title
      *
@@ -87,10 +74,8 @@ class News implements JsonSerializable
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
-
     /**
      * Get title
      *
@@ -100,7 +85,6 @@ class News implements JsonSerializable
     {
         return $this->title;
     }
-
     /**
      * Set description
      *
@@ -111,10 +95,8 @@ class News implements JsonSerializable
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
-
     /**
      * Get description
      *
@@ -124,7 +106,6 @@ class News implements JsonSerializable
     {
         return $this->description;
     }
-
     /**
      * Set content
      *
@@ -137,7 +118,6 @@ class News implements JsonSerializable
         $this->content = $content;
         return $this;
     }
-
     /**
      * Get content
      *
@@ -147,7 +127,6 @@ class News implements JsonSerializable
     {
         return $this->content;
     }
-
     /**
      * Set photo
      *
@@ -158,10 +137,8 @@ class News implements JsonSerializable
     public function setPhoto($photo)
     {
         $this->photo = $photo;
-
         return $this;
     }
-
     /**
      * Get photo
      *
@@ -171,12 +148,10 @@ class News implements JsonSerializable
     {
         return $this->photo;
     }
-
     public function getSluggableFields()
     {
         return [ 'title' ];
     }
-
     /**
      * Specify data which should be serialized to JSON
      * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
@@ -184,7 +159,6 @@ class News implements JsonSerializable
      * which is a value of any type other than a resource.
      * @since 5.4.0
      */
-
     function jsonSerialize()
     {
         return [

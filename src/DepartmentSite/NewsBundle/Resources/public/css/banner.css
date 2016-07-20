@@ -16,6 +16,7 @@
 }
 
 .banner .inner {
+  z-index: 0;
   padding-top: 175px;
 }
 .item,
@@ -36,6 +37,7 @@
 
 /* line 24, ../../../app/styles/layout/banner.scss */
 .banner .evm-logo {
+  z-index: 1;
   background-image: url(../images/evm-logo.png);
   height: 105px;
   margin: 30px 0;
@@ -74,6 +76,11 @@
 .banner .links-list > li:hover, .banner .links-list > li:focus {
   border-bottom: 2px solid #fdd400;
 }
+
+.header .navbar-right > li:last-child > a {
+  cursor: pointer;
+}
+
 /* line 66, ../../../app/styles/layout/banner.scss */
 .banner .banner-title {
   font-family: CirceExtraBold, sans-serif;

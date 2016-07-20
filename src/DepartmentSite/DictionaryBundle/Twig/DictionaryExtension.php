@@ -22,7 +22,7 @@ class DictionaryExtension extends \Twig_Extension
         );
     }
 
-    public function dictionaryFilter($code)
+    public function dictionaryFilter($code, $_locale = 'ru')
     {
         $dictionary = $this->container
             ->get('doctrine')
@@ -30,7 +30,7 @@ class DictionaryExtension extends \Twig_Extension
             ->getRepository('DepartmentSiteDictionaryBundle:Dictionary')
             ->findOneBy(array('code' => $code));
 
-        return $dictionary->getValue();
+        return $dictionary->translate($_locale)->getValue();
 
 //      throw new \InvalidArgumentException('Code is undefined');
     }

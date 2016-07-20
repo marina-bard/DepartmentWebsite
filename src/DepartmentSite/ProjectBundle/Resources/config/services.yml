@@ -1,0 +1,8 @@
+services:
+    admin.project:
+        class: DepartmentSite\ProjectBundle\Admin\ProjectAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Project", label: "Project" }
+        arguments: [~, DepartmentSite\ProjectBundle\Entity\Project, ~]
+        calls:
+             - [ setTranslationDomain, [DepartmentSiteProjectBundle]]
