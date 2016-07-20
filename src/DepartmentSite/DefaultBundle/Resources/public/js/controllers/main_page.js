@@ -1,5 +1,6 @@
 var adverts_list = [];
 var news_list = [];
+var projects_list = [];
 
 (function() {
   'use strict';
@@ -7,6 +8,7 @@ var news_list = [];
 
     $scope.adverts = JSON.parse(adverts_list.replace(/&quot;/g, '"'));
     $scope.news = JSON.parse(news_list.replace(/&quot;/g, '"'));
+    $scope.projects = JSON.parse(projects_list.replace(/&quot;/g, '"'));
 
     return $scope.adverts;
 

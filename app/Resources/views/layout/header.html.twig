@@ -35,7 +35,7 @@
                 <input class="form-control login-input" id="email" name="email" placeholder="{{ 'login_placeholder' |  DICTIONARY(_locale) }}" type="email"/>
                 <input class="form-control login-input" id="key" name="key" placeholder="{{ 'password_placeholder' |  DICTIONARY(_locale) }}" type="password"/>
                 <a ng-class="'{{ _locale }}' == 'ru'? 'forgot-passw' : 'forgot-passw forgot-passw-en'" ng-href="#/">{{ 'forgot_password' |  DICTIONARY(_locale) }}</a>
-                <a class="registration-btn" ng-href="#/">{{ 'sign_up' |  DICTIONARY(_locale) }}</a>
+                <a class="registration-btn" ng-href="/register/student_user">{{ 'sign_up' |  DICTIONARY(_locale) }}</a>
                 <button class="btn login-btn" data-dismiss="modal" type="button">{{ 'login_button' |  DICTIONARY(_locale) }}</button>
             </div>
         </div>

@@ -5,61 +5,92 @@
     <script type="text/javascript">
         adverts_list = '{{ render(controller('DepartmentSiteDefaultBundle:Default:getAdvertsForMainPage')) }}';
         news_list = '{{ render(controller('DepartmentSiteDefaultBundle:Default:getNewsForMainPage')) }}';
+        projects_list = '{{ render(controller('DepartmentSiteDefaultBundle:Default:getProjectsForMainPage')) }}';
     </script>
 
     <div ng-controller="MainPageCtrl">
         <div class="container-fluid">
-            <div class="announcements">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 announce-cards">
-                            <div class="row">
-
-                                <div class="section-title"><span>{{ 'advert' | DICTIONARY(_locale) }}</span>
-                                    <div class="v-separator"></div><a ng-href="{{ path('advert_index') }}">
-                                        {{ 'all_advert' | DICTIONARY(_locale) }}</a>
+            <section id="announcements">
+                <div class="announcements">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 announce-cards">
+                                <div class="row">
+                                    <div class="section-title"><span>{{ 'advert' | DICTIONARY(_locale) }}</span>
+                                        <div class="v-separator"></div><a ng-href="{{ path('advert_index') }}">
+                                            {{ 'all_advert' | DICTIONARY(_locale) }}</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div  ng-repeat="advert in adverts">
-                                <div ng-class="($index % 2 !== 0) ? 'row' : ''">
-                                    <div class="col-md-6 cards-column">
-                                        <div class="announce-card">
-                                            <div class="announce-card-content">
-                                                <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{ '{{advert.created_at.date | dateFilter | date:"dd.MM.yyyy"}}' }}</i>
-                                                <br /><a class="announce-card-title" ng-href="/advert/{{'{{advert.slug}}'}}/show">{{ '{{ advert.title }}' }}</a>
-                                                <div class="announce-card-lead">{{ '{{ advert.description }}' }}</div>
+                                <div  ng-repeat="advert in adverts">
+                                    <div ng-class="($index % 2 !== 0) ? 'row' : ''">
+                                        <div class="col-md-6 cards-column">
+                                            <div class="announce-card">
+                                                <div class="announce-card-content">
+                                                    <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{ '{{advert.created_at.date | dateFilter | date:"dd.MM.yyyy"}}' }}</i>
+                                                    <br /><a class="announce-card-title" ng-href="/advert/{{'{{advert.slug}}'}}/show">{{ '{{ advert.title }}' }}</a>
+                                                    <div class="announce-card-lead">{{ '{{ advert.description }}' }}</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 sidebar">
-                            {#{% include ':default:sidebar.html.twig'%}#}
-                            {{ render(controller('DepartmentSiteDefaultBundle:Default:getSidebarMenu', {'_locale' : _locale})) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="news">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="section-title"><span>{{ 'news' | DICTIONARY(_locale) }}</span>
-                            <div class="v-separator"></div><a ng-href="{{ path('news_index', {'_locale' : _locale }) }}">{{ 'all_news' | DICTIONARY(_locale) }}</a></div>
-                    </div>
-                    <div ng-repeat="oneNews in news">
-                        <div ng-class="($index % 2 !== 0) ? 'row' : ''">
-                            <div ng-class="($index % 2 === 0) ? 'col-md-6 news-column' : 'col-md-6 news-column2'">
-                                <a ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{oneNews.photo}}'}}" /></a>
-                                <div class="news-item-date">{{'{{oneNews.created_at.date | dateFilter | date:"dd.MM.yyyy"}}'}}</div>
-                                <br /><a class="news-item-title" ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
-                                <div class="news-item-lead">{{'{{ oneNews.description}}'}}</div>
+                            <div class="col-md-4 sidebar">
+                                {#{% include ':default:sidebar.html.twig'%}#}
+                                {{ render(controller('DepartmentSiteDefaultBundle:Default:getSidebarMenu', {'_locale' : _locale})) }}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section id="projects">
+                <div class="projects">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section-title"><span>{{ 'projects' | DICTIONARY(_locale) }}</span>
+                                <div class="v-separator"></div><a ng-href="{{ path('project_index', {'_locale' : _locale }) }}">{{ 'all_projects' | DICTIONARY(_locale) }}</a></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="post-block" ng-repeat="project in projects">
+                                    <a class="post-header" ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ '{{ project.title }}' }}</a>
+                                    <div class="post-author"><span>{{ '{{ project.student }}' }}</span> {{ '{{ project.course }}' }} {{ 'course' | DICTIONARY(_locale) }} {{ '{{ project.studentGroup }}' }} {{ 'group' | DICTIONARY(_locale) }}</div>
+                                    <div class="post-links">
+                                        <a ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ 'reviews' | DICTIONARY(_locale) }} ( 2 )</a>
+                                        <div class="line"></div>
+                                        <a class="comments-link" ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ 'comments' | DICTIONARY(_locale) }} ( 2 )</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="news">
+                <div class="news">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="section-title"><span>{{ 'news' | DICTIONARY(_locale) }}</span>
+                                <div class="v-separator"></div><a ng-href="{{ path('news_index', {'_locale' : _locale }) }}">{{ 'all_news' | DICTIONARY(_locale) }}</a></div>
+                        </div>
+                        <div ng-repeat="oneNews in news">
+                            <div ng-class="($index % 2 !== 0) ? 'row' : ''">
+                                <div ng-class="($index % 2 === 0) ? 'col-md-6 news-column' : 'col-md-6 news-column2'">
+                                    <a ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{oneNews.photo}}'}}" /></a>
+                                    <div class="news-item-date">{{'{{oneNews.created_at.date | dateFilter | date:"dd.MM.yyyy"}}'}}</div>
+                                    <br /><a class="news-item-title" ng-href="{{ _locale }}/news/{{'{{news[$index].slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
+                                    <div class="news-item-lead">{{'{{ oneNews.description}}'}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
