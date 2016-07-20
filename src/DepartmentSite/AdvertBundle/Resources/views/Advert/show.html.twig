@@ -12,11 +12,11 @@
                 <div class="section-title">
                     <span>Объявления</span>
                     <div class="v-separator"></div>
-                    <a ng-href="{{ path('advert_index', {'page': 1}) }}">К списку объявлений</a>
+                    <a ng-href="{{ path('advert_index', {'page': 1}) }}">{{ 'to_advert_list' | DICTIONARY(_locale) }}</a>
                     <div class="v-separator"></div>
-                    <a ng-href="#/announcements/page">К следующему</a>
+                    <a ng-href="#/announcements/page">{{ 'next_advert' | DICTIONARY(_locale) }}</a>
                     <div class="v-separator"></div>
-                    <a ng-href="#/announcements/page">К предыдущему</a>
+                    <a ng-href="#/announcements/page">{{ 'previous_advert' | DICTIONARY(_locale) }}</a>
                 </div>
                 <i class="news-time">{{ advert.createdAt.date | date('d.m.Y')}}</i>
                 <div class="post-title-inside-post">{{ advert.title }}</div>
