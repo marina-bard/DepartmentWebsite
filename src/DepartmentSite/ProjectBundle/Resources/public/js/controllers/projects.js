@@ -3,8 +3,9 @@ var data = [];
 
 (function() {
     angular.module('bsuir-ecm').controller('ProjectsCtrl', function($scope){
-
-        $scope.projects = JSON.parse(data.replace(/&quot;/g, '"'));
+        data = data.replace(/&quot;/g, '"').replace(/&amp;nbsp;/g, " ").replace(/\r\n/g, "\\r\\n");
+        console.log(data);
+        $scope.projects = JSON.parse(data);
 
     }).filter('dateFilter', function() {
         return function (dateTime) {

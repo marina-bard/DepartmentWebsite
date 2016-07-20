@@ -133,25 +133,19 @@ class ProjectController extends Controller
         ;
     }
 
-//    public function getAllAction() {
-//        $em = $this->getDoctrine()->getManager();
-//        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
-//        $serialized = $this->container->get('serializer')->serialize($news, 'json');
-//        //$serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-//        return new Response($serialized);
-//        //  return new JsonResponse($news);
-//    }
-
     public function getAllAction()
     {
         $em = $this->getDoctrine()->getManager();
         $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findAll();
 
-//        $serialized = $this->container->get('serializer')->serialize($projects, 'json');
-//        $serialized = htmlspecialchars($serialized, ENT_QUOTES, 'UTF-8');
-////        return new Response($serialized);
-
-//        var_dump($projects);
         return new Response(htmlspecialchars(json_encode($projects, JSON_HEX_QUOT | JSON_HEX_TAG)));
+    }
+
+    public function getOneAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->findOneBy(array('slug' => $slug));
+
+        return new Response(htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 }

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Project</h1>
+  {#  <h1>Project</h1>
 
     <table>
         <tbody>
@@ -69,4 +69,124 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    #}
+    <div ng-controller="OneProjectCtrl">
+        <script type="text/javascript">
+            data = '{{ render(controller('DepartmentSiteProjectBundle:Project:getOne', {'slug' : project.slug})) }}';
+//            console.log(data[408]);
+        </script>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title"><span>{{ 'projects' | DICTIONARY(_locale) }}</span>
+                        <div class="v-separator"></div><a ng-href="{{ path('project_index') }}">{{ 'to_projects_list' | DICTIONARY(_locale) }}</a>
+                        <div class="v-separator"></div><a ng-href="#/projects">{{ 'next_project' | DICTIONARY(_locale) }}</a>
+                        <div class="v-separator"></div><a ng-href="#/projects">{{ 'previous_project' | DICTIONARY(_locale) }}</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="search-form">
+                        <input placeholder="{{ 'search_in_projects' | DICTIONARY(_locale) }}" title="search" type="search" />
+                    </div>
+                    {#<div class="post-header">{{ '{{ project.title}}' }}</div>#}
+                    <div class="post-header">{{  project.title }}</div>
+                </div>
+            </div>
+
+            <table class="project-info-table">
+                <tbody>
+                    <tr>
+                        <th>{{ 'student' | DICTIONARY(_locale) }}:</th>
+                        {#<td>{{ '{{ project.student}}' }}</td>#}
+                        <td>{{  project.student }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'teacher' | DICTIONARY(_locale) }}:</th>
+                        {#<td>{{ '{{ project.teacher}}' }}</td>#}
+                        <td>{{ project.teacher }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'reviewer' | DICTIONARY(_locale) }}:</th>
+                        {#<td>{{ '{{ project.reviewer}}' }}</td>#}
+                        <td>{{  project.reviewer }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'course' | DICTIONARY(_locale) }}:</th>
+                        {#<td>{{ '{{ project.course}}' }}</td>#}
+                        <td>{{ project.course }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'group' | DICTIONARY(_locale) }}:</th>
+                        {#<td>{{ '{{ project.studentGroup}}' }}</td>#}
+                        <td>{{  project.studentGroup }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'start_date' | DICTIONARY(_locale) }}:</th>
+                        {#<td>{{ '{{ project.startDate.date  | dateFilter | date:"dd.MM.yyyy"}}' }}</td>#}
+                        <td>{{  project.startDate.date  | date('d.m.Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'end_date' | DICTIONARY(_locale) }}:</th>
+                        {#<td>{{ '{{ project.endDate.date  | dateFilter | date:"dd.MM.yyyy"}}' }}</td>#}
+                        <td>{{ project.endDate.date  | date('d.m.Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'project_description' | DICTIONARY(_locale) }}:</th>
+                        {#<td>{{ '{{ project.description}}' }}</td>#}
+                        <td>{{ project.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    {#<div class="post-content-inside" ng-bind-html="project.content | toHTML"></div>#}
+                    {#<div class="reviews-cards-title">{{ 'teacher_and_reviewer_comments' | DICTIONARY(_locale) }}</div>#}
+                    <div class="post-content-inside">{{ project.content | raw }}</div>
+                    <div class="reviews-cards-title">{{ 'teacher_and_reviewer_comments' | DICTIONARY(_locale) }}</div>
+                </div>
+            </div>
+
+             <div class="row">
+                 <div class="col-xs-12">
+                     <div class="review-card">
+                         <div class="review-card-content">
+                             <div class="review-card-title">Сидоров Петр Романович</div>
+                             <div class="review-card-lead">{{ project.content | raw }}</div><i class="review-card-date">вчера в 19:07</i></div>
+                             {#<div class="review-card-lead" ng-bind-html="project.content | toHTML"></div><i class="review-card-date">вчера в 19:07</i></div>#}
+                     </div>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-xs-12">
+                     <div class="comments-cards-title">{{ 'comments' | DICTIONARY(_locale) }} ( 2 )</div>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="comment-card">
+                         <div class="comment-card-content">
+                             {#<div class="col-md-1"><img alt="alt" class="comment-card-avatar" ng-src="{{posts[0].img}}" /></div>#}
+                             <div class="col-md-11">
+                                 <div class="comment-card-title">Александр Новиков</div>
+                                 <div class="comment-card-lead">{{ project.content | raw }}</div><i class="comment-card-date">вчера в 19:07  </i></div>
+                                 {#<div class="comment-card-lead" ng-bind-html="project.content | toHTML"></div><i class="comment-card-date">вчера в 19:07  </i></div>#}
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+            <p class="login-message">{{ 'message_to_regitster' | DICTIONARY(_locale) }}.
+                <a data-target="#myModal" data-toggle="modal" ng-href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+                    {{ 'login_to_comment' | DICTIONARY(_locale) }}</a> {{ 'please' | DICTIONARY(_locale) }}.</p>
+
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </div>
 {% endblock %}

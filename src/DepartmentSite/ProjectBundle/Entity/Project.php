@@ -442,7 +442,7 @@ class Project implements JsonSerializable
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
             'description' => $this->description,
-            'content' => $this->content,
+//            'content' => $this->content,
             'isModerated' => $this->isModerated,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,

@@ -35,6 +35,9 @@
     }).when('/project/', {
       templateUrl: 'DepartmentSiteProjectBundle:Project:index',
       controller: 'ProjectsCtrl'
+    }).when('/project/:slug/show', {
+      templateUrl: 'DepartmentSiteProjectBundle:Project:show',
+      controller: 'OneProjectCtrl'
     }).otherwise({
       redirectTo: '/'
     });
