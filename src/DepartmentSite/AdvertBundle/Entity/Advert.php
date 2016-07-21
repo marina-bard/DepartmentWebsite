@@ -45,6 +45,14 @@ class Advert implements JsonSerializable
      */
     private $content;
 
+
+    /**
+     * @var date $expiration_date
+     *
+     * @ORM\Column(name="expiration_date", type="date", nullable=true)
+     */
+    private $expiration_date;
+
     /**
      * Returns an array of the fields used to generate the slug.
      *
@@ -153,5 +161,29 @@ class Advert implements JsonSerializable
             'slug' => $this->slug,
             'created_at' => $this->createdAt
         ];
+    }
+
+    /**
+     * Set expirationDate
+     *
+     * @param \DateTime $expirationDate
+     *
+     * @return Advert
+     */
+    public function setExpirationDate($expirationDate)
+    {
+        $this->expiration_date = $expirationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get expirationDate
+     *
+     * @return \DateTime
+     */
+    public function getExpirationDate()
+    {
+        return $this->expiration_date;
     }
 }

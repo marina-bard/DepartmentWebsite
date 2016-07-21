@@ -18,6 +18,7 @@ class AdvertAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
+            ->add('expiration_date', 'date', array('label'=>'Expiration date') )
         ;
     }
 
