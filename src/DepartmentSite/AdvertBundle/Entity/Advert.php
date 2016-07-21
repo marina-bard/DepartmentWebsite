@@ -47,6 +47,14 @@ class Advert implements JsonSerializable
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column( name="priority", type="string", columnDefinition="ENUM('unimportant', 'important', 'very important')")
+    */
+    private $priority;
+
+
+    /**
      * @var date $expiration_date
      *
      * @ORM\Column(name="expiration_date", type="date", nullable=true)
@@ -185,5 +193,29 @@ class Advert implements JsonSerializable
     public function getExpirationDate()
     {
         return $this->expiration_date;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param string $priority
+     *
+     * @return Advert
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return string
+     */
+    public function getPriority()
+    {
+        return $this->priority;
     }
 }
