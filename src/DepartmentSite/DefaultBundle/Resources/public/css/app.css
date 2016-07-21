@@ -6065,6 +6065,7 @@ tbody.collapse.in {
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
   background-color: transparent;
   color: #fdd400;
+  cursor: pointer;
 }
 @media (max-width: 767px) {
   /* line 473, ../../../assets/vendor/bootstrap-sass/assets/stylesheets/bootstrap/_navbar.scss */
@@ -9626,6 +9627,7 @@ body {
 /* line 20, ../../../assets/vendor/app/styles/main.scss */
 a:hover {
   color: #fdd400;
+  cursor: pointer;
 }
 
 /* line 25, ../../../assets/vendor/app/styles/main.scss */

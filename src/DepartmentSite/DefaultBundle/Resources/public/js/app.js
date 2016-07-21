@@ -17,12 +17,6 @@
     }).when('/advert/:slug/show', {
       templateUrl: 'DepartmentSiteAdvertBundle:Advert:show',
       controller: 'OneAdvertCtrl'
-    }).when('/projects', {
-      templateUrl: 'views/projects/project-list.html',
-      controller: 'ProjectsCtrl'
-    }).when('/projects/:projectId', {
-      templateUrl: 'views/projects/project.slim',
-      controller: 'ProjectsController'
     }).when('/page/:slug/show', {
       templateUrl: 'DepartmentSitePageBundle:Page:show',
       controller: 'PageCtrl'
@@ -37,7 +31,7 @@
       controller: 'ProjectsCtrl'
     }).when('/project/:slug/show', {
       templateUrl: 'DepartmentSiteProjectBundle:Project:show',
-      controller: 'OneProjectCtrl'
+      // controller: 'OneProjectCtrl'
     }).otherwise({
       redirectTo: '/'
     });
