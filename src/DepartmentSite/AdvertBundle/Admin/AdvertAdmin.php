@@ -20,7 +20,14 @@ class AdvertAdmin extends Admin
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
             ->add('expiration_date', 'date', array('label'=>'Expiration date') )
-           // ->add('priority', 'choice', array('choices' => Advert::getPriority()));
+            ->add('priority', 'choice',
+                array(
+                    'multiple' => false,
+                    'choices' => array(
+                        'unimportant' => 'unimportant',
+                        'important' => 'important',
+                        'very important' => 'very important'
+                    )))
         ;
     }
 

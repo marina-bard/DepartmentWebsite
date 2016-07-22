@@ -62,6 +62,14 @@ class Advert implements JsonSerializable
     private $expiration_date;
 
     /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getTitle() ? : '-';
+    }
+    
+
+    /**
      * Returns an array of the fields used to generate the slug.
      *
      * @return array
