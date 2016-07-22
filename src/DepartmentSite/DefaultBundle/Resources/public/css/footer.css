@@ -75,6 +75,16 @@
   cursor: pointer;
 }
 
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover, .footer a:focus {
+  color: #fdd400;
+  text-decoration: none;
+}
+
 @media (max-width: 991px) {
   /* line 101, ../../../app/styles/layout/footer.scss */
   .footer {

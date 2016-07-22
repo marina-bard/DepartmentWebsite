@@ -11,33 +11,36 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
-        main:
+        admin:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
                 login_path: /admin/login
                 csrf_token_generator: security.csrf.token_manager
             logout:
-                path:   /admin/logout
+                path: /admin/logout
+                target: /admin/
+            anonymous: true
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                login_path: /login
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path:  /logout
                 target: /
             anonymous:    true
 
-#        student:
-#            pattern: ^/
-#            form_login:
-#                provider: fos_userbundle
-#                login_path: /login
-#                csrf_token_generator: security.csrf.token_manager
-#            logout:
-#                path: /logout
-#                target: /
-#            anonymous: true
-
     access_control:
-        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
         - { path: ^/admin/, role: ROLE_ADMIN }
 
        
