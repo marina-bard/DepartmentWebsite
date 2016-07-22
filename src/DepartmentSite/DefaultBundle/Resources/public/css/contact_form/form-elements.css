@@ -3,7 +3,8 @@
 #registration input[type="email"],
 #registration input[type="password"],
 #registration textarea,
-#registration textarea.form-control {
+#registration textarea.form-control,
+#registration select {
   height: 50px;
   margin: 0;
   padding: 0 20px;

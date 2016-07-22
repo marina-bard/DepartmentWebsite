@@ -19,7 +19,7 @@ class ProjectAdmin extends AbstractAdmin
             ->add('student', 'text', array('label' => 'Student'))
             ->add('teacher', 'text', array('label' => 'Teacher'))
             ->add('reviewer', 'textarea', array('label' => 'Reviewer comment'))
-            ->add('course', 'number', array('label' => 'course'))
+            ->add('course', 'number', array('label' => 'Course'))
             ->add('studentGroup', 'text', array('label' => 'studentGroup'))
             ->add('startDate', 'datetime')
             ->add('endDate', 'datetime')
@@ -33,8 +33,6 @@ class ProjectAdmin extends AbstractAdmin
         }
         $formMapper
             ->add('isModerated', 'checkbox');
-
-
 
 
     }
@@ -73,6 +71,16 @@ class ProjectAdmin extends AbstractAdmin
             ->add('comments')
             ->add('isModerated')
         ;
+    }
+
+    public function prePersist($project)
+    {
+        $this->preUpdate($project);
+    }
+
+    public function preUpdate($project)
+    {
+        $project->setComments($project->getComments());
     }
 
 }

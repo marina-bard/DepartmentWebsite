@@ -114,14 +114,18 @@ class Project implements JsonSerializable
      */
     private $isModerated;
 
+    private $countComment;
+
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="project", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"id" = "ASC"})
      *
      */
     private $comments;
 
     public function __construct()
     {
+        $this->countComment = 0;
         $this->comments = new ArrayCollection();
     }
 
@@ -431,6 +435,7 @@ class Project implements JsonSerializable
      */
     public function addComment(\DepartmentSite\ProjectBundle\Entity\Comment $comment)
     {
+        $this->countComment+=1;
         $comment->setProject($this);
 
         $this->comments->add($comment);
@@ -447,6 +452,7 @@ class Project implements JsonSerializable
      */
     public function removeComment(\DepartmentSite\ProjectBundle\Entity\Comment $comment)
     {
+        $this->countComment-=1;
         $this->comments->removeElement($comment);
     }
 
@@ -460,19 +466,10 @@ class Project implements JsonSerializable
         return $this->comments;
     }
 
-//    public function prePersist($project)
-//    {
-//        $this->preUpdate($project);
-//    }
-//
-//    public function preUpdate($project)
-//    {
-//        $project->setComments($project->getComments());
-//    }
-
     function jsonSerialize()
     {
         return [
+            'id' => $this->id,
             'title' => $this->title,
             'student' => $this->student,
             'course' => $this->course,
@@ -486,7 +483,8 @@ class Project implements JsonSerializable
             'isModerated' => $this->isModerated,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'slug' => $this->slug
+            'slug' => $this->slug,
+            'countComment' => $this->countComment
         ];
     }
 
