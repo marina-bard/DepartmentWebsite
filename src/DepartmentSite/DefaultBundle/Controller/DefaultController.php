@@ -42,6 +42,14 @@ class DefaultController extends Controller
         return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
+    public function getProjectsForMainPageAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findBy(array(), array('id'=>'desc'), 5);
+
+        return new Response(htmlspecialchars(json_encode($projects, JSON_HEX_QUOT | JSON_HEX_TAG)));
+    }
+
     public function getHeaderMenuAction($_locale)
     {
         $em = $this->getDoctrine()->getManager();

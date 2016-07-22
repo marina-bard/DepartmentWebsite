@@ -13,11 +13,11 @@
                     <div class="section-title">
                         <span>Новости</span>
                         <div class="v-separator"></div>
-                        <a ng-href="{{ path('news_index', {'page' : '1'}) }}">К списку новостей</a>
+                        <a ng-href="{{ path('news_index', {'page' : '1'}) }}">{{ 'to_news_list' | DICTIONARY(_locale) }}</a>
                         <div class="v-separator"></div>
-                        <a ng-href="#/news/page">К следующей</a>
+                        <a ng-href="#/news/page">{{ 'next_news' | DICTIONARY(_locale) }}</a>
                         <div class="v-separator"></div>
-                        <a ng-href="#/news/page">К предыдущей</a>
+                        <a ng-href="#/news/page">{{ 'previous_news' | DICTIONARY(_locale) }}</a>
                     </div>
                 </div>
             </div>

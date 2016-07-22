@@ -1,6 +1,28 @@
-{% extends "ApplicationFOSUserBundle::layout.html.twig" %}
+{#{% extends "ApplicationFOSUserBundle::layout.html.twig" %}#}
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+          <link href="{{ asset('bundles/departmentsitenews/admin/css/bootstrap.min.css') }}" type = "text/css" rel = "stylesheet" />
+          <link href="{{ asset('bundles/departmentsitenews/admin/AdminLTE.min.css') }}" type = "text/css" rel = "stylesheet" />
+          <link href="{{ asset('bundles/departmentsitenews/admin/iCheck/square/blue.css') }}" type = "text/css" rel="stylesheet" />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+          <!-- Ionicons -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    </head>
+    <body>
 {% trans_default_domain 'FOSUserBundle' %}
+
+  {% if app.request.hasPreviousSession %}
+    {% for type, messages in app.session.flashbag.all() %}
+      {% for message in messages %}
+        <div class="flash-{{ type }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
 
 {% block fos_user_content %}
   <body class="hold-transition login-page">
@@ -62,3 +84,6 @@
   });
 </script>
 {% endblock fos_user_content %}
+
+</body>
+</html>

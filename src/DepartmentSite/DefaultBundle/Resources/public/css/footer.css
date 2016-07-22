@@ -3,6 +3,7 @@
   background-color: #2ab4c0;
   color: white;
   height: auto;
+  font-family: "CirceRegular";
 }
 /* line 26, ../../../app/styles/layout/footer.scss */
 .footer .footer-credits, .footer .footer-info {

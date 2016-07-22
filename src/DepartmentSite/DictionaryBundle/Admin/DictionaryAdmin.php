@@ -9,13 +9,13 @@
 namespace DepartmentSite\DictionaryBundle\Admin;
 
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class DictionaryAdmin extends Admin
+class DictionaryAdmin extends AbstractAdmin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
@@ -47,7 +47,6 @@ class DictionaryAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('code')
-            ->add('title')
         ;
     }
 }
