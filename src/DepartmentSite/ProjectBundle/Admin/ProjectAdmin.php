@@ -25,11 +25,11 @@ class ProjectAdmin extends AbstractAdmin
             ->add('endDate', 'datetime')
             ->add('description', 'text', array('label' => 'description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
+            ->add('comments', 'sonata_type_collection', array(), array(
+                'edit' => 'inline',
+                'inline' => 'table'))
             ->add('isModerated', 'checkbox')
         ;
-
-
-
     }
 
     // Fields to be shown on filter forms
@@ -66,6 +66,16 @@ class ProjectAdmin extends AbstractAdmin
             ->add('comments')
             ->add('isModerated')
         ;
+    }
+
+    public function prePersist($project)
+    {
+        $this->preUpdate($project);
+    }
+
+    public function preUpdate($project)
+    {
+        $project->setComments($project->getComments());
     }
 
 }

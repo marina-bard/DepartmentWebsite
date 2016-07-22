@@ -110,6 +110,7 @@ class Project implements JsonSerializable
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="project", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"id" = "ASC"})
      *
      */
     private $comments;
@@ -456,16 +457,6 @@ class Project implements JsonSerializable
     {
         return $this->comments;
     }
-
-//    public function prePersist($project)
-//    {
-//        $this->preUpdate($project);
-//    }
-//
-//    public function preUpdate($project)
-//    {
-//        $project->setComments($project->getComments());
-//    }
 
     function jsonSerialize()
     {
