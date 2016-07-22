@@ -35,6 +35,15 @@ class SlideShow
      * @ORM\Column(name="image", type="string", length=255)
      */
     private $image;
+
+    /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getTitle() ? : '-';
+    }
+
+    
     /**
      * Get id
      *

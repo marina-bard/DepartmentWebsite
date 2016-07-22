@@ -31,6 +31,14 @@ class Dictionary
     private $code;
 
     /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getCode() ? : '-';
+    }
+
+
+    /**
      * Get id
      *
      * @return int
