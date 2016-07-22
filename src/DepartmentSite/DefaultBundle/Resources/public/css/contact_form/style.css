@@ -147,6 +147,10 @@
   height: 100px;
 }
 
+.form-bottom p {
+  font-size: 16px;
+}
+
 /* line 97, ../../../app/styles/contact_form/style.scss */
 .form-bottom form .input-error {
   border-color: #19b9e7;

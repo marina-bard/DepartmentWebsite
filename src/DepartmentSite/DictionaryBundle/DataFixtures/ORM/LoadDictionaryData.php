@@ -85,6 +85,7 @@ class LoadDictionaryData implements FixtureInterface
             'Only registered users can leave comments');
         $this->createDictionary($manager, 'please', 'пожалуйста', true, 'please');
         $this->createDictionary($manager, 'login_to_comment', 'Войдите,', true, 'Log In,');
+        $this->createDictionary($manager, 'btn_comment', 'Написать', true, 'Comment');
         
         $manager->flush();
     }
