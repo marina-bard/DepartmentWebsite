@@ -1,0 +1,216 @@
+/* line 1, ../../../app/styles/contact_form/style.scss */
+::-moz-selection {
+  background: #2ab4c0;
+  color: #fff;
+  text-shadow: none;
+}
+
+/* line 2, ../../../app/styles/contact_form/style.scss */
+::-moz-selection {
+  background: #2ab4c0;
+  color: #fff;
+  text-shadow: none;
+}
+::selection {
+  background: #2ab4c0;
+  color: #fff;
+  text-shadow: none;
+}
+
+/* line 5, ../../../app/styles/contact_form/style.scss */
+.btn-link-1 {
+  display: inline-block;
+  height: 50px;
+  margin: 0 5px;
+  padding: 16px 20px 0 20px;
+  background: #2ab4c0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* line 17, ../../../app/styles/contact_form/style.scss */
+.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active {
+  outline: 0;
+  opacity: 0.6;
+  color: #fff;
+}
+
+/* line 19, ../../../app/styles/contact_form/style.scss */
+.btn-link-2 {
+  display: inline-block;
+  height: 50px;
+  margin: 0 5px;
+  padding: 15px 20px 0 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #fff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* line 32, ../../../app/styles/contact_form/style.scss */
+.btn-link-2:hover, .btn-link-2:focus,
+.btn-link-2:active, .btn-link-2:active:focus {
+  outline: 0;
+  opacity: 0.6;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+/* line 35, ../../../app/styles/contact_form/style.scss */
+.top-content .text {
+  color: #fff;
+}
+
+/* line 39, ../../../app/styles/contact_form/style.scss */
+.top-content .text h1 {
+  color: #fff;
+}
+
+/* line 41, ../../../app/styles/contact_form/style.scss */
+.top-content .description {
+  margin: 20px 0 10px 0;
+}
+
+/* line 45, ../../../app/styles/contact_form/style.scss */
+.top-content .description p {
+  opacity: 0.8;
+}
+
+/* line 47, ../../../app/styles/contact_form/style.scss */
+.top-content .description a {
+  color: #fff;
+}
+
+/* line 50, ../../../app/styles/contact_form/style.scss */
+.top-content .description a:hover,
+.top-content .description a:focus {
+  border-bottom: 1px dotted #fff;
+}
+
+/* line 53, ../../../app/styles/contact_form/style.scss */
+.top-content .top-big-link {
+  margin-top: 35px;
+}
+
+/* line 57, ../../../app/styles/contact_form/style.scss */
+.form-box {
+  font-weight: bold;
+}
+
+/* line 61, ../../../app/styles/contact_form/style.scss */
+.form-top {
+  overflow: hidden;
+  background: #fff;
+  border-radius: 4px 4px 0 0;
+  text-align: left;
+}
+
+/* line 68, ../../../app/styles/contact_form/style.scss */
+.form-top-left {
+  float: left;
+  width: 75%;
+}
+
+/* line 73, ../../../app/styles/contact_form/style.scss */
+.form-top-left h3 {
+  margin-top: 0;
+}
+
+/* line 75, ../../../app/styles/contact_form/style.scss */
+.form-top-right {
+  float: left;
+  width: 25%;
+  padding-top: 30px;
+  font-size: 66px;
+  color: #ddd;
+  line-height: 100px;
+  text-align: right;
+}
+
+/* line 85, ../../../app/styles/contact_form/style.scss */
+.form-bottom {
+  padding: 25px;
+  background: #eee;
+  border-radius: 4px;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+/* line 93, ../../../app/styles/contact_form/style.scss */
+.form-bottom form textarea {
+  height: 100px;
+}
+
+/* line 97, ../../../app/styles/contact_form/style.scss */
+.form-bottom form .input-error {
+  border-color: #19b9e7;
+}
+
+/***** Media queries *****/
+@media (max-width: 767px) {
+  /* line 110, ../../../app/styles/contact_form/style.scss */
+  .navbar {
+    padding-top: 0;
+  }
+
+  /* line 111, ../../../app/styles/contact_form/style.scss */
+  .navbar.navbar-no-bg {
+    background: #333;
+    background: rgba(51, 51, 51, 0.9);
+  }
+
+  /* line 112, ../../../app/styles/contact_form/style.scss */
+  .navbar-brand {
+    height: 60px;
+    margin-left: 15px;
+  }
+
+  /* line 113, ../../../app/styles/contact_form/style.scss */
+  .navbar-collapse {
+    border: 0;
+  }
+
+  /* line 114, ../../../app/styles/contact_form/style.scss */
+  .navbar-toggle {
+    margin-top: 12px;
+  }
+
+  /* line 116, ../../../app/styles/contact_form/style.scss */
+  .inner-bg {
+    padding: 40px 0 110px 0;
+  }
+
+  /* line 117, ../../../app/styles/contact_form/style.scss */
+  .top-content .top-big-link {
+    margin-top: 25px;
+  }
+
+  /* line 118, ../../../app/styles/contact_form/style.scss */
+  .top-content .top-big-link a.btn {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 415px) {
+  /* line 124, ../../../app/styles/contact_form/style.scss */
+  h1, h2 {
+    font-size: 32px;
+  }
+}
+/* Retina-ize images/icons */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  /* logo */
+  /* line 140, ../../../app/styles/contact_form/style.scss */
+  .navbar-brand {
+    background-image: url(../img/logo@2x.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 113px 32px !important;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
