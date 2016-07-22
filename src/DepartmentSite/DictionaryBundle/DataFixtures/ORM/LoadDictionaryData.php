@@ -85,7 +85,6 @@ class LoadDictionaryData implements FixtureInterface
             'Only registered users can leave comments');
         $this->createDictionary($manager, 'please', 'пожалуйста', true, 'please');
         $this->createDictionary($manager, 'login_to_comment', 'Войдите,', true, 'Log In,');
-
         $this->createDictionary($manager, 'btn_comment', 'Написать', true, 'Comment');
         $this->createDictionary($manager, 'location', 'https://yandex.com/maps/157/minsk/?ll=27.596119%2C53.911848&z=17&text=%D0%91%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C%2C%20%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%BD%D0%BE%D0%B2%D0%B0%2039&sll=27.604021%2C53.907916&sspn=0.129261%2C0.039023&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fll%3D27.596%252C53.912%26spn%3D0.001%252C0.001%26text%3D%25D0%2591%25D0%25B5%25D0%25BB%25D0%25B0%25D1%2580%25D1%2583%25D1%2581%25D1%258C%252C%2520%25D0%259C%25D1%2596%25D0%25BD%25D1%2581%25D0%25BA%252C%2520%25D0%25B2%25D1%2583%25D0%25BB%25D1%2596%25D1%2586%25D0%25B0%2520%25D0%259F%25D0%25BB%25D0%25B0%25D1%2582%25D0%25BE%25D0%25BD%25D0%25B0%25D0%25B2%25D0%25B0%252C%252039', false);
         $this->createDictionary($manager, 'textarea_message', 'Оставьте комментарий', true, 'Leave your comment');
