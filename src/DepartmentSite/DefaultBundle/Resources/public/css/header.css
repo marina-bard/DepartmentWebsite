@@ -1,4 +1,7 @@
 /* line 7, ../../../app/styles/layout/header.scss */
+.header {
+  font-family: "CirceRegular";
+}
 .header .nav > li > a {
   box-sizing: border-box;
   font-weight: bold;
