@@ -114,7 +114,7 @@
                 <div class="col-xs-12">
                     <div class="comment-textarea">
                         {#<a href=""><i class="fa fa-paperclip fa-2x" aria-hidden="true"></i></a>#}
-                        <textarea placeholder="Оставьте комментарий" title="comment" type="comment"></textarea>
+                        <textarea placeholder="{{ 'textarea_message' | DICTIONARY(_locale) }}" title="comment" type="comment"></textarea>
                     </div>
                         <input class="btn btn-default" type="submit" id="_submit" name="_submit"
                                value="{{ 'btn_comment' | DICTIONARY(_locale) }}"/>
