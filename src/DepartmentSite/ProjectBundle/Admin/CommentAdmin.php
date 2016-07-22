@@ -41,7 +41,7 @@ class CommentAdmin extends AbstractAdmin
     {
         $collection
             ->remove('create')
+            ->remove('edit')
         ;
-
     }
 }
