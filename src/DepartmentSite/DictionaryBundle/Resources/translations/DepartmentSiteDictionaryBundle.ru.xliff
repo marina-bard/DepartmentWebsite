@@ -18,6 +18,10 @@
                        <source>Dictionary</source>
                        <target>Словарь</target>
             </trans-unit>
+            <trans-unit id="Translations">
+                       <source>Translations</source>
+                       <target>Перевод</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

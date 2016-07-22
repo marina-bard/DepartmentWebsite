@@ -59,12 +59,12 @@ class LoadDictionaryData implements FixtureInterface
         $this->createDictionary($manager, 'course', 'курс', true, 'course');
 
         $this->createDictionary($manager, 'to_projects_list', 'К списку проектов', true, 'To projects list');
-        $this->createDictionary($manager, 'next_project', 'К следующему', true, 'Next project');
-        $this->createDictionary($manager, 'previous_project', 'К предыдущему', true, 'Previous project');
+        $this->createDictionary($manager, 'next_project', 'К следующему проекту', true, 'Next project');
+        $this->createDictionary($manager, 'previous_project', 'К предыдущему проекту', true, 'Previous project');
 
         $this->createDictionary($manager, 'to_advert_list', 'К списку объявлений', true, 'To advert list');
-        $this->createDictionary($manager, 'next_advert', 'К следующему', true, 'Next advert');
-        $this->createDictionary($manager, 'previous_advert', 'К предыдущему', true, 'Previous advert');
+        $this->createDictionary($manager, 'next_advert', 'К следующему объявлению', true, 'Next advert');
+        $this->createDictionary($manager, 'previous_advert', 'К предыдущему объявлению', true, 'Previous advert');
 
         $this->createDictionary($manager, 'to_news_list', 'К списку новостей', true, 'To news list');
         $this->createDictionary($manager, 'next_news', 'К следующей', true, 'Next news');
