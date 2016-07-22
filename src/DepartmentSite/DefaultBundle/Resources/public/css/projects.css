@@ -216,7 +216,7 @@
   padding-top: 15px;
   padding-left: 30px;
   padding-right: 50px;
-  /*margin-bottom: 60px;*/
+  margin-bottom: 5px;
 }
 
 #project textarea::-webkit-input-placeholder,
@@ -235,3 +235,10 @@
   padding-top: 15px;
   padding-right: 30px;
 }
+
+#project .btn-default {
+  color: #595959;
+  background-color: transparent;
+  border-color: #b9c1d0;
+}
+
