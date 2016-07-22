@@ -2,6 +2,7 @@
 
 namespace DepartmentSite\ProjectBundle\Controller;
 
+use DepartmentSite\ProjectBundle\Entity\Comment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -146,7 +147,18 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->findOneBy(array('slug' => $slug));
-
-        return new Response(htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        $comment = new Comment();
+//        return new Response(htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        return $this->render('шаблон создай и назови сам', array(
+            htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)),
+            'comment' => $comment
+            ));
+    }
+    private function getCommentsByProjectIdAction($projectId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->find($projectId);
+        $comments = $project->getComments();
+        return new  Response(json_encode($comments, JSON_HEX_QUOT | JSON_HEX_TAG));
     }
 }

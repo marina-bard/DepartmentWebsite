@@ -21,7 +21,7 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -31,6 +31,13 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
      * @ORM\Column(name="content", type="text")
      */
     private $content;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255)
+     */
+    private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="comments")
@@ -87,6 +94,30 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
     }
 
     /**
+     * Get author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     *
+     * @return Comment
+     */
+    public function setAuthor($author)
+    {
+        $this->author= $author;
+
+        return $this;
+    }
+
+    /**
      * Set project
      *
      * @param \DepartmentSite\ProjectBundle\Entity\Project $project
@@ -108,5 +139,13 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
     public function getProject()
     {
         return $this->project;
+    }
+
+    function jsonSerialize()
+    {
+        return [
+            'content' => $this->content,
+            'author' => $this->author
+        ];
     }
 }
