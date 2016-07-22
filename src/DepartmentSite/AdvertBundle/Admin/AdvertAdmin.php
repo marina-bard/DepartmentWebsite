@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use DepartmentSite\AdvertBundle\Entity\Advert;
 
 class AdvertAdmin extends Admin
 {
@@ -18,6 +19,15 @@ class AdvertAdmin extends Admin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
+            ->add('expiration_date', 'date', array('label'=>'Expiration date') )
+            ->add('priority', 'choice',
+                array(
+                    'multiple' => false,
+                    'choices' => array(
+                        'unimportant' => 'unimportant',
+                        'important' => 'important',
+                        'very important' => 'very important'
+                    )))
         ;
     }
 
