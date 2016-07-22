@@ -50,12 +50,20 @@ fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
 fos_user_security_login:
-    path:      /admin/login
+    path:      /login
     defaults:  { _controller: FOSUserBundle:Security:login, _method: POST }
 
 fos_user_security_logout:
-    path:      /admin/logout
+    path:      /logout
     defaults:  { _controller: FOSUserBundle:Security:logout, _method: POST }
+
+admin_login:
+    path:  /admin/login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+admin_logout:
+    path:  /admin/logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
 
 elfinder:
      resource: "@FMElfinderBundle/Resources/config/routing.yml"
@@ -77,4 +85,3 @@ parent_user_registration:
 teacher_user_registration:
     path:  /register/teacher_user
     defaults: { _controller: ApplicationFOSUserBundle:RegistrationUser:registerTeacherUser }
-

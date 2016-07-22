@@ -86,7 +86,7 @@ class LoadDictionaryData implements FixtureInterface
         $this->createDictionary($manager, 'please', 'пожалуйста', true, 'please');
         $this->createDictionary($manager, 'login_to_comment', 'Войдите,', true, 'Log In,');
         $this->createDictionary($manager, 'location', 'https://yandex.com/maps/157/minsk/?ll=27.596119,53.91..', false);
-        
+        $this->createDictionary($manager, 'btn_comment', 'Написать', true, 'Comment');
         $manager->flush();
     }
 }
