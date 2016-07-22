@@ -70,6 +70,7 @@
         </li>
     </ul>
     #}
+    <div id="project">
     <div ng-controller="OneProjectCtrl">
         <script type="text/javascript">
             data = '{{ render(controller('DepartmentSiteProjectBundle:Project:getOne', {'slug' : project.slug})) }}';
@@ -166,6 +167,7 @@
                      <div class="comments-cards-title">{{ 'comments' | DICTIONARY(_locale) }} ( 2 )</div>
                  </div>
              </div>
+
              <div class="row">
                  <div class="col-md-12">
                      <div class="comment-card">
@@ -180,13 +182,20 @@
                  </div>
              </div>
 
-            <p class="login-message">{{ 'message_to_regitster' | DICTIONARY(_locale) }}.
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="comment-textarea">
+                        <a href=""><i class="fa fa-paperclip fa-2x" aria-hidden="true"></i></a>
+                        <textarea placeholder="Оставьте комментарий" title="comment" type="comment"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <p class="login-message">{{ 'message_to_regitster' | DICTIONARY(_locale) }}
                 <a data-target="#myModal" data-toggle="modal" ng-href="">
                     {{ 'login_to_comment' | DICTIONARY(_locale) }}</a> {{ 'please' | DICTIONARY(_locale) }}.</p>
 
-                     </div>
-                 </div>
              </div>
-        </div>
-    </div>
+         </div>
+     </div>
 {% endblock %}

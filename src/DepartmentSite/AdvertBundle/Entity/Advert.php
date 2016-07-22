@@ -45,6 +45,30 @@ class Advert implements JsonSerializable
      */
     private $content;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column( name="priority", type="string", columnDefinition="ENUM('unimportant', 'important', 'very important')")
+    */
+    private $priority;
+
+
+    /**
+     * @var date $expiration_date
+     *
+     * @ORM\Column(name="expiration_date", type="date", nullable=true)
+     */
+    private $expiration_date;
+
+    /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getTitle() ? : '-';
+    }
+    
+
     /**
      * Returns an array of the fields used to generate the slug.
      *
@@ -153,5 +177,53 @@ class Advert implements JsonSerializable
             'slug' => $this->slug,
             'created_at' => $this->createdAt
         ];
+    }
+
+    /**
+     * Set expirationDate
+     *
+     * @param \DateTime $expirationDate
+     *
+     * @return Advert
+     */
+    public function setExpirationDate($expirationDate)
+    {
+        $this->expiration_date = $expirationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get expirationDate
+     *
+     * @return \DateTime
+     */
+    public function getExpirationDate()
+    {
+        return $this->expiration_date;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param string $priority
+     *
+     * @return Advert
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return string
+     */
+    public function getPriority()
+    {
+        return $this->priority;
     }
 }

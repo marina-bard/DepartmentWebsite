@@ -1,0 +1,136 @@
+/* line 2, ../../../app/styles/contact_form/form-elements.scss */
+#registration input[type="text"],
+#registration input[type="email"],
+#registration input[type="password"],
+#registration textarea,
+#registration textarea.form-control {
+  height: 50px;
+  margin: 0;
+  padding: 0 20px;
+  vertical-align: middle;
+  background: #f8f8f8;
+  border: 3px solid #ddd;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 50px;
+  color: #888;
+  border-radius: 4px;
+  box-shadow: none;
+  transition: all .3s;
+}
+
+/* line 20, ../../../app/styles/contact_form/form-elements.scss */
+#registration textarea,
+#registration textarea.form-control {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 30px;
+}
+
+#registration input, textarea{
+  font-family: "CirceRegular";
+}
+/* line 27, ../../../app/styles/contact_form/form-elements.scss */
+#registration input[type="text"]:focus,
+#registration input[type="email"]:focus,
+#registration input[type="password"]:focus,
+#registration textarea:focus,
+#registration textarea.form-control:focus {
+  outline: 0;
+  background: #fff;
+  border: 3px solid #ccc;
+  box-shadow: none;
+}
+
+/* line 36, ../../../app/styles/contact_form/form-elements.scss */
+#registration input[type="text"]:-moz-placeholder,
+#registration input[type="email"]:-moz-placeholder,
+#registration input[type="password"]:-moz-placeholder,
+#registration textarea:-moz-placeholder, textarea.form-control:-moz-placeholder {
+  color: #888;
+}
+
+/* line 37, ../../../app/styles/contact_form/form-elements.scss */
+#registration input[type="text"]:-ms-input-placeholder,
+#registration input[type="email"]:-ms-input-placeholder,
+#registration input[type="password"]:-ms-input-placeholder,
+#registration textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
+  color: #888;
+}
+
+/* line 38, ../../../app/styles/contact_form/form-elements.scss */
+#registration input[type="text"]::-webkit-input-placeholder,
+#registration input[type="email"]::-webkit-input-placeholder,
+#registration input[type="password"]::-webkit-input-placeholder,
+#registration textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder {
+  color: #888;
+}
+
+/* line 42, ../../../app/styles/contact_form/form-elements.scss */
+#registration .custom-btn {
+  height: 50px;
+  margin: 0;
+  padding: 0 20px;
+  vertical-align: middle;
+  background: #2ab4c0;
+  border: 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 50px;
+  color: #fff;
+  border-radius: 4px;
+  text-shadow: none;
+  box-shadow: none;
+  transition: all .3s;
+}
+
+#registration input[type="submit"] {
+  height: 50px;
+  margin: 0;
+  padding: 0 20px;
+  vertical-align: middle;
+  background: #2ab4c0;
+  border: 0;
+  font-size: 16px;
+  font-family: "CirceRegular";
+  font-weight: 300;
+  line-height: 50px;
+  color: #fff;
+  border-radius: 4px;
+  float: right;
+}
+/* line 59, ../../../app/styles/contact_form/form-elements.scss */
+#registration button.btn:hover,
+#registration input[type="submit"]:hover{
+  opacity: 0.6;
+  color: #fff;
+}
+
+/* line 61, ../../../app/styles/contact_form/form-elements.scss */
+#registration button.btn:active,
+#registration input[type="submit"]:active{
+  outline: 0;
+  opacity: 0.6;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* line 63, ../../../app/styles/contact_form/form-elements.scss */
+#registration button.btn:focus,
+#registration input[type="submit"]:focus{
+  outline: 0;
+  opacity: 0.6;
+  background: #2ab4c0;
+  color: #fff;
+}
+
+/* line 65, ../../../app/styles/contact_form/form-elements.scss */
+#registration button.btn:active:focus,
+#registration button.btn.active:focus{
+  outline: 0;
+  opacity: 0.6;
+  background: #2ab4c0;
+  color: #fff;
+}
+
+/*# sourceMappingURL=form-elements.css.map */
