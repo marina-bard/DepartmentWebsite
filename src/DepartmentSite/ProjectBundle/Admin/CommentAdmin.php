@@ -23,8 +23,8 @@ class CommentAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id', 'hidden',array('attr'=>array("hidden" => true)))
-            ->add('content')
+            ->add('content', null, array('attr' => array('readonly' => true)))
+            ->add('author', null, array('attr' => array('readonly' => true)))
         ;
     }
 
@@ -32,14 +32,15 @@ class CommentAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('content');
+            ->add('content')
+            ->add('author')
+            ;
     }
 
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
             ->remove('create')
-            ->remove('edit')
         ;
 
     }
