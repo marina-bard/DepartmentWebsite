@@ -34,6 +34,18 @@
                         <source>Side Bar Menu List</source>
                         <target>Элементы бокового меню</target>
             </trans-unit>
+            <trans-unit id="Translations">
+                         <source>Translations</source>
+                         <target>Перевод</target>
+            </trans-unit>
+            <trans-unit id="Value">
+                         <source>Value</source>
+                         <target>Значение</target>
+            </trans-unit>
+            <trans-unit id="Photo">
+                         <source>Photo</source>
+                         <target>Фото</target>
+            </trans-unit>
 
         </body>
     </file>
