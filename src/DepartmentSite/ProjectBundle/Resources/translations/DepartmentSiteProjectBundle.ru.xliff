@@ -2,9 +2,9 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="" >
         <body>
-            <trans-unit id="Advert">
-                    <source>Advert</source>
-                    <target>Объявления</target>
+            <trans-unit id="Project">
+                    <source>Project</source>
+                    <target>Проекты</target>
             </trans-unit>
             <trans-unit id="Description">
                       <source>Description</source>
@@ -18,23 +18,89 @@
                         <source>Content</source>
                         <target>Контент</target>
              </trans-unit>
-             <trans-unit id="Advert List">
-                        <source>Advert List</source>
-                        <target>Список объявлений</target>
+             <trans-unit id="Project List">
+                        <source>Project List</source>
+                        <target>Список проектов</target>
              </trans-unit>
-             <trans-unit id="Advert Create">
-                        <source>Advert Create</source>
-                        <target>Создать объявление</target>
+             <trans-unit id="Project Create">
+                        <source>Project Create</source>
+                        <target>Создать проектов</target>
              </trans-unit>
              <trans-unit id="Created At">
                         <source>Created At</source>
                         <target>Дата создания</target>
              </trans-unit>
-
-
-
-
-
+             <trans-unit id="Action">
+                        <source>Action</source>
+                        <target>Действия</target>
+             </trans-unit>
+             <trans-unit id="student">
+                        <source>student</source>
+                        <target>Студент</target>
+             </trans-unit><trans-unit id="Student">
+                        <source>Student</source>
+                        <target>Студент</target>
+             </trans-unit>
+             <trans-unit id="teacher">
+                        <source>teacher</source>
+                        <target>Преподаватель</target>
+             </trans-unit>
+             <trans-unit id="Teacher">
+                       <source>Teacher</source>
+                       <target>Преподаватель</target>
+             </trans-unit>
+             <trans-unit id="reviewer">
+                        <source>reviewer</source>
+                        <target>Рецензент</target>
+             </trans-unit>
+             <trans-unit id="Reviewer">
+                        <source>Reviewer</source>
+                        <target>Рецензент</target>
+             </trans-unit>
+             <trans-unit id="course">
+                        <source>course</source>
+                        <target>Курс</target>
+             </trans-unit>
+             <trans-unit id="Course">
+                        <source>Course</source>
+                        <target>Курс</target>
+             </trans-unit>
+             <trans-unit id="studentGroup">
+                        <source>studentGroup</source>
+                        <target>Группа студента</target>
+             </trans-unit>
+             <trans-unit id="Student Group">
+                        <source>Student Group</source>
+                        <target>Группа студента</target>
+             </trans-unit>
+             <trans-unit id="Start Date">
+                        <source>Start Date</source>
+                        <target>Дата начала</target>
+             </trans-unit>
+             <trans-unit id="End Date">
+                        <source>End Date</source>
+                        <target>Дата окончания</target>
+             </trans-unit>
+             <trans-unit id="description">
+                        <source>description</source>
+                        <target>Описание</target>
+             </trans-unit>
+             <trans-unit id="Is Moderated">
+                        <source>Is Moderated</source>
+                        <target>Проверено</target>
+             </trans-unit>
+             <trans-unit id="Comments">
+                        <source>Comments</source>
+                        <target>Комментарии</target>
+             </trans-unit>
+             <trans-unit id="Comment">
+                        <source>Comment</source>
+                        <target>Комментарии</target>
+             </trans-unit>
+             <trans-unit id="Comment List">
+                        <source>Comment List</source>
+                        <target>Список комментариев</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>

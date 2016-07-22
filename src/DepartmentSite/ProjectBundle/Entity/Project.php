@@ -118,6 +118,13 @@ class Project implements JsonSerializable
     }
 
     /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getTitle() ? : '-';
+    }
+
+    /**
      * Get id
      *
      * @return int

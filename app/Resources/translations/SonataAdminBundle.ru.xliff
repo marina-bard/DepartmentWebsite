@@ -22,10 +22,6 @@
                        <source>Gallery</source>
                        <target>Галерея</target>
             </trans-unit>
-            <trans-unit id="Dictionary">
-                       <source>Dictionary</source>
-                       <target>Словарь</target>
-            </trans-unit>
             <trans-unit id="Slide Show">
                        <source>Slide Show</source>
                        <target>Слайд-шоу</target>
@@ -37,6 +33,22 @@
             <trans-unit id="Header Menu">
                        <source>Header Menu</source>
                        <target>Главное меню</target>
+            </trans-unit>
+            <trans-unit id="Project">
+                      <source>Project</source>
+                      <target>Проекты</target>
+            </trans-unit>
+            <trans-unit id="Comment">
+                      <source>Comment</source>
+                      <target>Комментарии</target>
+            </trans-unit>
+            <trans-unit id="Dictionary">
+                      <source>Dictionary</source>
+                      <target>Словарь</target>
+            </trans-unit>
+            <trans-unit id="Side Bar Menu">
+                     <source>Side Bar Menu</source>
+                     <target>Боковое меню</target>
             </trans-unit>
 
         </body>
