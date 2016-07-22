@@ -29,10 +29,6 @@ class ProjectAdmin extends AbstractAdmin
             ->add('endDate', 'datetime')
             ->add('description', 'text', array('label' => 'description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
-            ->add('comments', 'sonata_type_collection', array('by_reference' => false), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-            ))
             ->add('isModerated', 'checkbox')
 
 
@@ -46,8 +42,8 @@ class ProjectAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
-        ;
+            ->add('title');
+
     }
 
     // Fields to be shown on lists
@@ -64,7 +60,18 @@ class ProjectAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('title');
+            ->add('student')
+            ->add('teacher')
+            ->add('reviewer')
+            ->add('course')
+            ->add('studentGroup')
+            ->add('startDate')
+            ->add('endDate')
+            ->add('description')
+            ->add('content')
+            ->add('comments')
+            ->add('isModerated')
+        ;
     }
 
 }
