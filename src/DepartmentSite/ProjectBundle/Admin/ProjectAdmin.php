@@ -14,25 +14,26 @@ class ProjectAdmin extends AbstractAdmin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        if($this->isCurrentRoute('edit')){
-            $formMapper
-                ->add('teacher_comment', 'text', array('label' => 'Teacher review'));
-        }
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
             ->add('student', 'text', array('label' => 'Student'))
             ->add('teacher', 'text', array('label' => 'Teacher'))
-            ->add('reviewer', 'text', array('label' => 'Reviewer'))
+            ->add('reviewer', 'textarea', array('label' => 'Reviewer comment'))
             ->add('course', 'number', array('label' => 'course'))
             ->add('studentGroup', 'text', array('label' => 'studentGroup'))
             ->add('startDate', 'datetime')
             ->add('endDate', 'datetime')
             ->add('description', 'text', array('label' => 'description'))
-            ->add('content', CKEditorType::class, array('label' => 'Content'))
-            ->add('isModerated', 'checkbox')
+            ->add('content', CKEditorType::class, array('label' => 'Content'));
 
 
-        ;
+        if($this->isCurrentRoute('edit')){
+            $formMapper
+                ->add('teacher_comment', 'textarea', array('label' => 'Teacher review'));
+        }
+        $formMapper
+            ->add('isModerated', 'checkbox');
+
 
 
 
