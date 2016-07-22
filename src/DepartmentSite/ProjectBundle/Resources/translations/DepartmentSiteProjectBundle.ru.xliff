@@ -34,32 +34,17 @@
                         <source>Action</source>
                         <target>Действия</target>
              </trans-unit>
-             <trans-unit id="student">
-                        <source>student</source>
-                        <target>Студент</target>
-             </trans-unit><trans-unit id="Student">
+             <trans-unit id="Student">
                         <source>Student</source>
                         <target>Студент</target>
-             </trans-unit>
-             <trans-unit id="teacher">
-                        <source>teacher</source>
-                        <target>Преподаватель</target>
              </trans-unit>
              <trans-unit id="Teacher">
                        <source>Teacher</source>
                        <target>Преподаватель</target>
              </trans-unit>
-             <trans-unit id="reviewer">
-                        <source>reviewer</source>
-                        <target>Рецензент</target>
-             </trans-unit>
-             <trans-unit id="Reviewer">
-                        <source>Reviewer</source>
-                        <target>Рецензент</target>
-             </trans-unit>
-             <trans-unit id="course">
-                        <source>course</source>
-                        <target>Курс</target>
+             <trans-unit id="Reviewer comment">
+                        <source>Reviewer comment</source>
+                        <target> Отзыв рецензента</target>
              </trans-unit>
              <trans-unit id="Course">
                         <source>Course</source>
@@ -100,6 +85,10 @@
              <trans-unit id="Comment List">
                         <source>Comment List</source>
                         <target>Список комментариев</target>
+             </trans-unit>
+             <trans-unit id="Teacher review">
+                        <source>Teacher review</source>
+                        <target>Отзыв преподавателя</target>
              </trans-unit>
         </body>
     </file>

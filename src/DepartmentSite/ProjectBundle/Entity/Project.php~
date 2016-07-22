@@ -6,13 +6,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
+use JsonSerializable;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 /**
  * Project
  *
- * @ORM\Table(name="project")
+ * @ORM\Table(name="Project")
  * @ORM\Entity(repositoryClass="DepartmentSite\ProjectBundle\Repository\ProjectRepository")
  */
-class Project
+class Project implements JsonSerializable
 {
     use ORMBehaviors\Timestampable\Timestampable;
     use ORMBehaviors\Sluggable\Sluggable;
@@ -52,6 +56,14 @@ class Project
      * @ORM\Column(name="reviewer", type="string", length=255, nullable=true)
      */
     private $reviewer;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="teacher_comment", type="string", length=255, nullable=true)
+     */
+    private $teacher_comment;
 
     /**
      * @var int
@@ -103,7 +115,7 @@ class Project
     private $isModerated;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="project", cascade={"all"}, orphanRemoval=true)
      *
      */
     private $comments;
@@ -391,5 +403,83 @@ class Project
     {
         return ['title'];
     }
-}
 
+    public function setComments($comments)
+    {
+        if (count($comments) > 0) {
+            foreach ($comments as $i) {
+                $this->addComment($i);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \DepartmentSite\ProjectBundle\Entity\Comment $comment
+     *
+     * @return Project
+     */
+    public function addComment(\DepartmentSite\ProjectBundle\Entity\Comment $comment)
+    {
+        $comment->setProject($this);
+
+        $this->comments->add($comment);
+
+//        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \DepartmentSite\ProjectBundle\Entity\Comment $comment
+     */
+    public function removeComment(\DepartmentSite\ProjectBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+//    public function prePersist($project)
+//    {
+//        $this->preUpdate($project);
+//    }
+//
+//    public function preUpdate($project)
+//    {
+//        $project->setComments($project->getComments());
+//    }
+
+    function jsonSerialize()
+    {
+        return [
+            'title' => $this->title,
+            'student' => $this->student,
+            'course' => $this->course,
+            'teacher' => $this->teacher,
+            'reviewer' => $this->reviewer,
+            'studentGroup' => $this->studentGroup,
+            'startDate' => $this->startDate,
+            'endDate' => $this->endDate,
+            'description' => $this->description,
+//            'content' => $this->content,
+            'isModerated' => $this->isModerated,
+            'createdAt' => $this->createdAt,
+            'updatedAt' => $this->updatedAt,
+            'slug' => $this->slug
+        ];
+    }
+}

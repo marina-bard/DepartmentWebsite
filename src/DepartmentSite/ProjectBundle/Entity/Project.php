@@ -57,6 +57,14 @@ class Project implements JsonSerializable
      */
     private $reviewer;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="teacher_comment", type="string", length=255, nullable=true)
+     */
+    private $teacher_comment;
+
     /**
      * @var int
      *
@@ -478,5 +486,29 @@ class Project implements JsonSerializable
             'slug' => $this->slug,
             'countComment' => $this->countComment
         ];
+    }
+
+    /**
+     * Set teacherComment
+     *
+     * @param string $teacherComment
+     *
+     * @return Project
+     */
+    public function setTeacherComment($teacherComment)
+    {
+        $this->teacher_comment = $teacherComment;
+
+        return $this;
+    }
+
+    /**
+     * Get teacherComment
+     *
+     * @return string
+     */
+    public function getTeacherComment()
+    {
+        return $this->teacher_comment;
     }
 }

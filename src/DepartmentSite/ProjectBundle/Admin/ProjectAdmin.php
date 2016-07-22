@@ -16,20 +16,25 @@ class ProjectAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
-            ->add('student', 'text', array('label' => 'student'))
-            ->add('teacher', 'text', array('label' => 'teacher'))
-            ->add('reviewer', 'text', array('label' => 'reviewer'))
-            ->add('course', 'number', array('label' => 'course'))
+            ->add('student', 'text', array('label' => 'Student'))
+            ->add('teacher', 'text', array('label' => 'Teacher'))
+            ->add('reviewer', 'textarea', array('label' => 'Reviewer comment'))
+            ->add('course', 'number', array('label' => 'Course'))
             ->add('studentGroup', 'text', array('label' => 'studentGroup'))
             ->add('startDate', 'datetime')
             ->add('endDate', 'datetime')
             ->add('description', 'text', array('label' => 'description'))
-            ->add('content', CKEditorType::class, array('label' => 'Content'))
-            ->add('comments', 'sonata_type_collection', array(), array(
-                'edit' => 'inline',
-                'inline' => 'table'))
-            ->add('isModerated', 'checkbox')
-        ;
+            ->add('content', CKEditorType::class, array('label' => 'Content'));
+
+
+        if($this->isCurrentRoute('edit')){
+            $formMapper
+                ->add('teacher_comment', 'textarea', array('label' => 'Teacher review'));
+        }
+        $formMapper
+            ->add('isModerated', 'checkbox');
+
+
     }
 
     // Fields to be shown on filter forms
