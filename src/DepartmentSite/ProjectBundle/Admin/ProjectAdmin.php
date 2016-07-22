@@ -14,11 +14,15 @@ class ProjectAdmin extends AbstractAdmin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
+        if($this->isCurrentRoute('edit')){
+            $formMapper
+                ->add('teacher_comment', 'text', array('label' => 'Teacher review'));
+        }
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
-            ->add('student', 'text', array('label' => 'student'))
-            ->add('teacher', 'text', array('label' => 'teacher'))
-            ->add('reviewer', 'text', array('label' => 'reviewer'))
+            ->add('student', 'text', array('label' => 'Student'))
+            ->add('teacher', 'text', array('label' => 'Teacher'))
+            ->add('reviewer', 'text', array('label' => 'Reviewer'))
             ->add('course', 'number', array('label' => 'course'))
             ->add('studentGroup', 'text', array('label' => 'studentGroup'))
             ->add('startDate', 'datetime')
@@ -30,6 +34,8 @@ class ProjectAdmin extends AbstractAdmin
                 'inline' => 'table',
             ))
             ->add('isModerated', 'checkbox')
+
+
         ;
 
 
