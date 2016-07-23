@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 use ITM\ImagePreviewBundle\Resolver\PathResolver;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 
 
 
@@ -26,9 +27,19 @@ class NewsController extends Controller
      * Lists all News entities.
      *
      */
-    public function indexAction($_locale, $page)
+    public function indexAction( Request $request, $_locale, $page)
     {
-        return $this->render('DepartmentSiteNewsBundle:News:news.html.twig', array('page' => $page, '_locale' => $_locale));
+        $em    = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $news, /* query NOT result */
+            $request->query->get('page', $page)/*page number*/,
+            2/*limit per page*/
+        );
+
+      return $this->render('DepartmentSiteNewsBundle:News:news.html.twig', array('page' => $page, '_locale' => $_locale, 'pagination' => $pagination));
     }
 
     /**

@@ -14,7 +14,10 @@
                   <div class="section-title"><span>{{ 'news' | DICTIONARY(_locale) }}</span></div>
               </div>
           </div>
-
+          {#{% for oneNews in pagination %}#}
+              {#<p>{{ news }}</p>#}
+              {#<p>{{ news.title }}</p>#}
+          {#{% endfor %}#}
 
           <div ng-repeat="oneNews in news">
               <div ng-class="($index % 2 !== 0) ? 'row' : ''">
@@ -28,6 +31,9 @@
           </div>
       </div>
   </div>
-    {{ render(controller('DepartmentSiteNewsBundle:News:getNewsPagination', {'page': page})) }}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+    {#{{ render(controller('DepartmentSiteNewsBundle:News:getNewsPagination', {'page': page})) }}#}
 </div>
 {% endblock %}
