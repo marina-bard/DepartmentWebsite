@@ -2,8 +2,8 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="" >
         <body>
-            <trans-unit id="Advert">
-                    <source>Advert</source>
+            <trans-unit id="Notice">
+                    <source>Notice</source>
                     <target>Объявления</target>
             </trans-unit>
             <trans-unit id="Description">
@@ -18,12 +18,12 @@
                         <source>Content</source>
                         <target>Контент</target>
              </trans-unit>
-             <trans-unit id="Advert List">
-                        <source>Advert List</source>
+             <trans-unit id="Notice List">
+                        <source>Notice List</source>
                         <target>Список объявлений</target>
              </trans-unit>
-             <trans-unit id="Advert Create">
-                        <source>Advert Create</source>
+             <trans-unit id="Notice Create">
+                        <source>Notice Create</source>
                         <target>Создать объявление</target>
              </trans-unit>
              <trans-unit id="Created At">

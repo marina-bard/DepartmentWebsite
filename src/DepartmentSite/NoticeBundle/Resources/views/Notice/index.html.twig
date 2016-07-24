@@ -6,16 +6,16 @@
 <div ng-controller="AnnouncementsCtrl">
       <script type="text/javascript">
 
-           data = '{{ render(controller('DepartmentSiteAdvertBundle:Advert:getAdverts', { 'page': page })) }}';
+           data = '{{ render(controller('DepartmentSiteNoticeBundle:Notice:getNotices', { 'page': page })) }}';
            console.log(data);
-           adverts_length = '{{ render(controller('DepartmentSiteAdvertBundle:Advert:getAdvertsLength')) }}';
+           adverts_length = '{{ render(controller('DepartmentSiteNoticeBundle:Notice:getNoticesLength')) }}';
       </script>
 
       <div class="announcements-background">
       <div class="container">
           <div class="row">
               <div class="col-xs-12">
-                  <div class="section-title"><span>{{ 'advert' | DICTIONARY(_locale) }}</span></div>
+                  <div class="section-title"><span>{{ 'notice' | DICTIONARY(_locale) }}</span></div>
               </div>
           </div>
           <div class="row" ng-repeat="announcement in announcements  ">
@@ -25,7 +25,7 @@
                           <div class="full-card-content">
                               <div class="my_announcement-comments-count-circle pull-right">2</div>
                               <i class="announce-card-date">{{ '{{announcement.createdAt | date:"dd.MM.yyyy"  }}' }}</i>
-                              <br /><a class="announce-card-title" ng-href="/{{ _locale }}/advert/{{'{{announcement.slug}}'}}/show">{{'{{ announcement.title }}'}}</a>
+                              <br /><a class="announce-card-title" ng-href="/{{ _locale }}/notice/{{'{{announcement.slug}}'}}/show">{{'{{ announcement.title }}'}}</a>
                               <div class="announce-card-lead">{{'{{ announcement.description }}'}}</div>
                           </div>
                       </div>
@@ -33,7 +33,7 @@
               </div>
           </div>
       </div>
-          {{ render(controller('DepartmentSiteAdvertBundle:Advert:getAdvertsPagination', {'page': page})) }}
+          {{ render(controller('DepartmentSiteNoticeBundle:Notice:getNoticesPagination', {'page': page})) }}
   </div>
   </div>
   {% endblock %}

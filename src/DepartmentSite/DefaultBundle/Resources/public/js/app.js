@@ -11,11 +11,11 @@
     }).when('/news/:slug/show', {
       templateUrl: 'DepartmentSiteNewsBundle:News:show',
       controller: 'OneNewsCtrl'
-    }).when('/advert', {
-      templateUrl: 'DepartmentSiteAdvertBundle:Advert:index',
+    }).when('/notice', {
+      templateUrl: 'DepartmentSiteNoticeBundle:Notice:index',
       controller: 'AnnouncementsCtrl'
-    }).when('/advert/:slug/show', {
-      templateUrl: 'DepartmentSiteAdvertBundle:Advert:show',
+    }).when('/notice/:slug/show', {
+      templateUrl: 'DepartmentSiteNoticeBundle:Notice:show',
       controller: 'OneAdvertCtrl'
     }).when('/page/:slug/show', {
       templateUrl: 'DepartmentSitePageBundle:Page:show',

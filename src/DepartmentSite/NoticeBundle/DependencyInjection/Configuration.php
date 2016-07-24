@@ -1,6 +1,6 @@
 <?php
 
-namespace DepartmentSite\AdvertBundle\DependencyInjection;
+namespace DepartmentSite\NoticeBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

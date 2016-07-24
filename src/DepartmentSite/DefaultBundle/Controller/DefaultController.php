@@ -18,16 +18,16 @@ class DefaultController extends Controller
     {
 //        $em = $this->getDoctrine()->getManager();
 //        $news_list = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy(array(), array('id'=>'desc'), 5);
-//        $adver_list = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findBy(array(), array('id'=>'desc'), 5);
+//        $adver_list = $em->getRepository('DepartmentSiteAdvertBundle:Notice')->findBy(array(), array('id'=>'desc'), 5);
         return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig', array('_locale' => $_locale));
     }
 
-    public function getAdvertsForMainPageAction()
+    public function getNoticesForMainPageAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findBy(array(), array('id'=>'desc'), 6);
+        $notices = $em->getRepository('DepartmentSiteNoticeBundle:Notice')->findBy(array(), array('id'=>'desc'), 6);
 
-        return new Response(htmlspecialchars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        return new Response(htmlspecialchars(json_encode($notices, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     public function getNewsForMainPageAction()

@@ -1,17 +1,17 @@
-advert_index:
+notice_index:
     path:     /{page}/
     defaults:
-        _controller: "DepartmentSiteAdvertBundle:Advert:index"
+        _controller: "DepartmentSiteNoticeBundle:Notice:index"
         _locale : ru
         page : 1
         methods:  GET
         requirements:
             _locale : ru|en
 
-advert_show:
+notice_show:
     path:     /{slug}/show
     defaults:
-        _controller: "DepartmentSiteAdvertBundle:Advert:show"
+        _controller: "DepartmentSiteNoticeBundle:Notice:show"
         _locale : ru
     methods:  GET
     requirements:

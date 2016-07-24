@@ -34,8 +34,8 @@ class LoadDictionaryData implements FixtureInterface
         $this->createDictionary($manager, 'twitter_Link', 'https://twitter.com/bsuirby', false);
         $this->createDictionary($manager, 'phone', '(+375 17) 327-88-23', false);
         $this->createDictionary($manager, 'address', 'Улица Гикало, 9, Минск', true, 'Str. Gikalo, 9, Minsk');
-        $this->createDictionary($manager, 'advert', 'Объявления', true, 'Advertisements');
-        $this->createDictionary($manager, 'all_advert', 'Все объявления', true, 'All advertisements');
+        $this->createDictionary($manager, 'notice', 'Объявления', true, 'Notices');
+        $this->createDictionary($manager, 'all_notice', 'Все объявления', true, 'All notices');
         $this->createDictionary($manager, 'news', 'Новости кафедры', true, 'Department news');
         $this->createDictionary($manager, 'all_news', 'Все новости', true, 'All news');
         $this->createDictionary($manager, 'authors_first_part', 'Учебно-исследовательский проект', true,
@@ -62,9 +62,9 @@ class LoadDictionaryData implements FixtureInterface
         $this->createDictionary($manager, 'next_project', 'К следующему проекту', true, 'Next project');
         $this->createDictionary($manager, 'previous_project', 'К предыдущему проекту', true, 'Previous project');
 
-        $this->createDictionary($manager, 'to_advert_list', 'К списку объявлений', true, 'To advert list');
-        $this->createDictionary($manager, 'next_advert', 'К следующему объявлению', true, 'Next advert');
-        $this->createDictionary($manager, 'previous_advert', 'К предыдущему объявлению', true, 'Previous advert');
+        $this->createDictionary($manager, 'to_notice_list', 'К списку объявлений', true, 'To notice list');
+        $this->createDictionary($manager, 'next_notice', 'К следующему объявлению', true, 'Next notice');
+        $this->createDictionary($manager, 'previous_notice', 'К предыдущему объявлению', true, 'Previous notice');
 
         $this->createDictionary($manager, 'to_news_list', 'К списку новостей', true, 'To news list');
         $this->createDictionary($manager, 'next_news', 'К следующей', true, 'Next news');

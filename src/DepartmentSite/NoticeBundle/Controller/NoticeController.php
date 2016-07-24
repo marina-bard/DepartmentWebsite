@@ -1,9 +1,9 @@
 <?php
-namespace DepartmentSite\AdvertBundle\Controller;
+namespace DepartmentSite\NoticeBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use DepartmentSite\AdvertBundle\Entity\Advert;
-use DepartmentSite\AdvertBundle\Form\AdvertType;
+use DepartmentSite\NoticeBundle\Entity\Notice;
+use DepartmentSite\NoticeBundle\Form\NoticeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -11,28 +11,28 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\Query;
 /**
- * Advert controller.
+ * Notice controller.
  *
  */
-class AdvertController extends Controller
+class NoticeController extends Controller
 {
     /**
-     * Lists all Advert entities.
+     * Lists all Notice entities.
      *
      */
     public function indexAction($_locale, $page)
     {
-        return $this->render('DepartmentSiteAdvertBundle:Advert:index.html.twig', array('page' => $page, '_locale' => $_locale));
+        return $this->render('DepartmentSiteNoticeBundle:Notice:index.html.twig', array('page' => $page, '_locale' => $_locale));
     }
    
     /**
-     * Finds and displays a Advert entity.
+     * Finds and displays a Notice entity.
      *
      */
-    public function showAction(Advert $advert, $_locale)
+    public function showAction(Notice $notice, $_locale)
     {
-        return $this->render('DepartmentSiteAdvertBundle:Advert:show.html.twig', array(
-            'advert' => $advert,
+        return $this->render('DepartmentSiteNoticeBundle:Notice:show.html.twig', array(
+            'notice' => $notice,
             '_locale' => $_locale
         ));
     }
@@ -40,21 +40,21 @@ class AdvertController extends Controller
 
 
 
-    public function getAdvertsLengthAction() {
+    public function getNoticesLengthAction() {
           $count = $this->getCount();
         return new Response($count);
     }
 
-    public function  getAdvertsPaginationAction($page) {
+    public function  getNoticesPaginationAction($page) {
 
         $count = $this->getCount();
         return $this->render('layout/pagination.html.twig', array('listLength' => $count, 'page' => $page));
     }
 
-    public function getAdvertsAction($page) {
+    public function getNoticesAction($page) {
         $adv_per_page = 10;
-        $adverts = $this->getNextPage(($page-1)*$adv_per_page, $adv_per_page);
-        $serialized = $this->container->get('serializer')->serialize($adverts, 'json');
+        $notices = $this->getNextPage(($page-1)*$adv_per_page, $adv_per_page);
+        $serialized = $this->container->get('serializer')->serialize($notices, 'json');
        
         return new Response($serialized);
     }
@@ -62,13 +62,13 @@ class AdvertController extends Controller
 
     public function getAllAction() {
         $em = $this->getDoctrine()->getManager();
-        $adverts = $em->getRepository('DepartmentSiteAdvertBundle:Advert')->findAll();
-        return new Response(htmlspecialchars(json_encode($adverts, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        $notices = $em->getRepository('DepartmentSiteNoticeBundle:Notice')->findAll();
+        return new Response(htmlspecialchars(json_encode($notices, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     public function getCount(){
         $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteAdvertBundle:Advert');
+            ->getRepository('DepartmentSiteNoticeBundle:Notice');
 
         $query = $repository->createQueryBuilder('a')
             ->select('COUNT(a)')
@@ -78,7 +78,7 @@ class AdvertController extends Controller
 
     public function getNextPage($offset, $limit){
         $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteAdvertBundle:Advert');
+            ->getRepository('DepartmentSiteNoticeBundle:Notice');
 
         $query = $repository->createQueryBuilder('a')
             ->select()

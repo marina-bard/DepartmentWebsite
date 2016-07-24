@@ -1,6 +1,6 @@
 <?php
 
-namespace DepartmentSite\AdvertBundle\Entity;
+namespace DepartmentSite\NoticeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -8,10 +8,10 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use JsonSerializable;
 
 /**
- * @ORM\Entity(repositoryClass="DepartmentSite\AdvertBundle\Repository\AdvertRepository")
- * @ORM\Table(name="Advert")
+ * @ORM\Entity(repositoryClass="DepartmentSite\NoticeBundle\Repository\NoticeRepository")
+ * @ORM\Table(name="Notice")
  */
-class Advert implements JsonSerializable
+class Notice implements JsonSerializable
 {
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
@@ -94,7 +94,7 @@ class Advert implements JsonSerializable
      *
      * @param string $title
      *
-     * @return Advert
+     * @return Notice
      */
     public function setTitle($title)
     {
@@ -118,7 +118,7 @@ class Advert implements JsonSerializable
      *
      * @param string $description
      *
-     * @return Advert
+     * @return Notice
      */
     public function setDescription($description)
     {
@@ -142,7 +142,7 @@ class Advert implements JsonSerializable
      *
      * @param string $content
      *
-     * @return Advert
+     * @return Notice
      */
     public function setContent($content)
     {
@@ -184,7 +184,7 @@ class Advert implements JsonSerializable
      *
      * @param \DateTime $expirationDate
      *
-     * @return Advert
+     * @return Notice
      */
     public function setExpirationDate($expirationDate)
     {
@@ -208,7 +208,7 @@ class Advert implements JsonSerializable
      *
      * @param string $priority
      *
-     * @return Advert
+     * @return Notice
      */
     public function setPriority($priority)
     {

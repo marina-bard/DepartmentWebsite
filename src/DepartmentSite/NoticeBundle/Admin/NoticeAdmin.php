@@ -1,6 +1,6 @@
 <?php
 
-namespace DepartmentSite\AdvertBundle\Admin;
+namespace DepartmentSite\NoticeBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -8,9 +8,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
-use DepartmentSite\AdvertBundle\Entity\Advert;
+use DepartmentSite\NoticeBundle\Entity\Notice;
 
-class AdvertAdmin extends Admin
+class NoticeAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)

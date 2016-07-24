@@ -1,12 +1,12 @@
 <?php
 
-namespace DepartmentSite\AdvertBundle\Form;
+namespace DepartmentSite\NoticeBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdvertType extends AbstractType
+class NoticeType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -27,7 +27,7 @@ class AdvertType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'DepartmentSite\AdvertBundle\Entity\Advert'
+            'data_class' => 'DepartmentSite\NoticeBundle\Entity\Notice'
         ));
     }
 }

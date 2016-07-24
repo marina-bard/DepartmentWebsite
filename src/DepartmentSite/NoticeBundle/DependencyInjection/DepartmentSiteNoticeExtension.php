@@ -1,6 +1,6 @@
 <?php
 
-namespace DepartmentSite\AdvertBundle\DependencyInjection;
+namespace DepartmentSite\NoticeBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class DepartmentSiteAdvertExtension extends Extension
+class DepartmentSiteNoticeExtension extends Extension
 {
     /**
      * {@inheritdoc}
