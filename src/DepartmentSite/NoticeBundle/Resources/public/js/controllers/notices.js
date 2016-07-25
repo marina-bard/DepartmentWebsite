@@ -1,8 +1,8 @@
 var adverts_length;
 (function() {
   'use strict';
-  angular.module('bsuir-ecm').factory('PagerService', PagerService).controller('AnnouncementsCtrl', function($scope, PagerService) {
-    $scope.announcements = JSON.parse(data.replace(/&quot;/g, '"'));
+  angular.module('bsuir-ecm').factory('PagerService', PagerService).controller('NoticesCtrl', function($scope, PagerService) {
+    $scope.notices = JSON.parse(data.replace(/&quot;/g, '"'));
     $scope.pageSize = 10;
 
     $scope.pager = {};
@@ -117,4 +117,4 @@ var adverts_length;
 
 }).call(this);
 
-//# sourceMappingURL=announcements.js.map
+//# sourceMappingURL=notices.js.map

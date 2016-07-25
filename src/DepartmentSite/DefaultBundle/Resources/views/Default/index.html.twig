@@ -18,6 +18,7 @@
                                 <div class="row">
                                     <div class="section-title"><span>{{ 'notice' | DICTIONARY(_locale) }}</span>
                                         <div class="v-separator"></div><a ng-href="{{ path('notice_index') }}">
+
                                             {{ 'all_notice' | DICTIONARY(_locale) }}</a>
                                     </div>
                                 </div>
@@ -27,7 +28,7 @@
                                             <div class="announce-card">
                                                 <div class="announce-card-content">
                                                     <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{ '{{advert.created_at.date | dateFilter | date:"dd.MM.yyyy"}}' }}</i>
-                                                    <br /><a class="announce-card-title" ng-href="/advert/{{'{{advert.slug}}'}}/show">{{ '{{ advert.title }}' }}</a>
+                                                    <br /><a class="announce-card-title" ng-href="/{{ _locale }}/notice/{{'{{advert.slug}}'}}/show">{{ '{{ advert.title }}' }}</a>
                                                     <div class="announce-card-lead">{{ '{{ advert.description }}' }}</div>
                                                 </div>
                                             </div>

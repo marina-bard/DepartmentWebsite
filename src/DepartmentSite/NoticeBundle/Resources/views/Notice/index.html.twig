@@ -3,11 +3,12 @@
 
   {% block body %}
 
-<div ng-controller="AnnouncementsCtrl">
+<div ng-controller="NoticesCtrl">
       <script type="text/javascript">
 
            data = '{{ render(controller('DepartmentSiteNoticeBundle:Notice:getNotices', { 'page': page })) }}';
            console.log(data);
+
            adverts_length = '{{ render(controller('DepartmentSiteNoticeBundle:Notice:getNoticesLength')) }}';
       </script>
 
@@ -18,15 +19,17 @@
                   <div class="section-title"><span>{{ 'notice' | DICTIONARY(_locale) }}</span></div>
               </div>
           </div>
-          <div class="row" ng-repeat="announcement in announcements  ">
+          <div class="row" ng-repeat="notice in notices  ">
               <div class="cards-column">
                   <div class="announce-card">
                       <div class="announce-card-content">
                           <div class="full-card-content">
                               <div class="my_announcement-comments-count-circle pull-right">2</div>
-                              <i class="announce-card-date">{{ '{{announcement.createdAt | date:"dd.MM.yyyy"  }}' }}</i>
-                              <br /><a class="announce-card-title" ng-href="/{{ _locale }}/notice/{{'{{announcement.slug}}'}}/show">{{'{{ announcement.title }}'}}</a>
-                              <div class="announce-card-lead">{{'{{ announcement.description }}'}}</div>
+                              <i class="announce-card-date">{{ '{{notice.createdAt | date:"dd.MM.yyyy"  }}' }}</i>
+
+
+                              <br /><a class="announce-card-title" ng-href="/{{ _locale }}/notice/{{'{{notice.slug}}'}}/show">{{'{{ notice.title }}'}}</a>
+                              <div class="announce-card-lead">{{'{{ notice.description }}'}}</div>
                           </div>
                       </div>
                   </div>

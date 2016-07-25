@@ -13,10 +13,10 @@
       controller: 'OneNewsCtrl'
     }).when('/notice', {
       templateUrl: 'DepartmentSiteNoticeBundle:Notice:index',
-      controller: 'AnnouncementsCtrl'
+      controller: 'NoticesCtrl'
     }).when('/notice/:slug/show', {
       templateUrl: 'DepartmentSiteNoticeBundle:Notice:show',
-      controller: 'OneAdvertCtrl'
+      controller: 'OneNoticeCtrl'
     }).when('/page/:slug/show', {
       templateUrl: 'DepartmentSitePageBundle:Page:show',
       controller: 'PageCtrl'
