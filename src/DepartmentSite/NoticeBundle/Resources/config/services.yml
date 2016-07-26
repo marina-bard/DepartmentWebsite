@@ -1,0 +1,8 @@
+services:
+    admin.notice:
+        class: DepartmentSite\NoticeBundle\Admin\NoticeAdmin
+        arguments: [~, DepartmentSite\NoticeBundle\Entity\Notice, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Notice", label: Notice}
+        calls:
+              - [ setTranslationDomain, [DepartmentSiteNoticeBundle]]

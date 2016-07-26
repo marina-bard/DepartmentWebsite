@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div >
+    {#<script type="text/javascript">#}
+        {#data = '{{ render(controller('DepartmentSiteAdvertBundle:Notice:getOne', {'id' : advert.id})) }}';#}
+    {#</script>#}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title">
+                    <span>Объявления</span>
+                    <div class="v-separator"></div>
+                    <a ng-href="{{ path('notice_index', {'page': 1}) }}">{{ 'to_notice_list' | DICTIONARY(_locale) }}</a>
+                    <div class="v-separator"></div>
+                    <a ng-href="#/announcements/page">{{ 'next_notice' | DICTIONARY(_locale) }}</a>
+                    <div class="v-separator"></div>
+                    <a ng-href="#/announcements/page">{{ 'previous_notice' | DICTIONARY(_locale) }}</a>
+                </div>
+                <i class="news-time">{{ notice.createdAt.date | date('d.m.Y')}}</i>
+                <div class="post-title-inside-post">{{ notice.title }}</div>
+                <div class="post-content-inside post-content" >
+                    {{ notice.content | raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
