@@ -26,10 +26,10 @@ class LoadBannerMenu implements FixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $this->createBannerMenu($manager, 'For students', 'Студентам');
-        $this->createBannerMenu($manager, 'For applicants', 'Абитуриентам');
-        $this->createBannerMenu($manager, 'For graduate', 'Дипломникам');
-        $this->createBannerMenu($manager, 'For parents', 'Родителям');
+        $this->createBannerMenu($manager, 'Студентам', 'For students' );
+        $this->createBannerMenu($manager, 'Абитуриентам', 'For applicants');
+        $this->createBannerMenu($manager, 'Дипломникам', 'For graduate' );
+        $this->createBannerMenu($manager, 'Родителям', 'For parents');
 
         $manager->flush();
     }

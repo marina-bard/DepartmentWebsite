@@ -80,5 +80,16 @@ class BannerMenu
     {
         return [ 'title' ];
     }
+
+//    public function setSlugWithEnTitle()
+//    {
+//        $this->title = $this->translate('en')->getTitle();
+//    }
+//
+//    public function getSluggableFields()
+//    {
+//        $this->setSlugWithEnTitle();
+//        return ['title'];
+//    }
 }
 
