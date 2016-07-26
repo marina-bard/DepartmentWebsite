@@ -147,14 +147,15 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->findOneBy(array('slug' => $slug));
-        $comment = new Comment();
-//        return new Response(htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)));
-        return $this->render('шаблон создай и назови сам', array(
-            htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)),
-            'comment' => $comment
-            ));
+//        $comment = new Comment();
+        return new Response(htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)));
+//        return $this->render('@DepartmentSiteProject/Project/show.html.twig', array(
+//            htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)),
+//            'comment' => $comment,
+//            'locale' => $locale
+//            ));
     }
-    private function getCommentsByProjectIdAction($projectId)
+    public function getCommentsByProjectIdAction($projectId)
     {
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->find($projectId);

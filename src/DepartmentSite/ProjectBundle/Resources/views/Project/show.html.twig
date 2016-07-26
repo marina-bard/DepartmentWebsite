@@ -5,6 +5,7 @@
     <div ng-controller="OneProjectCtrl">
         <script type="text/javascript">
             data = '{{ render(controller('DepartmentSiteProjectBundle:Project:getOne', {'slug' : project.slug})) }}';
+            project_comments = '{{ render(controller('DepartmentSiteProjectBundle:Project:getCommentsByProjectId', {'projectId' : project.id})) }}';
 //            console.log(data[408]);
         </script>
         <div class="container">
@@ -112,12 +113,14 @@
 
             <div class="row">
                 <div class="col-xs-12">
+                    <form action="{{ path('comment_new') }}" method="post">
                     <div class="comment-textarea">
                         {#<a href=""><i class="fa fa-paperclip fa-2x" aria-hidden="true"></i></a>#}
-                        <textarea placeholder="{{ 'textarea_message' | DICTIONARY(_locale) }}" title="comment" type="comment"></textarea>
+                        <textarea placeholder="{{ 'textarea_message' | DICTIONARY(_locale) }}" title="comment" type="comment" id="comment_textarea"></textarea>
                     </div>
                         <input class="btn btn-default" type="submit" id="_submit" name="_submit"
                                value="{{ 'btn_comment' | DICTIONARY(_locale) }}"/>
+                    </form>
                 </div>
             </div>
 
@@ -128,4 +131,13 @@
              </div>
          </div>
      </div>
+
+    {#<script>#}
+        {#jQuery(function () {#}
+            {#$("#_submit").click(function() {#}
+                {#var comment = $('#comment_textarea').val();#}
+                {#{{ project.addCommet() }}#}
+            {#});#}
+        {#});#}
+    {#</script>#}
 {% endblock %}

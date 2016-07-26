@@ -5,3 +5,10 @@ department_site_default_homepage:
         _locale: ru
     requirements:
         _locale: ru|en
+department_site_not_found_page:
+    path:     /{_locale}/404
+    defaults:
+        _controller: DepartmentSiteDefaultBundle:Default:pageNotFound
+        _locale: ru
+    requirements:
+        _locale: ru|en
