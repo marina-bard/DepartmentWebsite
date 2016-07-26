@@ -1,5 +1,6 @@
 'use strict';
 var data = [];
+var project_comments = [];
 
 (function() {
     angular.module('bsuir-ecm').controller('OneProjectCtrl', function($scope){

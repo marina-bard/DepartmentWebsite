@@ -130,6 +130,7 @@
     margin-top: 170px;
   }
 }
+
 @media (max-width: 300px) {
   /* line 107, ../../../app/styles/layout/banner.scss */
   .banner .banner-title {
