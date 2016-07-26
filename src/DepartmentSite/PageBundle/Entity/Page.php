@@ -5,7 +5,7 @@ namespace DepartmentSite\PageBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Sonata\MediaBundle\Model\MediaInterface;
+
 
 
 /**
