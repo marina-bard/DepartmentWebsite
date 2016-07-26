@@ -22,7 +22,14 @@ class DefaultController extends Controller
         return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig', array('_locale' => $_locale));
     }
 
-    public function getNoticesForMainPageAction()
+
+    public function pageNotFoundAction($_locale)
+    {
+        return $this->render('DepartmentSiteDefaultBundle:layout:404.html.twig', array('_locale' => $_locale));
+    }
+    
+     public function getNoticesForMainPageAction()
+
     {
         $em = $this->getDoctrine()->getManager();
         $notices = $em->getRepository('DepartmentSiteNoticeBundle:Notice')->findBy(array(), array('id'=>'desc'), 6);
