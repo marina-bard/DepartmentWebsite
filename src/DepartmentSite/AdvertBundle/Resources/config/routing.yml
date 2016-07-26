@@ -1,3 +1,0 @@
-department_site_advert_advert:
-    resource: "@DepartmentSiteAdvertBundle/Resources/config/routing/advert.yml"
-    prefix:   /{_locale}/advert

@@ -9908,4 +9908,30 @@ p {
   margin-bottom: 100px;
 }
 
+.background-404 {
+  /*background-image: url(../images/404.png);*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: cover;*/
+  background-color: #f9fafa;
+  text-align: center;
+}
+
+.background-404 h1 {
+  color: #434a54;
+  font-family: "CirceRegular";
+  font-weight: bold;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.background-404 .btn {
+  background-color: #2ab4c0;
+  border: none;
+  color: white;
+  font-size: 22px;
+  /*width: 15%;*/
+  height: auto;
+  margin-bottom: 100px;
+}
 
