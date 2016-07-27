@@ -14,8 +14,9 @@
         {#</div>#}
     {#</form>#}
 
-    <form id="reg_form">
-        <div class="form-group">
+    {#<form action="{{ path('fos_user_registration', { 'user': users['student_user'] }) }}" method="POST" >#}
+
+    <div class="form-group">
             <select class="form-control" id="select_user">
                 <option value="" disabled selected hidden>Выберите себя</option>
                 {%  for user in users %}
@@ -26,6 +27,15 @@
 
         {{ render(controller('ApplicationFOSUserBundle:RegistrationUser:getForm', { 'user': users['student_user'] })) }}
 
-    </form>
+        {#{{ form_start(form) }}#}
+        {#{{ form_widget(form) }}#}
+        {#<div>#}
+            {#<input type="submit" value="{{ 'registration.submit'|trans }}" />#}
+        {#</div>#}
 
+        {#{{ render(controller('ApplicationFOSUserBundle:RegistrationUser:getForm', { 'user': users['student_user'] })) }}#}
+
+        {#{% block fos_user_form %}#}
+        {#{% endblock fos_user_form %}#}
+{#</form>#}
 {% endblock fos_user_content %}

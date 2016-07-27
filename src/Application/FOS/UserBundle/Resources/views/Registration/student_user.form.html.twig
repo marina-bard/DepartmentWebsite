@@ -1,16 +1,30 @@
 {#{% extends "FOSUserBundle::layout.html.twig" %}#}
 
 {#{% form_theme form 'bootstrap_3_layout.html.twig' %}#}
-
-{#{% block fos_user_content %}#}
-
+{#{% extends "FOSUserBundle:Registration:choose_user.form.html.twig" %}#}
+{% block fos_user_form %}
     {% trans_default_domain 'FOSUserBundle' %}
 
+    <form action="{{ path('student_user_registration') }}" method="POST" >
         {{ form_start(form) }}
         {{ form_widget(form) }}
         <div>
             <input type="submit" value="{{ 'registration.submit'|trans }}" />
         </div>
+    </form>
+{% endblock fos_user_form %}
+
+{#{% block fos_user_form %}#}
+
+    {#{% trans_default_domain 'FOSUserBundle' %}#}
+
+    {#<form id="reg_form" method="POST">#}
+        {#{{ form_start(form) }}#}
+        {#{{ form_widget(form) }}#}
+        {#<div>#}
+            {#<input type="submit" value="{{ 'registration.submit'|trans }}" />#}
+        {#</div>#}
+    {#</form>#}
 
     {#<form id="reg_form" method="POST" action="{{ path('teacher_user_registration') }}" >#}
         {#<div class="form-group">#}
@@ -28,11 +42,11 @@
     {#</form>#}
 
     {#<script>#}
-        {#jQuery(function () {#}
+        {#jQuery(function () #}{#}#}
             {#$("#fos_user_registration_form_student_user_studyGroup").hide();#}
             {#var action;#}
-            {#$("#select_user").change(function() {#}
-                {#switch($(this).val()) {#}
+            {#$("#select_user").change(function() #}{#}#}
+                {#switch($(this).val()) #}{#}#}
                     {#case 'Преподаватель':#}
                         {#$("#fos_user_registration_form_student_user_studyGroup").hide();#}
                         {#action = "{{ path('teacher_user_registration') }}";#}
@@ -53,4 +67,4 @@
         {#});#}
     {#</script>#}
 
-{#{% endblock fos_user_content %}#}
+{#{% endblock fos_user_form %}#}
