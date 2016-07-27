@@ -74,6 +74,10 @@ _itm_preview:
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
 
+fos_user_registration_register:
+    path:  /register
+    defaults: { _controller: ApplicationFOSUserBundle:RegistrationUser:register }
+
 student_user_registration:
     path:  /register/student_user
     defaults: { _controller: ApplicationFOSUserBundle:RegistrationUser:registerStudentUser }

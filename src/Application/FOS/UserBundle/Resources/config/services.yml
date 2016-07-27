@@ -1,0 +1,9 @@
+services:
+    fos.user.student:
+        class: Application\FOS\UserBundle\Entity\StudentUser
+
+    fos.user.student:
+            class: Application\FOS\UserBundle\Entity\TeacherUser
+
+    fos.user.student:
+            class: Application\FOS\UserBundle\Entity\ParentUser
