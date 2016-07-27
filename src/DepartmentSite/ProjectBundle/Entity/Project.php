@@ -444,6 +444,17 @@ class Project implements JsonSerializable
         return $this->comments;
     }
 
+
+    public function getCountComment()
+    {
+        return $this->countComment;
+    }
+
+    public function setCountComment($countComment)
+    {
+        $this->countComment = $countComment;
+    }
+
     function jsonSerialize()
     {
         return [
@@ -452,7 +463,7 @@ class Project implements JsonSerializable
             'student' => $this->student,
             'course' => $this->course,
             'teacher' => $this->teacher,
-            'reviewer' => $this->reviewer,
+//            'reviewer' => $this->reviewer,
             'studentGroup' => $this->studentGroup,
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
