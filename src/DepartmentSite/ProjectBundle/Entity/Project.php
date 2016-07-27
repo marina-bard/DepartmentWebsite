@@ -49,15 +49,7 @@ class Project implements JsonSerializable
      * @ORM\Column(name="teacher", type="string", length=255, nullable=true)
      */
     private $teacher;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="reviewer", type="string", length=255, nullable=true)
-     */
-    private $reviewer;
-
-
+    
     /**
      * @var string
      *
@@ -222,30 +214,7 @@ class Project implements JsonSerializable
     {
         return $this->teacher;
     }
-
-    /**
-     * Set reviewer
-     *
-     * @param string $reviewer
-     *
-     * @return Project
-     */
-    public function setReviewer($reviewer)
-    {
-        $this->reviewer = $reviewer;
-
-        return $this;
-    }
-
-    /**
-     * Get reviewer
-     *
-     * @return string
-     */
-    public function getReviewer()
-    {
-        return $this->reviewer;
-    }
+    
 
     /**
      * Set course

@@ -50,6 +50,10 @@
                      <source>Side Bar Menu</source>
                      <target>Боковое меню</target>
             </trans-unit>
+            <trans-unit id="Users">
+                     <source>Users</source>
+                     <target>Пользователи</target>
+            </trans-unit>
 
         </body>
     </file>

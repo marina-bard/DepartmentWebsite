@@ -24,6 +24,12 @@ abstract class User extends BaseUser
      */
     protected $id;
 
+    public function __toString() {
+        return $this->getUsername() ? : '-';
+    }
+
+   
+
 //    /**
 //     * @ORM\Column(type="string", length=255)
 //     *
