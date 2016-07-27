@@ -42,10 +42,6 @@
                        <source>Teacher</source>
                        <target>Преподаватель</target>
              </trans-unit>
-             <trans-unit id="Reviewer comment">
-                        <source>Reviewer comment</source>
-                        <target> Отзыв рецензента</target>
-             </trans-unit>
              <trans-unit id="Course">
                         <source>Course</source>
                         <target>Курс</target>

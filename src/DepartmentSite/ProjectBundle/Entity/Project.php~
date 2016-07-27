@@ -49,15 +49,7 @@ class Project implements JsonSerializable
      * @ORM\Column(name="teacher", type="string", length=255, nullable=true)
      */
     private $teacher;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="reviewer", type="string", length=255, nullable=true)
-     */
-    private $reviewer;
-
-
+    
     /**
      * @var string
      *
@@ -114,15 +106,26 @@ class Project implements JsonSerializable
      */
     private $isModerated;
 
+    private $countComment;
+
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="project", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"id" = "ASC"})
      *
      */
     private $comments;
 
     public function __construct()
     {
+        $this->countComment = 0;
         $this->comments = new ArrayCollection();
+    }
+
+    /**
+     * @return string - object's string representation
+     */
+    public function __toString() {
+        return $this->getTitle() ? : '-';
     }
 
     /**
@@ -206,30 +209,7 @@ class Project implements JsonSerializable
     {
         return $this->teacher;
     }
-
-    /**
-     * Set reviewer
-     *
-     * @param string $reviewer
-     *
-     * @return Project
-     */
-    public function setReviewer($reviewer)
-    {
-        $this->reviewer = $reviewer;
-
-        return $this;
-    }
-
-    /**
-     * Get reviewer
-     *
-     * @return string
-     */
-    public function getReviewer()
-    {
-        return $this->reviewer;
-    }
+    
 
     /**
      * Set course
@@ -424,6 +404,7 @@ class Project implements JsonSerializable
      */
     public function addComment(\DepartmentSite\ProjectBundle\Entity\Comment $comment)
     {
+        $this->countComment+=1;
         $comment->setProject($this);
 
         $this->comments->add($comment);
@@ -440,6 +421,7 @@ class Project implements JsonSerializable
      */
     public function removeComment(\DepartmentSite\ProjectBundle\Entity\Comment $comment)
     {
+        $this->countComment-=1;
         $this->comments->removeElement($comment);
     }
 
@@ -453,19 +435,10 @@ class Project implements JsonSerializable
         return $this->comments;
     }
 
-//    public function prePersist($project)
-//    {
-//        $this->preUpdate($project);
-//    }
-//
-//    public function preUpdate($project)
-//    {
-//        $project->setComments($project->getComments());
-//    }
-
     function jsonSerialize()
     {
         return [
+            'id' => $this->id,
             'title' => $this->title,
             'student' => $this->student,
             'course' => $this->course,
@@ -479,7 +452,32 @@ class Project implements JsonSerializable
             'isModerated' => $this->isModerated,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'slug' => $this->slug
+            'slug' => $this->slug,
+            'countComment' => $this->countComment
         ];
+    }
+
+    /**
+     * Set teacherComment
+     *
+     * @param string $teacherComment
+     *
+     * @return Project
+     */
+    public function setTeacherComment($teacherComment)
+    {
+        $this->teacher_comment = $teacherComment;
+
+        return $this;
+    }
+
+    /**
+     * Get teacherComment
+     *
+     * @return string
+     */
+    public function getTeacherComment()
+    {
+        return $this->teacher_comment;
     }
 }

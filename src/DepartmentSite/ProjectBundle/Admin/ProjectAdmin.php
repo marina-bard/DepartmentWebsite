@@ -18,12 +18,12 @@ class ProjectAdmin extends AbstractAdmin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('student', 'text', array('label' => 'Student'))
             ->add('teacher', 'text', array('label' => 'Teacher'))
-            ->add('reviewer', 'textarea', array('label' => 'Reviewer comment'))
             ->add('course', 'number', array('label' => 'Course'))
             ->add('studentGroup', 'text', array('label' => 'studentGroup'))
             ->add('startDate', 'datetime')
             ->add('endDate', 'datetime')
             ->add('description', 'text', array('label' => 'description'))
+            ->add('teacher_comment', 'textarea', array('label'=> 'Teacher review'))
             ->add('content', CKEditorType::class, array('label' => 'Content'));
 
 
@@ -61,7 +61,6 @@ class ProjectAdmin extends AbstractAdmin
         $showMapper
             ->add('student')
             ->add('teacher')
-            ->add('reviewer')
             ->add('course')
             ->add('studentGroup')
             ->add('startDate')
