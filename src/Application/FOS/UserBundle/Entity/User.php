@@ -28,6 +28,8 @@ abstract class User extends BaseUser
         return $this->getUsername() ? : '-';
     }
 
+   
+
 //    /**
 //     * @ORM\Column(type="string", length=255)
 //     *

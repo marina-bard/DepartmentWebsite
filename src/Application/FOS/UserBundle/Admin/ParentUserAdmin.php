@@ -46,9 +46,11 @@ class ParentUserAdmin extends AbstractAdmin
             ;
         }
         $formMapper
-            ->add('locked', 'checkbox', array('required' => false));
+            ->add('locked', 'checkbox', array('required' => false))
+            ->add('roles', 'collection')
+        ;
 
-        // ->add('roles', 'sonata_type_model_list' )
+
 
 
 
@@ -65,7 +67,7 @@ class ParentUserAdmin extends AbstractAdmin
             ->add('email')
             ->add('studentGroup')
             ->add('locked')
-            //->add('roles')
+          
         ;
     }
 
@@ -96,6 +98,7 @@ class ParentUserAdmin extends AbstractAdmin
             ->add('patronymic')
             ->add('email')
             ->add('studentGroup')
+            ->add('roles')
             ->add('locked')
         ;
 

@@ -27,6 +27,7 @@ class TeacherUserAdmin extends AbstractAdmin
                     'readonly' => true)))
                 ->add('email', 'text', array('label' => 'Email', 'attr' => array(
                     'readonly' => true)))
+                
 
             ;
         }
@@ -43,7 +44,9 @@ class TeacherUserAdmin extends AbstractAdmin
             ;
         }
         $formMapper
-            ->add('locked', 'checkbox', array('required' => false));
+            ->add('locked', 'checkbox', array('required' => false))
+            ->add('roles', 'collection')
+        ;
 
         // ->add('roles', 'sonata_type_model_list' )
 
@@ -91,6 +94,7 @@ class TeacherUserAdmin extends AbstractAdmin
             ->add('surname')
             ->add('patronymic')
             ->add('email')
+            ->add('roles')
             ->add('locked')
         ;
 

@@ -29,7 +29,8 @@ class UserAdmin extends AbstractAdmin
                 ->add('email', 'text', array('attr' => array(
                     'readonly' => true)))
                 ->add('locked', 'checkbox', array('required' => false))
-                //->add('roles')
+                ->add('roles', 'collection')
+
 
             ;
 
@@ -66,6 +67,7 @@ class UserAdmin extends AbstractAdmin
             ->add('username')
             ->add('email')
             ->add('locked')
+            ->add('roles')
         ;         
 
     }

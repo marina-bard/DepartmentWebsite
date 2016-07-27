@@ -46,12 +46,9 @@ class StudentUserAdmin extends AbstractAdmin
             ;
         }
         $formMapper
-            ->add('locked', 'checkbox', array('required' => false));
-
-           // ->add('roles', 'sonata_type_model_list' )
-
-
-
+            ->add('locked', 'checkbox', array('required' => false))
+            ->add('roles', 'collection')
+        ;
     }
 
     // Fields to be shown on filter forms
@@ -96,6 +93,7 @@ class StudentUserAdmin extends AbstractAdmin
             ->add('patronymic')
             ->add('email')
             ->add('studyGroup')
+            ->add('roles')
             ->add('locked')
         ;
 
