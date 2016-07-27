@@ -27,7 +27,7 @@ class ParentUserAdmin extends AbstractAdmin
                     'readonly' => true)))
                 ->add('email', 'text', array('label' => 'Email', 'attr' => array(
                     'readonly' => true)))
-                ->add('studyGroup', 'integer', array('label' => 'Study Group', 'attr' => array(
+                ->add('studentGroup', 'integer', array('label' => 'Study Group', 'attr' => array(
                     'readonly' => true)))
 
             ;

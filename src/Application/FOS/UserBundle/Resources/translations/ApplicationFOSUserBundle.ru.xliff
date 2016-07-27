@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="User">
+                    <source>User</source>
+                    <target>Пользователи</target>
+            </trans-unit>
+            <trans-unit id="Student User">
+                      <source>Student User</source>
+                      <target>Студенты</target>
+            </trans-unit>
+             <trans-unit id="Parent User">
+                       <source>Parent User</source>
+                       <target>Родители</target>
+             </trans-unit>
+             <trans-unit id="Teacher User">
+                        <source>Teacher User</source>
+                        <target>Преподаватели</target>
+             </trans-unit>
+             <trans-unit id="Username">
+                        <source>Username</source>
+                        <target>Логин</target>
+             </trans-unit>
+             <trans-unit id="Action">
+                        <source>Action</source>
+                        <target>Действия</target>
+             </trans-unit>
+             <trans-unit id="User List">
+                        <source>User List</source>
+                        <target>Список пользователей</target>
+             </trans-unit>
+             <trans-unit id="Email">
+                        <source>Email</source>
+                        <target>Электронная почта</target>
+             </trans-unit>
+             <trans-unit id="Image Create">
+                        <source>Image Create</source>
+                        <target>Загрузить фото</target>
+             </trans-unit>
+             <trans-unit id="Locked">
+                        <source>Locked</source>
+                        <target>Заблокирован</target>
+             </trans-unit>
+             <trans-unit id="Name">
+                        <source>Name</source>
+                        <target>Имя</target>
+             </trans-unit>
+             <trans-unit id="Surname">
+                        <source>Surname</source>
+                        <target>Фамилия</target>
+             </trans-unit>
+             <trans-unit id="Patronymic">
+                        <source>Patronymic</source>
+                        <target>Отчество</target>
+             </trans-unit>
+             <trans-unit id="Student User List">
+                        <source>Student User List</source>
+                        <target>Список студентов</target>
+             </trans-unit>
+             <trans-unit id="Study Group">
+                        <source>Study Group</source>
+                        <target>Группа</target>
+             </trans-unit>
+             <trans-unit id="Student Group">
+                        <source>Student Group</source>
+                        <target>Группа студента</target>
+             </trans-unit>
+             <trans-unit id="Parent User List">
+                        <source>Parent User List</source>
+                        <target>Список родителей</target>
+             </trans-unit>
+             <trans-unit id="Teacher User List">
+                        <source>Teacher User List</source>
+                        <target>Список преподавателей</target>
+             </trans-unit>
+
+
+
+
+        </body>
+    </file>
+</xliff>
