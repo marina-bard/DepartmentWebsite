@@ -2,11 +2,12 @@
 
 {% block body %}
     <div id="project">
-    <div ng-controller="OneProjectCtrl">
+    <div ng-controller="CommentsCtrl">
         <script type="text/javascript">
             data = '{{ render(controller('DepartmentSiteProjectBundle:Project:getOne', {'slug' : project.slug})) }}';
             project_comments = '{{ render(controller('DepartmentSiteProjectBundle:Project:getCommentsByProjectId', {'projectId' : project.id})) }}';
-//            console.log(data[408]);
+            comments_count = '{{ render(controller('DepartmentSiteProjectBundle:Project:getCommentsCount', {'projectId' : project.id})) }}';
+            console.log(project_comments);
         </script>
         <div class="container">
             <div class="row">
@@ -85,26 +86,30 @@
                  <div class="col-xs-12">
                      <div class="review-card">
                          <div class="review-card-content">
-                             <div class="review-card-title">Сидоров Петр Романович</div>
-                             <div class="review-card-lead">{{ project.content | raw }}</div><i class="review-card-date">вчера в 19:07</i></div>
+                             <div class="review-card-title">{{ project.teacher }}</div>
+                             <div class="review-card-lead">{{ project.teacherComment | raw }}</div>
+                             <i class="review-card-date">{{ project.createdAt | date }}</i></div>
                              {#<div class="review-card-lead" ng-bind-html="project.content | toHTML"></div><i class="review-card-date">вчера в 19:07</i></div>#}
                      </div>
                  </div>
              </div>
              <div class="row">
                  <div class="col-xs-12">
-                     <div class="comments-cards-title">{{ 'comments' | DICTIONARY(_locale) }} ( 2 )</div>
+                     <div class="comments-cards-title">{{ 'comments' | DICTIONARY(_locale) }} ( {{ '{{ comments_count }}' }} )</div>
                  </div>
              </div>
 
-             <div class="row">
+             <div class="row" ng-repeat="comment in comments">
                  <div class="col-md-12">
                      <div class="comment-card">
                          <div class="comment-card-content">
                              {#<div class="col-md-1"><img alt="alt" class="comment-card-avatar" ng-src="{{posts[0].img}}" /></div>#}
                              <div class="col-md-11">
-                                 <div class="comment-card-title">Александр Новиков</div>
-                                 <div class="comment-card-lead">{{ project.content | raw }}</div><i class="comment-card-date">вчера в 19:07  </i></div>
+                                 <div class="comment-card-title">{{ '{{ comment.author }}' }}</div>
+                                 <div class="comment-card-lead">{{ '{{ comment.content }}' }}</div>
+                                 <i class="comment-card-date">{{ '{{ comment.createdAt.date | date}}' }}  </i>
+                                 <a href="" id="reply_link" class="reply reply_link" onclick="showText(this);">ответить</a>
+                             </div>
                                  {#<div class="comment-card-lead" ng-bind-html="project.content | toHTML"></div><i class="comment-card-date">вчера в 19:07  </i></div>#}
                          </div>
                      </div>
@@ -112,18 +117,23 @@
              </div>
 
             <div class="row">
-                <div class="col-xs-12">
-                    <form action="{{ path('comment_new') }}" method="post">
+                <div class="col-xs-12" id="reply">
+                    <form ng-show="isSuccess == false"  method="post" ng-submit="processForm('{{ project.id }}')">
                     <div class="comment-textarea">
                         {#<a href=""><i class="fa fa-paperclip fa-2x" aria-hidden="true"></i></a>#}
-                        <textarea placeholder="{{ 'textarea_message' | DICTIONARY(_locale) }}" title="comment" type="comment" id="comment_textarea"></textarea>
+                        <textarea ng-model="formData.content" placeholder="{{ 'textarea_message' | DICTIONARY(_locale) }}"
+                                  title="comment" type="comment" id="comment_textarea"></textarea>
                     </div>
                         <input class="btn btn-default" type="submit" id="_submit" name="_submit"
                                value="{{ 'btn_comment' | DICTIONARY(_locale) }}"/>
                     </form>
+                    <div class="moderation-message" ng-show="isSuccess == true">
+                        <h4>{{ '{{ message }}' }}</h4>
+                        <input type="button" class="btn btn-default" ng-click="showTextview()" value="Продолжить">
+                    </div>
                 </div>
             </div>
-
+            <a href="" id="reply-link-2" class="reply reply_link" onclick="showText(this)"><h4>Написать комментарий</h4></a>
             <p class="login-message">{{ 'message_to_regitster' | DICTIONARY(_locale) }}
                 <a data-target="#myModal" data-toggle="modal" ng-href="">
                     {{ 'login_to_comment' | DICTIONARY(_locale) }}</a> {{ 'please' | DICTIONARY(_locale) }}.</p>
@@ -132,12 +142,20 @@
          </div>
      </div>
 
-    {#<script>#}
-        {#jQuery(function () {#}
-            {#$("#_submit").click(function() {#}
-                {#var comment = $('#comment_textarea').val();#}
-                {#{{ project.addCommet() }}#}
-            {#});#}
-        {#});#}
-    {#</script>#}
+    <script>
+        jQuery(function () {
+            $('#reply-link-2').hide();
+            showText = function($this) {
+                $($this).css("color", "#2ab4c0");
+                $($this).mouseenter(function () {
+                    $(this).css("color", "#fdd400")
+                });
+                $($this).mouseleave(function () {
+                    $(this).css("color", "#2ab4c0")
+                });
+                $('#reply').insertAfter($($this));
+                $('#reply-link-2').show();
+            };
+        });
+    </script>
 {% endblock %}

@@ -106,6 +106,11 @@ class Project implements JsonSerializable
      */
     private $isModerated;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="countComment", type="integer")
+     */
     private $countComment;
 
     /**
@@ -430,6 +435,10 @@ class Project implements JsonSerializable
      *
      * @return \Doctrine\Common\Collections\Collection
      */
+    public function getCommentsCount() 
+    {
+        return $this->countComment;
+    }
     public function getComments()
     {
         return $this->comments;

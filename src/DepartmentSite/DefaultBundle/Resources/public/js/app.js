@@ -31,7 +31,16 @@
       controller: 'ProjectsCtrl'
     }).when('/project/:slug/show', {
       templateUrl: 'DepartmentSiteProjectBundle:Project:show',
-      // controller: 'OneProjectCtrl'
+      controller: 'CommentsCtrl'
+    }).when('/comment/new', {
+      templateUrl: 'DepartmentSiteProjectBundle:Comment:new',
+       controller: 'OneProjectCtrl'
+    }).when('/comment/:id/show', {
+      templateUrl: 'DepartmentSiteProjectBundle:Comment:show',
+       controller: 'OneProjectCtrl'
+    }).when('/comment/:id/edit', {
+      templateUrl: 'DepartmentSiteProjectBundle:Comment:edit',
+      controller: 'OneProjectCtrl'
     }).otherwise({
       redirectTo: '/'
     });

@@ -2,11 +2,13 @@
 
 namespace DepartmentSite\ProjectBundle\Controller;
 
+use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use DepartmentSite\ProjectBundle\Entity\Comment;
 use DepartmentSite\ProjectBundle\Form\CommentType;
+
 
 /**
  * Comment controller.
@@ -35,36 +37,54 @@ class CommentController extends Controller
      */
     public function newAction(Request $request, $_locale)
     {
+        $content = $request->get("content");
+        $projectId = $request->get("projectId");
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->findOneBy(array('id' => $projectId));
+
         $comment = new Comment();
-        $form = $this->createForm('DepartmentSite\ProjectBundle\Form\CommentType', $comment);
-        $form->handleRequest($request);
+        $comment->setProject($project);
+        $comment->setContent($content);
+        $comment->setAuthor('qwertfgh');
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($comment);
+        $em->flush();
 
-            return $this->redirectToRoute('comment_show', array('slug' => $comment->getSlug(), '_locale' => $_locale));
-        }
+        return new \Symfony\Component\HttpFoundation\Response("Ваш комментарий будет опубликован после модерации.");
+        
+//        $form = $this->createForm('DepartmentSite\ProjectBundle\Form\CommentType', $comment);
+//        $form->handleRequest($request);
 
-        return $this->render('comment/new.html.twig', array(
-            'comment' => $comment,
-            'form' => $form->createView(),
-            '_locale' => $_locale
-        ));
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($comment);
+//            $em->flush();
+//
+//            return $this->redirectToRoute('comment_show', array('id' => $comment->getId(), '_locale' => $_locale));
+//        }
+
+
+
+//        return $this->render('comment/new.html.twig', array(
+//            'comment' => $comment,
+//            'form' => $form->createView(),
+//            '_locale' => $_locale
+//        ));
     }
 
     /**
      * Finds and displays a Comment entity.
      *
      */
-    public function showAction(Comment $comment)
+    public function showAction(Comment $comment, $_locale)
     {
         $deleteForm = $this->createDeleteForm($comment);
 
         return $this->render('comment/show.html.twig', array(
             'comment' => $comment,
             'delete_form' => $deleteForm->createView(),
+            '_locale' => $_locale
         ));
     }
 
