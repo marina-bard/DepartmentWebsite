@@ -242,3 +242,37 @@
   border-color: #b9c1d0;
 }
 
+#project .moderation-message {
+  width: 100%;
+  height: 120px;
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 50px;
+  margin-bottom: 5px;
+  background-color: #f8f8f8;
+}
+
+#project .reply {
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 1px dashed;
+  margin-left: 10px;
+  color: #2ab4c0;
+}
+
+#project .reply:hover, #project .reply:focus {
+  color: #fdd400;
+}
+
+#project #reply {
+  padding-bottom: 30px;
+}
+
+#project #reply-link-2 h4 {
+  display: inline-block;
+  font-size: 18px;
+  margin-top: -30px;
+  margin-bottom: 30px;
+  border-bottom: 1px dashed;
+  margin-left: -10px;
+}

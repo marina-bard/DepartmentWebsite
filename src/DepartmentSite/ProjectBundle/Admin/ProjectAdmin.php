@@ -24,7 +24,11 @@ class ProjectAdmin extends AbstractAdmin
             ->add('startDate', 'datetime')
             ->add('endDate', 'datetime')
             ->add('description', 'text', array('label' => 'description'))
-            ->add('content', CKEditorType::class, array('label' => 'Content'));
+            ->add('content', CKEditorType::class, array('label' => 'Content'))
+            ->add('comments', 'sonata_type_collection', array('by_reference' => false), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+            ));
 
 
         if($this->isCurrentRoute('edit')){
