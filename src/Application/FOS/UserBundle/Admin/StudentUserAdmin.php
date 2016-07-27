@@ -41,12 +41,12 @@ class StudentUserAdmin extends AbstractAdmin
                 ->add('email', 'text', array('label' => 'Email'))
                 ->add('studyGroup', 'integer', array('label' => 'Study Group'))
                 ->add('password', 'text')
-                
+
 
             ;
         }
         $formMapper
-            ->add('locked', 'checkbox');
+            ->add('locked', 'checkbox', array('required' => false));
 
            // ->add('roles', 'sonata_type_model_list' )
 

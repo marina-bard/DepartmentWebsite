@@ -43,7 +43,7 @@ class TeacherUserAdmin extends AbstractAdmin
             ;
         }
         $formMapper
-            ->add('locked', 'checkbox');
+            ->add('locked', 'checkbox', array('required' => false));
 
         // ->add('roles', 'sonata_type_model_list' )
 
