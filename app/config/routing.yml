@@ -79,7 +79,7 @@ fos_user_registration_register:
     defaults: { _controller: ApplicationFOSUserBundle:RegistrationUser:register }
 
 fos_user_registration:
-    path:  /register
+    path:  /register/new
     defaults: { _controller: ApplicationFOSUserBundle:RegistrationUser:getForm }
 
 #student_user_registration:

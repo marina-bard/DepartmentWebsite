@@ -15,17 +15,18 @@
     {#</form>#}
 
     {#<form action="{{ path('fos_user_registration', { 'user': users['student_user'] }) }}" method="POST" >#}
-
-    <div class="form-group">
-            <select class="form-control" id="select_user">
+    <div class="form-group" ng-controller="RegisterCtrl">
+            <select class="form-control" id="select_user" ng-model="formData.type" ng-change="processForm()">
                 <option value="" disabled selected hidden>Выберите себя</option>
                 {%  for user in users %}
                 <option>{{ user }}</option>
                 {% endfor %}
             </select>
-        </div>
+        <div ng-bind-html="message | toHTML "></div>
+    </div>
 
-        {{ render(controller('ApplicationFOSUserBundle:RegistrationUser:getForm', { 'user': users['student_user'] })) }}
+
+        {#{{ render(controller('ApplicationFOSUserBundle:RegistrationUser:getForm', { 'user': users['student_user'] })) }}#}
 
         {#{{ form_start(form) }}#}
         {#{{ form_widget(form) }}#}
