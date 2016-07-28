@@ -41,6 +41,9 @@
     }).when('/comment/:id/edit', {
       templateUrl: 'DepartmentSiteProjectBundle:Comment:edit',
       controller: 'OneProjectCtrl'
+    }).when('/register', {
+      templateUrl: 'ApplicationFOSUserBundle:RegistrationUser:register',
+      controller: 'RegisterCtrl'
     }).otherwise({
       redirectTo: '/'
     });
