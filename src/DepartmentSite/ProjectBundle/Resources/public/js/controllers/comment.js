@@ -13,6 +13,11 @@ angular.module('bsuir-ecm').controller('CommentsCtrl', function($scope, $http, $
     $scope.showTextview = function () {
         $scope.isSuccess = false;
     };
+
+    $scope.init = function(commentId) {
+        alert("commentId: "+ commentId);
+        $scope.formData.commentId = commentId;
+    }
     $scope.processForm = function (projectId) {
         $scope.formData.projectId = projectId;
         $http({
