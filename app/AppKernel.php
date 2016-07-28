@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            new Sonata\NotificationBundle\SonataNotificationBundle(),
+         
 
             new FOS\UserBundle\FOSUserBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
@@ -48,7 +48,7 @@ class AppKernel extends Kernel
            
             new DepartmentSite\ProjectBundle\DepartmentSiteProjectBundle(),
             new DepartmentSite\DictionaryBundle\DepartmentSiteDictionaryBundle(),
-            new DepartmentSite\AdvertBundle\DepartmentSiteAdvertBundle(),
+            new DepartmentSite\NoticeBundle\DepartmentSiteNoticeBundle(),
             new DepartmentSite\DefaultBundle\DepartmentSiteDefaultBundle(),
             new DepartmentSite\GalleryBundle\DepartmentSiteGalleryBundle(),
             new DepartmentSite\MenuBundle\DepartmentSiteMenuBundle(),

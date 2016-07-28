@@ -1,4 +1,5 @@
 services:
+<<<<<<< HEAD
     fos.user.student:
         class: Application\FOS\UserBundle\Entity\StudentUser
 
@@ -7,3 +8,33 @@ services:
 
     fos.user.student:
             class: Application\FOS\UserBundle\Entity\ParentUser
+=======
+    admin.user:
+          class: Application\FOS\UserBundle\Admin\UserAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Users", label: "User" }
+          arguments: [~, Application\FOS\UserBundle\Entity\User, ~]
+          calls:
+               - [ setTranslationDomain, [ApplicationFOSUserBundle]]
+    admin.student_user:
+              class: Application\FOS\UserBundle\Admin\StudentUserAdmin
+              tags:
+                  - { name: sonata.admin, manager_type: orm, group: "Users", label: "Student User" }
+              arguments: [~, Application\FOS\UserBundle\Entity\StudentUser, ~]
+              calls:
+                   - [ setTranslationDomain, [ApplicationFOSUserBundle]]
+    admin.parent_user:
+                  class: Application\FOS\UserBundle\Admin\ParentUserAdmin
+                  tags:
+                      - { name: sonata.admin, manager_type: orm, group: "Users", label: "Parent User" }
+                  arguments: [~, Application\FOS\UserBundle\Entity\ParentUser, ~]
+                  calls:
+                       - [ setTranslationDomain, [ApplicationFOSUserBundle]]
+    admin.teacher_user:
+                      class: Application\FOS\UserBundle\Admin\TeacherUserAdmin
+                      tags:
+                          - { name: sonata.admin, manager_type: orm, group: "Users", label: "Teacher User" }
+                      arguments: [~, Application\FOS\UserBundle\Entity\TeacherUser, ~]
+                      calls:
+                           - [ setTranslationDomain, [ApplicationFOSUserBundle]]
+>>>>>>> develop

@@ -5,7 +5,7 @@ namespace DepartmentSite\PageBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Sonata\MediaBundle\Model\MediaInterface;
+
 
 
 /**
@@ -19,6 +19,7 @@ class Page
 {
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
+    use ORMBehaviors\Translatable\Translatable;
     /**
      * @var int
      *
@@ -34,13 +35,6 @@ class Page
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="content", type="text")
-     */
-    private $content;
 
     /**
      * Returns an array of the fields used to generate the slug.
@@ -86,27 +80,4 @@ class Page
         return $this->title;
     }
 
-    /**
-     * Set content
-     *
-     * @param string $content
-     *
-     * @return Page
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
 }

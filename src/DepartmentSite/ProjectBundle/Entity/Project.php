@@ -49,15 +49,7 @@ class Project implements JsonSerializable
      * @ORM\Column(name="teacher", type="string", length=255, nullable=true)
      */
     private $teacher;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="reviewer", type="string", length=255, nullable=true)
-     */
-    private $reviewer;
-
-
+    
     /**
      * @var string
      *
@@ -114,6 +106,11 @@ class Project implements JsonSerializable
      */
     private $isModerated;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="countComment", type="integer")
+     */
     private $countComment;
 
     /**
@@ -217,30 +214,7 @@ class Project implements JsonSerializable
     {
         return $this->teacher;
     }
-
-    /**
-     * Set reviewer
-     *
-     * @param string $reviewer
-     *
-     * @return Project
-     */
-    public function setReviewer($reviewer)
-    {
-        $this->reviewer = $reviewer;
-
-        return $this;
-    }
-
-    /**
-     * Get reviewer
-     *
-     * @return string
-     */
-    public function getReviewer()
-    {
-        return $this->reviewer;
-    }
+    
 
     /**
      * Set course
@@ -461,9 +435,24 @@ class Project implements JsonSerializable
      *
      * @return \Doctrine\Common\Collections\Collection
      */
+    public function getCommentsCount() 
+    {
+        return $this->countComment;
+    }
     public function getComments()
     {
         return $this->comments;
+    }
+
+
+    public function getCountComment()
+    {
+        return $this->countComment;
+    }
+
+    public function setCountComment($countComment)
+    {
+        $this->countComment = $countComment;
     }
 
     function jsonSerialize()
@@ -474,7 +463,7 @@ class Project implements JsonSerializable
             'student' => $this->student,
             'course' => $this->course,
             'teacher' => $this->teacher,
-            'reviewer' => $this->reviewer,
+//            'reviewer' => $this->reviewer,
             'studentGroup' => $this->studentGroup,
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,

@@ -11,12 +11,12 @@
     }).when('/news/:slug/show', {
       templateUrl: 'DepartmentSiteNewsBundle:News:show',
       controller: 'OneNewsCtrl'
-    }).when('/advert', {
-      templateUrl: 'DepartmentSiteAdvertBundle:Advert:index',
-      controller: 'AnnouncementsCtrl'
-    }).when('/advert/:slug/show', {
-      templateUrl: 'DepartmentSiteAdvertBundle:Advert:show',
-      controller: 'OneAdvertCtrl'
+    }).when('/notice', {
+      templateUrl: 'DepartmentSiteNoticeBundle:Notice:index',
+      controller: 'NoticesCtrl'
+    }).when('/notice/:slug/show', {
+      templateUrl: 'DepartmentSiteNoticeBundle:Notice:show',
+      controller: 'OneNoticeCtrl'
     }).when('/page/:slug/show', {
       templateUrl: 'DepartmentSitePageBundle:Page:show',
       controller: 'PageCtrl'
@@ -31,7 +31,16 @@
       controller: 'ProjectsCtrl'
     }).when('/project/:slug/show', {
       templateUrl: 'DepartmentSiteProjectBundle:Project:show',
-      // controller: 'OneProjectCtrl'
+      controller: 'CommentsCtrl'
+    }).when('/comment/new', {
+      templateUrl: 'DepartmentSiteProjectBundle:Comment:new',
+       controller: 'OneProjectCtrl'
+    }).when('/comment/:id/show', {
+      templateUrl: 'DepartmentSiteProjectBundle:Comment:show',
+       controller: 'OneProjectCtrl'
+    }).when('/comment/:id/edit', {
+      templateUrl: 'DepartmentSiteProjectBundle:Comment:edit',
+      controller: 'OneProjectCtrl'
     }).otherwise({
       redirectTo: '/'
     });
