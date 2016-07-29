@@ -79,16 +79,7 @@ class NewsController extends Controller
 
         return $url;
     }
-
-    public function getCount(){
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteNewsBundle:News');
-
-        $query = $repository->createQueryBuilder('a')
-            ->select('COUNT(a)')
-            ->getQuery();
-        return $query->getSingleScalarResult();
-    }
+    
 
     public function getNews(){
         $repository = $this->getDoctrine()

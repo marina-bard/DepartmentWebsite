@@ -46,6 +46,7 @@ var news_length;
     }
   }).filter('dateFilter', function() {
     return function (dateTime) {
+      
       if(dateTime == undefined)
         return;
       var t = dateTime.split(/[- :]/);
