@@ -54,6 +54,11 @@
                      <source>Users</source>
                      <target>Пользователи</target>
             </trans-unit>
+            <trans-unit id="Menu">
+                     <source>Menu</source>
+                     <target>Меню</target>
+            </trans-unit>
+
 
         </body>
     </file>

@@ -41,6 +41,8 @@ class UserAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('username')
+//            ->add('type')
+
 
         ;
     }
@@ -50,6 +52,7 @@ class UserAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('username', 'text')
+            ->add('type', 'text')
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),

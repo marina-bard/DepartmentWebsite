@@ -2,7 +2,7 @@ services:
   admin.side_bar.menu:
           class: DepartmentSite\MenuBundle\Admin\SideBarMenuAdmin
           tags:
-              - { name: sonata.admin, manager_type: orm, group: "Side Bar Menu", label: "Side Bar Menu" }
+              - { name: sonata.admin, manager_type: orm, group: "Menu", label: "Side Bar Menu" }
           arguments: [~, DepartmentSite\MenuBundle\Entity\SideBarMenu, ~]
           calls:
               - [ setTranslationDomain, [DepartmentSiteMenuBundle]]
@@ -10,7 +10,7 @@ services:
   admin.banner.menu:
            class: DepartmentSite\MenuBundle\Admin\BannerMenuAdmin
            tags:
-               - { name: sonata.admin, manager_type: orm, group: "Banner Menu", label: "Banner Menu" }
+               - { name: sonata.admin, manager_type: orm, group: "Menu", label: "Banner Menu" }
            arguments: [~, DepartmentSite\MenuBundle\Entity\BannerMenu, ~]
            calls:
                - [ setTranslationDomain, [DepartmentSiteMenuBundle]]
@@ -18,7 +18,7 @@ services:
   admin.header.menu:
           class: DepartmentSite\MenuBundle\Admin\HeaderMenuAdmin
           tags:
-              - { name: sonata.admin, manager_type: orm, group: "Header Menu", label: "Header Menu" }
+              - { name: sonata.admin, manager_type: orm, group: "Menu", label: "Header Menu" }
           arguments: [~, DepartmentSite\MenuBundle\Entity\HeaderMenu, ~]
           calls:
               - [ setTranslationDomain, [DepartmentSiteMenuBundle]]
