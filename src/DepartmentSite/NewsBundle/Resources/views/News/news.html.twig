@@ -32,8 +32,9 @@
           </div>
       </div>
   </div>
+
     <div class="navigation">
-        {{ knp_pagination_render(pagination) }}
+        {{ knp_pagination_render(pagination, 'KnpPaginatorBundle:Pagination:foundation_v5_pagination.html.twig') }}
     </div>
     {#{{ render(controller('DepartmentSiteNewsBundle:News:getNewsPagination', {'page': page})) }}#}
 </div>

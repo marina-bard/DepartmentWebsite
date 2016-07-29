@@ -37,13 +37,12 @@ class NewsController extends Controller
         $pagination = $paginator->paginate(
             $news, /* query NOT result */
             $request->query->get('page', $page)/*page number*/,
-            1/*limit per page*/
+            1   /*limit per page*/
         );
-//        return new Response(json_encode($pagination->getItems()));
 
       return $this->render('DepartmentSiteNewsBundle:News:news.html.twig',
-          array('page' => $page, 
-          '_locale' => $_locale, 
+          array('page' => $page,
+          '_locale' => $_locale,
           'pagination' => $pagination));
     }
 
@@ -84,11 +83,11 @@ class NewsController extends Controller
     
     public function getNewsAction($page, $pagination) {
         $news = (Object)$pagination->getItems();
-//        foreach($news as &$oneNews) {
-//            $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
-//        }
-//        var_dump($news);
-        return new JsonResponse($news[0]);
+        foreach($news as &$oneNews) {
+            $oneNews->setPhoto( $this->setNewsPhotoUrls($oneNews->getId()));
+        }
+
+        return new JsonResponse($news);
 //        $news_per_page = 10;
 //        $news = $this->getNextPage(($page-1)*$news_per_page,$news_per_page );
 //
