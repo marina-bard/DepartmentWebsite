@@ -18,14 +18,19 @@ class ProjectAdmin extends AbstractAdmin
             ->add('title', 'text', array('label' => 'Title'))
             ->add('student', 'text', array('label' => 'Student'))
             ->add('teacher', 'text', array('label' => 'Teacher'))
-            ->add('reviewer', 'textarea', array('label' => 'Reviewer comment'))
             ->add('course', 'number', array('label' => 'Course'))
             ->add('studentGroup', 'text', array('label' => 'studentGroup'))
             ->add('startDate', 'datetime')
             ->add('endDate', 'datetime')
             ->add('description', 'text', array('label' => 'description'))
-            ->add('content', CKEditorType::class, array('label' => 'Content'));
 
+            ->add('content', CKEditorType::class, array('label' => 'Content'))
+            ->add('comments', 'sonata_type_collection', array('by_reference' => false), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+            ))
+
+            ->add('teacher_comment', 'textarea', array('label'=> 'Teacher review'));
 
         if($this->isCurrentRoute('edit')){
             $formMapper
@@ -61,7 +66,6 @@ class ProjectAdmin extends AbstractAdmin
         $showMapper
             ->add('student')
             ->add('teacher')
-            ->add('reviewer')
             ->add('course')
             ->add('studentGroup')
             ->add('startDate')

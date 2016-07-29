@@ -157,9 +157,32 @@ class ProjectController extends Controller
     }
     public function getCommentsByProjectIdAction($projectId)
     {
-        $em = $this->getDoctrine()->getManager();
-        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->find($projectId);
-        $comments = $project->getComments();
-        return new  Response(json_encode($comments, JSON_HEX_QUOT | JSON_HEX_TAG));
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteProjectBundle:Comment');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select('a')
+            ->where('a.project = :projectId')
+            ->setParameter('projectId', $projectId)
+            ->getQuery();
+//        $em = $this->getDoctrine()->getManager();
+//        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->find($projectId);
+//        $comments = $project->getComments();
+//        return new  Response(var_dump($comments));
+//        return new  Response(json_encode($project->getCommentsCount(), JSON_HEX_QUOT | JSON_HEX_TAG));
+
+        return new Response(json_encode($query->getArrayResult(), JSON_HEX_QUOT | JSON_HEX_TAG));
+    }
+
+    public function getCommentsCountAction($projectId){
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteProjectBundle:Comment');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select('COUNT(a)')
+            ->where('a.project = :projectId')
+            ->setParameter('projectId', $projectId)
+            ->getQuery();
+        return new Response($query->getSingleScalarResult());
     }
 }

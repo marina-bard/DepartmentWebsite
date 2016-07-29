@@ -3,7 +3,8 @@
 {% block body %}
 <div ng-controller="NewsCtrl">
     <script type="text/javascript">
-         data = '{{ render(controller('DepartmentSiteNewsBundle:News:getNews', { 'page': page })) }}';
+         data = '{{ render(controller('DepartmentSiteNewsBundle:News:getNews', { 'page': page, 'pagination' : pagination})) }}';
+         console.log(data);
          news_length = '{{ render(controller('DepartmentSiteNewsBundle:News:getNewsLength')) }}';
     </script>
 
@@ -14,10 +15,10 @@
                   <div class="section-title"><span>{{ 'news' | DICTIONARY(_locale) }}</span></div>
               </div>
           </div>
-          {#{% for oneNews in pagination %}#}
-              {#<p>{{ news }}</p>#}
-              {#<p>{{ news.title }}</p>#}
-          {#{% endfor %}#}
+
+          {% for news in pagination %}
+              <p>{{ news.title }}</p>
+          {% endfor %}
 
           <div ng-repeat="oneNews in news">
               <div ng-class="($index % 2 !== 0) ? 'row' : ''">

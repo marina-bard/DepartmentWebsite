@@ -8,7 +8,7 @@ comment_index:
          _locale: ru|en
 
 comment_show:
-    path:     /{slug}/show
+    path:     /{id}/show
     defaults:
         _controller: "DepartmentSiteProjectBundle:Comment:show"
         _locale: ru
@@ -22,11 +22,11 @@ comment_new:
     methods:  [GET, POST]
 
 comment_edit:
-    path:     /{slug}/edit
+    path:     /{id}/edit
     defaults: { _controller: "DepartmentSiteProjectBundle:Comment:edit" }
     methods:  [GET, POST]
 
 comment_delete:
-    path:     /{slug}/delete
+    path:     /{id}/delete
     defaults: { _controller: "DepartmentSiteProjectBundle:Comment:delete" }
     methods:  DELETE

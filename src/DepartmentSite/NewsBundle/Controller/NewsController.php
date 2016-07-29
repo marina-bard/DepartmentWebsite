@@ -27,8 +27,9 @@ class NewsController extends Controller
      * Lists all News entities.
      *
      */
-    public function indexAction( Request $request, $_locale, $page)
+    public function indexAction($_locale, $page)
     {
+        $request = new Request();
         $em    = $this->getDoctrine()->getManager();
         $news = $em->getRepository('DepartmentSiteNewsBundle:News')->findAll();
 
@@ -36,10 +37,14 @@ class NewsController extends Controller
         $pagination = $paginator->paginate(
             $news, /* query NOT result */
             $request->query->get('page', $page)/*page number*/,
-            2/*limit per page*/
+            1/*limit per page*/
         );
+//        return new Response(json_encode($pagination->getItems()));
 
-      return $this->render('DepartmentSiteNewsBundle:News:news.html.twig', array('page' => $page, '_locale' => $_locale, 'pagination' => $pagination));
+      return $this->render('DepartmentSiteNewsBundle:News:news.html.twig',
+          array('page' => $page, 
+          '_locale' => $_locale, 
+          'pagination' => $pagination));
     }
 
     /**
@@ -77,15 +82,21 @@ class NewsController extends Controller
         return $this->render('layout/pagination.html.twig', array('listLength' => $count, 'page' => $page));
     }
     
-    public function getNewsAction($page) {
-        $news_per_page = 10;
-        $news = $this->getNextPage(($page-1)*$news_per_page,$news_per_page );
-
-        foreach($news as &$oneNews) {
-            $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
-        }
-
-        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
+    public function getNewsAction($page, $pagination) {
+        $news = (Object)$pagination->getItems();
+//        foreach($news as &$oneNews) {
+//            $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
+//        }
+//        var_dump($news);
+        return new JsonResponse($news[0]);
+//        $news_per_page = 10;
+//        $news = $this->getNextPage(($page-1)*$news_per_page,$news_per_page );
+//
+//        foreach($news as &$oneNews) {
+//            $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
+//        }
+//
+//        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     public function setNewsPhotoUrls($id)
