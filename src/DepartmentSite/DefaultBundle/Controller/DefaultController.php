@@ -14,6 +14,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
+    /**
+     * @Route("/{_locale}", name="department_site_default_homepage",
+     *     requirements = {"_locale" = ru|en}, defaults={"_locale" = ru})
+     * @param $_locale
+     * @return Response
+     */
     public function indexAction($_locale)
     {
 //        $em = $this->getDoctrine()->getManager();
