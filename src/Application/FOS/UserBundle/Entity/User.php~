@@ -19,11 +19,6 @@ use FOS\UserBundle\Doctrine\UserManager;
  */
 abstract class User extends BaseUser
 {
-
-    const TYPE_STUDENT = 'Student';
-    const TYPE_PARENT = 'Parent';
-    const TYPE_TEACHER = 'Teacher';
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -31,13 +26,33 @@ abstract class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @var string $type
+     *
+     */
+    protected $type;
+
+
+
+
 
     public function __toString() {
         return $this->getUsername() ? : '-';
     }
 
-    abstract public function getType();
-
    
 
+//    /**
+//     * @ORM\Column(type="string", length=255)
+//     *
+//     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+//     * @Assert\Length(
+//     *     min=3,
+//     *     max=255,
+//     *     minMessage="The name is too short.",
+//     *     maxMessage="The name is too long.",
+//     *     groups={"Registration", "Profile"}
+//     * )
+//     */
+//    protected $name;
 }

@@ -18,6 +18,10 @@ class SlideShowAdmin extends AbstractAdmin
             ->add('description', 'text', array('label' => 'Description'))
             ->add('image', ImagePreviewType::class, ['data_class' => null])
         ;
+        if ($this->isCurrentRoute('edit')){
+            $formMapper
+                ->add('image', ImagePreviewType::class, ['data_class' => null, 'required' => false]);
+        }
     }
 
     // Fields to be shown on filter forms

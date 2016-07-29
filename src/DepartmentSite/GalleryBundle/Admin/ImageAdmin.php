@@ -21,6 +21,10 @@ class ImageAdmin extends Admin
         }
         $formMapper
             ->add('image', ImagePreviewType::class, ['data_class' => null]);
+        if ($this->isCurrentRoute('edit')){
+            $formMapper
+                ->add('image', ImagePreviewType::class, ['data_class' => null, 'required' => false]);
+        }
 
 
 

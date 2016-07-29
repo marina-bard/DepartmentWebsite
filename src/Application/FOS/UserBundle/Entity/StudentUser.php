@@ -191,4 +191,8 @@ class StudentUser extends User
     {
         return $this->patronymic;
     }
+
+    public function getType(){
+        return parent::TYPE_STUDENT;
+    }
 }
