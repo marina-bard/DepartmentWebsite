@@ -2,6 +2,7 @@
 #registration input[type="text"],
 #registration input[type="email"],
 #registration input[type="password"],
+#registration input[type="number"],
 #registration textarea,
 #registration textarea.form-control,
 #registration select {
@@ -27,7 +28,10 @@
   padding-bottom: 10px;
   line-height: 30px;
 }
-
+#registration #project_content {
+  resize: none;
+  height: 120px;
+}
 #registration input, textarea{
   font-family: "CirceRegular";
 }
@@ -35,6 +39,7 @@
 #registration input[type="text"]:focus,
 #registration input[type="email"]:focus,
 #registration input[type="password"]:focus,
+#registration input[type="number"]:focus,
 #registration textarea:focus,
 #registration textarea.form-control:focus {
   outline: 0;
@@ -47,6 +52,7 @@
 #registration input[type="text"]:-moz-placeholder,
 #registration input[type="email"]:-moz-placeholder,
 #registration input[type="password"]:-moz-placeholder,
+#registration input[type="number"]:-moz-placeholder,
 #registration textarea:-moz-placeholder, textarea.form-control:-moz-placeholder {
   color: #888;
 }
@@ -55,6 +61,7 @@
 #registration input[type="text"]:-ms-input-placeholder,
 #registration input[type="email"]:-ms-input-placeholder,
 #registration input[type="password"]:-ms-input-placeholder,
+#registration input[type="number"]:-ms-input-placeholder,
 #registration textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
   color: #888;
 }
@@ -63,6 +70,7 @@
 #registration input[type="text"]::-webkit-input-placeholder,
 #registration input[type="email"]::-webkit-input-placeholder,
 #registration input[type="password"]::-webkit-input-placeholder,
+#registration input[type="number"]::-webkit-input-placeholder,
 #registration textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder {
   color: #888;
 }
@@ -89,6 +97,7 @@
   height: 50px;
   margin: 0;
   padding: 0 20px;
+  margin-left: 10px;
   vertical-align: middle;
   background: #2ab4c0;
   border: 0;

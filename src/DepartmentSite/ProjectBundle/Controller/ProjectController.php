@@ -95,7 +95,8 @@ class ProjectController extends Controller
             'project' => $project,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            '_locale' => $_locale
+            '_locale' => $_locale,
+            'slug' => $project->getSlug()
         ));
     }
 
