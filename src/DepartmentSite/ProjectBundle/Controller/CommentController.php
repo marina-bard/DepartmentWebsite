@@ -60,23 +60,17 @@ class CommentController extends Controller
         {
             $parentComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
                 ->find($commentId);
-//            $childComment->buildTree(array($parentComment));
             $childComment->setId(1);
             $childComment->setChildNodeOf($parentComment);
             $em->persist($childComment);
             $em->flush();
-//            $realMaterializedPathChildNode = $childComment->getRealMaterializedPath();
-//            $pos = strpos($realMaterializedPathChildNode, '/', 2);
-//            $realMaterializedPathRootNode = substr($realMaterializedPathChildNode, 0, $pos);
             $rootComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
-                ->getTree($childComment->getRootNode()->getNodeId());
-            dump($rootComment);
-            die();
-            return new Response($rootComment);
+                ->getTree($childComment->getRootMaterializedPath());
+
+            return new JsonResponse($rootComment);
         }
 
 
-//        return new \Symfony\Component\HttpFoundation\Response($commentId);
 
 //        $form = $this->createForm('DepartmentSite\ProjectBundle\Form\CommentType', $comment);
 //        $form->handleRequest($request);
