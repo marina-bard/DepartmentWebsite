@@ -4,8 +4,7 @@
 <div ng-controller="NewsCtrl">
     <script type="text/javascript">
          data = '{{ render(controller('DepartmentSiteNewsBundle:News:getNews', { 'page': page, 'pagination' : pagination})) }}';
-         console.log(data);
-         news_length = '{{ render(controller('DepartmentSiteNewsBundle:News:getNewsLength')) }}';
+        console.log(data)
     </script>
 
   <div class="news" style="background-color: #fff;">
@@ -16,15 +15,11 @@
               </div>
           </div>
 
-          {% for news in pagination %}
-              <p>{{ news.title }}</p>
-          {% endfor %}
-
           <div ng-repeat="oneNews in news">
               <div ng-class="($index % 2 !== 0) ? 'row' : ''">
                   <div ng-class="($index % 2 === 0) ? 'col-md-6 news-column' : 'col-md-6 news-column2'">
                       <a ng-href="/{{ _locale }}/news/{{'{{oneNews.slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{oneNews.photo}}'}}" /></a>
-                      <div class="news-item-date">{{'{{ oneNews.createdAt.date | dateFilter | date:"dd.MM.yyyy" }}'}}</div>
+                      <div class="news-item-date">{{'{{oneNews.created_at.date | dateFilter | date:"dd.MM.yyyy"}}'}}</div>
                       <br /><a class="news-item-title" ng-href="/{{ _locale }}/news/{{'{{oneNews.slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
                       <div class="news-item-lead">{{'{{ oneNews.description }}'}}</div>
                   </div>
@@ -36,6 +31,5 @@
     <div class="navigation">
         {{ knp_pagination_render(pagination, 'KnpPaginatorBundle:Pagination:foundation_v5_pagination.html.twig') }}
     </div>
-    {#{{ render(controller('DepartmentSiteNewsBundle:News:getNewsPagination', {'page': page})) }}#}
-</div>
+   </div>
 {% endblock %}
