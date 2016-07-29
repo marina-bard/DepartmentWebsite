@@ -30,7 +30,7 @@ class ProjectAdmin extends AbstractAdmin
                 'inline' => 'table',
             ))
 
-            ->add('teacher_comment', 'textarea', array('label'=> 'Teacher review'));
+            ->add('teacher_comment', 'textarea', array('label'=> 'Teacher review', 'required' => false));
 
         if($this->isCurrentRoute('edit')){
             $formMapper
