@@ -9,12 +9,22 @@ angular.module('bsuir-ecm').controller('CommentsCtrl', function($scope, $http, $
     $scope.comments = JSON.parse(project_comments.replace(/&quot;/g, '"'));
     $scope.comments_count = comments_count;
     $scope.needChange = needChange;
-
+    $scope.comment_id = undefined;
+    $scope.init = function(id) {
+        alert(id);
+        $scope.formData.commentId = id;
+    }
     $scope.showTextview = function () {
         $scope.isSuccess = false;
     };
     $scope.processForm = function (projectId) {
+        if($scope.formData.commentId == undefined) {
+            $scope.formData.commentId = -1;
+            alert('commentId: ' + $scope.formData.commentId)
+        }
+
         $scope.formData.projectId = projectId;
+        // $scope.formData.commentId = commentId;
         $http({
             method  : 'POST',
             url     : 'http://localhost:8000/ru/comment/new',

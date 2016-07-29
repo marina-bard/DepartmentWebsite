@@ -109,7 +109,7 @@
                                  <div class="comment-card-title">{{ '{{ comment.author }}' }}</div>
                                  <div class="comment-card-lead">{{ '{{ comment.content }}' }}</div>
                                  <i class="comment-card-date">{{ '{{ comment.createdAt.date | date}}' }}  </i>
-                                 <a href="" id="reply_link" class="reply reply_link" onclick="showText(this);">ответить</a>
+                                 <a href="" id="reply_link" class="reply reply_link" ng-click="init(comment.id)" onclick="showText(this);">ответить</a>
                              </div>
                                  {#<div class="comment-card-lead" ng-bind-html="project.content | toHTML"></div><i class="comment-card-date">вчера в 19:07  </i></div>#}
                          </div>
