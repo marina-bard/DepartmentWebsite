@@ -61,13 +61,20 @@
 		{% endblock %}
 
 		{% block header %}
-			{% include ':layout:header.html.twig'  with {'_locale': _locale} %}
+
+			{% if isset(_locale) == false  %}
+				{% set _locale = "ru" %}
+			{% endif %}
+
+			{% include ':layout:header.html.twig'  with {'locale':_locale} %}
 			{{ render(controller('DepartmentSiteSlideShowBundle:SlideShow:index', {'locale' : _locale})) }}
 		{% endblock %}
 
 	</body>
 
 	<body ng-app="bsuir-ecm">
+
+
 
 			{% block body %}
 			{% endblock %}

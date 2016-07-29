@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="background-404">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="{{ asset('bundles/departmentsitedefault/images/404.png') }}" class="img-responsive" alt="" width="100%" height="auto">
+                    <h1>Ой! Кажется, что-то сломалось! </h1>
+                    <a href="{{ path('department_site_default_homepage', {'_locale': 'ru'}) }}" class="btn btn-default" value="На главную">На главную</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
