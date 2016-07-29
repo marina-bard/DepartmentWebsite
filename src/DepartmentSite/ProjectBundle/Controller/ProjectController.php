@@ -185,4 +185,9 @@ class ProjectController extends Controller
             ->getQuery();
         return new Response($query->getSingleScalarResult());
     }
+
+    public function bla()
+    {
+
+    }
 }

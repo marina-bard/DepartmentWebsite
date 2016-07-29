@@ -2,6 +2,7 @@
 
 namespace DepartmentSite\DefaultBundle\Controller;
 
+use DepartmentSite\ProjectBundle\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use DepartmentSite\NewsBundle\DepartmentSiteNewsBundle;
 
@@ -19,7 +20,69 @@ class DefaultController extends Controller
 //        $em = $this->getDoctrine()->getManager();
 //        $news_list = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy(array(), array('id'=>'desc'), 5);
 //        $adver_list = $em->getRepository('DepartmentSiteAdvertBundle:Notice')->findBy(array(), array('id'=>'desc'), 5);
-        return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig', array('_locale' => $_locale));
+//        return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig', array('_locale' => $_locale));
+//        $parentComment1 = new Comment();
+//        $parentComment1->getParentMaterializedPath();
+//        $parentComment1->getRootNode();
+//        $parentComment2 = new Comment();
+//        $childeComment1 = new Comment();
+//        $childeComment2 = new Comment();
+//        $grandsonComment1 = new Comment();
+//        $parentComment1->setId(1);
+//        $parentComment1->setContent('parent comment 1');
+//        $parentComment1->setAuthor('father');
+//
+//        $parentComment2->setId(2);
+//        $parentComment2->setContent('parent comment 2');
+//        $parentComment2->setAuthor('mother');
+//
+//        $childeComment1->setId(3);
+//        $childeComment1->setContent('child comment 1');
+//        $childeComment1->setAuthor('pasha');
+//
+//        $childeComment2->setContent('childe comment 2');
+//        $childeComment2->setAuthor('boris');
+//        $childeComment2->setId(4);
+//
+//        $grandsonComment1->setContent('grandson comment 1');
+//        $grandsonComment1->setAuthor('alex');
+//        $grandsonComment1->setId(5);
+//
+//        $childeComment1->setChildNodeOf($parentComment1);
+//        $childeComment2->setChildNodeOf($parentComment2);
+//        $grandsonComment1->setChildNodeOf($childeComment2);
+        $em = $this->getDoctrine()->getManager();
+//        $em->persist($parentComment1);
+//        $em->persist($parentComment2);
+//        $em->persist($childeComment1);
+//        $em->persist($childeComment2);
+//        $em->persist($grandsonComment1);
+//        $em->flush();`
+        /**
+         * @var Comment $temp
+         */
+//        $temp->getRealMaterializedPath();
+//        $temp->getRealMaterializedPath();
+        $root = $em->getRepository('DepartmentSiteProjectBundle:Comment')->find(8);
+//        return new Response(var_dump($root->getChildNodes()));
+//        $temp = new Comment();
+//        $temp->setAuthor('temp');
+//        $temp->setContent('temp');
+//        $temp->setId(6);
+//        $temp->setChildNodeOf($root);
+//        $em->persist($root);
+//        $em->persist($temp);
+//        $em->flush();
+//        $s = $em->getRepository('DepartmentSiteProjectBundle:Comment')
+//            ->getTree($root->getRealMaterializedPath());
+//        $child = $em->getRepository('DepartmentSiteProjectBundle:Comment')->find(6);
+//        $root->buildTree(array($child));
+        $str = $root->getRealMaterializedPath();
+        $pos = strpos($str, '/', 2);
+        $newstr = substr($str, 0, $pos);
+
+        $temp = $em->getRepository('DepartmentSiteProjectBundle:Comment')->getTree($newstr);
+        return new Response(dump($temp));
     }
 
 

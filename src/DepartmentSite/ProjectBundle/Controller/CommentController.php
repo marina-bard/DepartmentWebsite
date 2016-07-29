@@ -2,10 +2,10 @@
 
 namespace DepartmentSite\ProjectBundle\Controller;
 
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpFoundation\Response;
 use DepartmentSite\ProjectBundle\Entity\Comment;
 use DepartmentSite\ProjectBundle\Form\CommentType;
 
@@ -39,20 +39,45 @@ class CommentController extends Controller
     {
         $content = $request->get("content");
         $projectId = $request->get("projectId");
+        $commentId = $request->get("commentId");
+
+        $childComment = new Comment();
+        $childComment->setContent($content);
+        $childComment->setAuthor('author');
         $em = $this->getDoctrine()->getManager();
-        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->findOneBy(array('id' => $projectId));
 
-        $comment = new Comment();
-        $comment->setProject($project);
-        $comment->setContent($content);
-        $comment->setAuthor('qwertfgh');
+        if($commentId == -1)
+        {
+            $project = $em->getRepository('DepartmentSiteProjectBundle:Project')
+                ->find($projectId);
+            $childComment->setProject($project);
+            $em->persist($childComment);
+            $em->flush();
+            return new Response("Ваш комментарий будет опубликован после модерации.");
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($comment);
-        $em->flush();
+        }
+        else
+        {
+            $parentComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
+                ->find($commentId);
+//            $childComment->buildTree(array($parentComment));
+            $childComment->setId(1);
+            $childComment->setChildNodeOf($parentComment);
+            $em->persist($childComment);
+            $em->flush();
+//            $realMaterializedPathChildNode = $childComment->getRealMaterializedPath();
+//            $pos = strpos($realMaterializedPathChildNode, '/', 2);
+//            $realMaterializedPathRootNode = substr($realMaterializedPathChildNode, 0, $pos);
+            $rootComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
+                ->getTree($childComment->getRootNode()->getNodeId());
+            dump($rootComment);
+            die();
+            return new Response($rootComment);
+        }
 
-        return new \Symfony\Component\HttpFoundation\Response("Ваш комментарий будет опубликован после модерации.");
-        
+
+//        return new \Symfony\Component\HttpFoundation\Response($commentId);
+
 //        $form = $this->createForm('DepartmentSite\ProjectBundle\Form\CommentType', $comment);
 //        $form->handleRequest($request);
 

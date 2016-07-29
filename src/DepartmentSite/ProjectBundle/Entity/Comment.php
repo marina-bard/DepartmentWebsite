@@ -45,6 +45,7 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
      */
     private $project;
 
+
     /**
      * Get id
      *
@@ -92,6 +93,7 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
     {
         return $this->content;
     }
+
 
     /**
      * Get author
