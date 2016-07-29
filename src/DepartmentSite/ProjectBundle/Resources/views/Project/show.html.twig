@@ -23,7 +23,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     {#<div class="post-header">{{ '{{ project.title}}' }}</div>#}
-                    <div class="post-header">{{  project.title }}</div>
+                    <div class="post-header">
+                        {{  project.title }}
+                        {% if is_granted('ROLE_USER') %}
+                        <a ng-href="{{ path('project_edit', {'slug' : project.slug }) }}" style="font-size: 14px; margin-left: 10px;" >Редактировать</a>
+                        {% endif %}
+                    </div>
+
                 </div>
             </div>
 
@@ -110,7 +116,7 @@
                      </div>
                  </div>
              </div>
-
+            {% if is_granted('ROLE_USER') %}
             <div class="row">
                 <div class="col-xs-12" id="reply">
                     <form ng-show="isSuccess == false"  method="post" ng-submit="processForm('{{ project.id }}')">
@@ -129,10 +135,11 @@
                 </div>
             </div>
             <a href="" id="reply-link-2" class="reply reply_link" onclick="showText(this)"><h4>Написать комментарий</h4></a>
+           {% else %}
             <p class="login-message">{{ 'message_to_regitster' | DICTIONARY(_locale) }}
                 <a data-target="#myModal" data-toggle="modal" ng-href="">
                     {{ 'login_to_comment' | DICTIONARY(_locale) }}</a> {{ 'please' | DICTIONARY(_locale) }}.</p>
-
+            {% endif %}
              </div>
          </div>
      </div>

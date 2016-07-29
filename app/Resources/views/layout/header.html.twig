@@ -18,7 +18,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {{ render(controller('DepartmentSiteDefaultBundle:Default:getHeaderMenu', {'_locale' : _locale} )) }}
+                    {% if is_granted('ROLE_USER') %}
+                    <li><a ng-href={{ path('fos_user_security_login') }}>Выйти</a></li>
+                    {% else %}
                     <li><a ng-href={{ path('fos_user_security_login') }} {#data-target="#myModal" data-toggle="modal" #} >{{ 'login_link' |  DICTIONARY(_locale) }}</a></li>
+                    {%  endif %}
                 </ul>
             </div>
         </div>

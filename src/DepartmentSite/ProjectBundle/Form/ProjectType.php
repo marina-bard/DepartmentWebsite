@@ -18,14 +18,13 @@ class ProjectType extends AbstractType
             ->add('title')
             ->add('student')
             ->add('teacher')
-            ->add('reviewer')
             ->add('course')
             ->add('studentGroup')
-            ->add('startDate', 'datetime')
-            ->add('endDate', 'datetime')
+            ->add('startDate', 'date')
+            ->add('endDate', 'date')
             ->add('description')
             ->add('content')
-            ->add('isModerated')
+//            ->add('isModerated')
         ;
     }
 

@@ -1,16 +1,30 @@
-{#{% extends 'base.html.twig' %}#}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Project creation</h1>
+<section id="registration">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title"><span>Создание нового проекта</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-bottom" >
+                <form method="POST" action="{{ path('project_new') }}">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input type="submit" value="Create" />
+                {{ form_end(form) }}
+                </form>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('project_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                <ul>
+                    <li>
+                        <a href="{{ path('project_index') }}">Back to the list</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

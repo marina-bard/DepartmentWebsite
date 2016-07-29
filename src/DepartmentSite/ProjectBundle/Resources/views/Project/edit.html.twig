@@ -1,21 +1,29 @@
-{#{% extends 'base.html.twig' %}#}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Project edit</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('project_index', { '_locale' : _locale }) }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
+<section id="registration">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title"><span>Редактирование проекта</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-bottom">
+                <form method="POST" action="{{ path('project_edit', {'slug' : slug}) }}">
+                {{ form_start(edit_form) }}
+                    {{ form_widget(edit_form) }}
+                    <input type="submit" value="Edit" />
+                {{ form_end(edit_form) }}
+                {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                {{ form_end(delete_form) }}
+                <a href="{{ path('project_index', { '_locale' : _locale }) }}">Back to the list</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
