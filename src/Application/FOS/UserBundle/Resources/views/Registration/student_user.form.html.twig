@@ -4,14 +4,11 @@
 {#{% extends "FOSUserBundle:Registration:choose_user.form.html.twig" %}#}
 {% block fos_user_form %}
     {% trans_default_domain 'FOSUserBundle' %}
-
-    <form action="{{ path('student_user_registration') }}" method="POST" >
         {{ form_start(form) }}
         {{ form_widget(form) }}
         <div>
             <input type="submit" value="{{ 'registration.submit'|trans }}" />
         </div>
-    </form>
 {% endblock fos_user_form %}
 
 {#{% block fos_user_form %}#}

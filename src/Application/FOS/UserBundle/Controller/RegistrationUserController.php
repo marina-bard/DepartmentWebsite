@@ -14,6 +14,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationUserController extends Controller
 {
+    private $users = [
+        'teacher_user' => 'teacher',
+        'student_user' => 'student',
+        'parent_user' => 'parent'
+    ];
+
     /**
      * Method regi
      * @param Request $request
@@ -21,75 +27,73 @@ class RegistrationUserController extends Controller
      */
     public function registerAction(Request $request)
     {
-        $users = [
-            'teacher_user' => 'teacher',
-            'student_user' => 'student',
-            'parent_user' => 'parent'
-        ];
+//        preg_match('/.%/', $request->getContent(), $matches);
+//        var_dump(print_r($matches));
 
-        $request_student_data = $request->get('fos_user_registration_form_student_user');
-        
-        if (count($request_student_data)) {
-            $form = $this->createForm(RegistrationStudentUserFormType::class);
-            
-            $form->handleRequest($request);
-
-            if ( $form->isValid() && $form->isSubmitted() ) {
-                $student_user = $form->getData();
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($student_user);
-                $em->flush();
-                
-                return new JsonResponse('success');
-            }
+        if($request->request->all()) {
+//            var_dump($request->request->all());
+            return $this->forward('FOSUserBundle:Registration:register');
+        } else {
+            return $this->render('ApplicationFOSUserBundle:Registration:choose_user.form.html.twig', array(
+                'users' => $this->users,
+            ));
         }
-       
-        return $this->render('ApplicationFOSUserBundle:Registration:choose_user.form.html.twig', array(
-            'users' => $users
-        ));
+
+//        if (count($request_student_data)) {
+//            $form = $this->createForm(RegistrationStudentUserFormType::class);
+//
+//            $form->handleRequest($request);
+//
+//            if ( $form->isValid() && $form->isSubmitted() ) {
+//                $student_user = $form->getData();
+//                $em = $this->getDoctrine()->getManager();
+//                $em->persist($student_user);
+//                $em->flush();
+//
+//                return new JsonResponse('success');
+//            }
+//        }
 //        return $this->container
 //            ->get('pugx_multi_user.registration_manager')
 //            ->register('Application\FOS\UserBundle\Entity\StudentUser');
     }
 
-    public function getFormAction( Request $request)
+    public function getFormAction(Request $request)
     {
+        $type = $request->get('type');
+        var_dump($type);
+        return $this->get('pugx_multi_user.registration_manager')->register($this->getUserClassName($type));
+
+
 //        if(is_null($user)) {
 //            return new Response();
 //        }
-        $userType = $request->get('type');
-
-        if($userType == 'student')
-            $form = $this->createForm(RegistrationStudentUserFormType::class);
-        else if($userType == 'parent')
-            $form = $this->createForm(RegistrationParentUserFormType::class);
-        else if($userType == 'teacher')
-            $form = $this->createForm(RegistrationTeacherUserFormType::class);
-
-        return $this->render('FOSUserBundle:Registration:register.html.twig', array(
-            'form' => $form->createView(),
-        ));
+//        $userType = $request->get('type');
+//
+//        if($userType == 'student')
+//            $form = $this->createForm(RegistrationStudentUserFormType::class);
+//        else if($userType == 'parent')
+//            $form = $this->createForm(RegistrationParentUserFormType::class);
+//        else if($userType == 'teacher')
+//            $form = $this->createForm(RegistrationTeacherUserFormType::class);
+//
+//        return $this->render('FOSUserBundle:Registration:register.html.twig', array(
+//            'form' => $form->createView(),
+//        ));
     }
 
-
-    public function registerStudentUserAction()
+    public function getUserClassName($user)
     {
-        return $this->container
-            ->get('pugx_multi_user.registration_manager')
-            ->register('Application\FOS\UserBundle\Entity\StudentUser');
-    }
-
-    public function registerParentUserAction()
-    {
-        return $this->container
-            ->get('pugx_multi_user.registration_manager')
-            ->register('Application\FOS\UserBundle\Entity\ParentUser');
-    }
-
-    public function registerTeacherUserAction()
-    {
-        return $this->container
-            ->get('pugx_multi_user.registration_manager')
-            ->register('Application\FOS\UserBundle\Entity\TeacherUser');
+        switch($user) {
+            case 'student':
+                return 'Application\FOS\UserBundle\Entity\StudentUser';
+                break;
+            case 'parent':
+                return 'Application\FOS\UserBundle\Entity\ParentUser';
+                break;
+            case 'teacher':
+                return 'Application\FOS\UserBundle\Entity\TeacherUser';
+                break;
+        }
     }
 }
