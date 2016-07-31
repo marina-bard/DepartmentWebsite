@@ -192,4 +192,8 @@ class ParentUser extends User
     {
         return $this->patronymic;
     }
+
+    public function getType(){
+        return parent::TYPE_PARENT;
+    }
 }

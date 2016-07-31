@@ -74,6 +74,10 @@
                         <source>Teacher User List</source>
                         <target>Список преподавателей</target>
              </trans-unit>
+             <trans-unit id="Type">
+                        <source>Type</source>
+                         <target>Пользователь</target>
+             </trans-unit>
 
 
 
