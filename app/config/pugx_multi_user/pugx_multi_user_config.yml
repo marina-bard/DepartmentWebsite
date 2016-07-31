@@ -9,7 +9,7 @@ pugx_multi_user:
                     type: Application\FOS\UserBundle\Form\Type\RegistrationStudentUserFormType
                     name: fos_user_registration_form_student_user
                     validation_groups:  [Registration, Default]
-                template: ApplicationFOSUserBundle:Registration:student_user.form.html.twig
+                template: ApplicationFOSUserBundle:Registration:user.form.html.twig
 #        profile:
 #          form:
 #            type: Acme\UserBundle\Form\Type\ProfileUserOneFormType
@@ -23,7 +23,7 @@ pugx_multi_user:
                     type: Application\FOS\UserBundle\Form\Type\RegistrationParentUserFormType
                     name: fos_user_registration_form_parent_user
                     validation_groups:  [Registration, Default]
-                template: ApplicationFOSUserBundle:Registration:parent_user.form.html.twig
+                template: ApplicationFOSUserBundle:Registration:user.form.html.twig
         teacher_user:
             entity:
                 class: Application\FOS\UserBundle\Entity\TeacherUser
@@ -32,4 +32,4 @@ pugx_multi_user:
                     type: Application\FOS\UserBundle\Form\Type\RegistrationTeacherUserFormType
                     name: fos_user_registration_form_teacher_user
                     validation_groups:  [Registration, Default]
-                template: ApplicationFOSUserBundle:Registration:teacher_user.form.html.twig
+                template: ApplicationFOSUserBundle:Registration:user.form.html.twig
