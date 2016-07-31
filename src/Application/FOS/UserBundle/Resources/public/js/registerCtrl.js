@@ -8,7 +8,6 @@ angular.module('bsuir-ecm').controller('RegisterCtrl', function($scope, $http){
         $scope.isSuccess = false;
     };
     $scope.processForm = function () {
-     alert("Type: " + $scope.formData.type);
         $http({
             method  : 'POST',
             url     : 'http://localhost:8000/register/new',
