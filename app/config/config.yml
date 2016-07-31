@@ -11,7 +11,6 @@ imports:
     - { resource: itm/itm_config.yml }
     - { resource: pugx_multi_user/pugx_multi_user_config.yml }
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
-    - { resource: "../../src/Application/FOS/UserBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
