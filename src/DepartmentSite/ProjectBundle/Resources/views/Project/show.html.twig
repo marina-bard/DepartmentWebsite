@@ -23,7 +23,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     {#<div class="post-header">{{ '{{ project.title}}' }}</div>#}
-                    <div class="post-header">{{  project.title }}</div>
+                    <div class="post-header">
+                        {{  project.title }}
+                        {% if is_granted('ROLE_USER') %}
+                        <a ng-href="{{ path('project_edit', {'slug' : project.slug }) }}" style="font-size: 14px; margin-left: 10px;" >Редактировать</a>
+                        {% endif %}
+                    </div>
+
                 </div>
             </div>
 
@@ -94,30 +100,53 @@
                  </div>
              </div>
 
-             <div class="row" ng-repeat="comment in comments">
-                 <div class="col-md-12">
-                     <div class="comment-card">
-                         <div class="comment-card-content">
-                             {#<div class="col-md-1"><img alt="alt" class="comment-card-avatar" ng-src="{{posts[0].img}}" /></div>#}
-                             <div class="col-md-11">
-                                 <div class="comment-card-title">{{ '{{ comment.author }}' }}</div>
-                                 <div class="comment-card-lead">{{ '{{ comment.content }}' }}</div>
-                                 <i class="comment-card-date">{{ '{{ comment.createdAt.date | date}}' }}  </i>
-                                 <a href="" id="reply_link" class="reply reply_link" onclick="showText(this);" ng-click="init(comment.id)">ответить</a>
-                             </div>
-                                 {#<div class="comment-card-lead" ng-bind-html="project.content | toHTML"></div><i class="comment-card-date">вчера в 19:07  </i></div>#}
-                         </div>
-                     </div>
-                 </div>
-             </div>
+            <script type="text/ng-template" id="categoryTree">
+                <div class="col-md-12">
+                    <div class="comment-card">
+                        <div class="comment-card-content">
+                            <div class="col-md-11">
+                                <div class="comment-card-title">{{ '{{ comment.author }}' }}</div>
+                                <div class="comment-card-lead">{{ '{{ comment.content }}' }}</div>
+                                <i class="comment-card-date">{{ '{{ comment.createdAt.date | date}}' }}  </i>
+                                {% if is_granted('ROLE_USER') %}
+                                <a href="" id="reply_link" class="reply reply_link" ng-click="init(comment.id)" onclick="showText(this);">ответить</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="comment.child" ng-style="{'margin-left' : '20px'}">
+                    <div class="row" ng-repeat="comment in comment.child" ng-include="'categoryTree'"></div>
+                </div>
+            </script>
 
+            <div class="row" ng-repeat="comment in comments" ng-include="'categoryTree'">
+            </div>
+
+             {#<div class="row" ng-repeat="comment in comments">#}
+                 {#<div class="col-md-12">#}
+                     {#<div class="comment-card">#}
+                         {#<div class="comment-card-content">#}
+                             {#<div class="col-md-1"><img alt="alt" class="comment-card-avatar" ng-src="{{posts[0].img}}" /></div>#}
+                             {#<div class="col-md-11">#}
+                                 {#<div class="comment-card-title">{{ '{{ comment.author }}' }}</div>#}
+                                 {#<div class="comment-card-lead">{{ '{{ comment.content }}' }}</div>#}
+                                 {#<i class="comment-card-date">{{ '{{ comment.createdAt.date | date}}' }}  </i>#}
+                                 {#<a href="" id="reply_link" class="reply reply_link" ng-click="init(comment.id)" onclick="showText(this);">ответить</a>#}
+                             {#</div>#}
+                         {#</div>#}
+                     {#</div>#}
+                 {#</div>#}
+             {#</div>#}
+
+            {% if is_granted('ROLE_USER') %}
             <div class="row">
                 <div class="col-xs-12" id="reply">
                     <form ng-show="isSuccess == false"  method="post" ng-submit="processForm('{{ project.id }}')">
                     <div class="comment-textarea">
                         {#<a href=""><i class="fa fa-paperclip fa-2x" aria-hidden="true"></i></a>#}
                         <textarea ng-model="formData.content" placeholder="{{ 'textarea_message' | DICTIONARY(_locale) }}"
-                                  title="comment" type="comment" id="comment_textarea"></textarea>
+                                  title="comment" type="comment" id="comment_textarea" required="required"></textarea>
                     </div>
                         <input class="btn btn-default" type="submit" id="_submit" name="_submit"
                                value="{{ 'btn_comment' | DICTIONARY(_locale) }}"/>
@@ -129,10 +158,11 @@
                 </div>
             </div>
             <a href="" id="reply-link-2" class="reply reply_link" onclick="showText(this)"><h4>Написать комментарий</h4></a>
+           {% else %}
             <p class="login-message">{{ 'message_to_regitster' | DICTIONARY(_locale) }}
                 <a data-target="#myModal" data-toggle="modal" ng-href="">
                     {{ 'login_to_comment' | DICTIONARY(_locale) }}</a> {{ 'please' | DICTIONARY(_locale) }}.</p>
-
+            {% endif %}
              </div>
          </div>
      </div>

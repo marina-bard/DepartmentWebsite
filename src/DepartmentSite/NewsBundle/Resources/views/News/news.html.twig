@@ -4,6 +4,7 @@
 <div ng-controller="NewsCtrl">
     <script type="text/javascript">
          data = '{{ render(controller('DepartmentSiteNewsBundle:News:getNews', { 'page': page })) }}';
+
          news_length = '{{ render(controller('DepartmentSiteNewsBundle:News:getNewsLength')) }}';
     </script>
 

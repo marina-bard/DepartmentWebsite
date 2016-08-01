@@ -2,10 +2,10 @@
 
 namespace DepartmentSite\ProjectBundle\Controller;
 
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpFoundation\Response;
 use DepartmentSite\ProjectBundle\Entity\Comment;
 use DepartmentSite\ProjectBundle\Form\CommentType;
 
@@ -16,6 +16,7 @@ use DepartmentSite\ProjectBundle\Form\CommentType;
  */
 class CommentController extends Controller
 {
+    private $commentsJson;
     /**
      * Lists all Comment entities.
      *
@@ -39,38 +40,37 @@ class CommentController extends Controller
     {
         $content = $request->get("content");
         $projectId = $request->get("projectId");
+        $commentId = $request->get("commentId");
+
+        $childComment = new Comment();
+        $childComment->setContent($content);
+        $childComment->setAuthor('author');
         $em = $this->getDoctrine()->getManager();
-        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->findOneBy(array('id' => $projectId));
 
-        $comment = new Comment();
-        $comment->setProject($project);
-        $comment->setContent($content);
-        $comment->setAuthor('qwertfgh');
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($comment);
-        $em->flush();
-
-        return new \Symfony\Component\HttpFoundation\Response("Ваш комментарий будет опубликован после модерации.");
-        
-//        $form = $this->createForm('DepartmentSite\ProjectBundle\Form\CommentType', $comment);
-//        $form->handleRequest($request);
-
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($comment);
-//            $em->flush();
-//
-//            return $this->redirectToRoute('comment_show', array('id' => $comment->getId(), '_locale' => $_locale));
-//        }
+        if($commentId == -1)
+        {
+            $project = $em->getRepository('DepartmentSiteProjectBundle:Project')
+                ->find($projectId);
+            $childComment->setProject($project);
+            $em->persist($childComment);
+            $em->flush();
+        }
+        else
+        {
+            $parentComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
+                ->find($commentId);
+            $childComment->setId(1);
+            $childComment->setChildNodeOf($parentComment);
+            $em->persist($childComment);
+            $em->flush();
+            $rootComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
+                ->getTree($childComment->getRootMaterializedPath());
 
 
+//            return new JsonResponse($rootComment);
+        }
 
-//        return $this->render('comment/new.html.twig', array(
-//            'comment' => $comment,
-//            'form' => $form->createView(),
-//            '_locale' => $_locale
-//        ));
+        return new Response("Ваш комментарий будет опубликован после модерации.");
     }
 
     /**
@@ -87,7 +87,7 @@ class CommentController extends Controller
             '_locale' => $_locale
         ));
     }
-
+    
     /**
      * Displays a form to edit an existing Comment entity.
      *
