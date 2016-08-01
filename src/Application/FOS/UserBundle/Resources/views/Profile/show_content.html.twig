@@ -1,0 +1,15 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <p>{{ 'profile.show.surname'|trans }}: {{ user.surname }}</p>
+    <p>{{ 'profile.show.name'|trans }}: {{ user.name }}</p>
+    <p>{{ 'profile.show.patronymic'|trans }}: {{ user.patronymic }}</p>
+    {% if user.studyGroup is defined %}
+        <p>{{ 'profile.show.studyGroup'|trans }}: {{ user.studyGroup }}</p>
+    {% endif %}
+    {% if user.studentGroup is defined %}
+        <p>{{ 'profile.show.studentGroup'|trans }}: {{ user.studentGroup }}</p>
+    {% endif %}
+</div>

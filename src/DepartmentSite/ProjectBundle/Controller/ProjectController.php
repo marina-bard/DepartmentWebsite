@@ -179,35 +179,47 @@ class ProjectController extends Controller
 //            'locale' => $locale
 //            ));
     }
+
     public function getCommentsByProjectIdAction($projectId)
     {
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteProjectBundle:Comment');
+        $em = $this->getDoctrine()->getManager();
+        $trees = $em->getRepository('DepartmentSiteProjectBundle:Comment')->getRootNodes();
+        $rootProjectComments = array();
+        foreach ($trees as $tree) {
 
-        $query = $repository->createQueryBuilder('a')
-            ->select('a')
-            ->where('a.project = :projectId')
-            ->setParameter('projectId', $projectId)
-            ->getQuery();
-//        $em = $this->getDoctrine()->getManager();
-//        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->find($projectId);
-//        $comments = $project->getComments();
-//        return new  Response(var_dump($comments));
-//        return new  Response(json_encode($project->getCommentsCount(), JSON_HEX_QUOT | JSON_HEX_TAG));
+            if ($tree->getProject()->getId() == $projectId)
+            {
+                array_push($rootProjectComments,
+                    $em->getRepository('DepartmentSiteProjectBundle:Comment')
+                        ->getTree($tree->getRealMaterializedPath()));
+            }
+        }
+        return new JsonResponse($rootProjectComments);
+    }
 
-        return new Response(json_encode($query->getArrayResult(), JSON_HEX_QUOT | JSON_HEX_TAG));
+    public function recursiveCount($tree, &$count)
+    {
+        if($tree->getChildNodes())
+        {
+            foreach ($tree->getChildNodes() as $node)
+                $this->recursiveCount($node, $count);
+        }
+        return $count++;
     }
 
     public function getCommentsCountAction($projectId){
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteProjectBundle:Comment');
 
-        $query = $repository->createQueryBuilder('a')
-            ->select('COUNT(a)')
-            ->where('a.project = :projectId')
-            ->setParameter('projectId', $projectId)
-            ->getQuery();
-        return new Response($query->getSingleScalarResult());
+        $em = $this->getDoctrine()->getManager();
+        $trees = $em->getRepository('DepartmentSiteProjectBundle:Comment')->getRootNodes();
+        $count = 0;
+        foreach ($trees as $tree) {
+            if ($tree->getProject()->getId() == $projectId)
+            {
+                $this->recursiveCount( $em->getRepository('DepartmentSiteProjectBundle:Comment')
+                        ->getTree($tree->getRealMaterializedPath()), $count);
+            }
+        }
+        return new Response($count);
     }
 
     public function bla()

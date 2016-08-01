@@ -146,6 +146,8 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess, \JsonSer
     function jsonSerialize()
     {
         return [
+            'id' => $this->id,
+            'createdAt' => $this->createdAt,
             'content' => $this->content,
             'author' => $this->author,
             'child' => $this->getChildNodes()->toArray()
