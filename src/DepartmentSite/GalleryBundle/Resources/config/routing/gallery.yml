@@ -1,8 +1,9 @@
 gallery_index:
-    path:     /
+    path:     /{page}/
     defaults:
       _controller: "DepartmentSiteGalleryBundle:Gallery:index"
       _locale : ru
+      page : 1
     methods:  GET
     requirements:
         _locale : ru|en

@@ -9,6 +9,7 @@ imports:
     - { resource: a2lix_translation_form/a2lix_translation_form_config.yml }
     - { resource: liip/liip_config.yml }
     - { resource: itm/itm_config.yml }
+    - { resource: knp_paginator/knp_paginator_config.yml }
     - { resource: pugx_multi_user/pugx_multi_user_config.yml }
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
 

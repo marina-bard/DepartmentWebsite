@@ -16,13 +16,28 @@ use Doctrine\ORM\Query;
  */
 class NoticeController extends Controller
 {
+
+    const NOTICES_COUNT = 10;
     /**
      * Lists all Notice entities.
      *
      */
     public function indexAction($_locale, $page)
     {
-        return $this->render('DepartmentSiteNoticeBundle:Notice:index.html.twig', array('page' => $page, '_locale' => $_locale));
+        $request = new Request();
+        $notice= $this->getNotices();
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $notice,
+            $request->query->get('page', $page),
+            self::NOTICES_COUNT
+        );
+
+        return $this->render('DepartmentSiteNoticeBundle:Notice:index.html.twig',
+            array('page' => $page,
+                '_locale' => $_locale,
+            'pagination' => $pagination));
     }
    
     /**
@@ -40,23 +55,10 @@ class NoticeController extends Controller
 
 
 
-    public function getNoticesLengthAction() {
-          $count = $this->getCount();
-        return new Response($count);
-    }
+    public function getNoticesAction( $pagination) {
+        $notices = (Object)$pagination->getItems();
+        return new JsonResponse($notices);
 
-    public function  getNoticesPaginationAction($page) {
-
-        $count = $this->getCount();
-        return $this->render('layout/pagination.html.twig', array('listLength' => $count, 'page' => $page));
-    }
-
-    public function getNoticesAction($page) {
-        $adv_per_page = 10;
-        $notices = $this->getNextPage(($page-1)*$adv_per_page, $adv_per_page);
-        $serialized = $this->container->get('serializer')->serialize($notices, 'json');
-       
-        return new Response($serialized);
     }
     
 
@@ -65,29 +67,18 @@ class NoticeController extends Controller
         $notices = $em->getRepository('DepartmentSiteNoticeBundle:Notice')->findAll();
         return new Response(htmlspecialchars(json_encode($notices, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
+    
 
-    public function getCount(){
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteNoticeBundle:Notice');
-
-        $query = $repository->createQueryBuilder('a')
-            ->select('COUNT(a)')
-            ->getQuery();
-        return $query->getSingleScalarResult();
-    }
-
-    public function getNextPage($offset, $limit){
+    public function getNotices(){
         $repository = $this->getDoctrine()
             ->getRepository('DepartmentSiteNoticeBundle:Notice');
 
         $query = $repository->createQueryBuilder('a')
             ->select()
             ->orderBy('a.createdAt', 'DESC')
-            ->setFirstResult( $offset )
-            ->setMaxResults( $limit )
             ->getQuery();
 
-        return $query->getArrayResult();
+        return $query->getResult();
     }
 
 }
