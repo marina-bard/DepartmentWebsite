@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
-class ProfileTeacherUserFormType extends AbstractType
+class ProfileParentUserFormType extends AbstractType
 {
     private $class;
 
@@ -18,7 +18,7 @@ class ProfileTeacherUserFormType extends AbstractType
      */
     public function __construct()
     {
-        $this->class = 'Application\FOS\UserBundle\Entity\TeacherUser';
+        $this->class = 'Application\FOS\UserBundle\Entity\ParentUser';
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -43,7 +43,7 @@ class ProfileTeacherUserFormType extends AbstractType
 
     public function getBlockPrefix()
     {
-        return 'fos_user_profile_form_teacher_user';
+        return 'fos_user_profile_form_parent_user';
     }
 
     /**
@@ -59,6 +59,8 @@ class ProfileTeacherUserFormType extends AbstractType
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('surname', null, array('label' => 'form.surname', 'translation_domain' => 'FOSUserBundle'))
             ->add('name', null, array('label' => 'form.name', 'translation_domain' => 'FOSUserBundle'))
-            ->add('patronymic', null, array('label' => 'form.patronymic', 'translation_domain' => 'FOSUserBundle'));
+            ->add('patronymic', null, array('label' => 'form.patronymic', 'translation_domain' => 'FOSUserBundle'))
+            ->add('studentGroup', null, array('label' => 'form.studentGroup', 'translation_domain' => 'FOSUserBundle'))
+        ;
     }
 }

@@ -24,6 +24,11 @@ pugx_multi_user:
                     name: fos_user_registration_form_parent_user
                     validation_groups:  [Registration, Default]
                 template: ApplicationFOSUserBundle:Registration:user.form.html.twig
+            profile:
+                form:
+                    type: Application\FOS\UserBundle\Form\Type\Profile\ProfileParentUserFormType
+                    name: fos_user_profile_form_parent_user
+                    validation_groups:  [Profile, Default]
         teacher_user:
             entity:
                 class: Application\FOS\UserBundle\Entity\TeacherUser
