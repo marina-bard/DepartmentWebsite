@@ -38,6 +38,4 @@ abstract class User extends BaseUser
 
     abstract public function getType();
 
-   
-
 }

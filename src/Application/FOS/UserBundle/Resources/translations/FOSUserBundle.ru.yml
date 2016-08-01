@@ -19,6 +19,11 @@ profile:
     show:
         username: 'Имя пользователя'
         email: 'Электронная почта'
+        name: 'Имя'
+        surname: 'Фамилия'
+        patronymic: 'Отчество'
+        studyGroup: 'Группа'
+        studentGroup: 'Группа студента'
     edit:
         submit: Обновить
     flash:

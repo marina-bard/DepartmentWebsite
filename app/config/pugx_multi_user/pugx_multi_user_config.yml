@@ -6,21 +6,21 @@ pugx_multi_user:
 #          factory:
             registration:
                 form:
-                    type: Application\FOS\UserBundle\Form\Type\RegistrationStudentUserFormType
+                    type: Application\FOS\UserBundle\Form\Type\Registration\RegistrationStudentUserFormType
                     name: fos_user_registration_form_student_user
                     validation_groups:  [Registration, Default]
                 template: ApplicationFOSUserBundle:Registration:user.form.html.twig
-#        profile:
-#          form:
-#            type: Acme\UserBundle\Form\Type\ProfileUserOneFormType
-#            name: fos_user_profile_form
-#            validation_groups:  [Profile, Default]
+            profile:
+                form:
+                    type: Application\FOS\UserBundle\Form\Type\Profile\ProfileStudentUserFormType
+                    name: fos_user_profile_form_student_user
+                    validation_groups:  [Profile, Default]
         parent_user:
             entity:
                 class: Application\FOS\UserBundle\Entity\ParentUser
             registration:
                 form:
-                    type: Application\FOS\UserBundle\Form\Type\RegistrationParentUserFormType
+                    type: Application\FOS\UserBundle\Form\Type\Registration\RegistrationParentUserFormType
                     name: fos_user_registration_form_parent_user
                     validation_groups:  [Registration, Default]
                 template: ApplicationFOSUserBundle:Registration:user.form.html.twig
@@ -29,7 +29,12 @@ pugx_multi_user:
                 class: Application\FOS\UserBundle\Entity\TeacherUser
             registration:
                 form:
-                    type: Application\FOS\UserBundle\Form\Type\RegistrationTeacherUserFormType
+                    type: Application\FOS\UserBundle\Form\Type\Registration\RegistrationTeacherUserFormType
                     name: fos_user_registration_form_teacher_user
                     validation_groups:  [Registration, Default]
                 template: ApplicationFOSUserBundle:Registration:user.form.html.twig
+            profile:
+                form:
+                    type: Application\FOS\UserBundle\Form\Type\Profile\ProfileTeacherUserFormType
+                    name: fos_user_profile_form_teacher_user
+                    validation_groups:  [Profile, Default]
