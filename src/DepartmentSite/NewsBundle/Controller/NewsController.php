@@ -4,8 +4,9 @@ namespace DepartmentSite\NewsBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use DepartmentSite\NewsBundle\Entity\News;
 use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,12 +15,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 use ITM\ImagePreviewBundle\Resolver\PathResolver;
 use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 
-
-
 /**
  * News controller.
  *
- * @Route("/news")
  */
 class NewsController extends Controller
 {
@@ -28,6 +26,14 @@ class NewsController extends Controller
     /**
      * Lists all News entities.
      *
+     * @Route(
+     *     "/{_locale}/news/{page}/",
+     *      name="news_index",
+     *      defaults={"_locale": "ru", "page" : "1"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template("DepartmentSiteNewsBundle:News:news.html.twig")
      */
     public function indexAction($_locale, $page)
     {
@@ -51,14 +57,17 @@ class NewsController extends Controller
     /**
      * Finds and displays a News entity.
      *
-     *     defaults = {"_format"="html|json"},
+     * @Route(
+     *     "/{_locale}/news/{slug}/show",
+     *      name="news_show",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template
      */
     public function showAction(Request $request, News $news, $_locale)
     {
-        return $this->render('DepartmentSiteNewsBundle:News:show.html.twig', array(
-            'news' => $news,
-            '_locale' => $_locale
-        ));
     }
 
 
@@ -67,17 +76,14 @@ class NewsController extends Controller
         foreach($news as &$oneNews) {
             $oneNews->setPhoto( $this->setNewsPhotoUrls($oneNews->getId()));
         }
-
-        return new JsonResponse($news);
+        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     public function setNewsPhotoUrls($id)
     {
         $em = $this->getDoctrine()->getManager();
         $oneNews = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneBy(['id' => $id]);
-
         $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
-
         return $url;
     }
     

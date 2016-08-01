@@ -8,7 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use DepartmentSite\ProjectBundle\Entity\Comment;
 use DepartmentSite\ProjectBundle\Form\CommentType;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Comment controller.
@@ -16,25 +18,14 @@ use DepartmentSite\ProjectBundle\Form\CommentType;
  */
 class CommentController extends Controller
 {
-    private $commentsJson;
-    /**
-     * Lists all Comment entities.
-     *
-     */
-    public function indexAction($_locale)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $comments = $em->getRepository('DepartmentSiteProjectBundle:Comment')->findAll();
-
-        return $this->render('comment/index.html.twig', array(
-            'comments' => $comments, '_locale' => $_locale
-        ));
-    }
-
     /**
      * Creates a new Comment entity.
      *
+     * @Route(
+     *     "/{_locale}/comment/new",
+     *      name="comment_new",
+     *     )
+     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request, $_locale)
     {
@@ -55,8 +46,7 @@ class CommentController extends Controller
             $em->persist($childComment);
             $em->flush();
         }
-        else
-        {
+        else {
             $parentComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
                 ->find($commentId);
             $childComment->setId(1);
@@ -65,17 +55,21 @@ class CommentController extends Controller
             $em->flush();
             $rootComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
                 ->getTree($childComment->getRootMaterializedPath());
-
-
-//            return new JsonResponse($rootComment);
         }
-
-        return new Response("Ваш комментарий будет опубликован после модерации.");
+            return new Response("Ваш комментарий будет опубликован после модерации.");
     }
 
     /**
      * Finds and displays a Comment entity.
      *
+     * @Route(
+     *     "/{_locale}/comment/{id}/show",
+     *      name="comment_show",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template
      */
     public function showAction(Comment $comment, $_locale)
     {
@@ -89,33 +83,13 @@ class CommentController extends Controller
     }
     
     /**
-     * Displays a form to edit an existing Comment entity.
-     *
-     */
-    public function editAction(Request $request, Comment $comment)
-    {
-        $deleteForm = $this->createDeleteForm($comment);
-        $editForm = $this->createForm('DepartmentSite\ProjectBundle\Form\CommentType', $comment);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
-
-            return $this->redirectToRoute('comment_edit', array('id' => $comment->getId()));
-        }
-
-        return $this->render('comment/edit.html.twig', array(
-            'comment' => $comment,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Deletes a Comment entity.
      *
+     * @Route(
+     *     "/{_locale}/comment/{id}/delete",
+     *      name="comment_delete",
+     *     )
+     * @Method({"DELETE"})
      */
     public function deleteAction(Request $request, Comment $comment)
     {

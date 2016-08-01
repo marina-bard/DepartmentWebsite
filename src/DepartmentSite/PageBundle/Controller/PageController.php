@@ -5,7 +5,9 @@ namespace DepartmentSite\PageBundle\Controller;
 use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use DepartmentSite\PageBundle\Entity\Page;
 use DepartmentSite\PageBundle\Form\PageType;
 
@@ -15,46 +17,23 @@ use DepartmentSite\PageBundle\Form\PageType;
  */
 class PageController extends Controller
 {
-//    /**
-//     * Lists all Page entities.
-//     *
-//     */
-//    public function indexAction($locale)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $pages = $em->getRepository('DepartmentSitePageBundle:Page')->findAll();
-//
-//        return $this->render('DepartmentSitePageBundle:Page:index.html.twig', array(
-//            'pages' => $pages,
-//            'locale' => $locale
-//        ));
-//    }
-
-    
     /**
      * Finds and displays a Page entity.
      *
+     * @Route(
+     *     "/{locale}/notice/{page}/",
+     *      name="show",
+     *     )
+     * @Method({"GET"})
+     * @Template
      */
-    public function showAction(Page $page, $locale, $slug)
+    public function showAction(Page $page, $_locale, $slug)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $page = $em->getRepository('DepartmentSitePageBundle:Page')->findBy(array('slug'=>$slug));
-          return $this->render('DepartmentSitePageBundle:Page:show.html.twig', array(
-            'page' => $page, '_locale' => $locale
-        ));
-//
-//        return new Response(var_dump($page));
     }
-
-
-    
-    
 
     public function getPageBySlugAction($slug) {
         $em = $this->getDoctrine()->getManager();
         $page = $em->getRepository('DepartmentSitePageBundle:Page')->findBy(array('slug'=>$slug));
-       // var_dump($page);
         $serialized = $this->container->get('serializer')->serialize($page, 'json');
         return new Response($serialized);
     }
