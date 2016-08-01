@@ -40,6 +40,7 @@ class NewsController extends Controller
             $request->query->get('page', $page),
             self::NEWS_COUNT
         );
+        
 
       return $this->render('DepartmentSiteNewsBundle:News:news.html.twig',
           array('page' => $page,
