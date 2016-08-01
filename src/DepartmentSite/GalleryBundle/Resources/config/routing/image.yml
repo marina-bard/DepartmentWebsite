@@ -1,9 +1,0 @@
-image_index:
-    path:     /
-    defaults: { _controller: "DepartmentSiteGalleryBundle:Image:index" }
-    methods:  GET
-
-image_show:
-    path:     /{id}/show
-    defaults: { _controller: "DepartmentSiteGalleryBundle:Image:show" }
-    methods:  GET

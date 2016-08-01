@@ -62,7 +62,7 @@
 
 		{% block header %}
 			{% include ':layout:header.html.twig'  with {'_locale': _locale} %}
-			{{ render(controller('DepartmentSiteSlideShowBundle:SlideShow:index', {'locale' : _locale})) }}
+			{{ render(controller('DepartmentSiteSlideShowBundle:SlideShow:index', {'_locale' : _locale})) }}
 		{% endblock %}
 
 	</body>

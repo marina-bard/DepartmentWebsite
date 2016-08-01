@@ -4,7 +4,9 @@ namespace DepartmentSite\SlideShowBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use DepartmentSite\SlideShowBundle\Entity\SlideShow;
 use DepartmentSite\SlideShowBundle\Form\SlideShowType;
 
@@ -15,32 +17,25 @@ use DepartmentSite\SlideShowBundle\Form\SlideShowType;
 class SlideShowController extends Controller
 {
     /**
-     * Lists all SlideShow entities.
-     *
+     * @Route(
+     *     "/{locale}/slideshow/",
+     *      name="slideshow_index",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template("layout/banner.html.twig")
      */
-//    public function indexAction($locale)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $slideShow = $em->getRepository('DepartmentSiteSlideShowBundle:SlideShow')->findAll();
-//
-//        foreach($slideShow as &$slide) {
-//            $slide->setImage($this->get('itm.file.preview.path.resolver')->getUrl($slide, $slide->getImage()));
-//        }
-//        return $this->render(':layout:banner.html.twig', array(
-//            'slideShows' => $slideShow,
-//        ));
-//    }
-    public function indexAction($locale)
+    public function indexAction($_locale)
     {
         $em = $this->getDoctrine()->getManager();
         $slideShow = $em->getRepository('DepartmentSiteSlideShowBundle:SlideShow')->findAll();
         foreach($slideShow as &$slide) {
             $slide->setImage($this->get('itm.file.preview.path.resolver')->getUrl($slide, $slide->getImage()));
         }
-        return $this->render(':layout:banner.html.twig', array(
+        return array(
             'slideShows' => $slideShow,
-            '_locale' => $locale,
-        ));
+            '_locale' => $_locale,
+        );
     }
 }

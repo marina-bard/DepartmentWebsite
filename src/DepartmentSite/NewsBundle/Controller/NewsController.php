@@ -4,8 +4,9 @@ namespace DepartmentSite\NewsBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use DepartmentSite\NewsBundle\Entity\News;
 use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,35 +14,42 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 use ITM\ImagePreviewBundle\Resolver\PathResolver;
 
-
-
 /**
  * News controller.
  *
- * @Route("/news")
  */
 class NewsController extends Controller
 {
     /**
      * Lists all News entities.
      *
+     * @Route(
+     *     "/{_locale}/news/{page}/",
+     *      name="news_index",
+     *      defaults={"_locale": "ru", "page" : "1"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template("DepartmentSiteNewsBundle:News:news.html.twig")
      */
     public function indexAction($_locale, $page)
     {
-        return $this->render('DepartmentSiteNewsBundle:News:news.html.twig', array('page' => $page, '_locale' => $_locale));
     }
 
     /**
      * Finds and displays a News entity.
      *
-     *     defaults = {"_format"="html|json"},
+     * @Route(
+     *     "/{_locale}/news/{slug}/show",
+     *      name="news_show",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template
      */
     public function showAction(Request $request, News $news, $_locale)
     {
-        return $this->render('DepartmentSiteNewsBundle:News:show.html.twig', array(
-            'news' => $news,
-            '_locale' => $_locale
-        ));
     }
 
 //    public function escapeChars($value)
@@ -53,27 +61,22 @@ class NewsController extends Controller
 //    }
     
     public function getNewsLengthAction() {
-
         $count = $this->getCount();
-        
         return new Response($count);
     }
 
 
     public function  getNewsPaginationAction($page) {
         $count = $this->getCount();
-
         return $this->render('layout/pagination.html.twig', array('listLength' => $count, 'page' => $page));
     }
     
     public function getNewsAction($page) {
         $news_per_page = 10;
         $news = $this->getNextPage(($page-1)*$news_per_page,$news_per_page );
-
         foreach($news as &$oneNews) {
             $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
         }
-
         return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
@@ -81,9 +84,7 @@ class NewsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $oneNews = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneBy(['id' => $id]);
-
         $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
-
         return $url;
     }
 

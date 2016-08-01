@@ -1,3 +1,0 @@
-department_site_slide_show_slideshow:
-    resource: "@DepartmentSiteSlideShowBundle/Resources/config/routing/slideshow.yml"
-    prefix:   /{locale}/slideshow

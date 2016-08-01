@@ -4,6 +4,8 @@ namespace DepartmentSite\ProjectBundle\Controller;
 
 use DepartmentSite\ProjectBundle\Entity\Comment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use DepartmentSite\ProjectBundle\Entity\Project;
@@ -20,21 +22,32 @@ class ProjectController extends Controller
     /**
      * Lists all Project entities.
      *
+     * @Route(
+     *     "{_locale}/project/",
+     *      name="project_index",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template
      */
     public function indexAction($_locale)
     {
         $em = $this->getDoctrine()->getManager();
-
         $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findAll();
-
-        return $this->render('DepartmentSiteProjectBundle:Project:index.html.twig', array(
-            'projects' => $projects,  '_locale' => $_locale
-        ));
+        return array('projects' => $projects,  '_locale' => $_locale);
     }
 
     /**
      * Creates a new Project entity.
      *
+     * @Route(
+     *     "{_locale}/project/new",
+     *      name="project_new",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request, $_locale)
     {
@@ -61,21 +74,36 @@ class ProjectController extends Controller
     /**
      * Finds and displays a Project entity.
      *
+     * @Route(
+     *     "{_locale}/project/{slug}/show",
+     *      name="project_show",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template
      */
     public function showAction(Project $project, $_locale, $slug)
     {
         $deleteForm = $this->createDeleteForm($project);
 
-        return $this->render('DepartmentSiteProjectBundle:Project:show.html.twig', array(
+        return array(
             'project' => $project,
             'delete_form' => $deleteForm->createView(),
             '_locale' => $_locale
-        ));
+        );
     }
 
     /**
      * Displays a form to edit an existing Project entity.
      *
+     * @Route(
+     *     "{_locale}/project/{slug}/edit",
+     *      name="project_edit",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Project $project, $_locale)
     {
@@ -102,7 +130,14 @@ class ProjectController extends Controller
 
     /**
      * Deletes a Project entity.
-     *
+     * @Route(
+     *     "{_locale}/project/{slug}/delete",
+     *      name="project_delete",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"DELETE"})
+
      */
     public function deleteAction(Request $request, Project $project, $_locale)
     {
@@ -148,13 +183,7 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->findOneBy(array('slug' => $slug));
-//        $comment = new Comment();
         return new Response(htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)));
-//        return $this->render('@DepartmentSiteProject/Project/show.html.twig', array(
-//            htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)),
-//            'comment' => $comment,
-//            'locale' => $locale
-//            ));
     }
     public function getCommentsByProjectIdAction($projectId)
     {
@@ -166,11 +195,6 @@ class ProjectController extends Controller
             ->where('a.project = :projectId')
             ->setParameter('projectId', $projectId)
             ->getQuery();
-//        $em = $this->getDoctrine()->getManager();
-//        $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->find($projectId);
-//        $comments = $project->getComments();
-//        return new  Response(var_dump($comments));
-//        return new  Response(json_encode($project->getCommentsCount(), JSON_HEX_QUOT | JSON_HEX_TAG));
 
         return new Response(json_encode($query->getArrayResult(), JSON_HEX_QUOT | JSON_HEX_TAG));
     }
@@ -185,10 +209,5 @@ class ProjectController extends Controller
             ->setParameter('projectId', $projectId)
             ->getQuery();
         return new Response($query->getSingleScalarResult());
-    }
-
-    public function bla()
-    {
-
     }
 }
