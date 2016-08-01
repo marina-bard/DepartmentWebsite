@@ -34,8 +34,6 @@ class GalleryController extends Controller
             self::GALLERIES_COUNT
         );
 
-
-
         return $this->render('DepartmentSiteGalleryBundle:Gallery:index.html.twig', array(
             'page' => $page,
             'galleries' => $galleries,
@@ -79,8 +77,6 @@ class GalleryController extends Controller
         foreach ($galleries as &$gallery_temp){
             $gallery_temp->setImage($this->get('itm.file.preview.path.resolver')->getUrl($images[0], $gallery_temp->getFirstImage()));
         }
-
-
         return new JsonResponse($galleries);
     }
 }

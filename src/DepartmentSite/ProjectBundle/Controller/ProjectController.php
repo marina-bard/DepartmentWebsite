@@ -17,20 +17,45 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProjectController extends Controller
 {
+
+    const PROJECTS_COUNT = 10;
     /**
      * Lists all Project entities.
      *
      */
-    public function indexAction($_locale)
+    public function indexAction($_locale, $page)
     {
-        $em = $this->getDoctrine()->getManager();
+        $request = new Request();
+        $projects = $this->getProjects();
 
-        $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findAll();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $projects,
+            $request->query->get('page', $page),
+            self::PROJECTS_COUNT
+        );
+        $projects = (Object)$pagination->getItems();
 
         return $this->render('DepartmentSiteProjectBundle:Project:index.html.twig', array(
-            'projects' => $projects,  '_locale' => $_locale
+            'projects' => $projects,
+            '_locale' => $_locale,
+            'pagination' => $pagination
         ));
     }
+
+    public function getProjects(){
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteProjectBundle:Project');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select()
+            ->orderBy('a.createdAt', 'DESC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
 
     /**
      * Creates a new Project entity.
@@ -135,12 +160,10 @@ class ProjectController extends Controller
         ;
     }
 
-    public function getAllAction()
+    public function getAllAction($pagination)
     {
-        $em = $this->getDoctrine()->getManager();
-        $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findAll();
-
-        return new Response(htmlspecialchars(json_encode($projects, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        $projects = (Object)$pagination->getItems();
+        return new JsonResponse($projects);
     }
 
     public function getOneAction($slug)
