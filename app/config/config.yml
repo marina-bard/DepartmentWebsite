@@ -49,7 +49,7 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    exception_controller:  DepartmentSiteDefaultBundle:MyException:showException
+#    exception_controller:  DepartmentSiteDefaultBundle:MyException:showException
     form_themes:
         - 'ITMFilePreviewBundle:Form:fields.html.twig'
         - 'ITMImagePreviewBundle:Form:fields.html.twig'
