@@ -2,6 +2,7 @@
 
 namespace DepartmentSite\DefaultBundle\Controller;
 
+use DepartmentSite\ProjectBundle\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use DepartmentSite\NewsBundle\DepartmentSiteNewsBundle;
 
@@ -18,7 +19,6 @@ class DefaultController extends Controller
     {
         return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig', array('_locale' => $_locale));
     }
-
 
     public function pageNotFoundAction($_locale)
     {

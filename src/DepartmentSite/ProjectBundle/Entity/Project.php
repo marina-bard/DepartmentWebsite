@@ -102,7 +102,7 @@ class Project implements JsonSerializable
     /**
      * @var bool
      *
-     * @ORM\Column(name="isModerated", type="boolean")
+     * @ORM\Column(name="isModerated", type="boolean", nullable = true)
      */
     private $isModerated;
 

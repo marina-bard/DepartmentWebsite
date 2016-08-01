@@ -1,20 +1,11 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
-{#{% form_theme form 'bootstrap_3_layout.html.twig' %}#}
+
 
 {% block fos_user_content %}
 
     {% trans_default_domain 'FOSUserBundle' %}
 
-    {#<form action="{{ path('student_user_registration') }}" method="POST">#}
-        {#{{ form_start(form) }}#}
-        {#{{ form_widget(form) }}#}
-        {#<div>#}
-            {#<input type="submit" value="{{ 'registration.submit'|trans }}" />#}
-        {#</div>#}
-    {#</form>#}
-
-    {#<form action="{{ path('fos_user_registration', { 'user': users['student_user'] }) }}" method="POST" >#}
     <div class="form-group" ng-controller="RegisterCtrl">
             <select class="form-control" id="select_user" ng-model="formData.type" ng-change="processForm()">
                 <option value="" disabled selected hidden>Выберите себя</option>
@@ -24,19 +15,4 @@
             </select>
         <div ng-bind-html="message | toHTML "></div>
     </div>
-
-
-        {#{{ render(controller('ApplicationFOSUserBundle:RegistrationUser:getForm', { 'user': users['student_user'] })) }}#}
-
-        {#{{ form_start(form) }}#}
-        {#{{ form_widget(form) }}#}
-        {#<div>#}
-            {#<input type="submit" value="{{ 'registration.submit'|trans }}" />#}
-        {#</div>#}
-
-        {#{{ render(controller('ApplicationFOSUserBundle:RegistrationUser:getForm', { 'user': users['student_user'] })) }}#}
-
-        {#{% block fos_user_form %}#}
-        {#{% endblock fos_user_form %}#}
-{#</form>#}
 {% endblock fos_user_content %}
