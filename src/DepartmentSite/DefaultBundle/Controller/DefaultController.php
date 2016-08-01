@@ -2,6 +2,7 @@
 
 namespace DepartmentSite\DefaultBundle\Controller;
 
+use DepartmentSite\ProjectBundle\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use DepartmentSite\NewsBundle\DepartmentSiteNewsBundle;
 
@@ -16,12 +17,8 @@ class DefaultController extends Controller
 {
     public function indexAction($_locale)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $news_list = $em->getRepository('DepartmentSiteNewsBundle:News')->findBy(array(), array('id'=>'desc'), 5);
-//        $adver_list = $em->getRepository('DepartmentSiteAdvertBundle:Notice')->findBy(array(), array('id'=>'desc'), 5);
         return $this->render('DepartmentSiteDefaultBundle:Default:index.html.twig', array('_locale' => $_locale));
     }
-
 
     public function pageNotFoundAction($_locale)
     {

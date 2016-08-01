@@ -11,7 +11,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @ORM\Table(name="Comment")
  * @ORM\Entity(repositoryClass="DepartmentSite\ProjectBundle\Repository\CommentRepository")
  */
-class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
+class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess, \JsonSerializable
 {
     use ORMBehaviors\Tree\Node;
     use ORMBehaviors\Timestampable\Timestampable;
@@ -44,6 +44,7 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $project;
+
 
     /**
      * Get id
@@ -92,6 +93,7 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
     {
         return $this->content;
     }
+
 
     /**
      * Get author
@@ -145,7 +147,8 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
     {
         return [
             'content' => $this->content,
-            'author' => $this->author
+            'author' => $this->author,
+            'child' => $this->getChildNodes()->toArray()
         ];
     }
 }

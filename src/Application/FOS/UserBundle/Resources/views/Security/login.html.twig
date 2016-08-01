@@ -18,7 +18,7 @@
               <input type="password" class="form-control login-input" id="password" name="_password" required="required"
                      placeholder="{{ 'security.login.password'|trans }}"/>
               <a ng-class="'{{ _locale }}' == 'ru'? 'forgot-passw' : 'forgot-passw forgot-passw-en'" ng-href="{{ path('fos_user_resetting_request') }}">{{ 'forgot_password' |  DICTIONARY(_locale) }}</a>
-              <a class="registration-btn" ng-href="/register/student_user">{{ 'sign_up' |  DICTIONARY(_locale) }}</a>
+              <a class="registration-btn" ng-href="/register">{{ 'sign_up' |  DICTIONARY(_locale) }}</a>
               <input onclick="return SubmitForm(this.form)" class="btn login-btn" data-dismiss="modal" type="_submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
             </form>
           </div>
