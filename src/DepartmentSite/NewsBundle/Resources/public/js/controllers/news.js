@@ -7,6 +7,8 @@ var news_length;
 
     $scope.news = JSON.parse(data.replace(/&quot;/g, '"'));
 
+    console.log($scope.news);
+
     $scope.pageSize = 10;
 
     $scope.pager = {};
@@ -44,6 +46,7 @@ var news_length;
     }
   }).filter('dateFilter', function() {
     return function (dateTime) {
+      
       if(dateTime == undefined)
         return;
       var t = dateTime.split(/[- :]/);

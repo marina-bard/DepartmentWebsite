@@ -19,24 +19,53 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProjectController extends Controller
 {
+
+    const PROJECTS_COUNT = 10;
     /**
      * Lists all Project entities.
      *
      * @Route(
      *     "{_locale}/project/",
      *      name="project_index",
-     *      defaults={"_locale": "ru"},
+     *      defaults={"_locale": "ru", "page" : "1"},
      *      requirements = {"_locale" = "ru|en"},
      *     )
      * @Method({"GET"})
      * @Template
      */
-    public function indexAction($_locale)
+    public function indexAction($_locale, $page)
     {
-        $em = $this->getDoctrine()->getManager();
-        $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findAll();
-        return array('projects' => $projects,  '_locale' => $_locale);
+        $request = new Request();
+        $projects = $this->getProjects();
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $projects,
+            $request->query->get('page', $page),
+            self::PROJECTS_COUNT
+        );
+        $projects = (Object)$pagination->getItems();
+
+        return array(
+            'projects' => $projects,
+            '_locale' => $_locale,
+            'pagination' => $pagination
+        );
     }
+
+    public function getProjects(){
+        $repository = $this->getDoctrine()
+            ->getRepository('DepartmentSiteProjectBundle:Project');
+
+        $query = $repository->createQueryBuilder('a')
+            ->select()
+            ->orderBy('a.createdAt', 'DESC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
 
     /**
      * Creates a new Project entity.
@@ -48,6 +77,7 @@ class ProjectController extends Controller
      *      requirements = {"_locale" = "ru|en"},
      *     )
      * @Method({"GET", "POST"})
+     * @Template
      */
     public function newAction(Request $request, $_locale)
     {
@@ -64,11 +94,11 @@ class ProjectController extends Controller
             return $this->redirectToRoute('project_show', array('slug' => $project->getSlug(), '_locale' => $_locale));
         }
 
-        return $this->render('DepartmentSiteProjectBundle:Project:new.html.twig', array(
+        return array(
             'project' => $project,
             'form' => $form->createView(),
             '_locale' => $_locale
-        ));
+        );
     }
 
     /**
@@ -104,6 +134,7 @@ class ProjectController extends Controller
      *      requirements = {"_locale" = "ru|en"},
      *     )
      * @Method({"GET", "POST"})
+     * @Template
      */
     public function editAction(Request $request, Project $project, $_locale)
     {
@@ -119,13 +150,13 @@ class ProjectController extends Controller
             return $this->redirectToRoute('project_edit', array('slug' => $project->getSlug()));
         }
 
-        return $this->render('DepartmentSiteProjectBundle:Project:edit.html.twig', array(
+        return array(
             'project' => $project,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             '_locale' => $_locale,
             'slug' => $project->getSlug()
-        ));
+        );
     }
 
     /**
@@ -137,7 +168,6 @@ class ProjectController extends Controller
      *      requirements = {"_locale" = "ru|en"},
      *     )
      * @Method({"DELETE"})
-
      */
     public function deleteAction(Request $request, Project $project, $_locale)
     {
@@ -171,12 +201,10 @@ class ProjectController extends Controller
         ;
     }
 
-    public function getAllAction()
+    public function getAllAction($pagination)
     {
-        $em = $this->getDoctrine()->getManager();
-        $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findAll();
-
-        return new Response(htmlspecialchars(json_encode($projects, JSON_HEX_QUOT | JSON_HEX_TAG)));
+        $projects = (Object)$pagination->getItems();
+        return new JsonResponse($projects);
     }
 
     public function getOneAction($slug)
@@ -185,29 +213,46 @@ class ProjectController extends Controller
         $project = $em->getRepository('DepartmentSiteProjectBundle:Project')->findOneBy(array('slug' => $slug));
         return new Response(htmlspecialchars(json_encode($project, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
+
     public function getCommentsByProjectIdAction($projectId)
     {
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteProjectBundle:Comment');
+        $em = $this->getDoctrine()->getManager();
+        $trees = $em->getRepository('DepartmentSiteProjectBundle:Comment')->getRootNodes();
+        $rootProjectComments = array();
+        foreach ($trees as $tree) {
 
-        $query = $repository->createQueryBuilder('a')
-            ->select('a')
-            ->where('a.project = :projectId')
-            ->setParameter('projectId', $projectId)
-            ->getQuery();
+            if ($tree->getProject()->getId() == $projectId)
+            {
+                array_push($rootProjectComments,
+                    $em->getRepository('DepartmentSiteProjectBundle:Comment')
+                        ->getTree($tree->getRealMaterializedPath()));
+            }
+        }
+        return new JsonResponse($rootProjectComments);
+    }
 
-        return new Response(json_encode($query->getArrayResult(), JSON_HEX_QUOT | JSON_HEX_TAG));
+    public function recursiveCount($tree, &$count)
+    {
+        if($tree->getChildNodes())
+        {
+            foreach ($tree->getChildNodes() as $node)
+                $this->recursiveCount($node, $count);
+        }
+        return $count++;
     }
 
     public function getCommentsCountAction($projectId){
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteProjectBundle:Comment');
 
-        $query = $repository->createQueryBuilder('a')
-            ->select('COUNT(a)')
-            ->where('a.project = :projectId')
-            ->setParameter('projectId', $projectId)
-            ->getQuery();
-        return new Response($query->getSingleScalarResult());
+        $em = $this->getDoctrine()->getManager();
+        $trees = $em->getRepository('DepartmentSiteProjectBundle:Comment')->getRootNodes();
+        $count = 0;
+        foreach ($trees as $tree) {
+            if ($tree->getProject()->getId() == $projectId)
+            {
+                $this->recursiveCount( $em->getRepository('DepartmentSiteProjectBundle:Comment')
+                        ->getTree($tree->getRealMaterializedPath()), $count);
+            }
+        }
+        return new Response($count);
     }
 }

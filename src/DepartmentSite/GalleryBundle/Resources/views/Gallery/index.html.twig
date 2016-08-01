@@ -3,8 +3,12 @@
 {% block body %}
     <div ng-controller="GalleryCtrl">
         <script type="text/javascript">
-            data = '{{ render(controller('DepartmentSiteGalleryBundle:Gallery:getAll')) }}';
+            data = '{{ render(controller('DepartmentSiteGalleryBundle:Gallery:getAll', { 'page': page, 'pagination' : pagination})) }}';
+            console.log(data);
+
         </script>
+
+
 
         <section id="gallery">
             <div class="container">
@@ -17,13 +21,16 @@
                         <div class="col-md-6 item">
                             <div class="stack twisted">
 
-                                <a ng-href="{{ '{{ gallery.id }}' }}/show"><img ng-src="{{ '{{ gallery.image }}' }}" /></a>
-                            </div><a class="gallery-item-title" ng-href="{{ '{{ gallery.id }}' }}/show">{{ '{{ gallery.title }}' }}</a>
+                                <a ng-href="/{{ _locale }}/gallery/{{'{{gallery.id}}'}}/show"><img ng-src="{{ '{{ gallery.image }}' }}" /></a>
+                            </div><a class="gallery-item-title" ng-href="/{{ _locale }}/gallery/{{'{{gallery.id}}'}}/show">{{ '{{ gallery.title }}' }}</a>
                             <div class="gallery-item-lead">{{ '{{ gallery.description }}' }}</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination, ':layout:pagination.html.twig') }}
+        </div>
     </div>
 {% endblock %}

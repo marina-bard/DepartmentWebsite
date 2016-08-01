@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 use ITM\ImagePreviewBundle\Resolver\PathResolver;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 
 /**
  * News controller.
@@ -20,6 +21,8 @@ use ITM\ImagePreviewBundle\Resolver\PathResolver;
  */
 class NewsController extends Controller
 {
+
+     const NEWS_COUNT = 10;
     /**
      * Lists all News entities.
      *
@@ -34,6 +37,21 @@ class NewsController extends Controller
      */
     public function indexAction($_locale, $page)
     {
+        $request = new Request();
+        $news= $this->getNews();
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $news,
+            $request->query->get('page', $page),
+            self::NEWS_COUNT
+        );
+        
+
+      return $this->render('DepartmentSiteNewsBundle:News:news.html.twig',
+          array('page' => $page,
+          '_locale' => $_locale,
+          'pagination' => $pagination));
     }
 
     /**
@@ -52,30 +70,11 @@ class NewsController extends Controller
     {
     }
 
-//    public function escapeChars($value)
-//    {
-//        $escaper = array("\"");
-//        $replacements = array("\\\\");
-//        $result = str_replace($escaper, $replacements, $value);
-//        return $result;
-//    }
-    
-    public function getNewsLengthAction() {
-        $count = $this->getCount();
-        return new Response($count);
-    }
 
-
-    public function  getNewsPaginationAction($page) {
-        $count = $this->getCount();
-        return $this->render('layout/pagination.html.twig', array('listLength' => $count, 'page' => $page));
-    }
-    
-    public function getNewsAction($page) {
-        $news_per_page = 10;
-        $news = $this->getNextPage(($page-1)*$news_per_page,$news_per_page );
+    public function getNewsAction( $pagination) {
+        $news = (Object)$pagination->getItems();
         foreach($news as &$oneNews) {
-            $oneNews['photo'] = $this->setNewsPhotoUrls($oneNews['id']);
+            $oneNews->setPhoto( $this->setNewsPhotoUrls($oneNews->getId()));
         }
         return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
@@ -87,28 +86,17 @@ class NewsController extends Controller
         $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
         return $url;
     }
+    
 
-    public function getCount(){
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteNewsBundle:News');
-
-        $query = $repository->createQueryBuilder('a')
-            ->select('COUNT(a)')
-            ->getQuery();
-        return $query->getSingleScalarResult();
-    }
-
-    public function getNextPage($offset, $limit){
+    public function getNews(){
         $repository = $this->getDoctrine()
             ->getRepository('DepartmentSiteNewsBundle:News');
 
         $query = $repository->createQueryBuilder('a')
             ->select()
             ->orderBy('a.createdAt', 'DESC')
-            ->setFirstResult( $offset )
-            ->setMaxResults( $limit )
             ->getQuery();
-        return $query->getArrayResult();
+        return $query->getResult();
     }
 
 }

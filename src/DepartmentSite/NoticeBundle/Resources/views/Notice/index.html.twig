@@ -6,10 +6,10 @@
 <div ng-controller="NoticesCtrl">
       <script type="text/javascript">
 
-           data = '{{ render(controller('DepartmentSiteNoticeBundle:Notice:getNotices', { 'page': page })) }}';
+           data = '{{ render(controller('DepartmentSiteNoticeBundle:Notice:getNotices', { 'pagination' : pagination })) }}';
            console.log(data);
 
-           adverts_length = '{{ render(controller('DepartmentSiteNoticeBundle:Notice:getNoticesLength')) }}';
+
       </script>
 
       <div class="announcements-background">
@@ -25,7 +25,7 @@
                       <div class="announce-card-content">
                           <div class="full-card-content">
                               <div class="my_announcement-comments-count-circle pull-right">2</div>
-                              <i class="announce-card-date">{{ '{{notice.createdAt | date:"dd.MM.yyyy"  }}' }}</i>
+                              <i class="announce-card-date">{{'{{notice.created_at.date | dateFilter | date:"dd.MM.yyyy"}}'}}</i>
 
 
                               <br /><a class="announce-card-title" ng-href="/{{ _locale }}/notice/{{'{{notice.slug}}'}}/show">{{'{{ notice.title }}'}}</a>
@@ -36,7 +36,10 @@
               </div>
           </div>
       </div>
-          {{ render(controller('DepartmentSiteNoticeBundle:Notice:getNoticesPagination', {'page': page})) }}
+
   </div>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination, ':layout:pagination.html.twig') }}
+    </div>
   </div>
   {% endblock %}

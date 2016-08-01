@@ -18,7 +18,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
  */
 class CommentController extends Controller
 {
-
     /**
      * Creates a new Comment entity.
      *
@@ -46,11 +45,8 @@ class CommentController extends Controller
             $childComment->setProject($project);
             $em->persist($childComment);
             $em->flush();
-            return new Response("Ваш комментарий будет опубликован после модерации.");
-
         }
-        else
-        {
+        else {
             $parentComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
                 ->find($commentId);
             $childComment->setId(1);
@@ -59,9 +55,8 @@ class CommentController extends Controller
             $em->flush();
             $rootComment = $em->getRepository('DepartmentSiteProjectBundle:Comment')
                 ->getTree($childComment->getRootMaterializedPath());
-
-            return new JsonResponse($rootComment);
         }
+            return new Response("Ваш комментарий будет опубликован после модерации.");
     }
 
     /**
@@ -86,7 +81,7 @@ class CommentController extends Controller
             '_locale' => $_locale
         ));
     }
-
+    
     /**
      * Deletes a Comment entity.
      *

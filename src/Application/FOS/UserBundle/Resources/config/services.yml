@@ -1,11 +1,12 @@
 services:
+
     admin.user:
-          class: Application\FOS\UserBundle\Admin\UserAdmin
-          tags:
-              - { name: sonata.admin, manager_type: orm, group: "Users", label: "User" }
-          arguments: [~, Application\FOS\UserBundle\Entity\User, ~]
-          calls:
-               - [ setTranslationDomain, [ApplicationFOSUserBundle]]
+        class: Application\FOS\UserBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Users", label: "User" }
+        arguments: [~, Application\FOS\UserBundle\Entity\User, ~]
+        calls:
+            - [ setTranslationDomain, [ApplicationFOSUserBundle]]
 #    admin.student_user:
 #              class: Application\FOS\UserBundle\Admin\StudentUserAdmin
 #              tags:
@@ -27,13 +28,4 @@ services:
 #                      arguments: [~, Application\FOS\UserBundle\Entity\TeacherUser, ~]
 #                      calls:
 #                           - [ setTranslationDomain, [ApplicationFOSUserBundle]]
-
-    fos.user.student:
-        class: Application\FOS\UserBundle\Entity\StudentUser
-
-    fos.user.student:
-            class: Application\FOS\UserBundle\Entity\TeacherUser
-
-    fos.user.student:
-            class: Application\FOS\UserBundle\Entity\ParentUser
 
