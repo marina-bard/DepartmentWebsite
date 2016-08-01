@@ -3,14 +3,8 @@
 {% block body %}
 <div ng-controller="NewsCtrl">
     <script type="text/javascript">
-<<<<<<< HEAD
-         data = '{{ render(controller('DepartmentSiteNewsBundle:News:getNews', { 'page': page })) }}';
-
-         news_length = '{{ render(controller('DepartmentSiteNewsBundle:News:getNewsLength')) }}';
-=======
-         data = '{{ render(controller('DepartmentSiteNewsBundle:News:getNews', { 'page': page, 'pagination' : pagination})) }}';
+        data = '{{ render(controller('DepartmentSiteNewsBundle:News:getNews', { 'page': page, 'pagination' : pagination})) }}';
         console.log(data)
->>>>>>> develop
     </script>
 
   <div class="news" style="background-color: #fff;">
@@ -35,7 +29,7 @@
   </div>
 
     <div class="navigation">
-        {{ knp_pagination_render(pagination, 'KnpPaginatorBundle:Pagination:foundation_v5_pagination.html.twig') }}
+        {{ knp_pagination_render(pagination, ':layout:pagination.html.twig') }}
     </div>
    </div>
 {% endblock %}

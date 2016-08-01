@@ -163,7 +163,7 @@
 .pagination .pagination-control {
     display: -moz-inline-box;
     display: -webkit-inline-box;
-    width: 50%;
+    /*width: 50%;*/
 }
 /* line 53, ../../../assets/vendor/app/styles/pagination.scss */
 .pagination .pagination-control .page-controls-forward {
@@ -172,7 +172,7 @@
     outline: 0;
     margin-left: 20px;
     margin-right: 20px;
-    position: absolute;
+    /*position: absolute;*/
     right: 0;
 }
 /* line 59, ../../../assets/vendor/app/styles/pagination.scss */
@@ -195,7 +195,7 @@
     outline: 0;
     margin-left: 20px;
     margin-right: 20px;
-    position: absolute;
+    /*position: absolute;*/
     left: 0;
 }
 /* line 80, ../../../assets/vendor/app/styles/pagination.scss */

@@ -24,7 +24,7 @@ use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 class NewsController extends Controller
 {
 
-     const NEWS_COUNT = 10;
+     const NEWS_COUNT = 1;
     /**
      * Lists all News entities.
      *

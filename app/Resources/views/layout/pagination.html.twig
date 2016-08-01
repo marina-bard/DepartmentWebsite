@@ -1,2 +1,55 @@
-<div ng-init="curPage='{{ page }}';">
-    <i ng-show="false">{{  '{{ setPage( curPage ); }}'  }}</i>
+<div class="container">
+    <div class="row pagination-box">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="pagination">
+                <div class="pagination-control">
+                {% if pageCount > 1 %}
+                        {% if previous is defined %}
+                            <a class="page-controls-back" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+                                <div class="page-controls-arrow"></div>
+                                <div class="page-controls-text">назад</div>
+                            </a>
+                        {% endif %}
+
+                        {% if startPage > 1 %}
+                                <a class="pagination-num " href="{{ path(route, query|merge({(pageParameterName): 1})) }}">1</a>
+                            {% if startPage == 3 %}
+                                    <a class="pagination-num " href="{{ path(route, query|merge({(pageParameterName): 2})) }}">2</a>
+                            {% elseif startPage != 2 %}
+                                    <span>&hellip;</span>
+                            {% endif %}
+                        {% endif %}
+
+                        {% for page in pagesInRange %}
+                            {% if page != current %}
+                                    <a  class="pagination-num " href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+                            {% else %}
+                                    <span class="pagination-num pagination-active">{{ page }}</span>
+                            {% endif %}
+
+                        {% endfor %}
+
+                        {% if pageCount > endPage %}
+                            {% if pageCount > (endPage + 1) %}
+                                {% if pageCount > (endPage + 2) %}
+                                    <span>&hellip;</span>
+                                {% else %}
+                                    <a class="pagination-num " href="{{ path(route, query|merge({(pageParameterName): (pageCount - 1)})) }}">{{ pageCount -1 }}</a>
+                                {% endif %}
+                            {% endif %}
+                                <a class="pagination-num " href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}">{{ pageCount }}</a>
+                        {% endif %}
+
+                        {% if next is defined %}
+                            <a class="page-controls-forward" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+                                <div class="page-controls-text">вперед</div>
+                                <div class="page-controls-arrow"></div>
+                            </a>
+                        {% endif %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
