@@ -1,11 +1,12 @@
 services:
+
     admin.user:
-          class: Application\FOS\UserBundle\Admin\UserAdmin
-          tags:
-              - { name: sonata.admin, manager_type: orm, group: "Users", label: "User" }
-          arguments: [~, Application\FOS\UserBundle\Entity\User, ~]
-          calls:
-               - [ setTranslationDomain, [ApplicationFOSUserBundle]]
+        class: Application\FOS\UserBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Users", label: "User" }
+        arguments: [~, Application\FOS\UserBundle\Entity\User, ~]
+        calls:
+            - [ setTranslationDomain, [ApplicationFOSUserBundle]]
 #    admin.student_user:
 #              class: Application\FOS\UserBundle\Admin\StudentUserAdmin
 #              tags:
