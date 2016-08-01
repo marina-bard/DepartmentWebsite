@@ -4,14 +4,18 @@
 <div ng-controller="ProjectsCtrl">
 
     <script type="text/javascript">
-        data = '{{ render(controller('DepartmentSiteProjectBundle:Project:getAll')) }}';
+        data = '{{ render(controller('DepartmentSiteProjectBundle:Project:getAll',  { 'pagination' : pagination })) }}';
 //        console.log(data);
     </script>
 
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="section-title"><span>{{ 'projects' | DICTIONARY(_locale) }}</span></div>
+                <div class="section-title"><span>{{ 'projects' | DICTIONARY(_locale) }}</span>
+                    {% if is_granted('ROLE_USER') %}
+                    <div class="v-separator"></div><a ng-href="{{ path('project_new') }}">Добавить новый</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
         <div class="row">
@@ -21,7 +25,8 @@
         </div>
         <div class="row">
             <div class="post-list">
-                <div class="post-block" ng-repeat="project in projects"><a class="post-header" ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ '{{ project.title }}' }}</a>
+                <div class="post-block" ng-repeat="project in projects">
+                    <a class="post-header" ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ '{{ project.title }}' }}</a>
                     <div class="post-author"><span>{{ '{{ project.student }}' }}</span> {{ '{{ project.course }}' }} {{ 'course' | DICTIONARY(_locale) }} {{ '{{ project.studentGroup }}' }} {{ 'group' | DICTIONARY(_locale) }}</div>
                     <div class="post-links">
                         <a ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ 'reviews' | DICTIONARY(_locale) }} ( 2 )</a>
@@ -31,6 +36,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination, 'KnpPaginatorBundle:Pagination:foundation_v5_pagination.html.twig') }}
     </div>
 </div>
 

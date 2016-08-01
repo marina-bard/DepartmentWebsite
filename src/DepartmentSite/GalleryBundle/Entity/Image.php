@@ -18,7 +18,6 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  */
 class Image implements JsonSerializable
 {
-    use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
     /**
      * @var int
@@ -50,11 +49,6 @@ class Image implements JsonSerializable
         return $this->getImage();
     }
 
-
-    public function getSluggableFields()
-    {
-        return [ 'image' ];
-    }
 
     /**
      * Get id

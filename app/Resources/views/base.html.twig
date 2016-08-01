@@ -9,7 +9,11 @@
 		{% block stylesheets %}
 			<link href="{{ asset('bundles/departmentsitenews/admin/css/bootstrap.min.css') }}" type = "text/css" rel = "stylesheet" />
 			<link href="{{ asset('bundles/departmentsitedefault/css/app.css') }}" type = "text/css" rel = "stylesheet" />
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
+			<link href="{{ asset('bundles/departmentsitedefault/css/pagination.css') }}" type = "text/css" rel = "stylesheet" />
+
+			{#<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">#}
+
 			<link href="{{ asset('bundles/departmentsitedefault/css/login_form.css') }}" type = "text/css" rel = "stylesheet" />
 			<link href="{{ asset('bundles/departmentsitedefault/css/banner.css') }}" type = "text/css" rel="stylesheet" />
 			<link href="{{ asset('bundles/departmentsitedefault/css/header.css') }}" type = "text/css" rel = "stylesheet" />
@@ -56,6 +60,8 @@
 			<script src="{{ asset('bundles/departmentsiteproject/js/controllers/one_project.js') }}" type = "text/javascript"></script>
 			<script src="{{ asset('bundles/departmentsiteproject/js/controllers/comment.js') }}" type = "text/javascript"></script>
 			<script src="{{ asset('bundles/departmentsitegallery/lightbox2/src/js/lightbox.js') }}"></script>
+
+			<script src="{{ asset('bundles/applicationfosuser/js/registerCtrl.js') }}" type = "text/javascript"></script>
 		{% endblock %}
 
 		{% block header %}
