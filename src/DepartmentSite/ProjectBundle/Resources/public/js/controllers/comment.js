@@ -9,6 +9,7 @@ angular.module('bsuir-ecm').controller('CommentsCtrl', function($scope, $http){
     console.log($scope.comments);
     $scope.comments_count = comments_count;
     $scope.comment_id = undefined;
+    $scope.url = "";
 
     $scope.init = function(id) {
         if(id){
@@ -30,7 +31,7 @@ angular.module('bsuir-ecm').controller('CommentsCtrl', function($scope, $http){
         $scope.formData.projectId = projectId;
         $http({
             method  : 'POST',
-            url     : 'http://localhost:8000/ru/comment/new',
+            url     : $scope.url,
             data    : $.param($scope.formData), 
             headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
         })

@@ -2,7 +2,8 @@
 
 angular.module('bsuir-ecm').controller('RegisterCtrl', function($scope, $http){
     $scope.formData = {};
-    $scope.needChange = needChange;
+    $scope.url = "";
+    // $scope.needChange = needChange;
 
     $scope.showTextview = function () {
         $scope.isSuccess = false;
@@ -10,7 +11,7 @@ angular.module('bsuir-ecm').controller('RegisterCtrl', function($scope, $http){
     $scope.processForm = function () {
         $http({
             method  : 'POST',
-            url     : 'http://localhost:8000/register/new',
+            url     : $scope.url,
             data    : $.param($scope.formData),
             headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
         })

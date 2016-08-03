@@ -1,0 +1,29 @@
+#profile  {
+    background: white;
+    margin-top: 6vh;
+    margin-bottom: 6vh;
+}
+
+#profile .message {
+    background: #f8f8f8;
+    margin-bottom: 30px;
+}
+
+#profile .message  h4{
+    padding: 15px;
+}
+#profile input {
+    /*width: 50%;*/
+    position: relative;
+}
+
+#profile img.avatar, #profile input.upload {
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#profile td button {
+    border:none;
+}
