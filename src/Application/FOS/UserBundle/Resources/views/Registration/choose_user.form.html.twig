@@ -5,8 +5,8 @@
 {% block fos_user_content %}
 
     {% trans_default_domain 'FOSUserBundle' %}
-
-    <div class="form-group" ng-controller="RegisterCtrl">
+    {% set register_path = path('fos_user_registration') %}
+    <div class="form-group" ng-controller="RegisterCtrl" ng-init="url = '{{ register_path }}'">
             <select class="form-control" id="select_user" ng-model="formData.type" ng-change="processForm()">
                 <option value="" disabled selected hidden>Выберите себя</option>
                 {%  for user in users %}

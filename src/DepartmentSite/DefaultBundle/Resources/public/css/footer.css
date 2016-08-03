@@ -4,6 +4,9 @@
   color: white;
   height: auto;
   font-family: "CirceRegular";
+  position: absolute;
+  width: 100%;
+  /*bottom: 0;*/
 }
 /* line 26, ../../../app/styles/layout/footer.scss */
 .footer .footer-credits, .footer .footer-info {

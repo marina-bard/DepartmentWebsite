@@ -44,6 +44,9 @@
     }).when('/register', {
       templateUrl: 'ApplicationFOSUserBundle:RegistrationUser:register',
       controller: 'RegisterCtrl'
+    }).when('/profile', {
+      templateUrl: 'ApplicationFOSUserBundle:Profile:show',
+      controller: 'EditProfileCtrl'
     }).otherwise({
       redirectTo: '/'
     });

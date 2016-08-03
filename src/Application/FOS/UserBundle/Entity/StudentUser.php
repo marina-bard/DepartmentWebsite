@@ -13,7 +13,7 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields = "username", targetClass = "Application\FOS\UserBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "Application\FOS\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
-class StudentUser extends User
+class StudentUser extends User implements \JsonSerializable
 {
     /**
      * @ORM\Id
@@ -194,5 +194,18 @@ class StudentUser extends User
 
     public function getType(){
         return parent::TYPE_STUDENT;
+    }
+    
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'patronymic' => $this->patronymic,
+            'studyGroup' => $this->studyGroup,
+            'username' => $this->username,
+            'email' => $this->email
+        ];
     }
 }
