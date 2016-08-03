@@ -1,3 +1,0 @@
-department_site_menu_homepage:
-    path:     /menu
-    defaults: { _controller: DepartmentSiteMenuBundle:SideBarMenu:index }

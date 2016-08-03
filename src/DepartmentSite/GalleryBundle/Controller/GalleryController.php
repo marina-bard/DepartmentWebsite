@@ -4,7 +4,9 @@ namespace DepartmentSite\GalleryBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use DepartmentSite\GalleryBundle\Entity\Gallery;
 use DepartmentSite\GalleryBundle\Form\GalleryType;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +24,14 @@ class GalleryController extends Controller
     /**
      * Lists all Gallery entities.
      *
+     * @Route(
+     *     "/{_locale}/gallery/{page}/",
+     *      name="gallery_index",
+     *      defaults={"_locale": "ru", "page" = "1"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template
      */
     public function indexAction($_locale, $page)
     {
@@ -58,13 +68,22 @@ class GalleryController extends Controller
     /**
      * Finds and displays a Gallery entity.
      *
+     * @Route(
+     *     "/{_locale}/gallery/{id}/show",
+     *      name="gallery_show",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"},
+     *     )
+     * @Method({"GET"})
+     * @Template
+     *
      */
     public function showAction(Gallery $gallery, $_locale)
     {
-        return $this->render('DepartmentSiteGalleryBundle:Gallery:show.html.twig', array(
+        return array(
             'gallery' => $gallery,
             '_locale' => $_locale
-        ));
+        );
     }
        
 

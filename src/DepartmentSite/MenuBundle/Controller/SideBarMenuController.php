@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SideBarMenuController extends Controller
 {
-
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();

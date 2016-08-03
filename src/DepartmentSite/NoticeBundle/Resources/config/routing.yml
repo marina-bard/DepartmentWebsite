@@ -1,3 +1,0 @@
-department_site_notice_advert:
-    resource: "@DepartmentSiteNoticeBundle/Resources/config/routing/notice.yml"
-    prefix:   /{_locale}/notice

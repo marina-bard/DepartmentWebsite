@@ -5,8 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use DepartmentSite\NoticeBundle\Entity\Notice;
 use DepartmentSite\NoticeBundle\Form\NoticeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\Query;
@@ -21,6 +21,14 @@ class NoticeController extends Controller
     /**
      * Lists all Notice entities.
      *
+     * @Route(
+     *     "/{_locale}/notice/{page}/",
+     *      name="notice_index",
+     *      defaults={"_locale": "ru", "page" = "1"},
+     *      requirements = {"_locale" = "ru|en"}
+     *     )
+     * @Method({"GET"})
+     * @Template
      */
     public function indexAction($_locale, $page)
     {
@@ -39,20 +47,22 @@ class NoticeController extends Controller
                 '_locale' => $_locale,
             'pagination' => $pagination));
     }
-   
+
     /**
      * Finds and displays a Notice entity.
      *
+     * @Route(
+     *     "/{_locale}/notice/{slug}/show",
+     *      name="notice_show",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"}
+     *     )
+     * @Method({"GET"})
+     * @Template
      */
     public function showAction(Notice $notice, $_locale)
     {
-        return $this->render('DepartmentSiteNoticeBundle:Notice:show.html.twig', array(
-            'notice' => $notice,
-            '_locale' => $_locale
-        ));
     }
-    
-
 
 
     public function getNoticesAction( $pagination) {
@@ -60,7 +70,6 @@ class NoticeController extends Controller
         return new JsonResponse($notices);
 
     }
-    
 
     public function getAllAction() {
         $em = $this->getDoctrine()->getManager();

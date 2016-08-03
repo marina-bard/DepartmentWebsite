@@ -43,6 +43,6 @@ class MyExceptionController extends ExceptionController {
 //            )
 //        ));
 
-        return  new Response((string)$this->findTemplate($request, $request->getRequestFormat(), "null");
+        return  new Response((string)$this->findTemplate($request, $request->getRequestFormat(), "null"));
     }
 }
