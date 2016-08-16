@@ -19,6 +19,9 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class CommentAdmin extends AbstractAdmin
 {
+
+
+
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -42,6 +45,7 @@ class CommentAdmin extends AbstractAdmin
         $collection
             ->remove('create')
             ->remove('edit')
+            ->add('tree')
         ;
     }
 }

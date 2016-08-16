@@ -11,6 +11,11 @@ services:
         class: DepartmentSite\ProjectBundle\Admin\CommentAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Project", label: "Comment" }
-        arguments: [~, DepartmentSite\ProjectBundle\Entity\Comment, ~]
+        arguments:
+            - ~
+            - DepartmentSite\ProjectBundle\Entity\Comment
+            - DepartmentSiteProjectBundle:CommentAdmin
+            - ~
         calls:
             - [ setTranslationDomain, [DepartmentSiteProjectBundle]]
+            - [ setTemplate, [list, DepartmentSiteProjectBundle:ProjectAdmin:list.html.twig]]
