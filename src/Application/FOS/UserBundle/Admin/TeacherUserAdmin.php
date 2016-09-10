@@ -12,9 +12,24 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class TeacherUserAdmin extends AbstractAdmin
 {
+
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $roles = ['Администратор'=>"ROLE_ADMIN",
+            "Доступ к пользователям"=> "USERS",
+            "Доступ к студентам" => "STUDENT_USER",
+            "Доступ к родителям" => "PARENT_USER",
+            "Доступ к преподавателям" => "TEACHER_USER",
+            "Доступ к проектам" => "PROJECTS",
+            "Доступ к комментариям" => "COMMENT",
+            "Доступ к словарю" => "DICTIONARY",
+            "Доступ к объявлениям"=> "NOTICE",
+            "Доступ к галереи" => "GALLERY",
+            "Доступ к меню" => "MENU",
+            "Доступ к новостям" => "NEWS",
+            "Доступ к страницам" => "PAGE",
+            "Доступ к слайд-шоу" => "SLIDE_SHOW"];
         if ($this->isCurrentRoute('edit')) {
             $formMapper
                 ->add('username', 'text', array('label' => 'User Name', 'attr' => array(
@@ -44,9 +59,14 @@ class TeacherUserAdmin extends AbstractAdmin
             ;
         }
         $formMapper
-            ->add('locked', 'checkbox', array('required' => false))
-            ->add('roles', 'collection')
-        ;
+            ->add('locked', 'checkbox', array('required' => false));
+        if(in_array('ROLE_SUPER_ADMIN', $this->getCurrentUser()->getRoles())){
+            $formMapper
+                ->add('roles', 'choice', array(
+                    'choices' => $roles, 'multiple' => true));
+        }
+
+
 
         // ->add('roles', 'sonata_type_model_list' )
 
@@ -100,6 +120,20 @@ class TeacherUserAdmin extends AbstractAdmin
 
 
 
+    }
+
+    private function getCurrentUser()
+    {
+        /**
+         * @var UserInterface $user
+         */
+        $user = $this->getConfigurationPool()
+            ->getContainer()
+            ->get('security.token_storage')
+            ->getToken()
+            ->getUser();
+
+        return $user;
     }
 
 

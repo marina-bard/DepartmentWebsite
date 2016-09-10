@@ -3,7 +3,8 @@ sonata_admin:
     templates:
           layout: 'ApplicationSonataAdminBundle::standard_layout_override.html.twig'
           user_block: 'ApplicationSonataAdminBundle:Core:user_block_override.html.twig'
-
+    security:
+          handler: sonata.admin.security.handler.role
 
 sonata_block:
     default_contexts: [cms]
