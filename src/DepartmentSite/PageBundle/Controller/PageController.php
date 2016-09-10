@@ -21,8 +21,10 @@ class PageController extends Controller
      * Finds and displays a Page entity.
      *
      * @Route(
-     *     "/{locale}/notice/{page}/",
-     *      name="show",
+     *     "/{_locale}/{slug}/show",
+     *      name="page_show",
+     *      defaults={"_locale": "ru"},
+     *      requirements = {"_locale" = "ru|en"}
      *     )
      * @Method({"GET"})
      * @Template

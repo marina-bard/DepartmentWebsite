@@ -3,7 +3,7 @@
 {% for menuItem in menu | sort%}
 
     {% if menuItem.getValue() == 'gallery' %}
-        <a class="sidebar-item"  ng-href="/{{ _locale }}/{{ menuItem.getValue() }}" style="background-image: {{ gradient }},  url({{ menuItem.getPhoto() }})">
+        <a class="sidebar-item"  ng-href="/{{ _locale }}/{{ menuItem.getValue() }}/1" style="background-image: {{ gradient }},  url({{ menuItem.getPhoto() }})">
      {% else %}
         <a class="sidebar-item"  ng-href="/{{ _locale }}/{{ menuItem.getValue() }}/show" style="background-image: {{ gradient }},  url({{ menuItem.getPhoto() }})">
      {% endif %}
