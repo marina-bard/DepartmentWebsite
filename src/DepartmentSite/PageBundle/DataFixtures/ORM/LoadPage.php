@@ -32,7 +32,7 @@ class LoadPage implements FixtureInterface
         $this->createPage($manager, 'Абитуриентам', 'For applicants', 'Содержимое абитуриентам', 'Content for application');
         $this->createPage($manager, 'Дипломникам', 'For graduate', 'Содержимое дипломникам', 'Content for graduate' );
         $this->createPage($manager, 'Родителям', 'For parents', 'Содержимое родителям', 'Content for parents' );
-
+        
         $manager->flush();
     }
 }
