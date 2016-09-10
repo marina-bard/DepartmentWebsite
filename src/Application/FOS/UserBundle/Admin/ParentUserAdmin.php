@@ -29,7 +29,6 @@ class ParentUserAdmin extends AbstractAdmin
             "Доступ к новостям" => "NEWS",
             "Доступ к страницам" => "PAGE",
             "Доступ к слайд-шоу" => "SLIDE_SHOW"];
-        
         if ($this->isCurrentRoute('edit')) {
             $formMapper
                 ->add('username', 'text', array('label' => 'User Name', 'attr' => array(
