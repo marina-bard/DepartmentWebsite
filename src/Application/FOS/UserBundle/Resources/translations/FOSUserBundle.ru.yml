@@ -16,6 +16,7 @@ security:
         remember_me: 'Запомнить меня'
         submit: Войти
 profile:
+    link: 'Профиль'
     show:
         username: 'Имя пользователя'
         email: 'Электронная почта'

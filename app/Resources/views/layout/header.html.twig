@@ -1,3 +1,4 @@
+{% trans_default_domain 'FOSUserBundle' %}
 <div class="header">
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -19,9 +20,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     {{ render(controller('DepartmentSiteDefaultBundle:Default:getHeaderMenu', {'_locale' : _locale} )) }}
                     {% if is_granted('ROLE_USER') %}
-                    <li><a ng-href={{ path('fos_user_security_login') }}>Выйти</a></li>
+                    <li><a ng-href={{ path('fos_user_profile_show') }}>{{ 'profile.link'|trans }}</a></li>
+                    <li><a ng-href={{ path('fos_user_security_logout') }}>Выйти</a></li>
                     {% else %}
-                    <li><a ng-href={{ path('fos_user_security_login') }} {#data-target="#myModal" data-toggle="modal" #} >{{ 'login_link' |  DICTIONARY(_locale) }}</a></li>
+                    {#<li><a ng-href={{ path('fos_user_security_login') }} data-target="#myModal" data-toggle="modal"  >{{ 'login_link' |  DICTIONARY(_locale) }}</a></li>#}
+                    <li><a data-target="#myModal" data-toggle="modal" >{{ 'login_link' |  DICTIONARY(_locale) }}</a></li>
                     {%  endif %}
                 </ul>
             </div>
@@ -29,19 +32,5 @@
     </div>
 </div>
 
-{#<div class="modal fade" id="myModal" role="dialog">#}
-    {#<div class="modal-dialog">#}
-        {#<div class="modal-content">#}
-            {#<div class="modal-header">#}
-                {#<button class="close" data-dismiss="modal" type="button">#}
-                    {#&times;</button>#}
-                {#<h4 class="modal-title">{{ 'log_in' |  DICTIONARY(_locale) }}</h4>#}
-                {#<input class="form-control login-input" id="email" name="email" placeholder="{{ 'login_placeholder' |  DICTIONARY(_locale) }}" type="email"/>#}
-                {#<input class="form-control login-input" id="key" name="key" placeholder="{{ 'password_placeholder' |  DICTIONARY(_locale) }}" type="password"/>#}
-                {#<a ng-class="'{{ _locale }}' == 'ru'? 'forgot-passw' : 'forgot-passw forgot-passw-en'" ng-href="#/">{{ 'forgot_password' |  DICTIONARY(_locale) }}</a>#}
-                {#<a class="registration-btn" ng-href="/register/student_user">{{ 'sign_up' |  DICTIONARY(_locale) }}</a>#}
-                {#<button class="btn login-btn" data-dismiss="modal" type="button">{{ 'login_button' |  DICTIONARY(_locale) }}</button>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-{#</div>#}
+{{ render(controller('ApplicationFOSUserBundle:Security:login')) }}
+

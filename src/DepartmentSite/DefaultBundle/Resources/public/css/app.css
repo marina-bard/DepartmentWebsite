@@ -8982,10 +8982,10 @@ button.close {
   .announcements {
     height: 960px;
   }
-  /* line 18, ../../../assets/vendor/app/styles/main/announcements.scss */
-  .announcements .announce-cards {
-    width: 73.4%;
-  }
+  /*!* line 18, ../../../assets/vendor/app/styles/main/announcements.scss *!*/
+  /*.announcements .announce-cards {*/
+    /*width: 73.4%;*/
+  /*}*/
   /* line 21, ../../../assets/vendor/app/styles/main/announcements.scss */
   .announcements .announce-cards .cards-column {
     padding-left: 0;
@@ -9132,7 +9132,7 @@ button.close {
 /* line 33, ../../../assets/vendor/app/styles/main/news.scss */
 .news .news-item-image {
   background-size: cover;
-  height: 250px;
+  height: 100%;
   width: 100%;
 }
 /* line 37, ../../../assets/vendor/app/styles/main/news.scss */
@@ -9427,9 +9427,9 @@ p {
     height: 960px;
   }
   /* line 18, ../../../assets/vendor/app/styles/main/announcements.scss */
-  .announcements .announce-cards {
-    width: 73.4%;
-  }
+  /*.announcements .announce-cards {*/
+    /*width: 73.4%;*/
+  /*}*/
   /* line 21, ../../../assets/vendor/app/styles/main/announcements.scss */
   .announcements .announce-cards .cards-column {
     padding-left: 0;
@@ -9532,3 +9532,9 @@ p {
   margin-bottom: 100px;
 }
 
+
+@media (max-width: 991px){
+  .news .news-item-image {
+  height: 100%;
+  }
+}

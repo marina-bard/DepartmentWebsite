@@ -71,10 +71,7 @@
   .announcements {
     height: 960px;
   }
-  /* line 18, ../../../app/styles/main/announcements.scss */
-  .announcements .announce-cards {
-    width: 73.4%;
-  }
+
   /* line 21, ../../../app/styles/main/announcements.scss */
   .announcements .announce-cards .cards-column {
     padding-left: 0;
