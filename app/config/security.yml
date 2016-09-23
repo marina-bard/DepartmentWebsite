@@ -131,26 +131,25 @@ security:
                 provider: fos_userbundle
                 login_path: /admin/login
                 csrf_token_generator: security.csrf.token_manager
-            logout:
-                path: /admin/logout
-                target: /admin/
+            logout: true
+
             anonymous: true
 
         main:
-            pattern: ^/
+
             form_login:
                 provider: fos_userbundle
                 login_path: /login
                 csrf_token_generator: security.csrf.token_manager
-            logout:
-                path:  /logout
-                target: /
+            logout: true
+
             anonymous:    true
 
     access_control:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
