@@ -9538,3 +9538,7 @@ p {
   height: 100%;
   }
 }
+
+.post-content-inside img{
+  max-width: 100%;
+}
