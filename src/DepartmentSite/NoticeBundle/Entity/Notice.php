@@ -170,7 +170,6 @@ class Notice implements JsonSerializable
      */
     function jsonSerialize()
     {
-      
         return [
             'title' => $this->title,
             'description' => $this->description,

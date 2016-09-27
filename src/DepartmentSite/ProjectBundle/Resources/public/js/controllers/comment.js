@@ -5,7 +5,7 @@ var comments_count;
 angular.module('bsuir-ecm').controller('CommentsCtrl', function($scope, $http){
     $scope.formData = {};
     $scope.isSuccess = false;
-    $scope.comments = JSON.parse(project_comments.replace(/&quot;/g, '"'));
+    $scope.comments = JSON.parse(project_comments.replace(/"/g, '\'\'').replace(/&quot;/g, '"'));
     console.log($scope.comments);
     $scope.comments_count = comments_count;
     $scope.comment_id = undefined;

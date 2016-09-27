@@ -8,7 +8,7 @@ var news_index = 0;
       console.log(data);
       data = data.replace(/&amp;nbsp;/g, '').replace(/\r\n/g, "\\r\\n");
 
-      $scope.news = JSON.parse(data.replace(/\"/g, "\'").replace(/&quot;/g, '"'));
+      $scope.news = JSON.parse(data.replace(/"/g, '\'\'').replace(/&quot;/g, '"'));
 
   });
 
