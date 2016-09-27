@@ -7,7 +7,7 @@ var projects_list = [];
   angular.module('bsuir-ecm').controller('MainPageCtrl', function($scope) {
 
     $scope.adverts = JSON.parse(adverts_list.replace(/&quot;/g, '"'));
-    $scope.news = JSON.parse(news_list.replace(/&quot;/g, '"'));
+    $scope.news = JSON.parse(news_list.replace(/"/g, '\'\'').replace(/&quot;/g, '"'));
     $scope.projects = JSON.parse(projects_list.replace(/&quot;/g, '"'));
 
     return $scope.adverts;
