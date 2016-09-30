@@ -4,7 +4,7 @@ var project_comments = [];
 
 (function() {
     angular.module('bsuir-ecm').controller('OneProjectCtrl', function($scope, $http){
-        data = data.replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&;nbsp;/g, " ").replace(/\r\n/g, "\\r\\n");
+        data = data.replace(/"/g, '\'\'').replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&;nbsp;/g, " ").replace(/\r\n/g, "\\r\\n");
         console.log(data);
         // $scope.project = JSON.parse(data);
     }).filter('dateFilter', function() {
