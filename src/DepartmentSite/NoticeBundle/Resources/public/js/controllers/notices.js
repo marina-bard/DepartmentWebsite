@@ -2,7 +2,7 @@ var adverts_length;
 (function() {
   'use strict';
   angular.module('bsuir-ecm').factory('PagerService', PagerService).controller('NoticesCtrl', function($scope, PagerService) {
-    $scope.notices = JSON.parse(data.replace(/&quot;/g, '"'));
+    $scope.notices = JSON.parse(data.replace(/"/g, '\'\'').replace(/&quot;/g, '"'));
     $scope.pageSize = 10;
 
     $scope.pager = {};

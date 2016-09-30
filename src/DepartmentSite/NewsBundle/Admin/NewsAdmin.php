@@ -59,7 +59,7 @@ class NewsAdmin extends Admin
             ->add('title')
             ->add('createdAt')
             ->add('description')
-            ->add('content')
+            ->add('content', 'html')
             ->add('photo', 'string', ['template' => 'DepartmentSiteNewsBundle:Admin:list__photo.html.twig'])
         ;
     }

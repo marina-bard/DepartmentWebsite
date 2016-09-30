@@ -38,7 +38,7 @@ class DefaultController extends Controller
     {
     }
 
-     public function getNoticesForMainPageAction()
+    public function getNoticesForMainPageAction()
     {
         $em = $this->getDoctrine()->getManager();
         $notices = $em->getRepository('DepartmentSiteNoticeBundle:Notice')->findBy(array(), array('id'=>'desc'), 6);
@@ -52,6 +52,7 @@ class DefaultController extends Controller
         foreach($news as $oneNews) {
             $oneNews->setPhoto($this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto()));
         }
+
         return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 

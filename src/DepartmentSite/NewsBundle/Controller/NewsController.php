@@ -70,12 +70,12 @@ class NewsController extends Controller
     {
     }
 
-
     public function getNewsAction( $pagination) {
         $news = (Object)$pagination->getItems();
         foreach($news as &$oneNews) {
             $oneNews->setPhoto( $this->setNewsPhotoUrls($oneNews->getId()));
         }
+
         return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
