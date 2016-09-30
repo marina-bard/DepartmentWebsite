@@ -20,4 +20,4 @@
 /.idea/
 /app/config/parameters.yml~
 /composer.lock
-/
+*~

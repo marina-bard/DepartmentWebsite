@@ -8,7 +8,6 @@
             data = '{{ render(controller('DepartmentSiteProjectBundle:Project:getOne', {'slug' : project.slug})) }}';
             project_comments = '{{ render(controller('DepartmentSiteProjectBundle:Project:getCommentsByProjectId', {'projectId' : project.id})) }}';
             comments_count = '{{ render(controller('DepartmentSiteProjectBundle:Project:getCommentsCount', {'projectId' : project.id})) }}';
-            console.log(project_comments);
         </script>
         <div class="container">
             <div class="row">

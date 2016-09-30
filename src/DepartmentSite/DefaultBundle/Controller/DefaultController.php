@@ -58,7 +58,7 @@ class DefaultController extends Controller
     public function getProjectsForMainPageAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findBy(array(), array('id'=>'desc'), 5);
+        $projects = $em->getRepository('DepartmentSiteProjectBundle:Project')->findBy(array('isModerated' => true), array('id'=>'desc'), 5);
         return new Response(htmlspecialchars(json_encode($projects, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 

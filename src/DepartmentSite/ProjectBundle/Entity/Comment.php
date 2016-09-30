@@ -45,6 +45,13 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess, \JsonSer
      */
     private $project;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_moderated", type="boolean", nullable=true,  options={"default" : 0})
+     */
+    private $isModerated;
+
 
     /**
      * Get id
@@ -152,5 +159,29 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess, \JsonSer
             'author' => $this->author,
             'child' => $this->getChildNodes()->toArray()
         ];
+    }
+
+    /**
+     * Set isModerated
+     *
+     * @param boolean $isModerated
+     *
+     * @return Comment
+     */
+    public function setIsModerated($isModerated)
+    {
+        $this->isModerated = $isModerated;
+
+        return $this;
+    }
+
+    /**
+     * Get isModerated
+     *
+     * @return boolean
+     */
+    public function getIsModerated()
+    {
+        return $this->isModerated;
     }
 }

@@ -37,7 +37,9 @@ class ProjectAdmin extends AbstractAdmin
                 ->add('teacher_comment', 'textarea', array('label' => 'Teacher review'));
         }
         $formMapper
-            ->add('isModerated', 'checkbox');
+            ->add('isModerated', 'checkbox', array(
+                'required' => false
+            ));
 
 
     }

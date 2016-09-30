@@ -36,7 +36,9 @@ class ProjectController extends Controller
     public function indexAction($_locale, $page)
     {
         $request = new Request();
-        $projects = $this->getProjects();
+        $projects = $this->getDoctrine()
+            ->getRepository('DepartmentSiteProjectBundle:Project')
+            ->findBy(['isModerated' => true], ['createdAt' => 'DESC']);
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -52,20 +54,6 @@ class ProjectController extends Controller
             'pagination' => $pagination
         );
     }
-
-    public function getProjects(){
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteProjectBundle:Project');
-
-        $query = $repository->createQueryBuilder('a')
-            ->select()
-            ->orderBy('a.createdAt', 'DESC')
-            ->getQuery();
-
-        return $query->getResult();
-    }
-
-
 
     /**
      * Creates a new Project entity.
@@ -204,7 +192,7 @@ class ProjectController extends Controller
     public function getAllAction($pagination)
     {
         $projects = (Object)$pagination->getItems();
-        return new JsonResponse($projects);
+        return new Response(htmlspecialchars((json_encode($projects, JSON_HEX_QUOT | JSON_HEX_TAG))));
     }
 
     public function getOneAction($slug)
@@ -241,8 +229,8 @@ class ProjectController extends Controller
         return $count++;
     }
 
-    public function getCommentsCountAction($projectId){
-
+    public function getCommentsCountAction($projectId)
+    {
         $em = $this->getDoctrine()->getManager();
         $trees = $em->getRepository('DepartmentSiteProjectBundle:Comment')->getRootNodes();
         $count = 0;
