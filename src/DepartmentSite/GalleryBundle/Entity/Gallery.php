@@ -184,10 +184,9 @@ class Gallery implements JsonSerializable
     {
         $this->image = $image;
     }
-    
-    
-    public function getFirstImage()
+
+    public function getFirstImageItem()
     {
-        return $this->images[0]->getImage();
+        return $this->images[0];
     }
 }

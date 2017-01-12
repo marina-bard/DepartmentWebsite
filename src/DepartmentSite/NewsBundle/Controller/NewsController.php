@@ -38,7 +38,10 @@ class NewsController extends Controller
     public function indexAction($_locale, $page)
     {
         $request = new Request();
-        $news= $this->getNews();
+        $news= $this->getDoctrine()
+            ->getRepository('DepartmentSiteNewsBundle:News')
+            ->findBy([], ['createdAt' => 'DESC'])
+        ;
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -69,34 +72,14 @@ class NewsController extends Controller
     public function showAction(Request $request, News $news, $_locale)
     {
     }
-
-    public function getNewsAction( $pagination) {
+    
+    public function getAllAction( $pagination) {
         $news = (Object)$pagination->getItems();
         foreach($news as &$oneNews) {
-            $oneNews->setPhoto( $this->setNewsPhotoUrls($oneNews->getId()));
+            $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto);
+            $oneNews->setPhoto($url);
         }
 
         return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
-
-    public function setNewsPhotoUrls($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $oneNews = $em->getRepository('DepartmentSiteNewsBundle:News')->findOneBy(['id' => $id]);
-        $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
-        return $url;
-    }
-    
-
-    public function getNews(){
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteNewsBundle:News');
-
-        $query = $repository->createQueryBuilder('a')
-            ->select()
-            ->orderBy('a.createdAt', 'DESC')
-            ->getQuery();
-        return $query->getResult();
-    }
-
 }

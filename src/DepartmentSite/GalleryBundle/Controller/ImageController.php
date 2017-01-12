@@ -68,7 +68,8 @@ class ImageController extends Controller
         $images = $em->getRepository('DepartmentSiteGalleryBundle:Image')->findBy(['gallery' => $gallery]);
 
         foreach ($images as &$image) {
-            $image->setImage($this->get('itm.file.preview.path.resolver')->getUrl($image, $image->getImage()));
+            $url = $this->get('itm.file.preview.path.resolver')->getUrl($image, $image->getImage());
+            $image->setImage($url);
         }
         return new Response(htmlspecialchars(json_encode($images, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }

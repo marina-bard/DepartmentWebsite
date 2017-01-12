@@ -54,15 +54,9 @@ class GalleryController extends Controller
 
 
     public function getGalleries(){
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteGalleryBundle:Gallery');
-
-        $query = $repository->createQueryBuilder('a')
-            ->select()
-            ->orderBy('a.createdAt', 'DESC')
-            ->getQuery();
-
-        return $query->getResult();
+        return $this->getDoctrine()
+            ->getRepository('DepartmentSiteGalleryBundle:Gallery')
+            ->findBy(array(), array('createdAt' => 'DESC'));
     }
 
     /**
@@ -89,14 +83,15 @@ class GalleryController extends Controller
 
     public function getAllAction($pagination)
     {
-        $em = $this->getDoctrine()->getManager();
-        $images = $em->getRepository('DepartmentSiteGalleryBundle:Image')->findAll();
+        $images = $this->getDoctrine()->getRepository('DepartmentSiteGalleryBundle:Image')->findAll();
 
         $galleries = (Object)$pagination->getItems();
-        foreach ($galleries as &$gallery_temp){
-            $gallery_temp->setImage($this->get('itm.file.preview.path.resolver')->getUrl($images[0], $gallery_temp->getFirstImage()));
+        foreach ($galleries as &$galleryItem) {
+            $url = $this->get('itm.file.preview.path.resolver')->getUrl($galleryItem->getFirstImageItem(), $galleryItem->getFirstImageItem()->getImage());
+            $galleryItem->setImage($url);
         }
-        return new JsonResponse($galleries);
+
+        return new Response(htmlspecialchars(json_encode($galleries, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 }
 

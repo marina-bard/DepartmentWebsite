@@ -102,10 +102,15 @@ class Project implements JsonSerializable
     /**
      * @var bool
      *
-     * @ORM\Column(name="isModerated", type="boolean")
+     * @ORM\Column(name="isModerated", type="boolean", nullable = true)
      */
     private $isModerated;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="countComment", type="integer")
+     */
     private $countComment;
 
     /**
@@ -430,9 +435,24 @@ class Project implements JsonSerializable
      *
      * @return \Doctrine\Common\Collections\Collection
      */
+    public function getCommentsCount() 
+    {
+        return $this->countComment;
+    }
     public function getComments()
     {
         return $this->comments;
+    }
+
+
+    public function getCountComment()
+    {
+        return $this->countComment;
+    }
+
+    public function setCountComment($countComment)
+    {
+        $this->countComment = $countComment;
     }
 
     function jsonSerialize()
@@ -443,7 +463,7 @@ class Project implements JsonSerializable
             'student' => $this->student,
             'course' => $this->course,
             'teacher' => $this->teacher,
-            'reviewer' => $this->reviewer,
+//            'reviewer' => $this->reviewer,
             'studentGroup' => $this->studentGroup,
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
