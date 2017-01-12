@@ -57,16 +57,6 @@ class GalleryController extends Controller
         return $this->getDoctrine()
             ->getRepository('DepartmentSiteGalleryBundle:Gallery')
             ->findBy(array(), array('createdAt' => 'DESC'));
-
-//        $repository = $this->getDoctrine()
-//            ->getRepository('DepartmentSiteGalleryBundle:Gallery');
-
-//        $query = $repository->createQueryBuilder('a')
-//            ->select()
-//            ->orderBy('a.createdAt', 'DESC')
-//            ->getQuery();
-//
-//        return $query->getResult();
     }
 
     /**

@@ -31,7 +31,8 @@ class SlideShowController extends Controller
         $em = $this->getDoctrine()->getManager();
         $slideShow = $em->getRepository('DepartmentSiteSlideShowBundle:SlideShow')->findAll();
         foreach($slideShow as &$slide) {
-            $slide->setImage($this->get('itm.file.preview.path.resolver')->getUrl($slide, $slide->getImage()));
+            $url = $this->get('itm.file.preview.path.resolver')->getUrl($slide, $slide->getImage());
+            $slide->setImage($url);
         }
         return array(
             'slideShows' => $slideShow,

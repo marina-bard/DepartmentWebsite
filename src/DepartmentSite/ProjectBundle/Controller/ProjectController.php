@@ -216,7 +216,7 @@ class ProjectController extends Controller
                         ->getTree($tree->getRealMaterializedPath()));
             }
         }
-        return new JsonResponse($rootProjectComments);
+        return new Response(htmlspecialchars(json_encode($rootProjectComments, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     public function recursiveCount($tree, &$count)
@@ -241,6 +241,6 @@ class ProjectController extends Controller
                         ->getTree($tree->getRealMaterializedPath()), $count);
             }
         }
-        return new Response($count);
+        return new Response(htmlspecialchars(json_encode($count, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 }
