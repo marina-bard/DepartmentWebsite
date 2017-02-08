@@ -10,7 +10,7 @@ services:
   admin.image:
           class: DepartmentSite\GalleryBundle\Admin\ImageAdmin
           tags:
-               - { name: sonata.admin, manager_type: orm, group: "Gallery", label: "Image" }
+               - { name: sonata.admin, manager_type: orm, group: "Gallery", label: "Image", show_in_dashboard: false }
           arguments: [~, DepartmentSite\GalleryBundle\Entity\Image, ~]
           calls:
                - [ setTranslationDomain, [DepartmentSiteGalleryBundle]]

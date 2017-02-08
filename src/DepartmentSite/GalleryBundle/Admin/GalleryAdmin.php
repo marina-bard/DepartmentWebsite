@@ -15,27 +15,19 @@ use ITM\ImagePreviewBundle\Form\Type\ImagePreviewType;
 
 class GalleryAdmin extends AbstractAdmin
 {
-    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            
-        ;
-
-        if ($this->isCurrentRoute('edit')) {
-            $formMapper->add('images', 'sonata_type_model',
+            ->add('images', 'sonata_type_model',
                 array( 'required' => true,
                     'by_reference' => false,
                     'multiple' => true,
                     'expanded' => true))
             ;
-
-        }
     }
 
-    // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -43,7 +35,6 @@ class GalleryAdmin extends AbstractAdmin
         ;
     }
 
-    // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -53,23 +44,25 @@ class GalleryAdmin extends AbstractAdmin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                )))
-        ;
-        ;
+                )));
     }
 
     protected function configureShowFields(ShowMapper $showMapper)
     {
-
         $showMapper
 
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            ->add('images',  'sonata_type_collection')
-        ;
-
+            ->add('images',  'sonata_type_collection');
     }
 
+    public function prePersist($gallery)
+    {
+        $this->preUpdate($gallery);
+    }
 
-
+    public function preUpdate($gallery)
+    {
+        $gallery->setImages($gallery->getImages());
+    }
 }

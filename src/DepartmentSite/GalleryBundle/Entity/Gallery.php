@@ -36,7 +36,7 @@ class Gallery implements JsonSerializable
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="gallery", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="gallery", cascade={"all"}, orphanRemoval=true)
      */
     private $images;
     
@@ -136,6 +136,18 @@ class Gallery implements JsonSerializable
     public function getImages()
     {
         return $this->images;
+    }
+
+    public function setImages($images){
+        $this->images = [];
+        if (count($images) > 0) {
+            foreach ($images as $i) {
+                $this->addImage($i);
+            }
+        }
+
+        return $this;
+
     }
 
     /**
