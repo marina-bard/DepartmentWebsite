@@ -38,6 +38,13 @@ class GalleryController extends Controller
         $request = new Request();
         $galleries = $this->getGalleries();
         $paginator = $this->get('knp_paginator');
+
+        foreach ($galleries as $key => $gallery) {
+            if(!count($gallery->getImages())) {
+                unset($galleries[$key]);
+            }
+        }
+
         $pagination = $paginator->paginate(
             $galleries,
             $request->query->get('page', $page),
@@ -79,12 +86,9 @@ class GalleryController extends Controller
             '_locale' => $_locale
         );
     }
-       
 
     public function getAllAction($pagination)
     {
-        $images = $this->getDoctrine()->getRepository('DepartmentSiteGalleryBundle:Image')->findAll();
-
         $galleries = (Object)$pagination->getItems();
         foreach ($galleries as &$galleryItem) {
             $url = $this->get('itm.file.preview.path.resolver')->getUrl($galleryItem->getFirstImageItem(), $galleryItem->getFirstImageItem()->getImage());

@@ -36,7 +36,7 @@ class PageController extends Controller
     public function getPageBySlugAction($slug) {
         $em = $this->getDoctrine()->getManager();
         $page = $em->getRepository('DepartmentSitePageBundle:Page')->findBy(array('slug'=>$slug));
-        $serialized = $this->container->get('serializer')->serialize($page, 'json');
-        return new Response($serialized);
+
+        return new Response(htmlspecialchars(json_encode($page, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 }

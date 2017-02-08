@@ -25,18 +25,18 @@ class DefaultController extends Controller
     {
     }
 
-    /**
-     * @Route(
-     *     "/{_locale}/404",
-     *     name="department_site_not_found_page",
-     *     defaults={"_locale": "ru"},
-     *     requirements = {"_locale" = "ru|en"},
-     * )
-     * @Template("DepartmentSiteDefaultBundle:layout:404.html.twig")
-     */
-    public function pageNotFoundAction($_locale)
-    {
-    }
+//    /**
+//     * @Route(
+//     *     "/{_locale}/404",
+//     *     name="department_site_not_found_page",
+//     *     defaults={"_locale": "ru"},
+//     *     requirements = {"_locale" = "ru|en"},
+//     * )
+//     * @Template("DepartmentSiteDefaultBundle:layout:404.html.twig")
+//     */
+//    public function pageNotFoundAction($_locale)
+//    {
+//    }
 
     public function getNoticesForMainPageAction()
     {

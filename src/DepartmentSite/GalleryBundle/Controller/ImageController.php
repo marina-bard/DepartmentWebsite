@@ -17,50 +17,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ImageController extends Controller
 {
-    /**
-     * Lists all Image entities.
-     *
-     * @Route(
-     *     "/image/",
-     *      name="image_index"
-     *     )
-     * @Method({"GET"})
-     * @Template
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $images = $em->getRepository('DepartmentSiteGalleryBundle:Image')->findAll();
-
-        return array(
-            'images' => $images,
-        );
-    }
-
-
-    /**
-     * Finds and displays a Image entity.
-     *
-     * @Route(
-     *     "/image/{id}/show",
-     *      name="image_show"
-     *     )
-     * @Method({"GET"})
-     * @Template
-     *
-     */
-    public function showAction(Image $image)
-    {
-        $deleteForm = $this->createDeleteForm($image);
-
-        return array(
-            'image' => $image,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    
     public function getAllAction($galleryTitle = "gallery")
     {
         $em = $this->getDoctrine()->getManager();
