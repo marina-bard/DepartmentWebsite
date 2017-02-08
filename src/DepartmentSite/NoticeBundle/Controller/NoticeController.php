@@ -79,15 +79,8 @@ class NoticeController extends Controller
     
 
     public function getNotices(){
-        $repository = $this->getDoctrine()
-            ->getRepository('DepartmentSiteNoticeBundle:Notice');
-
-        $query = $repository->createQueryBuilder('a')
-            ->select()
-            ->orderBy('a.createdAt', 'DESC')
-            ->getQuery();
-
-        return $query->getResult();
+        return $this->getDoctrine()->getManager()
+            ->getRepository('DepartmentSiteNoticeBundle:Notice')->findBy(array(), array('createdAt' => 'DESC'));
     }
 
 }

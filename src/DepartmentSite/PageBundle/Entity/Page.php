@@ -5,7 +5,7 @@ namespace DepartmentSite\PageBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-
+use JsonSerializable;
 
 
 /**
@@ -15,7 +15,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class Page
+class Page implements JsonSerializable
 {
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
@@ -80,4 +80,12 @@ class Page
         return $this->title;
     }
 
+    public function jsonSerialize()
+    {
+        return [
+            'title' => $this->title,
+            'created_at' => $this->createdAt,
+            'slug' => $this->slug
+        ];
+    }
 }

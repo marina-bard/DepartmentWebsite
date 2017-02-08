@@ -4,11 +4,14 @@ fos_user:
     user_class:   Application\FOS\UserBundle\Entity\User
     service:
         user_manager: pugx_user_manager
+    from_email:
+        address:        %mailer_user%
+        sender_name:    Admin
     registration:
         confirmation:
-            from_email: # Use this node only if you don't want the global email address for the confirmation email
-                address:        "%mailer_user%"
-                sender_name:    Marina Bardiyan
+#            from_email: # Use this node only if you don't want the global email address for the confirmation email
+#                address:        "%mailer_user%"
+#                sender_name:    ~
             enabled:    true # change to true for required email confirmation
             template:   ApplicationFOSUserBundle:Registration:email.txt.twig
 #        form:
