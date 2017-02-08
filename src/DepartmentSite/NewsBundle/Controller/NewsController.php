@@ -8,12 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use DepartmentSite\NewsBundle\Entity\News;
-use DepartmentSite\NewsBundle\Form\NewsType;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\DependencyInjection\ContainerInterface as Container;
-use ITM\ImagePreviewBundle\Resolver\PathResolver;
-use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 
 /**
  * News controller.
@@ -50,11 +45,20 @@ class NewsController extends Controller
             self::NEWS_COUNT
         );
         
-
-      return $this->render('DepartmentSiteNewsBundle:News:news.html.twig',
+        return $this->render('DepartmentSiteNewsBundle:News:news.html.twig',
           array('page' => $page,
           '_locale' => $_locale,
           'pagination' => $pagination));
+    }
+
+    public function getAllAction( $pagination) {
+        $news = (Object)$pagination->getItems();
+        foreach($news as &$oneNews) {
+            $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto());
+            $oneNews->setPhoto($url);
+        }
+
+        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
     /**
@@ -71,15 +75,8 @@ class NewsController extends Controller
      */
     public function showAction(Request $request, News $news, $_locale)
     {
+
     }
     
-    public function getAllAction( $pagination) {
-        $news = (Object)$pagination->getItems();
-        foreach($news as &$oneNews) {
-            $url = $this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto);
-            $oneNews->setPhoto($url);
-        }
 
-        return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
-    }
 }

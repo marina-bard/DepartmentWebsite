@@ -73,7 +73,7 @@ class ProjectAdmin extends AbstractAdmin
             ->add('startDate')
             ->add('endDate')
             ->add('description')
-            ->add('content')
+            ->add('content', 'html')
             ->add('comments')
             ->add('isModerated')
         ;

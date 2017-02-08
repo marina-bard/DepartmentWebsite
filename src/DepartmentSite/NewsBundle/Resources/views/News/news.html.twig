@@ -4,7 +4,6 @@
 <div ng-controller="NewsCtrl">
     <script type="text/javascript">
         data = '{{ render(controller('DepartmentSiteNewsBundle:News:getAll', { 'page': page, 'pagination' : pagination})) }}';
-        console.log(data)
     </script>
 
   <div class="news" style="background-color: #fff;">
@@ -20,7 +19,7 @@
                   <div ng-class="($index % 2 === 0) ? 'col-md-6 news-column' : 'col-md-6 news-column2'">
                       <a ng-href="/{{ _locale }}/news/{{'{{oneNews.slug}}'}}/show"><img alt="alt" class="news-item-image" ng-src="{{'{{oneNews.photo}}'}}" /></a>
                       <div class="news-item-date">{{'{{oneNews.created_at.date | dateFilter | date:"dd.MM.yyyy"}}'}}</div>
-                      <br /><a class="news-item-title" ng-href="/{{ _locale }}/news/{{'{{oneNews.slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
+                      <br/><a class="news-item-title" ng-href="/{{ _locale }}/news/{{'{{oneNews.slug}}'}}/show">{{'{{ oneNews.title }}'}}</a>
                       <div class="news-item-lead">{{'{{ oneNews.description }}'}}</div>
                   </div>
               </div>

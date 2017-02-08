@@ -1,11 +1,11 @@
 <?php
 namespace DepartmentSite\NewsBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Symfony\Component\DependencyInjection\ContainerInterface as Container;
-use ITM\ImagePreviewBundle\Resolver\PathResolver;
+
 /**
  * News
  *
@@ -17,6 +17,7 @@ class News implements JsonSerializable
 {
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
+
     /**
      * @var int
      *
@@ -25,34 +26,40 @@ class News implements JsonSerializable
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+
     /**
      * @var string
      *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
+
     /**
      * @var string
      *
      * @ORM\Column(name="photo", type="string", nullable=true)
      */
     private $photo;
+
     /**
      * @return string - object's string representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getTitle() ? : '-';
     }
     /**
@@ -85,6 +92,7 @@ class News implements JsonSerializable
     {
         return $this->title;
     }
+
     /**
      * Set description
      *
@@ -152,6 +160,7 @@ class News implements JsonSerializable
     {
         return [ 'title' ];
     }
+
     /**
      * Specify data which should be serialized to JSON
      * @link http://php.net/manual/en/jsonserializable.jsonserialize.php

@@ -63,6 +63,11 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess, \JsonSer
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return $this->content;
+    }
+
     /**
      * Set id
      *
