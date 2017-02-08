@@ -2,11 +2,6 @@
 
 
 {% block body %}
-    {#<div ng-controller="OneNewsCtrl">#}
-        {#<script type="text/javascript">#}
-            {#data = '{{ render(controller('DepartmentSiteNewsBundle:News:getOne', {'id' : news.id})) }}';#}
-        {#</script>#}
-
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -24,7 +19,6 @@
             <div class="row">
                 <div class="col-xs-12">
                     <i class="news-time">{{news.createdAt.date |date('d.m.Y')}}</i>
-                    {#{{ dump(url) }}#}
                     <div class="post-title-inside-post">{{news.title}}</div>
                     {#<br /><img alt="Cinque Terre" class="full-post-img" ng-src="{{news.photo.path}}" />#}
                     {#<div class="post-content-inside" ng-bind-html="news.content | toHTML"></div>#}
