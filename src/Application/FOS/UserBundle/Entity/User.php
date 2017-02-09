@@ -31,6 +31,11 @@ abstract class User extends BaseUser
      */
     protected $id;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->addRole('ROLE_USER');
+    }
 
     public function __toString() {
         return $this->getUsername() ? : '-';

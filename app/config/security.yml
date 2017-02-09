@@ -131,7 +131,9 @@ security:
                 provider: fos_userbundle
                 login_path: /admin/login
                 csrf_token_generator: security.csrf.token_manager
-            logout: true
+            logout:
+                path:   /admin/logout
+                target: /
 
             anonymous: true
 
