@@ -1,10 +1,20 @@
-Department Website
-==============
+## Department Website
+
 There are several steps to run the applicaton:  
 1. Clone this repository.  
-2. Execute the following command in project folder (to download and install required dependences):  
-  $  composer install  
-3. Create mysql database with the name provided by app/config/parameters.yml. Change database configuration (user, password etc) if it differs.  
-4. Execute mysql query from create_table_News.txt.c  
-Now you can run the server and see what you get.  
+2. Execute in project folder:
+
+```
+    > composer install
+    > bin/console doctrine:database:create
+    > bin/console doctrine:schema:update --force
+    > bin/console doctrine:fixtures:load
+    > bin/console assets:install web --symlink
+```
+3. Start the server:
+
+```
+    > bin/console server:start 
+```
+
 A Symfony project created on April 12, 2016, 3:05 pm.  
