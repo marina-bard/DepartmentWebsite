@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div ng-controller="GalleryCtrl">
         <script type="text/javascript">
             data = '{{ render(controller('DepartmentSiteGalleryBundle:Gallery:getAll', { 'page': page, 'pagination' : pagination})) }}';
-            console.log(data);
 
         </script>
-
-
 
         <section id="gallery">
             <div class="container">
@@ -16,7 +14,7 @@
                     <div class="col-xs-12"></div>
                     <div class="section-title"><span>Фотогалерея</span></div>
                 </div>
-                <div ng-repeat="gallery in galleries">
+                <div ng-repeat="gallery in pagination">
                     <div ng-class="($index % 2 !== 0) ? 'row' : ''">
                         <div class="col-md-6 item">
                             <div class="stack twisted">

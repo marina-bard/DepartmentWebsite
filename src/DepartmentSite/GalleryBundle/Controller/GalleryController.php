@@ -46,7 +46,6 @@ class GalleryController extends Controller
 
         return $this->render('DepartmentSiteGalleryBundle:Gallery:index.html.twig', array(
             'page' => $page,
-            'galleries' => $galleries,
             '_locale' => $_locale,
             'pagination' => $pagination
         ));
@@ -55,8 +54,12 @@ class GalleryController extends Controller
 
     public function getGalleries(){
         return $this->getDoctrine()
-            ->getRepository('DepartmentSiteGalleryBundle:Gallery')
-            ->findBy(array(), array('createdAt' => 'DESC'));
+            ->getManager()
+            ->createQueryBuilder()
+            ->select('gallery')
+            ->from('DepartmentSiteGalleryBundle:Gallery', 'gallery')
+            ->orderBy('gallery.createdAt', 'DESC');
+  
     }
 
     /**

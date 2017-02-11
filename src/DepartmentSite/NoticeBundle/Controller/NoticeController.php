@@ -33,11 +33,16 @@ class NoticeController extends Controller
     public function indexAction($_locale, $page)
     {
         $request = new Request();
-        $notice= $this->getNotices();
+        $notices = $this->getDoctrine()
+            ->getManager()
+            ->createQueryBuilder()
+            ->select('notice')
+            ->from('DepartmentSiteNoticeBundle:Notice', 'notice')
+            ->orderBy('notice.createdAt', 'DESC');
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $notice,
+            $notices,
             $request->query->get('page', $page),
             self::NOTICES_COUNT
         );
@@ -58,10 +63,13 @@ class NoticeController extends Controller
      *      requirements = {"_locale" = "ru|en"}
      *     )
      * @Method({"GET"})
-     * @Template
      */
     public function showAction(Notice $notice, $_locale)
     {
+        return $this->render('DepartmentSiteNoticeBundle:Notice:show.html.twig',
+            array('notice' => $notice,
+                '_locale' => $_locale));
+
     }
 
 
