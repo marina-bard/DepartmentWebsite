@@ -63,13 +63,10 @@ class NoticeController extends Controller
      *      requirements = {"_locale" = "ru|en"}
      *     )
      * @Method({"GET"})
+     * @Template
      */
     public function showAction(Notice $notice, $_locale)
     {
-        return $this->render('DepartmentSiteNoticeBundle:Notice:show.html.twig',
-            array('notice' => $notice,
-                '_locale' => $_locale));
-
     }
 
 
