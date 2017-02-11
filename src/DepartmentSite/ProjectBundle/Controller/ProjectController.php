@@ -37,8 +37,11 @@ class ProjectController extends Controller
     {
         $request = new Request();
         $projects = $this->getDoctrine()
-            ->getRepository('DepartmentSiteProjectBundle:Project')
-            ->findBy(['isModerated' => true], ['createdAt' => 'DESC']);
+            ->getManager()
+            ->createQueryBuilder()
+            ->select('project')
+            ->from('DepartmentSiteProjectBundle:Project', 'project')
+            ->orderBy('project.createdAt', 'DESC');
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

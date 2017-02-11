@@ -34,9 +34,11 @@ class NewsController extends Controller
     {
         $request = new Request();
         $news= $this->getDoctrine()
-            ->getRepository('DepartmentSiteNewsBundle:News')
-            ->findBy([], ['createdAt' => 'DESC'])
-        ;
+            ->getManager()
+            ->createQueryBuilder()
+            ->select('news')
+            ->from('DepartmentSiteNewsBundle:News', 'news')
+            ->orderBy('news.createdAt', 'DESC');
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
