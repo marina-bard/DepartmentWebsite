@@ -1,3 +1,8 @@
 .logo img {
     max-width: 50px;
 }
+
+tbody > tr > td >.btn {
+    width: 49px;
+    display: inline-block;
+}

@@ -69,4 +69,12 @@ class GalleryAdmin extends AbstractAdmin
     {
         $gallery->setImages($gallery->getImages());
     }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('DepartmentSiteGalleryBundle:CRUD:form_admin_fields.html.twig')
+        );
+    }
 }
