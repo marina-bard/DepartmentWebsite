@@ -36,7 +36,7 @@ class GalleryController extends Controller
     public function indexAction($_locale, $page)
     {
         $request = new Request();
-        $galleries = $this->getGalleries();
+        $galleries = $this->getGalleries()->getQuery()->getResult();
         $paginator = $this->get('knp_paginator');
 
         foreach ($galleries as $key => $gallery) {
@@ -46,13 +46,14 @@ class GalleryController extends Controller
         }
 
         $pagination = $paginator->paginate(
-            $galleries,
+            $this->getGalleries(),
             $request->query->get('page', $page),
             self::GALLERIES_COUNT
         );
 
         return $this->render('DepartmentSiteGalleryBundle:Gallery:index.html.twig', array(
             'page' => $page,
+            'galleries' => $galleries,
             '_locale' => $_locale,
             'pagination' => $pagination
         ));
