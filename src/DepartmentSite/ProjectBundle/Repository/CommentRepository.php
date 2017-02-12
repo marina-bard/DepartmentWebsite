@@ -14,4 +14,26 @@ use Knp\DoctrineBehaviors\ORM as ORMBehaviors;
 class CommentRepository extends EntityRepository
 {
     use ORMBehaviors\Tree\Tree;
+
+    public function getFlatTreeQB($path = '', $rootAlias = 't')
+    {
+        $qb = $this->createQueryBuilder($rootAlias)
+            ->andWhere($rootAlias.'.isModerated = 1')
+            ->andWhere($rootAlias.'.materializedPath LIKE :path')
+            ->addOrderBy($rootAlias.'.materializedPath', 'ASC')
+            ->setParameter('path', $path.'%')
+        ;
+
+        $parentId = basename($path);
+        if ($parentId) {
+            $qb
+                ->orWhere($rootAlias.'.id = :parent')
+                ->setParameter('parent', $parentId)
+            ;
+        }
+
+        $this->addFlatTreeConditions($qb);
+
+        return $qb;
+    }
 }

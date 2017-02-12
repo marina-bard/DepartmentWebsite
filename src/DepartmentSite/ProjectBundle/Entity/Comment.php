@@ -162,7 +162,8 @@ class Comment implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess, \JsonSer
             'createdAt' => $this->createdAt,
             'content' => $this->content,
             'author' => $this->author,
-            'child' => $this->getChildNodes()->toArray()
+            'child' => $this->getChildNodes()->toArray(),
+            'isModerated' => $this->getIsModerated()
         ];
     }
 

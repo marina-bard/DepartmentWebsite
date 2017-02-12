@@ -6,8 +6,7 @@ angular.module('bsuir-ecm').controller('CommentsCtrl', function($scope, $http){
     $scope.formData = {};
     $scope.isSuccess = false;
     $scope.comments = JSON.parse(project_comments.replace(/"/g, '\'\'').replace(/&quot;/g, '"'));
-    console.log($scope.comments);
-    $scope.comments_count = comments_count;
+    $scope.comments_count = $scope.comments.length;
     $scope.comment_id = undefined;
     $scope.url = "";
 

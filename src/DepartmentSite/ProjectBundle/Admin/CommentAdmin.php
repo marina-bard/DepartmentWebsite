@@ -25,6 +25,7 @@ class CommentAdmin extends AbstractAdmin
         $formMapper
             ->add('content', null, array('attr' => array('readonly' => true)))
             ->add('author', null, array('attr' => array('readonly' => true)))
+            ->add('isModerated');
         ;
     }
 
@@ -44,4 +45,5 @@ class CommentAdmin extends AbstractAdmin
             ->remove('edit')
         ;
     }
+
 }
