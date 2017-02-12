@@ -1,7 +1,6 @@
-//alert("app.js");
+'use strict';
 (function() {
-  'use strict';
-  angular.module('bsuir-ecm', ['ngAnimate', 'ngAria', 'ngCookies', 'ngMessages', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch']).config(function($routeProvider) {
+  angular.module('bsuir-ecm', ['ngAnimate', 'ngRoute', 'ngSanitize']).config(function($routeProvider) {
     return $routeProvider.when('/', {
       templateUrl: 'DepartmentSiteDefaultBundle:Default:index',
       controller: 'MainPageCtrl'
@@ -51,8 +50,5 @@
       redirectTo: '/'
     });
   });
-  
-  
 }).call(this);
 
-//# sourceMappingURL=app.js.map

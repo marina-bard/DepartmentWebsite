@@ -1,13 +1,11 @@
+'use strict';
+
 var data1 = [];
 var news_index = 0;
 
 (function() {
-  'use strict';
   angular.module('bsuir-ecm').controller('OneNewsCtrl', function($scope, $http) {
-      //data = data.replace(/\"/g, "\'");
-      console.log(data);
       data = data.replace(/&amp;nbsp;/g, '').replace(/\r\n/g, "\\r\\n");
-
       $scope.news = JSON.parse(data.replace(/"/g, '\'\'').replace(/&quot;/g, '"'));
 
   });
@@ -26,6 +24,3 @@ var news_index = 0;
   });
 
 }).call(this);
-
-
-//# sourceMappingURL=one_news.js.map
