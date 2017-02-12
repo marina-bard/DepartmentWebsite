@@ -12,10 +12,9 @@ angular.module('bsuir-ecm').controller('CommentsCtrl', function($scope, $http){
 
     $scope.init = function(id) {
         if(id){
-            // alert(id);
             $scope.formData.commentId = id;
         }
-        else return;
+        else return false;
     };
 
     $scope.showTextview = function () {
@@ -25,7 +24,6 @@ angular.module('bsuir-ecm').controller('CommentsCtrl', function($scope, $http){
     $scope.processForm = function (projectId) {
         if($scope.formData.commentId == undefined) {
             $scope.formData.commentId = -1;
-            // alert('commentId: ' + $scope.formData.commentId)
         }
         $scope.formData.projectId = projectId;
         $http({
@@ -38,9 +36,7 @@ angular.module('bsuir-ecm').controller('CommentsCtrl', function($scope, $http){
             $scope.message = data;
             $scope.formData = null;
             $scope.isSuccess = true;
-            console.log(data);
         }).error(function (data) {
-            console.log(data.errors);
         });
     }
 });
