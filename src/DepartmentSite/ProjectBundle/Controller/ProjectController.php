@@ -212,13 +212,14 @@ class ProjectController extends Controller
         $rootProjectComments = array();
         foreach ($trees as $tree) {
 
-            if ($tree->getProject()->getId() == $projectId)
+            if ($tree->getProject()->getId() == $projectId && $tree->getIsModerated())
             {
                 array_push($rootProjectComments,
                     $em->getRepository('DepartmentSiteProjectBundle:Comment')
                         ->getTree($tree->getRealMaterializedPath()));
             }
         }
+
         return new Response(htmlspecialchars(json_encode($rootProjectComments, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }
 
@@ -232,18 +233,4 @@ class ProjectController extends Controller
         return $count++;
     }
 
-    public function getCommentsCountAction($projectId)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $trees = $em->getRepository('DepartmentSiteProjectBundle:Comment')->getRootNodes();
-        $count = 0;
-        foreach ($trees as $tree) {
-            if ($tree->getProject()->getId() == $projectId)
-            {
-                $this->recursiveCount( $em->getRepository('DepartmentSiteProjectBundle:Comment')
-                        ->getTree($tree->getRealMaterializedPath()), $count);
-            }
-        }
-        return new Response(htmlspecialchars(json_encode($count, JSON_HEX_QUOT | JSON_HEX_TAG)));
-    }
 }

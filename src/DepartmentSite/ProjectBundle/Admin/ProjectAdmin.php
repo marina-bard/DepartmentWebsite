@@ -81,12 +81,26 @@ class ProjectAdmin extends AbstractAdmin
 
     public function prePersist($project)
     {
-        $this->preUpdate($project);
+        $project->setComments($project->getComments());
     }
 
     public function preUpdate($project)
     {
         $project->setComments($project->getComments());
+        $em = $this->getConfigurationPool()->getContainer()->get('Doctrine')->getManager();
+        $trees = $em->getRepository('DepartmentSiteProjectBundle:Comment')->getRootNodes();
+        $rootProjectComments = array();
+        foreach ($trees as $tree) {
+
+            if ($tree->getProject()->getId() == $project->getId() && $tree->getIsModerated())
+            {
+                array_push($rootProjectComments,
+                    $em->getRepository('DepartmentSiteProjectBundle:Comment')
+                        ->getTree($tree->getRealMaterializedPath()));
+            }
+        }
+        $project->setCountComment(count($rootProjectComments));
     }
+
 
 }
