@@ -27,29 +27,21 @@
             <section id="registration">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-10">
                             <div class="section-title"><span>Регистрация</span>
                             </div>
                         </div>
+                        <div class="col-xs-1"></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12 form-bottom">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-10 form-bottom">
                             {% block fos_user_content %}
                             {% endblock fos_user_content %}
                         </div>
+                        <div class="col-xs-12"></div>
                     </div>
                 </div>
             </section>
-
-            <script>
-                jQuery(function () {
-                    $("form :input").each(function (index, elem) {
-                        var eId = $(elem).attr("id");
-                        if (eId && (label = $(elem).parents("form").find("label[for=" + eId + "]")).length == 1) {
-                            $(elem).attr("placeholder", $(label).html());
-                            $(label).remove();
-                        }
-                    });
-                });
-            </script>
     {% endblock %}
