@@ -1,8 +1,6 @@
-{#{% extends "@ApplicationFOSUser/layout.html.twig" %}#}
 {% set _locale = 'ru' %}
 
 {% trans_default_domain 'FOSUserBundle' %}
- {#{% block body %}#}
   {% block fos_user_content %}
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog" style="margin-top: 30px">
@@ -11,7 +9,7 @@
             <button class="close" data-dismiss="modal" type="button">
               &times;</button>
             <h4 class="modal-title">{{ 'log_in' |  DICTIONARY(_locale) }}</h4>
-            <form action="{{ path("fos_user_security_check") }}" method="post">
+            <form action="{{ path("fos_user_security_check") }}" method="post" id="login">
               <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
               <input type="text" class="form-control login-input" id="username" name="_username" value="{{ last_username }}"
                      required="required" placeholder="{{ 'security.login.username'|trans }}"/>
@@ -19,7 +17,7 @@
                      placeholder="{{ 'security.login.password'|trans }}"/>
               <a ng-class="'{{ _locale }}' == 'ru'? 'forgot-passw' : 'forgot-passw forgot-passw-en'" ng-href="{{ path('fos_user_resetting_request') }}">{{ 'forgot_password' |  DICTIONARY(_locale) }}</a>
               <a class="registration-btn" ng-href="/register">{{ 'sign_up' |  DICTIONARY(_locale) }}</a>
-              <input onclick="return SubmitForm(this.form)" class="btn login-btn" data-dismiss="modal" type="_submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+              <input onKeyPress="return checkSubmit(this.form)" onclick="return SubmitForm(this.form)" class="btn login-btn" data-dismiss="modal" type="_submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
             </form>
           </div>
         </div>
@@ -31,6 +29,13 @@
           function SubmitForm(frm) {
               frm.submit();
           }
+
+          $('body').keypress(function (e) {
+              if (e.which === 13) {
+                  if($('#myModal').css('display') !== 'none')
+                    $('form#login').submit();
+                  return false;
+              }
+          });
       </script>
   {% endblock fos_user_content %}
- {#{% endblock body %}#}
