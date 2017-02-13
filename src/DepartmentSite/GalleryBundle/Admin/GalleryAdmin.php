@@ -20,11 +20,15 @@ class GalleryAdmin extends AbstractAdmin
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
             ->add('description', 'text', array('label' => 'Description'))
-            ->add('images', 'sonata_type_model',
-                array( 'required' => true,
-                    'by_reference' => false,
-                    'multiple' => true,
-                    'expanded' => true))
+            ->add('images', 'sonata_type_collection',
+                array(
+                    'required' => false,
+                    'btn_add' => 'Добавить',
+                    'type_options' => array('delete' => true),
+                ),
+                array('edit' => 'inline',
+                    'inline' => 'table',
+                ))
             ;
     }
 
@@ -64,5 +68,13 @@ class GalleryAdmin extends AbstractAdmin
     public function preUpdate($gallery)
     {
         $gallery->setImages($gallery->getImages());
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('DepartmentSiteGalleryBundle:CRUD:form_admin_fields.html.twig')
+        );
     }
 }

@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div ng-controller="GalleryCtrl">
         <script type="text/javascript">
             data = '{{ render(controller('DepartmentSiteGalleryBundle:Gallery:getAll', { 'page': page, 'pagination' : pagination})) }}';
-            console.log(data);
 
         </script>
 

@@ -27,7 +27,6 @@
                                         <div class="col-md-6 cards-column">
                                             <div class="announce-card">
                                                 <div class="announce-card-content">
-                                                    <div class="my_announcement-comments-count-circle pull-right">2</div><i class="announce-card-date">{{ '{{advert.created_at.date | dateFilter | date:"dd.MM.yyyy"}}' }}</i>
                                                     <br /><a class="announce-card-title" ng-href="/{{ _locale }}/notice/{{'{{advert.slug}}'}}/show">{{ '{{ advert.title }}' }}</a>
                                                     <div class="announce-card-lead">{{ '{{ advert.description }}' }}</div>
                                                 </div>
@@ -62,7 +61,7 @@
                                     <div class="post-links">
                                         <a ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ 'reviews' | DICTIONARY(_locale) }} ( 2 )</a>
                                         <div class="line"></div>
-                                        <a class="comments-link" ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ 'comments' | DICTIONARY(_locale) }} ( 2 )</a>
+                                        <a class="comments-link" ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ 'comments' | DICTIONARY(_locale) }} ( {{ '{{ project.countComment }}' }} )</a>
                                     </div>
                                 </div>
                             </div>

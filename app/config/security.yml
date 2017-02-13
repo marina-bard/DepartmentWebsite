@@ -107,18 +107,8 @@ security:
             - ROLE_ADMIN_SLIDE_SHOW_DELETE
             - ROLE_ADMIN_SLIDE_SHOW_LIST
 
-
-
-
-
-
-
-
         ROLE_ADMIN:       [ROLE_USER, ROLE_SONATA_ADMIN]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, USERS]
-
-
-
 
     providers:
         fos_userbundle:
@@ -131,14 +121,10 @@ security:
                 provider: fos_userbundle
                 login_path: /admin/login
                 csrf_token_generator: security.csrf.token_manager
-            logout:
-                path:   /admin/logout
-                target: /
-
+            logout: true
             anonymous: true
 
         main:
-
             form_login:
                 provider: fos_userbundle
                 login_path: /login
@@ -157,5 +143,4 @@ security:
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
         - { path: ^/admin/, role: ROLE_ADMIN }
-
        

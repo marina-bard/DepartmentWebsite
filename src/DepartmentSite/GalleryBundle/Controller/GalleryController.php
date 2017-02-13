@@ -36,7 +36,7 @@ class GalleryController extends Controller
     public function indexAction($_locale, $page)
     {
         $request = new Request();
-        $galleries = $this->getGalleries();
+        $galleries = $this->getGalleries()->getQuery()->getResult();
         $paginator = $this->get('knp_paginator');
 
         foreach ($galleries as $key => $gallery) {
@@ -46,7 +46,7 @@ class GalleryController extends Controller
         }
 
         $pagination = $paginator->paginate(
-            $galleries,
+            $this->getGalleries(),
             $request->query->get('page', $page),
             self::GALLERIES_COUNT
         );
@@ -62,8 +62,12 @@ class GalleryController extends Controller
 
     public function getGalleries(){
         return $this->getDoctrine()
-            ->getRepository('DepartmentSiteGalleryBundle:Gallery')
-            ->findBy(array(), array('createdAt' => 'DESC'));
+            ->getManager()
+            ->createQueryBuilder()
+            ->select('gallery')
+            ->from('DepartmentSiteGalleryBundle:Gallery', 'gallery')
+            ->orderBy('gallery.createdAt', 'DESC');
+  
     }
 
     /**

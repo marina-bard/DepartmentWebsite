@@ -33,11 +33,16 @@ class NoticeController extends Controller
     public function indexAction($_locale, $page)
     {
         $request = new Request();
-        $notice= $this->getNotices();
+        $notices = $this->getDoctrine()
+            ->getManager()
+            ->createQueryBuilder()
+            ->select('notice')
+            ->from('DepartmentSiteNoticeBundle:Notice', 'notice')
+            ->orderBy('notice.createdAt', 'DESC');
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $notice,
+            $notices,
             $request->query->get('page', $page),
             self::NOTICES_COUNT
         );

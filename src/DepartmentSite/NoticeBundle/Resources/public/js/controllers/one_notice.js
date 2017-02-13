@@ -1,8 +1,9 @@
+'use strict';
+
 var data = [];
 var news_index = 0;
 
 (function() {
-  'use strict';
   angular.module('bsuir-ecm').controller('OneNoticeCtrl', function($scope, $http) {
       // data = data.replace(/\"/g, "\'");
       // data = data.replace(/\\/g, "\"");

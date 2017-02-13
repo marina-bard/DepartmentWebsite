@@ -31,7 +31,7 @@
                     <div class="post-links">
                         <a ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ 'reviews' | DICTIONARY(_locale) }} ( 2 )</a>
                         <div class="line"></div>
-                        <a class="comments-link" ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ 'comments' | DICTIONARY(_locale) }} ( 2 )</a>
+                        <a class="comments-link" ng-href="/{{ _locale }}/project/{{'{{project.slug}}'}}/show">{{ 'comments' | DICTIONARY(_locale) }} ( {{ '{{ project.countComment }}' }} )</a>
                     </div>
                 </div>
             </div>
