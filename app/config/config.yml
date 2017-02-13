@@ -3,7 +3,6 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: sonata/admin_config.yml }
-    - { resource: sonata/fos_config.yml }
     - { resource: ivory/ivory_config.yml }
     - { resource: elfinder/elfinder_config.yml }
     - { resource: a2lix_translation_form/a2lix_translation_form_config.yml }
@@ -11,6 +10,7 @@ imports:
     - { resource: itm/itm_config.yml }
     - { resource: knp_paginator/knp_paginator_config.yml }
     - { resource: pugx_multi_user/pugx_multi_user_config.yml }
+    - { resource: fos/fos_config.yml }
     - { resource: "../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml" }
 
 
@@ -62,6 +62,7 @@ doctrine:
         mapping_types:
                 enum:       string
         driver:   pdo_mysql
+        server_version: '5.7'
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
@@ -84,10 +85,6 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-
-sonata_admin:
-    title: 'Department Site'
-
 
 sonata_block:
     default_contexts: [cms]

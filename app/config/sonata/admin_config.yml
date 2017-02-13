@@ -1,5 +1,5 @@
 sonata_admin:
-    title: 'EVM'
+    title: 'Кафедра ЭВМ'
     title_logo: /bundles/departmentsitedefault/images/evm-logo-black.png
     templates:
           layout: 'ApplicationSonataAdminBundle::standard_layout_override.html.twig'
