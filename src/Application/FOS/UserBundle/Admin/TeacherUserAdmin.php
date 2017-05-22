@@ -42,6 +42,13 @@ class TeacherUserAdmin extends AbstractAdmin
                     'readonly' => true)))
                 ->add('email', 'text', array('label' => 'Email', 'attr' => array(
                     'readonly' => true)))
+                ->add('plainPassword', 'repeated', array(
+                    'required' => false,
+                    'type' => 'password',
+                    'options' => array('translation_domain' => 'FOSUserBundle'),
+                    'first_options' => array('label' => 'form.password'),
+                    'second_options' => array('label' => 'form.password_confirmation'),
+                    'invalid_message' => 'fos_user.password.mismatch' ));
                 
 
             ;
@@ -53,13 +60,18 @@ class TeacherUserAdmin extends AbstractAdmin
                 ->add('surname', 'text', array('label' => 'Surname'))
                 ->add('patronymic', 'text', array('label' => 'Patronymic'))
                 ->add('email', 'text', array('label' => 'Email'))
-                ->add('password', 'text')
+                ->add('plainPassword', 'repeated', array(
+                    'type' => 'password',
+                    'options' => array('translation_domain' => 'FOSUserBundle'),
+                    'first_options' => array('label' => 'form.password'),
+                    'second_options' => array('label' => 'form.password_confirmation'),
+                    'invalid_message' => 'fos_user.password.mismatch'));
 
 
             ;
         }
         $formMapper
-            ->add('locked', 'checkbox', array('required' => false));
+            ->add('enabled', 'checkbox', array('required' => false));
         if(in_array('ROLE_SUPER_ADMIN', $this->getCurrentUser()->getRoles())){
             $formMapper
                 ->add('roles', 'choice', array(
@@ -83,7 +95,7 @@ class TeacherUserAdmin extends AbstractAdmin
             ->add('surname')
             ->add('patronymic')
             ->add('email')
-            ->add('locked')
+            ->add('enabled')
             //->add('roles')
         ;
     }
@@ -115,7 +127,7 @@ class TeacherUserAdmin extends AbstractAdmin
             ->add('patronymic')
             ->add('email')
             ->add('roles')
-            ->add('locked')
+            ->add('enabled')
         ;
 
 

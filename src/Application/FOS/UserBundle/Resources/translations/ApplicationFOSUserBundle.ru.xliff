@@ -78,10 +78,10 @@
                         <source>Type</source>
                          <target>Пользователь</target>
              </trans-unit>
-
-
-
-
+             <trans-unit id="Enabled">
+                        <source>Enabled</source>
+                         <target>Активировать</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>
