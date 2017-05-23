@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ProjectAdmin extends AbstractAdmin
 {
@@ -22,8 +23,7 @@ class ProjectAdmin extends AbstractAdmin
             ->add('studentGroup', 'text', array('label' => 'studentGroup'))
             ->add('startDate', 'datetime')
             ->add('endDate', 'datetime')
-            ->add('description', 'text', array('label' => 'description'))
-
+            ->add('description', TextareaType::class, array('label' => 'description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
             ->add('comments', 'sonata_type_collection', array('by_reference' => false, 'required' => false), array(
                 'edit' => 'inline',
