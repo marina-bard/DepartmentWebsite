@@ -29,7 +29,6 @@ class LoadHeaderMenu implements FixtureInterface
         $this->createHeaderMenu($manager,  'О кафедре', 'About department');
         $this->createHeaderMenu($manager, 'Структура кафедры', 'Department structure');
         $this->createHeaderMenu($manager,  'Образование', 'Education');
-        $this->createHeaderMenu($manager,  'Обратная связь', 'Feedback');
 
         $manager->flush();
     }

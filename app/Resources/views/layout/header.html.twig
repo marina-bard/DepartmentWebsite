@@ -19,6 +19,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {{ render(controller('DepartmentSiteDefaultBundle:Default:getHeaderMenu', {'_locale' : _locale} )) }}
+                    <li><a data-target="#feedbackModal" data-toggle="modal" >Обратная связь</a></li>
                     {% if is_granted('ROLE_USER') %}
                     <li><a ng-href={{ path('fos_user_profile_show') }}>{{ 'profile.link'|trans }}</a></li>
                     <li><a ng-href={{ path('fos_user_security_logout') }}>Выйти</a></li>
@@ -33,4 +34,5 @@
 </div>
 
 {{ render(controller('ApplicationFOSUserBundle:Security:login')) }}
+{% include ':layout:feedback_modal.html.twig' %}
 
