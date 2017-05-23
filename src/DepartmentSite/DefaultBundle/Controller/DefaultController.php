@@ -89,4 +89,27 @@ class DefaultController extends Controller
         return $this->render('@DepartmentSiteDefault/layout/sidebarMenu.html.twig', array('menu' => $sidebarMenu,
             '_locale' => $_locale));
     }
+
+    public function contactAction(Request $request)
+    {
+        $content = $request->get('content');
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Department Site')
+            ->setFrom($this->getParameter('mailer_user'))
+            ->setTo($this->getParameter('mailer_user'))
+            ->setBody(
+                $this->renderView(
+
+                    '@DepartmentSiteDefault/Email/contact_email.html.twig',
+                    array('content' => $content)
+                ),
+                'text/html'
+            )
+
+        ;
+        $this->get('mailer')->send($message);
+
+        return $this->redirectToRoute('department_site_default');
+
+    }
 }
