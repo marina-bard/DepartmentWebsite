@@ -52,6 +52,9 @@ class DefaultController extends Controller
         foreach($news as $oneNews) {
             $oneNews->setPhoto($this->get('itm.file.preview.path.resolver')->getUrl($oneNews, $oneNews->getPhoto()));
         }
+//
+//        dump(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
+//        die();
 
         return new Response(htmlspecialchars(json_encode($news, JSON_HEX_QUOT | JSON_HEX_TAG)));
     }

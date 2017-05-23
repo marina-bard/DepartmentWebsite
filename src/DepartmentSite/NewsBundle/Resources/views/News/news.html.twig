@@ -3,7 +3,7 @@
 {% block body %}
 <div ng-controller="NewsCtrl">
     <script type="text/javascript">
-        data = '{{ render(controller('DepartmentSiteNewsBundle:News:getAll', { 'page': page, 'pagination' : pagination})) }}';
+        data = "{{ render(controller('DepartmentSiteNewsBundle:News:getAll', { 'page': page, 'pagination' : pagination})) }}";
     </script>
 
   <div class="news" style="background-color: #fff;">
