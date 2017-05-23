@@ -25,7 +25,7 @@ class ProjectAdmin extends AbstractAdmin
             ->add('description', 'text', array('label' => 'description'))
 
             ->add('content', CKEditorType::class, array('label' => 'Content'))
-            ->add('comments', 'sonata_type_collection', array('by_reference' => false), array(
+            ->add('comments', 'sonata_type_collection', array('by_reference' => false, 'required' => false), array(
                 'edit' => 'inline',
                 'inline' => 'table',
             ))
