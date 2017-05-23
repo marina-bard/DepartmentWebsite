@@ -5,11 +5,7 @@
 
 <div ng-controller="NoticesCtrl">
       <script type="text/javascript">
-
-           data = '{{ render(controller('DepartmentSiteNoticeBundle:Notice:getNotices', { 'pagination' : pagination })) }}';
-           console.log(data);
-
-
+           data = "{{ render(controller('DepartmentSiteNoticeBundle:Notice:getAll', { 'pagination' : pagination })) }}";
       </script>
 
       <div class="announcements-background">
