@@ -33,7 +33,7 @@
 }
 
 /* line 45, ../../app/styles/login_form.scss */
-.login-input {
+.login-input, .feedback-textarea {
   margin-left: 107px;
   margin-right: 107px;
   margin-top: 0px;
@@ -43,6 +43,10 @@
   height: 40px;
   text-align: center;
   display: inline;
+}
+
+.feedback-textarea {
+  height: 140px !important;
 }
 
 /* line 57, ../../app/styles/login_form.scss */

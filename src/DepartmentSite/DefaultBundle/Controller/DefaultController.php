@@ -90,12 +90,20 @@ class DefaultController extends Controller
             '_locale' => $_locale));
     }
 
+    /**
+     * @Route ("/contact",
+     *      name="department_site_contact")
+     * @param Request $request
+     *
+     * @return Response
+     */
     public function contactAction(Request $request)
     {
+        $email = $request->get('email');
         $content = $request->get('content');
         $message = \Swift_Message::newInstance()
             ->setSubject('Department Site')
-            ->setFrom($this->getParameter('mailer_user'))
+            ->setFrom($email)
             ->setTo($this->getParameter('mailer_user'))
             ->setBody(
                 $this->renderView(
@@ -109,7 +117,6 @@ class DefaultController extends Controller
         ;
         $this->get('mailer')->send($message);
 
-        return $this->redirectToRoute('department_site_default');
-
+        return new Response('ok');
     }
 }
