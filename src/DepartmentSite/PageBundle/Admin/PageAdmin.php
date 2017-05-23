@@ -24,9 +24,16 @@ class PageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-//            ->add('title', 'text', array('label' => 'Title'))
-//            ->add('content', CKEditorType::class, array('label' => 'Content'))
-            ->add('translations', TranslationsType::class )
+            ->add('translations', TranslationsType::class, array(
+                'fields' => array(
+                    'title' => array(
+                    ),
+                    'content' => array(
+                        'field_type' => CKEditorType::class,
+                        'required' => false
+                    )
+                 )
+            ))
         ;
     }
 

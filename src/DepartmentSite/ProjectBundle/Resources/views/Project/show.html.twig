@@ -5,8 +5,8 @@
         {% set new_comment_path = path('comment_new') %}
     <div ng-controller="CommentsCtrl" ng-init="url = '{{ new_comment_path }}'">
         <script type="text/javascript">
-            data = '{{ render(controller('DepartmentSiteProjectBundle:Project:getOne', {'slug' : project.slug})) }}';
-            project_comments = '{{ render(controller('DepartmentSiteProjectBundle:Project:getCommentsByProjectId', {'projectId' : project.id})) }}';
+            data = "{{ render(controller('DepartmentSiteProjectBundle:Project:getOne', {'slug' : project.slug})) }}";
+            project_comments = "{{ render(controller('DepartmentSiteProjectBundle:Project:getCommentsByProjectId', {'projectId' : project.id})) }}";
         </script>
         <div class="container">
             <div class="row">

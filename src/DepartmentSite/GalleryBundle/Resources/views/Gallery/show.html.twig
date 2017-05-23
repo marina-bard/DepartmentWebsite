@@ -3,7 +3,7 @@
 {% block body %}
 <div ng-controller="OneGalleryCtrl">
     <script type="text/javascript">
-        gallery = '{{ render(controller('DepartmentSiteGalleryBundle:Image:getAll', {'galleryTitle' : gallery.title})) }}';
+        gallery = "{{ render(controller('DepartmentSiteGalleryBundle:Image:getAll', {'galleryTitle' : gallery.title})) }}";
     </script>
     <div class="container">
         <div class="row">

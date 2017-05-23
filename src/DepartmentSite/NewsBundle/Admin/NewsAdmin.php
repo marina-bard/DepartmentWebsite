@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use ITM\FilePreviewBundle\Form\Type\FilePreviewType;
 use ITM\ImagePreviewBundle\Form\Type\ImagePreviewType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\File;
 
 class NewsAdmin extends Admin
@@ -19,7 +20,7 @@ class NewsAdmin extends Admin
     {
         $formMapper
             ->add('title', 'text', array('label' => 'Title'))
-            ->add('description', 'text', array('label' => 'Description'))
+            ->add('description', TextareaType::class, array('label' => 'Description'))
             ->add('content', CKEditorType::class, array('label' => 'Content'))
             ->add('photo', ImagePreviewType::class, ['data_class' => null]);
         if ($this->isCurrentRoute('edit')){
