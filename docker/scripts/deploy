@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+host=${1:-$TARGET_HOST}
+timeout_value=${2:-60}
+
+export DOCKER_TAG=${GIT_BRANCH##*/}
+
+docker-compose down -v --remove-orphans &
+for service in $(docker-compose config --services); do
+    docker-compose pull $service &
+done
+wait
+sleep 1
+docker-compose up -d
+./docker/shortcuts/php bin/console doctrine:migration:migrate -n
+
+#./docker/shortcuts/php bin/console doctrine:fixtures:load -n --fixtures src/DataFixtures/WithoutOrders/
+
+
+if [[ "Exit" == $(docker-compose ps | grep "php" | tr -s ' ' | cut -d" " -f4) ]]; then
+    echo "Container has exited!"
+    docker-compose logs php
+
+    exit 1
+else
+    echo "Application deployed!"
+fi

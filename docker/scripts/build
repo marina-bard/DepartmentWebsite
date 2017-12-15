@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+dir=$(dirname "${BASH_SOURCE[0]}")
+
+docker/shortcuts/composer install --ignore-platform-reqs --optimize-autoloader
+
+# Generate documentation
+docker/scripts/generate_doc
+
+export COMPOSE_FILE=docker/docker-compose.yml:docker/docker-compose.dev.yml
+docker-compose build --force-rm
+# Spooky bash hack for getting all images built by docker-compose
+images=$(docker-compose config | grep -o 'image:\s*registry.*' | cut -d" " -f2)
+for image in $images; do
+    echo "pushing image: $image"
+    docker push $image
+done
