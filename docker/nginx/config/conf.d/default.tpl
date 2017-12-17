@@ -3,14 +3,11 @@ include ${HTTP_TO_HTTPS_REDIRECT};
 server {
     listen ${NGINX_LISTEN_PORT};
 
-    server_name kjk.docker;
-
     include ${SSL_CONFIG};
 
     root /srv;
 
     client_max_body_size 20M;
-    server_name kjk.docker;
 
     gzip             on;
     gzip_comp_level  2;
@@ -19,7 +16,7 @@ server {
     gzip_types       text/plain application/x-javascript application/javascript text/xml text/css application/xml;
 
 
-    location ~* ^/(_profiler|_wdt|api)/.* {
+    location ~ ^/app\.php(/|$) {
         fastcgi_pass php:9000;
         include fastcgi_params;
         fastcgi_param  SCRIPT_FILENAME    /app/web/app.php;
@@ -27,6 +24,6 @@ server {
     }
 
     location / {
-        try_files $uri $uri/ /index.html;
+        try_files $uri /app.php$is_args$args;
     }
 }

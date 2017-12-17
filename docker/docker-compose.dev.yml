@@ -6,15 +6,16 @@ services:
 #            - USE_CORS_PROXY=yes
 
     database:
-        image: postgres:9.6
+        image: mysql/mysql-server:5.7
         environment:
-            - POSTGRES_USER=${DB_USER}
-            - POSTGRES_DB=${DB_NAME}
-            - POSTGRES_PASSWORD=${DB_PASS}
-            - PGPASSWORD=${DB_PASS}
-
+            - MYSQL_USER=${DB_USER}
+            - MYSQL_DATABASE=${DB_NAME}
+            - MYSQL_PASSWORD=${DB_PASS}
+            - MYSQL_ROOT_PASSWORD=${DB_PASS}
+        volumes:
+          - ./mysql:/var/lib/mysql
         ports:
-          - 5432:5432
+          - 3306:3306
 
 #    docker_monitoring:
 #        image: portainer/portainer:1.13.5

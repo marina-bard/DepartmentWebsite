@@ -9,7 +9,7 @@ RUN docker-php-ext-install \
         mbstring \
         zip \
         opcache \
-        pdo pdo_pgsql
+        pdo pdo_mysql
 
 RUN yes | pecl install apcu xdebug-beta \
         && echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini \

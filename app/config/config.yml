@@ -63,11 +63,11 @@ doctrine:
                 enum:       string
         driver:   pdo_mysql
         server_version: '5.7'
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
+        host:     "%env(DB_HOST)%"
+        port:     "%env(DB_PORT)%"
+        dbname:   "%env(DB_NAME)%"
+        user:     "%env(DB_USER)%"
+        password: "%env(DB_PASS)%"
         charset:  UTF8
         types:
           json: Sonata\Doctrine\Types\JsonType

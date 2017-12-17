@@ -5,8 +5,8 @@ fos_user:
     service:
         user_manager: pugx_user_manager
     from_email:
-        address:        %mailer_user%
-        sender_name:    %sender_name%
+        address:        no-replay@evm.bsuir.by
+        sender_name:    EVM
     registration:
         confirmation:
             enabled:    true # change to true for required email confirmation
